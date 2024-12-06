@@ -4,10 +4,59 @@
   SimpleController.cpp
   SimpleSound.cpp
   SimpleSprite.cpp
+  EntityManager.cpp
   GameTest.cpp
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.h(26,20): warning C4200: nonstandard extension used: zero-sized array in struct/union
+  (compiling source file '/EntityManager.cpp')
+  D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.h(26,20):
+  This member will be ignored by a defaulted constructor or copy/move assignment operator
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(4,8): error C2653: 'EntityManager': is not a class or namespace name
+  (compiling source file '/EntityManager.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(4,35): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file '/EntityManager.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(4,23): error C2146: syntax error: missing ';' before identifier 'CreateEntity'
+  (compiling source file '/EntityManager.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(5,1): error C2143: syntax error: missing ';' before '{'
+  (compiling source file '/EntityManager.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(5,1): error C2447: '{': missing function header (old-style formal list?)
+  (compiling source file '/EntityManager.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(11,6): error C2653: 'EntityManager': is not a class or namespace name
+  (compiling source file '/EntityManager.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(11,42): error C2146: syntax error: missing ')' before identifier 'entity'
+  (compiling source file '/EntityManager.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(12,1): error C2143: syntax error: missing ';' before '{'
+  (compiling source file '/EntityManager.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(12,1): error C2447: '{': missing function header (old-style formal list?)
+  (compiling source file '/EntityManager.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(16,12): error C2923: 'std::vector': 'Entity' is not a valid template type argument for parameter '_Ty'
+  (compiling source file '/EntityManager.cpp')
+  D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(4,1):
+  see declaration of 'Entity'
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(16,12): error C2976: 'std::vector': too few template arguments
+  (compiling source file '/EntityManager.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(436,14):
+  see declaration of 'std::vector'
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(16,28): error C2653: 'EntityManager': is not a class or namespace name
+  (compiling source file '/EntityManager.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(16,43): error C2270: 'GetEntities': modifiers not allowed on nonmember functions
+  (compiling source file '/EntityManager.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(18,9): error C2065: 'entityList': undeclared identifier
+  (compiling source file '/EntityManager.cpp')
+  
   miniaudio.cpp
   stb_image.cpp
   Generating Code...
-  GameTest.vcxproj -> D:\Ubisoft Next\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\API\x64\Debug\GameTest.exe
-  D:\Ubisoft Next\Ubisoft-Toronto-NEXT-2024-2025-Programming-API\API\\GameTest\glut\bin\x64\freeglut.dll
-  1 File(s) copied
