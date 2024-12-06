@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _ENTITYMANAGER_H
-#define _ENTITYMANAGER_H
+#ifndef _CENTITYMANAGER_H
+#define _CENTITYMANAGER_H
 
 
 #include <iostream>

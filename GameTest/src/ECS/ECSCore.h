@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _ECSCORE_H
+#define _ECSCORE_H
+
 
 #include<iostream>
 #include <bitset>
@@ -16,3 +19,4 @@ namespace Engine
      using EntityMask = std::bitset<MAX_COMPONENTS>;
 
 }
+#endif

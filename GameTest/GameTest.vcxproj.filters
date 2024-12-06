@@ -24,9 +24,8 @@
     <ClCompile Include="miniaudio\miniaudio.cpp">
       <Filter>API\third_party\miniaudio</Filter>
     </ClCompile>
-    <ClCompile Include="EntityManager.cpp">
-      <Filter>API\src\ECS</Filter>
-    </ClCompile>
+    <ClCompile Include="src\ECS\CEntityManager.cpp" />
+    <ClCompile Include="src\ECS\CComponentContainer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -57,12 +56,9 @@
     <ClInclude Include="miniaudio\miniaudio.h">
       <Filter>API\third_party\miniaudio</Filter>
     </ClInclude>
-    <ClInclude Include="EntityManager.h">
-      <Filter>API\src\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="CECSCore.h">
-      <Filter>API\src\ECS</Filter>
-    </ClInclude>
+    <ClInclude Include="src\ECS\CEntityManager.h" />
+    <ClInclude Include="src\ECS\ECSCore.h" />
+    <ClInclude Include="src\ECS\CComponentContainer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

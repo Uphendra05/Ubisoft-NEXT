@@ -22,23 +22,19 @@ namespace Engine
 
         Entity newEntity = static_cast<Entity>(mEntityList.size());
         mEntityList.push_back(newEntity);
-
         mEntityMasks[newEntity] = initialMask;
-
         return newEntity;
     }
 
     void Engine::EntityManager::RemoveEntity(Entity entityId)
     {
-        if (entityId >= mEntityList.size()) {
+        if (entityId >= mEntityList.size()) 
+        {
             throw std::out_of_range("Invalid entity ID.");
         }
 
-        // Clear the entity's mask
-        mEntityMasks[entityId].reset();
-
-        // Mark the entity as removed (optional: use a free list or queue to recycle IDs)
-        // Example: Replace it in the list with the last entity for compact storage
+       
+        mEntityMasks[entityId].reset();        
         Entity lastEntity = mEntityList.back();
         mEntityList[entityId] = lastEntity;
         mEntityList.pop_back();
