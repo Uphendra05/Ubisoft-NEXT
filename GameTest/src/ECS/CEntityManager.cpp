@@ -8,8 +8,12 @@ namespace Engine
     {
         mEntityList.reserve(MAX_ENTITIES);
 
-        for (size_t i = 0; i < MAX_ENTITIES; ++i) {
-            mEntityMasks[i].reset();
+        mEntityVersions.resize(MAX_ENTITIES, 0);
+        
+
+        for (Entity entityId = 0; entityId < MAX_ENTITIES; ++entityId) 
+        {
+            mAvailableEntities.push(entityId);
         }
     }
 
@@ -20,24 +24,41 @@ namespace Engine
             throw std::runtime_error("Maximum number of entities reached.");
         }
 
-        Entity newEntity = static_cast<Entity>(mEntityList.size());
+        uint32_t index = mAvailableEntities.front();
+        mAvailableEntities.pop();
+
+        uint32_t version = mEntityVersions[index];
+
+        Entity newEntity = CreateEntityID(index, version);
+
+
         mEntityList.push_back(newEntity);
-        mEntityMasks[newEntity] = initialMask;
+        mEntityMasks[index] = initialMask;
+
         return newEntity;
     }
 
     void Engine::EntityManager::RemoveEntity(Entity entityId)
     {
-        if (entityId >= mEntityList.size()) 
+        uint32_t index = GetEntityIndex(entityId);
+
+        if (index >= MAX_ENTITIES || GetEntityVersion(entityId) != mEntityVersions[index])
         {
-            throw std::out_of_range("Invalid entity ID.");
+            throw std::runtime_error("Attempted to destroy an invalid entity.");
+        }
+        ++mEntityVersions[index];
+       
+        mEntityMasks[index].reset();
+        mAvailableEntities.push(index);
+
+        
+        std::vector<Entity>::iterator it = std::find(mEntityList.begin(), mEntityList.end(), entityId);
+
+        if (it != mEntityList.end()) 
+        {
+            mEntityList.erase(it);
         }
 
-       
-        mEntityMasks[entityId].reset();        
-        Entity lastEntity = mEntityList.back();
-        mEntityList[entityId] = lastEntity;
-        mEntityList.pop_back();
     }
 
     void Engine::EntityManager::DestroyEntity(Entity entity)

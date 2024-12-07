@@ -16,7 +16,10 @@ namespace Engine
 	const Entity MAX_ENTITIES = 10000;
 	const ComponentType MAX_COMPONENTS = 16;
 
-     using EntityMask = std::bitset<MAX_COMPONENTS>;
+    using EntityMask = std::bitset<MAX_COMPONENTS>;
+
+	constexpr uint64_t INDEX_MASK = 0xFFFFFFFF00000000; // High 32 bits
+	constexpr uint64_t VERSION_MASK = 0x00000000FFFFFFFF; // Low 32 bits
 
 }
 #endif
