@@ -12,12 +12,12 @@
 
 namespace Engine
 {
-    class EntityManager
+    class CEntityManager
     {
     public:
 
-        EntityManager();
-        ~EntityManager() {};
+        CEntityManager();
+        ~CEntityManager() {};
 
 
         Entity CreateEntity(EntityMask initialMask);

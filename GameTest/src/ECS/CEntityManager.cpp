@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-    Engine::EntityManager::EntityManager()
+    Engine::CEntityManager::CEntityManager()
     {
         mEntityList.reserve(MAX_ENTITIES);
 
@@ -17,7 +17,7 @@ namespace Engine
         }
     }
 
-    Entity Engine::EntityManager::CreateEntity(EntityMask initialMask)
+    Entity Engine::CEntityManager::CreateEntity(EntityMask initialMask)
     {
         if (mEntityList.size() >= MAX_ENTITIES)
         {
@@ -38,7 +38,7 @@ namespace Engine
         return newEntity;
     }
 
-    void Engine::EntityManager::RemoveEntity(Entity entityId)
+    void Engine::CEntityManager::RemoveEntity(Entity entityId)
     {
         uint32_t index = GetEntityIndex(entityId);
 
@@ -61,16 +61,16 @@ namespace Engine
 
     }
 
-    void Engine::EntityManager::DestroyEntity(Entity entity)
+    void Engine::CEntityManager::DestroyEntity(Entity entity)
     {
         RemoveEntity(entity);
     }
 
-    const std::vector<Entity>& Engine::EntityManager::GetEntities() const
+    const std::vector<Entity>& Engine::CEntityManager::GetEntities() const
     {
         return mEntityList;
     }
-     EntityMask EntityManager::GetEntityMask(Entity entityId) 
+     EntityMask CEntityManager::GetEntityMask(Entity entityId) 
     {
         return mEntityMasks[entityId];
     }
