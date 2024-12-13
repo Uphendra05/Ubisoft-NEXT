@@ -99,7 +99,7 @@ namespace Engine
 
 	private:
 
-		CEntityManager mEntityManager;
+		CEntityManager* mEntityManager;
         std::unordered_map<ComponentType, BiMap<Entity, ComponentId>*> mComponentMaps;
         std::unordered_map<ComponentType, CComponentContainer*> mComponentPools;
         std::vector<Entity> mEntitiesToDestroy;      
