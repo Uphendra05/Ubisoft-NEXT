@@ -13,6 +13,9 @@ namespace Engine
 
 	public :
 
+        CScene();
+        ~CScene();
+
 		Entity CreateEntity(bool addDefault = false);		
 		Entity CreateEntity(Entity entityId);		
 		void RemoveEntity(Entity entityId);
@@ -101,7 +104,7 @@ namespace Engine
 
 		CEntityManager* mEntityManager;
         std::unordered_map<ComponentType, BiMap<Entity, ComponentId>*> mComponentMaps;
-        std::unordered_map<ComponentType, CComponentContainer*> mComponentPools;
+        std::unordered_map<ComponentType, CComponentContainer*>        mComponentPools;
         std::vector<Entity> mEntitiesToDestroy;      
 
        

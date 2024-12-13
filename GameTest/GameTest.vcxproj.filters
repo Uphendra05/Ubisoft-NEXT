@@ -29,6 +29,7 @@
     <ClCompile Include="src\ECS\CComponentIterator.cpp" />
     <ClCompile Include="src\ECS\CScene.cpp" />
     <ClCompile Include="src\Utilities\BiMap.cpp" />
+    <ClCompile Include="src\Utilities\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -65,6 +66,8 @@
     <ClInclude Include="src\ECS\CComponentIterator.h" />
     <ClInclude Include="src\ECS\CScene.h" />
     <ClInclude Include="src\Utilities\BiMap.h" />
+    <ClInclude Include="src\ECS\SComponents.h" />
+    <ClInclude Include="src\Utilities\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">
