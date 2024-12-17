@@ -6,12 +6,12 @@
 #include <unordered_map>
 
 
-
 namespace Engine
 {
     template <typename Key, typename Value>
     class BiMap
     {
+    public:
         void Insert(const Key& key, const Value& value);
         void RemoveByKey(const Key& key);
         void RemoveByValue(const Value& value);

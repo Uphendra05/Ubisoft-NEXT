@@ -1,62 +1,74 @@
-﻿  stdafx.cpp
-  app.cpp
-  main.cpp
-  SimpleController.cpp
-  SimpleSound.cpp
-  SimpleSprite.cpp
-  EntityManager.cpp
-  GameTest.cpp
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.h(26,20): warning C4200: nonstandard extension used: zero-sized array in struct/union
-  (compiling source file '/EntityManager.cpp')
-  D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.h(26,20):
-  This member will be ignored by a defaulted constructor or copy/move assignment operator
+﻿  CScene.cpp
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(61,29): error C2039: 'SetComponent': is not a member of 'Engine::CEntityManager'
+  (compiling source file '/src/ECS/CScene.cpp')
+  D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CEntityManager.h(15,11):
+  see declaration of 'Engine::CEntityManager'
+  D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(61,29):
+  the template instantiation context (the oldest one first) is
+  	D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.cpp(39,4):
+  	see reference to function template instantiation 'T *Engine::CScene::AddComponent<Engine::Transform>(Engine::Entity)' being compiled
+          with
+          [
+              T=Engine::Transform
+          ]
   
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(4,8): error C2653: 'EntityManager': is not a class or namespace name
-  (compiling source file '/EntityManager.cpp')
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,28): error C2440: 'initializing': cannot convert from 'const Value' to 'Engine::Transform'
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,28): error C2440:         with
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,28): error C2440:         [
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,28): error C2440:             Value=Engine::ComponentId
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,28): error C2440:         ]
+  (compiling source file '/src/ECS/CScene.cpp')
+  D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,28):
+  'Engine::Transform::Transform': no overloaded function could convert all the argument types
+  	D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\SComponents.h(20,2):
+  	could be 'Engine::Transform::Transform(Engine::Transform &&)'
+  		D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,28):
+  		'Engine::Transform::Transform(Engine::Transform &&)': cannot convert argument 1 from 'const Value' to 'Engine::Transform &&'
+          with
+          [
+              Value=Engine::ComponentId
+          ]
+  			D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,69):
+  			Reason: cannot convert from 'const Value' to 'Engine::Transform'
+          with
+          [
+              Value=Engine::ComponentId
+          ]
+  	D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\SComponents.h(20,2):
+  	or       'Engine::Transform::Transform(const Engine::Transform &)'
+  		D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,28):
+  		'Engine::Transform::Transform(const Engine::Transform &)': cannot convert argument 1 from 'const Value' to 'const Engine::Transform &'
+          with
+          [
+              Value=Engine::ComponentId
+          ]
+  			D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,69):
+  			Reason: cannot convert from 'const Value' to 'const Engine::Transform'
+          with
+          [
+              Value=Engine::ComponentId
+          ]
+  	D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,28):
+  	while trying to match the argument list '(const Value)'
+          with
+          [
+              Value=Engine::ComponentId
+          ]
+  D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(83,28):
+  the template instantiation context (the oldest one first) is
+  	D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.cpp(60,28):
+  	see reference to function template instantiation 'T *Engine::CScene::Get<Engine::Transform>(Engine::Entity)' being compiled
+          with
+          [
+              T=Engine::Transform
+          ]
   
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(4,35): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  (compiling source file '/EntityManager.cpp')
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(86,30): error C2676: binary '==': 'T' does not define this operator or a conversion to a type acceptable to the predefined operator
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(86,30): error C2676:         with
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(86,30): error C2676:         [
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(86,30): error C2676:             T=Engine::Transform
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.h(86,30): error C2676:         ]
+  (compiling source file '/src/ECS/CScene.cpp')
   
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(4,23): error C2146: syntax error: missing ';' before identifier 'CreateEntity'
-  (compiling source file '/EntityManager.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(5,1): error C2143: syntax error: missing ';' before '{'
-  (compiling source file '/EntityManager.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(5,1): error C2447: '{': missing function header (old-style formal list?)
-  (compiling source file '/EntityManager.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(11,6): error C2653: 'EntityManager': is not a class or namespace name
-  (compiling source file '/EntityManager.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(11,42): error C2146: syntax error: missing ')' before identifier 'entity'
-  (compiling source file '/EntityManager.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(12,1): error C2143: syntax error: missing ';' before '{'
-  (compiling source file '/EntityManager.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(12,1): error C2447: '{': missing function header (old-style formal list?)
-  (compiling source file '/EntityManager.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(16,12): error C2923: 'std::vector': 'Entity' is not a valid template type argument for parameter '_Ty'
-  (compiling source file '/EntityManager.cpp')
-  D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(4,1):
-  see declaration of 'Entity'
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(16,12): error C2976: 'std::vector': too few template arguments
-  (compiling source file '/EntityManager.cpp')
-  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(436,14):
-  see declaration of 'std::vector'
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(16,28): error C2653: 'EntityManager': is not a class or namespace name
-  (compiling source file '/EntityManager.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(16,43): error C2270: 'GetEntities': modifiers not allowed on nonmember functions
-  (compiling source file '/EntityManager.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\EntityManager.cpp(18,9): error C2065: 'entityList': undeclared identifier
-  (compiling source file '/EntityManager.cpp')
-  
-  miniaudio.cpp
-  stb_image.cpp
+  Vector2Tests.cpp
   Generating Code...

@@ -14,7 +14,7 @@ namespace Engine
 		~CComponentContainer();
 
 		void* Get(ComponentId compId);
-		void* Add(ComponentId compId, ComponentId& compIdReplace);
+		void* Add( ComponentId& compIdReplace);
 		void  Remove(ComponentId& compId);
 
 		unsigned int Size();

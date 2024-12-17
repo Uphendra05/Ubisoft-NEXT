@@ -14,27 +14,27 @@ namespace Engine
 		//Constructors
 
 		Vector2();
-		Vector2(float x, float y);
+		Vector2( float x,  float y);
 		Vector2(const Vector2& other);
 
 		~Vector2() {};
 		
 
-		//Public Methods
-		Vector2& Normalize();
+		
 
 
 		//Static Methods
-		static float Dot(const Vector2& other);
-		static float Cross(const Vector2& other);
+		float Dot(const Vector2& other);
+		float Cross(const Vector2& other);
 		
 
 		//Static Properties
-		static Vector2& down();
+		Vector2& down();
 
 		//Properties
 		float magnitude() const;
 		Vector2 normalized() const;
+		
    
 		
 
@@ -58,9 +58,8 @@ namespace Engine
 		//Overload stream operator for printing
 		friend std::ostream& operator<<(std::ostream& os, const Vector2& vec);
 
-	private :
 
-		static float x, y;
+        float x, y;
 		
 	
 

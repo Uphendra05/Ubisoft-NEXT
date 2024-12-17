@@ -1,5 +1,5 @@
 #include "BiMap.h"
-
+#include "stdafx.h"
 namespace Engine
 {
     template <typename Key, typename Value>

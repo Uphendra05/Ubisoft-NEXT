@@ -28,7 +28,7 @@ namespace Engine
         return address;
     }
 
-    void* Engine::CComponentContainer::Add(ComponentId compId, ComponentId& compIdReplace)
+    void* Engine::CComponentContainer::Add( ComponentId& compIdReplace)
     {
         if (compIdReplace < mSize)
         {

@@ -37,7 +37,7 @@ namespace Engine
             if (mComponentPools.find(componentType) == mComponentPools.end())
             {
                 // New component type, make a new pool
-                mComponentPools[componentType] = new ComponentPool(sizeof(T));
+                mComponentPools[componentType] = new CComponentContainer(sizeof(T));
                 mComponentMaps[componentType] = new BiMap<Entity, ComponentId>();
             }
 
@@ -55,10 +55,10 @@ namespace Engine
             pComponent = new (mem) T();
 
             // Set the relation between the component id and the entity id
-            mComponentMaps[componentType]->Add(entityId, componentId);
+            mComponentMaps[componentType]->Insert(entityId, componentId);
 
             // Add component to the entity mask and return the created component
-            m_pEntityManager->SetComponent(entityId, componentType);
+            mEntityManager->SetComponent(entityId, componentType);
 
             return pComponent;
         }
@@ -80,10 +80,10 @@ namespace Engine
             }
 
             ComponentId componentId;
-            bool hasComponent = mComponentMaps[componentType]->GetByKey(entityId,
-                componentId);
+            T hasComponent = mComponentMaps[componentType]->GetByKey(entityId);
+              
 
-            if (!hasComponent)
+            if (hasComponent == NULL)
             {
                 return nullptr;
             }

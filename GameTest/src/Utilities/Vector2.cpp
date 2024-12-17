@@ -23,15 +23,7 @@ namespace Engine
 		this->y = other.y;
 	}
 
-	Vector2& Engine::Vector2::Normalize()
-	{
-		float length = magnitude();
-		if (length != 0)
-		{
-			*this /= length;
-		}
-		return *this;
-	}
+
 
 	float Engine::Vector2::Dot(const Vector2& other)
 	{
@@ -58,12 +50,17 @@ namespace Engine
 	Vector2 Engine::Vector2::normalized() const
 	{
 		float length = magnitude();
-		if (length == 0)
+		if (length != 0.0f) 
 		{
-			return Vector2(0, 0);
+			return (*this) / length;
 		}
-		return *this / length;
+		else 
+		{
+			std::cerr << "Error: Normalizing the zero vector!" << std::endl;
+			return Vector2();
+		}
 	}
+
 
 	Vector2& Engine::Vector2::operator=(const Vector2& other)
 	{
