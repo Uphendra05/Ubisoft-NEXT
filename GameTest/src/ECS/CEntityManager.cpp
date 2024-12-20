@@ -13,7 +13,7 @@ namespace Engine
 
         for (Entity entityId = 0; entityId < MAX_ENTITIES; ++entityId) 
         {
-            mAvailableEntities.push(entityId);
+            mAvailableEntities.push(static_cast<unsigned int>(entityId));
         }
     }
 
@@ -66,11 +66,22 @@ namespace Engine
         RemoveEntity(entity);
     }
 
+    void CEntityManager::SetComponent(Entity entityId, ComponentId componentId)
+    {
+        if (entityId < 0 || entityId >= MAX_ENTITIES)
+        {
+            throw std::runtime_error("Invalid entity ID for setting component.");
+            return;
+        }
+
+        mEntityMasks[entityId].set(componentId, true);
+    }
+
     const std::vector<Entity>& Engine::CEntityManager::GetEntities() const
     {
         return mEntityList;
     }
-     EntityMask CEntityManager::GetEntityMask(Entity entityId) 
+     EntityMask CEntityManager::GetEntityMask(Entity entityId) const
     {
         return mEntityMasks[entityId];
     }

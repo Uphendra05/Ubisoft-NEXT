@@ -80,7 +80,7 @@ namespace Engine
             }
 
             ComponentId componentId;
-            T hasComponent = mComponentMaps[componentType]->GetByKey(entityId);
+            bool hasComponent = mComponentMaps[componentType]->GetByKey(entityId,componentId);
               
 
             if (hasComponent == NULL)

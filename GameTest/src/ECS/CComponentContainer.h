@@ -17,7 +17,7 @@ namespace Engine
 		void* Add( ComponentId& compIdReplace);
 		void  Remove(ComponentId& compId);
 
-		unsigned int Size();
+		unsigned int Size() const;
 
 	private:
 

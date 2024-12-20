@@ -42,7 +42,12 @@ namespace Engine
 
         if (mData != nullptr)
         {
-            std::memcpy(newData, mData, mSize * mElementSize);
+            if (mSize > 0 && mElementSize > std::numeric_limits<size_t>::max() / mSize)
+            {
+                throw std::overflow_error("Arithmetic overflow in memcpy size calculation");
+            }
+
+            std::memcpy(newData, mData, static_cast<size_t>(mSize) * static_cast<size_t>(mElementSize));
             delete[] mData;
         }
         mData = newData;
@@ -83,7 +88,7 @@ namespace Engine
 
     }
 
-    unsigned int Engine::CComponentContainer::Size()
+    unsigned int Engine::CComponentContainer::Size() const
     {
         return mSize;
     }

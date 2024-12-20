@@ -212,7 +212,6 @@
     <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="miniaudio\miniaudio.cpp" />
     <ClCompile Include="src\ECS\CScene.cpp" />
-    <ClCompile Include="src\Utilities\BiMap.cpp" />
     <ClCompile Include="stb_image\stb_image.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
