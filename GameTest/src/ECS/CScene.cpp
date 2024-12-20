@@ -76,5 +76,40 @@ namespace Engine
 		mEntitiesToDestroy.push_back(entityId);
 	}
 
+	int Engine::CScene::GetComponentCount()
+	{
+
+		return (int)mComponentMaps.size();
+		
+	}
+
+	void  Engine::CScene::DestroyEntities()
+	{
+		for (Entity entityId : mEntitiesToDestroy)
+		{
+			// Remove all components associated with the entity
+			for (auto& componentMap : mComponentMaps)
+			{
+				// Find the component map for the current entity and remove the components
+				BiMap<Entity, ComponentId>* entityComponentMap = componentMap.second;
+				if (entityComponentMap->ContainsKey(entityId))
+				{
+					entityComponentMap->RemoveByKey(entityId);
+				}
+			}
+
+			// Mark the entity for removal in the entity manager
+			mEntityManager->RemoveEntity(entityId);
+		}
+
+		// Clear the list of entities to destroy
+		mEntitiesToDestroy.clear();
+	}
+
+	CEntityManager* Engine::CScene::GetEntityManager()
+	{
+		return mEntityManager;
+	}
+
 
 }

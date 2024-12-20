@@ -26,7 +26,6 @@
     </ClCompile>
     <ClCompile Include="src\ECS\CEntityManager.cpp" />
     <ClCompile Include="src\ECS\CComponentContainer.cpp" />
-    <ClCompile Include="src\ECS\CComponentIterator.cpp" />
     <ClCompile Include="src\Utilities\Vector2.cpp" />
     <ClCompile Include="src\Utilities\Vector2Tests.cpp" />
     <ClCompile Include="src\ECS\CScene.cpp" />
@@ -63,12 +62,13 @@
     <ClInclude Include="src\ECS\CEntityManager.h" />
     <ClInclude Include="src\ECS\ECSCore.h" />
     <ClInclude Include="src\ECS\CComponentContainer.h" />
-    <ClInclude Include="src\ECS\CComponentIterator.h" />
     <ClInclude Include="src\ECS\SComponents.h" />
     <ClInclude Include="src\Utilities\Vector2.h" />
     <ClInclude Include="src\Utilities\Vector2Tests.h" />
     <ClInclude Include="src\Utilities\BiMap.h" />
     <ClInclude Include="src\ECS\CScene.h" />
+    <ClInclude Include="src\ECS\Example.h" />
+    <ClInclude Include="src\ECS\SComponentIterator.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

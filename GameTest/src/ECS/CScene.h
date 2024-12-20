@@ -19,6 +19,10 @@ namespace Engine
 		Entity CreateEntity(bool addDefault = false);		
 		Entity CreateEntity(Entity entityId);		
 		void RemoveEntity(Entity entityId);
+        int GetComponentCount();    
+        void DestroyEntities();
+
+        CEntityManager* GetEntityManager();
 
 
         template <class T>
@@ -92,10 +96,7 @@ namespace Engine
             return pComponent;
         }
 
-        int GetComponentCount()
-        {
-            return (int)mComponentMaps.size();
-        }
+      
 
       
 

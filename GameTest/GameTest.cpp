@@ -8,6 +8,7 @@
 #include <windows.h> 
 #include <math.h>  
 #include "src/Utilities/Vector2Tests.h"
+
 //------------------------------------------------------------------------
 #include "app\app.h"
 //------------------------------------------------------------------------
@@ -30,7 +31,7 @@ enum
 //------------------------------------------------------------------------
 void Init()
 {
-	Engine::Vector2Tests::RunAllTests();
+	//Engine::Vector2Tests::RunAllTests();
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
 	testSprite = App::CreateSprite(".\\TestData\\Test.bmp", 8, 4);

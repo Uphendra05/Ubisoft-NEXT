@@ -66,7 +66,7 @@ namespace Engine
         RemoveEntity(entity);
     }
 
-    void CEntityManager::SetComponent(Entity entityId, ComponentId componentId)
+    void Engine::CEntityManager::SetComponent(Entity entityId, ComponentId componentId)
     {
         if (entityId < 0 || entityId >= MAX_ENTITIES)
         {
@@ -81,8 +81,41 @@ namespace Engine
     {
         return mEntityList;
     }
-     EntityMask CEntityManager::GetEntityMask(Entity entityId) const
+
+    EntityMask Engine::CEntityManager::GetEntityMask(Entity entityId) const
     {
+        if (entityId < 0 || entityId >= MAX_ENTITIES)
+        {
+            throw std::runtime_error("Invalid entity ID for setting component.");
+            return EntityMask();
+        }
+
         return mEntityMasks[entityId];
     }
+
+    bool Engine::CEntityManager::HasComponents(Entity entityId, const EntityMask& mask) const
+    {
+        EntityMask entityMask = GetEntityMask(entityId);
+
+        for (int i = 0; i < mask.size(); ++i)
+        {
+            // If the required component is present in the mask and the entity doesn't have it, return false
+            if (mask[i] && !entityMask[i])
+            {
+                return false;
+            }
+        }
+
+        // If all required components are found, return true
+        return true;
+
+
+    }
+
+    bool Engine::CEntityManager::HasComponent(Entity entityId, ComponentType componenet) const
+    {
+        EntityMask mask = GetEntityMask(entityId);
+        return mask.test(componenet);
+    }
+   
 }
