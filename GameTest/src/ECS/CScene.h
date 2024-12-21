@@ -5,6 +5,7 @@
 #include "CEntityManager.h"
 #include "CComponentContainer.h"
 #include "../Utilities/BiMap.h"
+#include "App/app.h"
 
 namespace Engine
 {
@@ -48,13 +49,13 @@ namespace Engine
             T* pComponent = Get<T>(entityId);
             if (pComponent != nullptr)
             {
-                // Entity already have component, so just return it
-                return pComponent;
+                
+                return pComponent;                                                              // Entity already have component return it
             }
 
-            // Looks up the component id and mem location in the pool, 
-            // and initializes it with placement new
-            ComponentId componentId;
+           
+           
+            ComponentId componentId;                                                             // Looks up the component id and mem location in the pool, and initializes it with placement new
             void* mem = mComponentPools[componentType]->Add(componentId);
             pComponent = new (mem) T();
 
@@ -63,6 +64,8 @@ namespace Engine
 
             // Add component to the entity mask and return the created component
             mEntityManager->SetComponent(entityId, componentType);
+
+            
 
             return pComponent;
         }
@@ -106,10 +109,13 @@ namespace Engine
 		CEntityManager* mEntityManager;
         std::unordered_map<ComponentType, BiMap<Entity, ComponentId>*> mComponentMaps;
         std::unordered_map<ComponentType, CComponentContainer*>        mComponentPools;
-        std::vector<Entity> mEntitiesToDestroy;      
+        std::vector<Entity> mEntitiesToDestroy; 
 
        
+       
         int mComponentCounter;
+
+     
 
 	};
 

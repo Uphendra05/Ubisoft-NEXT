@@ -36,6 +36,8 @@ namespace Engine
          bool HasComponents(Entity entityId, const EntityMask& mask) const;
          bool HasComponent(Entity entityId, ComponentType componenet) const;
 
+        
+
 
     private:
 

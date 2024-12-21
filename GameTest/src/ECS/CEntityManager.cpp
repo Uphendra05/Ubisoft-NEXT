@@ -117,5 +117,7 @@ namespace Engine
         EntityMask mask = GetEntityMask(entityId);
         return mask.test(componenet);
     }
+
+
    
 }

@@ -57,7 +57,7 @@ namespace Engine
 				do
 				{
 					mIndex++;
-				} while (mIndex < entities.size() && !(mIsParam || mEntityManager->HasComponents(entities[m_index], m_mask)));
+				} while (mIndex < entities.size() && !(mIsParam || mEntityManager->HasComponents(entities[mIndex], mMask)));
 					
 
 				return *this;
@@ -73,12 +73,12 @@ namespace Engine
 
 		const Iterator begin() const
 		{
-			const std::vector<Entity>& entities = mEntityManager.GetEntities();
+			const std::vector<Entity>& entities = mEntityManager->GetEntities();
 
 			
 			size_t firstIndex = 0;
 			
-			while (firstIndex != entities.size() && !(mIsParam || mEntityManager.HasComponents(entities[firstIndex], mMask))) 
+			while (firstIndex != entities.size() && !(mIsParam || mEntityManager->HasComponents(entities[firstIndex], mMask)))
 				
 			{
 				firstIndex++;
@@ -89,13 +89,13 @@ namespace Engine
 
 		const Iterator end() const
 		{
-			return Iterator(mEntityManager, mEntityManager.GetEntities().size(), mMask, mIsParam);
+			return Iterator(mEntityManager, mEntityManager->GetEntities().size(), mMask, mIsParam);
 		}
 
 	protected:
 
 		bool mIsParam{ false };
-		CEntityManager mEntityManager;
+		CEntityManager* mEntityManager;
 		EntityMask mMask;
 	};
 

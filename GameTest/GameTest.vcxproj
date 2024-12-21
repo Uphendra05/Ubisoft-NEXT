@@ -186,6 +186,8 @@
     <ClInclude Include="App\SimpleController.h" />
     <ClInclude Include="App\SimpleSound.h" />
     <ClInclude Include="App\SimpleSprite.h" />
+    <ClInclude Include="src\Utilities\GamplayUtils.h" />
+    <ClInclude Include="src\System\ECSTest.h" />
     <ClInclude Include="src\ECS\CComponentContainer.h" />
     <ClInclude Include="src\ECS\SComponentIterator.h" />
     <ClInclude Include="src\ECS\CEntityManager.h" />
@@ -194,6 +196,7 @@
     <ClInclude Include="src\ECS\ECSCore.h" />
     <ClInclude Include="src\ECS\Example.h" />
     <ClInclude Include="src\ECS\SComponents.h" />
+    <ClInclude Include="src\System\iSystems.h" />
     <ClInclude Include="src\Utilities\BiMap.h" />
     <ClInclude Include="stb_image\stb_image.h" />
     <ClInclude Include="stdafx.h" />
@@ -207,6 +210,8 @@
     <ClCompile Include="App\SimpleController.cpp" />
     <ClCompile Include="App\SimpleSound.cpp" />
     <ClCompile Include="App\SimpleSprite.cpp" />
+    <ClCompile Include="src\Utilities\GamplayUtils.cpp" />
+    <ClCompile Include="src\System\ECSTest.cpp" />
     <ClCompile Include="src\ECS\CComponentContainer.cpp" />
     <ClCompile Include="src\ECS\CEntityManager.cpp" />
     <ClCompile Include="GameTest.cpp" />

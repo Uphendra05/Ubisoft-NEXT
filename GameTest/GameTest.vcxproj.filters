@@ -29,6 +29,8 @@
     <ClCompile Include="src\Utilities\Vector2.cpp" />
     <ClCompile Include="src\Utilities\Vector2Tests.cpp" />
     <ClCompile Include="src\ECS\CScene.cpp" />
+    <ClCompile Include="src\System\ECSTest.cpp" />
+    <ClCompile Include="src\Utilities\GamplayUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -69,6 +71,9 @@
     <ClInclude Include="src\ECS\CScene.h" />
     <ClInclude Include="src\ECS\Example.h" />
     <ClInclude Include="src\ECS\SComponentIterator.h" />
+    <ClInclude Include="src\System\iSystems.h" />
+    <ClInclude Include="src\System\ECSTest.h" />
+    <ClInclude Include="src\Utilities\GamplayUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

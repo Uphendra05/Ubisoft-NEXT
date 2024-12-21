@@ -8,6 +8,9 @@
 #include <windows.h> 
 #include <math.h>  
 #include "src/Utilities/Vector2Tests.h"
+#include "src/Utilities/GamplayUtils.h"
+#include "src/ECS/CScene.h"
+#include "src/System/ECSTest.h"
 
 //------------------------------------------------------------------------
 #include "app\app.h"
@@ -29,9 +32,20 @@ enum
 //------------------------------------------------------------------------
 // Called before first update. Do any initial setup here.
 //------------------------------------------------------------------------
+
+
 void Init()
 {
-	//Engine::Vector2Tests::RunAllTests();
+	using namespace Engine;
+		//Engine::Vector2Tests::RunAllTests();
+
+		CScene* scene = new CScene();
+		
+		ECSTest* test = new ECSTest();
+
+		GamplayUtils::CreateECSTEST(scene, Vector2(10, 10));
+
+	
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
 	testSprite = App::CreateSprite(".\\TestData\\Test.bmp", 8, 4);
@@ -42,6 +56,8 @@ void Init()
 	testSprite->CreateAnimation(ANIM_RIGHT, speed, { 16,17,18,19,20,21,22,23 });
 	testSprite->CreateAnimation(ANIM_FORWARDS, speed, { 24,25,26,27,28,29,30,31 });
 	testSprite->SetScale(1.0f);
+
+	test->Update(scene, speed);
 	//------------------------------------------------------------------------
 }
 
@@ -51,6 +67,10 @@ void Init()
 //------------------------------------------------------------------------
 void Update(const float deltaTime)
 {
+
+	
+
+
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
 	testSprite->Update(deltaTime);
