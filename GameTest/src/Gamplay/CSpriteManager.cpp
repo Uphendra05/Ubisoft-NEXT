@@ -30,6 +30,11 @@ namespace Engine
 	{
 	}
 
+	CSimpleSprite* CSpriteManager::GetSprite(const std::string filename)
+	{
+		return mSpriteCache[filename];
+	}
+
 	void CSpriteManager::Update(float dt)
 	{
 		for (auto& pair : mEntitySprites)

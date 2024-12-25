@@ -16,7 +16,7 @@ namespace Engine
 
 		static Entity CreateBackground(CScene* pScene, Vector2 position);
 
-		//TODO: should change it later
+		//TODO: should change these functions as system or should find a way to extract to some other class. It should not be here
 		static void Update(float dt);
 		static void Render();
 		static void CleanUp();

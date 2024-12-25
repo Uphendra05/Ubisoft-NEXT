@@ -24,7 +24,7 @@ namespace Engine
 		void AddAnimation();
 		void UpdateAnimation();
 
-		CSimpleSprite GetSprite();
+		CSimpleSprite* GetSprite(const std::string filename);
 
 
 		void Update(float dt);
