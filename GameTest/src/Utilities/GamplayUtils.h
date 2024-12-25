@@ -14,6 +14,12 @@ namespace Engine
 
 		static Entity CreateECSTEST(CScene* pScene, Vector2 position);
 
+		static Entity CreateBackground(CScene* pScene, Vector2 position);
+
+		//TODO: should change it later
+		static void Update(float dt);
+		static void Render();
+		static void CleanUp();
 
 	};
 

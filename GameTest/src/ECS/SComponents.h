@@ -1,9 +1,11 @@
 #pragma once
+#ifndef _SCOMPONENTS_H
+#define _SCOMPONENTS_H
+
 #include "ECSCore.h"
 #include "../Utilities/Vector2.h"
 
-#ifndef _SCOMPONENTS_H
-#define _SCOMPONENTS_H
+
 
 namespace Engine
 {
@@ -21,6 +23,13 @@ namespace Engine
 		float worldrotation = 0.0f;
 		float worldScale = 1.0f;
 
+	};
+
+	struct SpriteRenderer
+	{
+		 std::string fileName;
+		 int rows = 0;
+		 int cols = 0;
 	};
 
 

@@ -31,6 +31,7 @@
     <ClCompile Include="src\ECS\CScene.cpp" />
     <ClCompile Include="src\System\ECSTest.cpp" />
     <ClCompile Include="src\Utilities\GamplayUtils.cpp" />
+    <ClCompile Include="src\Gamplay\CSpriteManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -74,6 +75,7 @@
     <ClInclude Include="src\System\iSystems.h" />
     <ClInclude Include="src\System\ECSTest.h" />
     <ClInclude Include="src\Utilities\GamplayUtils.h" />
+    <ClInclude Include="src\Gamplay\CSpriteManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

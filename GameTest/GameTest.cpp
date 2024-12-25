@@ -32,19 +32,17 @@ enum
 //------------------------------------------------------------------------
 // Called before first update. Do any initial setup here.
 //------------------------------------------------------------------------
+using namespace Engine;
 
 
 void Init()
 {
-	using namespace Engine;
-		//Engine::Vector2Tests::RunAllTests();
-
-		CScene* scene = new CScene();
-		
-		ECSTest* test = new ECSTest();
-
-		GamplayUtils::CreateECSTEST(scene, Vector2(10, 10));
-
+	//Vector2Tests::RunAllTests();
+	CScene* scene = new CScene();
+	
+	GamplayUtils::CreateBackground(scene, Vector2(400.0f, 400.0f));
+	
+	
 	
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
@@ -57,7 +55,7 @@ void Init()
 	testSprite->CreateAnimation(ANIM_FORWARDS, speed, { 24,25,26,27,28,29,30,31 });
 	testSprite->SetScale(1.0f);
 
-	test->Update(scene, speed);
+	//test->Update(scene, speed);
 	//------------------------------------------------------------------------
 }
 
@@ -74,6 +72,8 @@ void Update(const float deltaTime)
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
 	testSprite->Update(deltaTime);
+	GamplayUtils::Update(deltaTime);
+
 	if (App::GetController().GetLeftThumbStickX() > 0.5f)
 	{
 		testSprite->SetAnimation(ANIM_RIGHT);
@@ -148,6 +148,7 @@ void Render()
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
 	testSprite->Draw();
+	GamplayUtils::Render();
 	//------------------------------------------------------------------------
 
 	//------------------------------------------------------------------------
@@ -184,5 +185,6 @@ void Shutdown()
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
 	delete testSprite;
+	GamplayUtils::CleanUp();
 	//------------------------------------------------------------------------
 }

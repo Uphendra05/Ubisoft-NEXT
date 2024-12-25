@@ -186,6 +186,7 @@
     <ClInclude Include="App\SimpleController.h" />
     <ClInclude Include="App\SimpleSound.h" />
     <ClInclude Include="App\SimpleSprite.h" />
+    <ClInclude Include="src\Gamplay\CSpriteManager.h" />
     <ClInclude Include="src\Utilities\GamplayUtils.h" />
     <ClInclude Include="src\System\ECSTest.h" />
     <ClInclude Include="src\ECS\CComponentContainer.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="App\SimpleController.cpp" />
     <ClCompile Include="App\SimpleSound.cpp" />
     <ClCompile Include="App\SimpleSprite.cpp" />
+    <ClCompile Include="src\Gamplay\CSpriteManager.cpp" />
     <ClCompile Include="src\Utilities\GamplayUtils.cpp" />
     <ClCompile Include="src\System\ECSTest.cpp" />
     <ClCompile Include="src\ECS\CComponentContainer.cpp" />

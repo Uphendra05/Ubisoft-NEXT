@@ -32,7 +32,7 @@ namespace Engine
 
 		struct Iterator
 		{
-			Iterator(CEntityManager* manager, size_t index, EntityMask mask, bool all ) : mEntityManager(manager), mIndex(index), mMask(mask), mIsParam(all)
+			Iterator(CEntityManager* spriteManager, size_t index, EntityMask mask, bool all ) : mEntityManager(spriteManager), mIndex(index), mMask(mask), mIsParam(all)
 			{}
 
 			Entity operator*() const
