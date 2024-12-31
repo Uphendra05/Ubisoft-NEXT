@@ -24,16 +24,11 @@ namespace Engine
             throw std::runtime_error("Maximum number of entities reached.");
         }
 
-        uint32_t index = mAvailableEntities.front();
+        Entity newEntity = mAvailableEntities.front();
         mAvailableEntities.pop();
 
-        uint32_t version = mEntityVersions[index];
-
-        Entity newEntity = CreateEntityID(index, version);
-
-
+        mEntityMasks[newEntity] = initialMask;
         mEntityList.push_back(newEntity);
-        mEntityMasks[index] = initialMask;
 
         return newEntity;
     }

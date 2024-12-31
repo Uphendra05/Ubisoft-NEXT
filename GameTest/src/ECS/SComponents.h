@@ -27,9 +27,13 @@ namespace Engine
 
 	struct SpriteRenderer
 	{
+		 std::string componenetName = "SpriteRenderer";
+
 		 std::string fileName;
 		 int rows = 0;
 		 int cols = 0;
+
+		 float animSpeed = 5.0f;
 	};
 
 

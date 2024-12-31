@@ -1,0 +1,4 @@
+﻿  GameTest.vcxproj -> D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Release\GameTest.exe
+  Invalid number of parameters
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(166,5): error MSB3073: The command "xcopy D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\\GameTest\glut\bin\x64\*.dll D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Release\ /Y
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(166,5): error MSB3073: :VCEnd" exited with code 4.

@@ -21,7 +21,7 @@ namespace Engine
 		void AttachSprite(Entity entity, SpriteRenderer& sprite, Transform& transform );
 		void RemoveSprite();
 
-		void AddAnimation();
+		void AddAnimation(SpriteRenderer* sprite);
 		void UpdateAnimation();
 
 		CSimpleSprite* GetSprite(const std::string filename);
@@ -36,8 +36,10 @@ namespace Engine
 
 		CSimpleSprite* CreateSprite(const std::string filename, int rows, int cols);
 
+		// Cache of shared sprites by name and configuration
 		std::unordered_map<std::string, CSimpleSprite*> mSpriteCache;
 
+		// Mapping from entities to sprites
 		std::unordered_map<Entity, CSimpleSprite*> mEntitySprites;
 	};
 

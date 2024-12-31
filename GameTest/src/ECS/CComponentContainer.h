@@ -22,7 +22,7 @@ namespace Engine
 	private:
 
 		char* mData;        
-		unsigned int mSize;        
+		unsigned int mSize;
 		unsigned int mElementSize;
 
 

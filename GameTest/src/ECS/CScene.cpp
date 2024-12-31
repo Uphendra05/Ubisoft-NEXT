@@ -14,17 +14,17 @@ namespace Engine
 	{
 		delete mEntityManager;
 
-		for (std::unordered_map<ComponentType, BiMap<Entity, ComponentId>*>::iterator it = mComponentMaps.begin(); it != mComponentMaps.end(); ++it)
+		using ComponentMapPair = std::pair<ComponentType, BiMap<Entity, ComponentId>*>;
+		for (ComponentMapPair componentMap : mComponentMaps)
 		{
-			delete it->second; 
+			delete componentMap.second;
 		}
-		mComponentMaps.clear();
 
-		for (std::unordered_map<ComponentType, CComponentContainer*>::iterator it = mComponentPools.begin(); it != mComponentPools.end(); ++it)
+		using ComponentPoolPair = std::pair<ComponentType, CComponentContainer*>;
+		for (ComponentPoolPair componentPool : mComponentPools)
 		{
-			delete it->second;
+			delete componentPool.second;
 		}
-		mComponentPools.clear();
 
 		
 

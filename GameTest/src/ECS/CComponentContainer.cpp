@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-    Engine::CComponentContainer::CComponentContainer(unsigned int size) : mSize(size), mElementSize(0), mData(nullptr)
+    Engine::CComponentContainer::CComponentContainer(unsigned int size) : mElementSize(size)
     {
         // Allocate memory for the component pool
         mSize = 0;
@@ -30,15 +30,17 @@ namespace Engine
 
     void* Engine::CComponentContainer::Add( ComponentId& compIdReplace)
     {
+
         if (compIdReplace < mSize)
         {
-                                                                                                                  // mData + compIdReplace * mElementSize
+            // mData + compIdReplace * mElementSize
             void* componentLocation = mData + compIdReplace * mElementSize;                                       // 0x1000 + 3 * 16 = 0x1048 address of the 3rd component
             std::memset(componentLocation, 0, mElementSize);                                                      // std::memset(0x1048, 0, 16) Clears 16 bytes of memory starting at 0x1048.
             return componentLocation;                                                                             // Return the address 0x1048.
         }
 
         char* newData = new char[(mSize + 1) * mElementSize];
+
 
         if (mData != nullptr)
         {
@@ -53,13 +55,18 @@ namespace Engine
         mData = newData;
 
         void* newComponentLocation = mData + mSize * mElementSize;
-        std::memset(newComponentLocation, 0, mElementSize); 
+        std::memset(newComponentLocation, 0, mElementSize);
+       
 
+        // More 1 active component
         ++mSize;
 
         compIdReplace = mSize - 1;
+       
 
         return newComponentLocation;
+
+        
     }
 
     void Engine::CComponentContainer::Remove(ComponentId& compId)

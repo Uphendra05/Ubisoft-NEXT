@@ -41,8 +41,9 @@ namespace Engine
 
     private:
 
-        std::vector<Entity> mEntityList;
         EntityMask mEntityMasks[MAX_ENTITIES];
+
+        std::vector<Entity> mEntityList;
         std::queue<uint32_t> mAvailableEntities;
         std::vector<uint32_t> mEntityVersions;
 

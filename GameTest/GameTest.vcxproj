@@ -187,6 +187,7 @@
     <ClInclude Include="App\SimpleSound.h" />
     <ClInclude Include="App\SimpleSprite.h" />
     <ClInclude Include="src\Gamplay\CSpriteManager.h" />
+    <ClInclude Include="src\Utilities\BiMap.h" />
     <ClInclude Include="src\Utilities\GamplayUtils.h" />
     <ClInclude Include="src\System\ECSTest.h" />
     <ClInclude Include="src\ECS\CComponentContainer.h" />
@@ -198,7 +199,6 @@
     <ClInclude Include="src\ECS\Example.h" />
     <ClInclude Include="src\ECS\SComponents.h" />
     <ClInclude Include="src\System\iSystems.h" />
-    <ClInclude Include="src\Utilities\BiMap.h" />
     <ClInclude Include="stb_image\stb_image.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />

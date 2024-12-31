@@ -13,7 +13,7 @@ namespace Engine
 		if (pSprite)
 		{
 			pSprite->SetPosition(transform.position.x, transform.position.y);
-			pSprite->SetAnimation(0);
+			AddAnimation(&sprite);
 		}
 	}
 
@@ -22,8 +22,28 @@ namespace Engine
 
 	}
 
-	void Engine::CSpriteManager::AddAnimation()
+	void Engine::CSpriteManager::AddAnimation(SpriteRenderer* sprite)
 	{
+
+		if (sprite->rows > 1 || sprite->cols > 1)
+		{
+			int frame = 0;
+			for (int i = 0; i < sprite->rows; i++)
+			{
+				std::vector<int> animationFrames;
+
+				for (int j = 0; j < sprite->cols; j++)
+				{
+					animationFrames.push_back(frame++);
+				}
+
+				GetSprite(sprite->fileName)->CreateAnimation(i, sprite->animSpeed, animationFrames);
+				
+
+			}
+		}
+		
+
 	}
 
 	void Engine::CSpriteManager::UpdateAnimation()
