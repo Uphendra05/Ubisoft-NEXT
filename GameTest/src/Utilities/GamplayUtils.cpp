@@ -2,16 +2,15 @@
 #include "GamplayUtils.h"
 
 #include "src/ECS\SComponents.h"
-#include "src/Gamplay/CSpriteManager.h"
 
 
+
+#include "src/Utilities/GraphicUtils.h"
 
 namespace Engine
 {
 
 	// TODO : Should this be here ? should I create a sprite system and handle the sprite assignment through that ?
-	CSpriteManager spriteManager;
-
 	Entity Engine::GamplayUtils::CreateECSTEST(CScene* pScene, Vector2 position)
 	{
 		Entity ECSTestId = pScene->CreateEntity();
@@ -36,8 +35,9 @@ namespace Engine
 		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Backgroound.png";  //TODO : Should Change this
 		pSprite->cols = 1;
 		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
 
-		spriteManager.AttachSprite(backgroundId, *pSprite, *pTransform);
+		GraphicUtils::SetupSprite(pSprite, pTransform);
 
 		return backgroundId;
 
@@ -45,6 +45,7 @@ namespace Engine
 	Entity GamplayUtils::CreatePlayer(CScene* pScene, Vector2 position)
 	{
 		Entity playerId = pScene->CreateEntity();
+
 		Transform* pTransform = pScene->AddComponent<Transform>(playerId);
 		pTransform->position = position;
 		pTransform->rotation = 0;
@@ -54,8 +55,9 @@ namespace Engine
 		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/PlayerIdle.png";  //TODO : Should Change this
 		pSprite->cols = 5;
 		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
 
-		spriteManager.AttachSprite(playerId, *pSprite, *pTransform);
+		GraphicUtils::SetupSprite(pSprite, pTransform);
 		/*
 		  spritemanager.addanimation(idle, speed, frames);
 		  spritemanager.addanimation(forward, speed, frames);
@@ -67,22 +69,29 @@ namespace Engine
 		
 		*/
 
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(playerId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+
+
 		return playerId;
 
 	}
-	void GamplayUtils::Update(float dt)
-	{
 
-		spriteManager.Update(dt);
-	}
-	void GamplayUtils::Render()
+	void GamplayUtils::StartSystem(CScene* pScene)
 	{
+		player->Start(pScene);
+	}
 
-		spriteManager.Render();
-	}
-	void GamplayUtils::CleanUp()
+	void GamplayUtils::UpdatetSystem(CScene* pScene, float dt)
 	{
-		spriteManager.CleanUp();
+		player->Update(pScene, dt);
+
 	}
+
+	
+
+	
+	
 }
 

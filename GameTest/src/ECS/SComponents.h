@@ -4,6 +4,7 @@
 
 #include "ECSCore.h"
 #include "../Utilities/Vector2.h"
+#include "App/SimpleSprite.h"
 
 
 
@@ -27,13 +28,30 @@ namespace Engine
 
 	struct SpriteRenderer
 	{
-		 std::string componenetName = "SpriteRenderer";
+		std::string componenetName = "SpriteRenderer";
 
-		 std::string fileName;
-		 int rows = 0;
-		 int cols = 0;
+		std::string fileName;
+		int rows = 0;
+		int cols = 0;
 
-		 float animSpeed = 5.0f;
+		float animSpeed = 5.0f;
+
+		CSimpleSprite* sprite;
+	};
+
+	struct MovementComponent
+	{
+		std::string componenetName = "MovementComponent";
+
+		Vector2 velocity;
+		Vector2 acceleration;
+
+		float drag;
+
+		float maxSpeed;
+		float maxAcceleration;
+
+
 	};
 
 

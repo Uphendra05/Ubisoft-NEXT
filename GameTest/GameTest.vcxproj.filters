@@ -31,7 +31,10 @@
     <ClCompile Include="src\ECS\CScene.cpp" />
     <ClCompile Include="src\System\ECSTest.cpp" />
     <ClCompile Include="src\Utilities\GamplayUtils.cpp" />
-    <ClCompile Include="src\Gamplay\CSpriteManager.cpp" />
+    <ClCompile Include="src\System\PlayerMovement.cpp" />
+    <ClCompile Include="src\System\MovementSystem.cpp" />
+    <ClCompile Include="src\System\RenderSystem.cpp" />
+    <ClCompile Include="src\Utilities\GraphicUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -74,8 +77,11 @@
     <ClInclude Include="src\System\iSystems.h" />
     <ClInclude Include="src\System\ECSTest.h" />
     <ClInclude Include="src\Utilities\GamplayUtils.h" />
-    <ClInclude Include="src\Gamplay\CSpriteManager.h" />
     <ClInclude Include="src\Utilities\BiMap.h" />
+    <ClInclude Include="src\System\PlayerMovement.h" />
+    <ClInclude Include="src\System\MovementSystem.h" />
+    <ClInclude Include="src\System\RenderSystem.h" />
+    <ClInclude Include="src\Utilities\GraphicUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

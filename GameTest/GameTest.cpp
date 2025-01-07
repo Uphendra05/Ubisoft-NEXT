@@ -7,10 +7,12 @@
 //------------------------------------------------------------------------
 #include <windows.h> 
 #include <math.h>  
-#include "src/Utilities/Vector2Tests.h"
+#include "src/UnitTests/Vector2Tests.h"
+#include "src/UnitTests/ECSTest.h"
+
 #include "src/Utilities/GamplayUtils.h"
 #include "src/ECS/CScene.h"
-#include "src/System/ECSTest.h"
+#include "src/Gamplay/GameLoop.h"
 
 //------------------------------------------------------------------------
 #include "app\app.h"
@@ -19,7 +21,13 @@
 //------------------------------------------------------------------------
 // Example data....
 //------------------------------------------------------------------------
-//CSimpleSprite *testSprite;
+
+
+void CreateExamplePlayer();
+void UpdateExamplePlayer(float dt);
+void RenderExamplePlayer();
+void ShutdownExamplePlayer();
+
 enum
 {
 	ANIM_FORWARDS,
@@ -33,30 +41,27 @@ enum
 // Called before first update. Do any initial setup here.
 //------------------------------------------------------------------------
 using namespace Engine;
-CScene* scene = new CScene();
 
+CScene* scene = new CScene();
+GameLoop mainGame;
 void Init()
 {
+
+
 	//Vector2Tests::RunAllTests();
 	
 	
-	GamplayUtils::CreateBackground(scene, Vector2(400.0f, 400.0f));
+	GamplayUtils::CreateBackground(scene, Vector2(400, 400));
 
 	GamplayUtils::CreatePlayer(scene, Vector2(400.0f, 400.0f));
+
+	mainGame.Start(scene);
 	
 	
-	
+
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
-	//testSprite = App::CreateSprite(".\\TestData\\Test.bmp", 8, 4);
-	//testSprite->SetPosition(400.0f, 400.0f);
-	//const float speed = 1.0f / 15.0f;
-	//testSprite->CreateAnimation(ANIM_BACKWARDS, speed, { 0,1,2,3,4,5,6,7 });
-	//testSprite->CreateAnimation(ANIM_LEFT, speed, { 8,9,10,11,12,13,14,15 });
-	//testSprite->CreateAnimation(ANIM_RIGHT, speed, { 16,17,18,19,20,21,22,23 });
-	//testSprite->CreateAnimation(ANIM_FORWARDS, speed, { 24,25,26,27,28,29,30,31 });
-	//testSprite->SetScale(1.0f);
-
+	
 	//test->Update(scene, speed);
 	//------------------------------------------------------------------------
 }
@@ -73,72 +78,13 @@ void Update(const float deltaTime)
 
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
-	//testSprite->Update(deltaTime);
-	GamplayUtils::Update(deltaTime);
 
-	//if (App::GetController().GetLeftThumbStickX() > 0.5f)
-	//{
-	//	testSprite->SetAnimation(ANIM_RIGHT);
-	//	float x, y;
-	//	testSprite->GetPosition(x, y);
-	//	x += 1.0f;
-	//	testSprite->SetPosition(x, y);
-	//}
-	//if (App::GetController().GetLeftThumbStickX() < -0.5f)
-	//{
-	//	testSprite->SetAnimation(ANIM_LEFT);
-	//	float x, y;
-	//	testSprite->GetPosition(x, y);
-	//	x -= 1.0f;
-	//	testSprite->SetPosition(x, y);
-	//}
- //   if (App::GetController().GetLeftThumbStickY() > 0.5f)
- //   {
- //       testSprite->SetAnimation(ANIM_FORWARDS);
- //       float x, y;
- //       testSprite->GetPosition(x, y);
- //       y += 1.0f;
- //       testSprite->SetPosition(x, y);
- //   }
-	//if (App::GetController().GetLeftThumbStickY() < -0.5f)
-	//{
-	//	testSprite->SetAnimation(ANIM_BACKWARDS);
-	//	float x, y;
-	//	testSprite->GetPosition(x, y);
-	//	y -= 1.0f;
-	//	testSprite->SetPosition(x, y);
-	//}
-	//if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_UP, false))
-	//{
-	//	testSprite->SetScale(testSprite->GetScale() + 0.1f);
-	//}
-	//if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_DOWN, false))
-	//{
-	//	testSprite->SetScale(testSprite->GetScale() - 0.1f);
-	//}
-	//if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_LEFT, false))
-	//{
-	//	testSprite->SetAngle(testSprite->GetAngle() + 0.1f);
-	//}
-	//if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_RIGHT, false))
-	//{
-	//	testSprite->SetAngle(testSprite->GetAngle() - 0.1f);
-	//}
-	//if (App::GetController().CheckButton(XINPUT_GAMEPAD_A, true))
-	//{
-	//	testSprite->SetAnimation(-1);
-	//}
-	////------------------------------------------------------------------------
-	//// Sample Sound.
-	////------------------------------------------------------------------------
-	//if (App::GetController().CheckButton(XINPUT_GAMEPAD_B, true))
-	//{
-	//	App::PlaySound(".\\TestData\\Test.wav", true);
-	//}
-	//if (App::GetController().CheckButton(XINPUT_GAMEPAD_X, true))
-	//{
-	//	App::StopSound(".\\TestData\\Test.wav");
-	//}
+	mainGame.Update(scene, deltaTime);
+
+	
+	//UpdateExamplePlayer(deltaTime);
+
+	
 }
 
 //------------------------------------------------------------------------
@@ -149,18 +95,132 @@ void Render()
 {	
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
-	//testSprite->Draw();
-	GamplayUtils::Render();
+	
+	mainGame.Render(scene);
+
+	
+
+	//RenderExampleP\layer();
 	//------------------------------------------------------------------------
 
 	//------------------------------------------------------------------------
 	// Example Text.
 	//------------------------------------------------------------------------
-	//App::Print(100, 100, "Sample Text");
+	
 
 	//------------------------------------------------------------------------
 	// Example Line Drawing.
 	//------------------------------------------------------------------------
+	
+}
+//------------------------------------------------------------------------
+// Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.
+// Just before the app exits.
+//------------------------------------------------------------------------
+void Shutdown()
+{	
+	//------------------------------------------------------------------------
+	// Example Sprite Code....
+	
+	//ShutdownExamplePlayer();
+
+	mainGame.Cleanup();
+
+	delete scene;
+	//------------------------------------------------------------------------
+}
+
+
+
+
+CSimpleSprite *testSprite;
+void CreateExamplePlayer()
+{
+	testSprite = App::CreateSprite(".\\TestData\\Test.bmp", 8, 4);
+	testSprite->SetPosition(400.0f, 400.0f);
+	const float speed = 1.0f / 15.0f;
+	testSprite->CreateAnimation(ANIM_BACKWARDS, speed, { 0,1,2,3,4,5,6,7 });
+	testSprite->CreateAnimation(ANIM_LEFT, speed, { 8,9,10,11,12,13,14,15 });
+	testSprite->CreateAnimation(ANIM_RIGHT, speed, { 16,17,18,19,20,21,22,23 });
+	testSprite->CreateAnimation(ANIM_FORWARDS, speed, { 24,25,26,27,28,29,30,31 });
+	testSprite->SetScale(1.0f);
+
+}
+
+void UpdateExamplePlayer(float dt)
+{
+	testSprite->Update(dt);
+	if (App::GetController().GetLeftThumbStickX() > 0.5f)
+	{
+		testSprite->SetAnimation(ANIM_RIGHT);
+		float x, y;
+		testSprite->GetPosition(x, y);
+		x += 1.0f;
+		testSprite->SetPosition(x, y);
+	}
+	if (App::GetController().GetLeftThumbStickX() < -0.5f)
+	{
+		testSprite->SetAnimation(ANIM_LEFT);
+		float x, y;
+		testSprite->GetPosition(x, y);
+		x -= 1.0f;
+		testSprite->SetPosition(x, y);
+	}
+    if (App::GetController().GetLeftThumbStickY() > 0.5f)
+    {
+        testSprite->SetAnimation(ANIM_FORWARDS);
+        float x, y;
+        testSprite->GetPosition(x, y);
+        y += 1.0f;
+        testSprite->SetPosition(x, y);
+    }
+	if (App::GetController().GetLeftThumbStickY() < -0.5f)
+	{
+		testSprite->SetAnimation(ANIM_BACKWARDS);
+		float x, y;
+		testSprite->GetPosition(x, y);
+		y -= 1.0f;
+		testSprite->SetPosition(x, y);
+	}
+	if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_UP, false))
+	{
+		testSprite->SetScale(testSprite->GetScale() + 0.1f);
+	}
+	if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_DOWN, false))
+	{
+		testSprite->SetScale(testSprite->GetScale() - 0.1f);
+	}
+	if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_LEFT, false))
+	{
+		testSprite->SetAngle(testSprite->GetAngle() + 0.1f);
+	}
+	if (App::GetController().CheckButton(XINPUT_GAMEPAD_DPAD_RIGHT, false))
+	{
+		testSprite->SetAngle(testSprite->GetAngle() - 0.1f);
+	}
+	if (App::GetController().CheckButton(XINPUT_GAMEPAD_A, true))
+	{
+		testSprite->SetAnimation(-1);
+	}
+	//------------------------------------------------------------------------
+	// Sample Sound.
+	//------------------------------------------------------------------------
+	if (App::GetController().CheckButton(XINPUT_GAMEPAD_B, true))
+	{
+		App::PlaySound(".\\TestData\\Test.wav", true);
+	}
+	if (App::GetController().CheckButton(XINPUT_GAMEPAD_X, true))
+	{
+		App::StopSound(".\\TestData\\Test.wav");
+	}
+}
+
+void RenderExamplePlayer()
+{
+
+	testSprite->Draw();
+	App::Print(100, 100, "Sample Text");
+
 	static float a = 0.0f;
 	const float r = 1.0f;
 	float g = 1.0f;
@@ -178,17 +238,8 @@ void Render()
 		App::DrawLine(sx, sy, ex, ey, r, g, b);
 	}
 }
-//------------------------------------------------------------------------
-// Add your shutdown code here. Called when the APP_QUIT_KEY is pressed.
-// Just before the app exits.
-//------------------------------------------------------------------------
-void Shutdown()
-{	
-	//------------------------------------------------------------------------
-	// Example Sprite Code....
-	//delete testSprite;
 
-	GamplayUtils::CleanUp();
-	delete scene;
-	//------------------------------------------------------------------------
+void ShutdownExamplePlayer()
+{
+	delete testSprite;
 }
