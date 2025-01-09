@@ -37,39 +37,44 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
         Transform* pTransform = pScene->Get<Transform>(entityId);
         MovementComponent* pMovement = pScene->Get<MovementComponent>(entityId);
 
-        bool moving = false;
-
-
-        if (App::IsKeyPressed(87))
+        if (!pMovement->isStatic)
         {
-            MoveUpDown(pTransform, pMovement, -1);
-            moving = true;
+            bool moving = false;
+
+
+            if (App::IsKeyPressed(87))
+            {
+                MoveUpDown(pTransform, pMovement, -1);
+                moving = true;
+
+            }
+            if (App::IsKeyPressed(83))
+            {
+                MoveUpDown(pTransform, pMovement, 1);
+                moving = true;
+
+            }
+            if (App::IsKeyPressed(65))
+            {
+                MoveLeftRight(pTransform, pMovement, -1);
+                moving = true;
+
+            }
+            if (App::IsKeyPressed(68))
+            {
+                MoveLeftRight(pTransform, pMovement, 1);
+                moving = true;
+            }
+
+            if (!moving)
+            {
+
+                pMovement->acceleration = Vector2(0.0f, 0.0f);
+
+            }
 
         }
-        if (App::IsKeyPressed(83))
-        {
-            MoveUpDown(pTransform, pMovement, 1);
-            moving = true;
-
-        }
-        if (App::IsKeyPressed(65))
-        {
-            MoveLeftRight(pTransform, pMovement, -1);
-            moving = true;
-
-        }
-        if (App::IsKeyPressed(68))
-        {
-            MoveLeftRight(pTransform, pMovement, 1);
-            moving = true;
-        }
-
-        if (!moving)
-        {
-
-            pMovement->acceleration = Vector2(0.0f, 0.0f);
-
-        }
+        
 
     }
 }

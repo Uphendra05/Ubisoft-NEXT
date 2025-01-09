@@ -21,14 +21,9 @@ namespace Engine
 
 		static Entity CreatePlayer(CScene* pScene, Vector2 position);
 
-		//TODO: should change these functions as system or should find a way to extract to some other class. It should not be here
-		 void StartSystem(CScene* pScene);
-		 void UpdatetSystem(CScene* pScene, float dt);
+		static Entity CreateCollidable(CScene* pScene, Vector2 position);
 
-		static void Update(float dt);
-		static void Render();
-		static void CleanUp();
-		PlayerMovement* player;
+		static Entity CreateCollidable2(CScene* pScene, Vector2 position);
 
 	private:
 

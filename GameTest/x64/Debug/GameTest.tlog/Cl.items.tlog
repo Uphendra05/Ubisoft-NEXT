@@ -3,6 +3,8 @@ D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\App\main.cpp;D:\Git Repos\Ubisof
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\App\SimpleController.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\SimpleController.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\App\SimpleSound.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\SimpleSound.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\App\SimpleSprite.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\SimpleSprite.obj
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\Debug\DebugAABB.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\DebugAABB.obj
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\MemoryLeakFinder\MemoryLeakFinder.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\MemoryLeakFinder.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Gamplay\GameLoop.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\GameLoop.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Utilities\GraphicUtils.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\GraphicUtils.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\RenderSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\RenderSystem.obj

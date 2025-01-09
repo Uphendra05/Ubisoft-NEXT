@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "GamplayUtils.h"
 
-#include "src/ECS\SComponents.h"
-
+#include "src/ECS/SComponents.h"
+#include "src/Physics/SAabbProperties.h"
 
 
 #include "src/Utilities/GraphicUtils.h"
@@ -72,22 +72,89 @@ namespace Engine
 		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(playerId);
 		pMove->acceleration = Vector2(0.0f, 0.0f);
 		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = false;
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(playerId);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = false;
+
+		AABB* pAABB = pScene->AddComponent<AABB>(playerId);
+		pAABB->CalculateBounds(*pTransform, Vector2(100.0f, 100.0f));
+		pAABB->mCollidable.push_back(playerId);
 
 
 		return playerId;
 
 	}
 
-	void GamplayUtils::StartSystem(CScene* pScene)
+	Entity GamplayUtils::CreateCollidable(CScene* pScene, Vector2 position)
 	{
-		player->Start(pScene);
+		Entity collidableId = pScene->CreateEntity();
+
+		Transform* pTransform = pScene->AddComponent<Transform>(collidableId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 1;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(collidableId);
+		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Attack_1.png";  //TODO : Should Change this
+		pSprite->cols = 5;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(collidableId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = true;
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = false;
+
+		AABB* pAABB = pScene->AddComponent<AABB>(collidableId);
+		pAABB->CalculateBounds(*pTransform, Vector2(100.0f, 100.0f));
+
+		return collidableId;
 	}
 
-	void GamplayUtils::UpdatetSystem(CScene* pScene, float dt)
+	Entity GamplayUtils::CreateCollidable2(CScene* pScene, Vector2 position)
 	{
-		player->Update(pScene, dt);
+		Entity collidableId = pScene->CreateEntity();
 
+		Transform* pTransform = pScene->AddComponent<Transform>(collidableId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 1;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(collidableId);
+		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Attack_1.png";  //TODO : Should Change this
+		pSprite->cols = 5;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(collidableId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = true;
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = false;
+
+		AABB* pAABB = pScene->AddComponent<AABB>(collidableId);
+		pAABB->CalculateBounds(*pTransform, Vector2(100.0f, 100.0f));
+
+		return collidableId;
 	}
+
+	
 
 	
 

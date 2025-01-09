@@ -51,6 +51,18 @@ namespace Engine
 		float maxSpeed;
 		float maxAcceleration;
 
+		bool isStatic;
+
+	};
+
+	struct Rigidbody
+	{
+		
+		float mass;
+		float gravity;
+
+		bool isKinematic;
+
 
 	};
 

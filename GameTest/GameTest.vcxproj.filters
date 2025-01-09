@@ -27,14 +27,17 @@
     <ClCompile Include="src\ECS\CEntityManager.cpp" />
     <ClCompile Include="src\ECS\CComponentContainer.cpp" />
     <ClCompile Include="src\Utilities\Vector2.cpp" />
-    <ClCompile Include="src\Utilities\Vector2Tests.cpp" />
     <ClCompile Include="src\ECS\CScene.cpp" />
-    <ClCompile Include="src\System\ECSTest.cpp" />
     <ClCompile Include="src\Utilities\GamplayUtils.cpp" />
     <ClCompile Include="src\System\PlayerMovement.cpp" />
     <ClCompile Include="src\System\MovementSystem.cpp" />
     <ClCompile Include="src\System\RenderSystem.cpp" />
     <ClCompile Include="src\Utilities\GraphicUtils.cpp" />
+    <ClCompile Include="src\Gamplay\GameLoop.cpp" />
+    <ClCompile Include="src\UnitTests\ECSTest.cpp" />
+    <ClCompile Include="src\UnitTests\Vector2Tests.cpp" />
+    <ClCompile Include="src\MemoryLeakFinder\MemoryLeakFinder.cpp" />
+    <ClCompile Include="src\System\Debug\DebugAABB.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -70,18 +73,23 @@
     <ClInclude Include="src\ECS\CComponentContainer.h" />
     <ClInclude Include="src\ECS\SComponents.h" />
     <ClInclude Include="src\Utilities\Vector2.h" />
-    <ClInclude Include="src\Utilities\Vector2Tests.h" />
     <ClInclude Include="src\ECS\CScene.h" />
     <ClInclude Include="src\ECS\Example.h" />
     <ClInclude Include="src\ECS\SComponentIterator.h" />
     <ClInclude Include="src\System\iSystems.h" />
-    <ClInclude Include="src\System\ECSTest.h" />
     <ClInclude Include="src\Utilities\GamplayUtils.h" />
     <ClInclude Include="src\Utilities\BiMap.h" />
     <ClInclude Include="src\System\PlayerMovement.h" />
     <ClInclude Include="src\System\MovementSystem.h" />
     <ClInclude Include="src\System\RenderSystem.h" />
     <ClInclude Include="src\Utilities\GraphicUtils.h" />
+    <ClInclude Include="src\Gamplay\GameLoop.h" />
+    <ClInclude Include="src\UnitTests\ECSTest.h" />
+    <ClInclude Include="src\Gamplay\SystemFactory.h" />
+    <ClInclude Include="src\UnitTests\Vector2Tests.h" />
+    <ClInclude Include="src\MemoryLeakFinder\MemoryLeakFinder.h" />
+    <ClInclude Include="src\System\Debug\DebugAABB.h" />
+    <ClInclude Include="src\Physics\SAabbProperties.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">
