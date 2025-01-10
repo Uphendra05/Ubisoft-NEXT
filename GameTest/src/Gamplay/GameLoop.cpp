@@ -5,13 +5,14 @@
 #include "src/System/RenderSystem.h"
 #include "src/System/PlayerMovement.h"
 #include "src/System/Debug/DebugAABB.h"
+#include "src/System/CameraSystem.h"
 
 void Engine::GameLoop::Start(CScene* pScene)
 {
 	systemFactory.CreateSystems<PlayerMovement>();
 	systemFactory.CreateSystems<MovementSystem>();
 	systemFactory.CreateSystems<RenderSystem>();
-
+	systemFactory.CreateSystems<CameraSystem>();
 
 
 

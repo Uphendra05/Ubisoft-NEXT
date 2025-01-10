@@ -30,7 +30,6 @@ void Engine::PlayerMovement::Start(CScene* pScene)
 
 void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
 {
-    deltaTime = deltaTime / 1000.0f;
 
     for (Entity entityId : SComponentIterator<Transform, MovementComponent>(*pScene))
     {
@@ -73,6 +72,8 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
 
             }
 
+            MakeBorders(pTransform->position.x, pTransform->position.y);
+
         }
         
 
@@ -99,6 +100,27 @@ void Engine::PlayerMovement::MoveUpDown(Transform* pTransform, MovementComponent
 
 
 
+}
+
+void Engine::PlayerMovement::MakeBorders(float& x, float& y)
+{
+    if (x > APP_VIRTUAL_WIDTH)
+    {
+        x = APP_VIRTUAL_WIDTH;
+    }
+    else if (x < 0.0f)
+    {
+        x = 0.0f;
+    }
+
+    if (y > APP_VIRTUAL_HEIGHT)
+    {
+        y = APP_VIRTUAL_HEIGHT;
+    }
+    else if (y < 0.0f)
+    {
+        y = 0.0f;
+    }
 }
 
 void Engine::PlayerMovement::MoveLeftRight(Transform* pTransform, MovementComponent* pMovement, int direction)

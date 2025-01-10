@@ -2,13 +2,14 @@
 #include "GamplayUtils.h"
 
 #include "src/ECS/SComponents.h"
-#include "src/Physics/SAabbProperties.h"
+#include "src/Physics/AABB.h"
 
 
 #include "src/Utilities/GraphicUtils.h"
 
 namespace Engine
 {
+	 
 
 	// TODO : Should this be here ? should I create a sprite system and handle the sprite assignment through that ?
 	Entity Engine::GamplayUtils::CreateECSTEST(CScene* pScene, Vector2 position)
@@ -74,15 +75,18 @@ namespace Engine
 		pMove->velocity = Vector2(0.0f, 0.0f);
 		pMove->isStatic = false;
 
+		//TODO : For Now Rigidbody is not of big use should change this
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(playerId);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
 		pRigidbody->isKinematic = false;
 
+
+        //TODO : Should change this into rigidbody this should not be here
 		AABB* pAABB = pScene->AddComponent<AABB>(playerId);
 		pAABB->CalculateBounds(*pTransform, Vector2(100.0f, 100.0f));
-		pAABB->mCollidable.push_back(playerId);
 
+		
 
 		return playerId;
 
@@ -110,6 +114,7 @@ namespace Engine
 		pMove->velocity = Vector2(0.0f, 0.0f);
 		pMove->isStatic = true;
 
+		//TODO : For Now Rigidbody is not of big use should change this
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
@@ -143,6 +148,7 @@ namespace Engine
 		pMove->velocity = Vector2(0.0f, 0.0f);
 		pMove->isStatic = true;
 
+		//TODO : For Now Rigidbody is not of big use should change this
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
@@ -153,6 +159,24 @@ namespace Engine
 
 		return collidableId;
 	}
+
+	Entity GamplayUtils::CreateCamera(CScene* pScene, Vector2 position)
+	{
+		Entity cameraId = pScene->CreateEntity();
+
+		Transform* pTransform = pScene->AddComponent<Transform>(cameraId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 1;
+
+		CameraComponent* pCamera = pScene->AddComponent<CameraComponent>(cameraId);
+		pCamera->position = position;
+
+
+		return cameraId;
+	}
+
+	
 
 	
 

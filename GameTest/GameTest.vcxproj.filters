@@ -38,6 +38,7 @@
     <ClCompile Include="src\UnitTests\Vector2Tests.cpp" />
     <ClCompile Include="src\MemoryLeakFinder\MemoryLeakFinder.cpp" />
     <ClCompile Include="src\System\Debug\DebugAABB.cpp" />
+    <ClCompile Include="src\System\CameraSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -89,7 +90,8 @@
     <ClInclude Include="src\UnitTests\Vector2Tests.h" />
     <ClInclude Include="src\MemoryLeakFinder\MemoryLeakFinder.h" />
     <ClInclude Include="src\System\Debug\DebugAABB.h" />
-    <ClInclude Include="src\Physics\SAabbProperties.h" />
+    <ClInclude Include="src\Physics\AABB.h" />
+    <ClInclude Include="src\System\CameraSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

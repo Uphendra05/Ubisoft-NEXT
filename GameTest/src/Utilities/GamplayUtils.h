@@ -1,6 +1,7 @@
 #pragma once
 #ifndef _GAMEPLAYUTILS_H
 #define _GAMEPLAYUTILS_H
+
 #include "src/ECS/ECSCore.h"
 #include "src/ECS/CScene.h"
 #include "src/System/PlayerMovement.h"
@@ -25,9 +26,15 @@ namespace Engine
 
 		static Entity CreateCollidable2(CScene* pScene, Vector2 position);
 
+		static Entity CreateCamera(CScene* pScene, Vector2 position);
+
+
+
+		
+
 	private:
 
-
+		
 	};
 
 

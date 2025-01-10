@@ -5,6 +5,7 @@
 #include "ECSCore.h"
 #include "../Utilities/Vector2.h"
 #include "App/SimpleSprite.h"
+#include "App/AppSettings.h"
 
 
 
@@ -46,10 +47,10 @@ namespace Engine
 		Vector2 velocity;
 		Vector2 acceleration;
 
-		float drag;
+		float drag = 0.0f;
 
-		float maxSpeed;
-		float maxAcceleration;
+		float maxSpeed = 0.0f;
+		float maxAcceleration = 0.0f;
 
 		bool isStatic;
 
@@ -64,6 +65,14 @@ namespace Engine
 		bool isKinematic;
 
 
+	};
+
+	struct CameraComponent
+	{
+		Vector2 position = Vector2(0, 0); // Camera position
+		float zoom = 1.0f;                // Zoom level
+		float width = APP_VIRTUAL_WIDTH; // Viewport width
+		float height = APP_VIRTUAL_HEIGHT; // Viewport height
 	};
 
 

@@ -2,7 +2,7 @@
 #include "src/System/iSystems.h"
 #include "src/Utilities/Vector2.h"
 #include "src/ECS/SComponents.h"
-#include "src/Physics/SAabbProperties.h"
+#include "src/Physics/AABB.h"
 
 
 namespace Engine
@@ -30,11 +30,11 @@ namespace Engine
 
 		void Cleanup() override;
 
-		void DebugRectangle(const Vector2& min, const Vector2& max, const float color[3]);
+		void AABBDebug(const Vector2& min, const Vector2& max, const float color[3]);
 
 		bool CheckCollision(const AABB& a, const AABB& b);
 
-		void ResolveCollision(CScene* pScene);
+		void ResolveCollision(CScene* pScene,float deltatime);
 
 	};
 

@@ -186,7 +186,8 @@
     <ClInclude Include="App\SimpleController.h" />
     <ClInclude Include="App\SimpleSound.h" />
     <ClInclude Include="App\SimpleSprite.h" />
-    <ClInclude Include="src\Physics\SAabbProperties.h" />
+    <ClInclude Include="src\System\CameraSystem.h" />
+    <ClInclude Include="src\Physics\AABB.h" />
     <ClInclude Include="src\System\Debug\DebugAABB.h" />
     <ClInclude Include="src\MemoryLeakFinder\MemoryLeakFinder.h" />
     <ClInclude Include="src\Gamplay\GameLoop.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="App\SimpleController.cpp" />
     <ClCompile Include="App\SimpleSound.cpp" />
     <ClCompile Include="App\SimpleSprite.cpp" />
+    <ClCompile Include="src\System\CameraSystem.cpp" />
     <ClCompile Include="src\System\Debug\DebugAABB.cpp" />
     <ClCompile Include="src\MemoryLeakFinder\MemoryLeakFinder.cpp" />
     <ClCompile Include="src\Gamplay\GameLoop.cpp" />

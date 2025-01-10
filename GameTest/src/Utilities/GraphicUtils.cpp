@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GraphicUtils.h"
 
+
 void Engine::GraphicUtils::UpdateAnimation(SpriteRenderer* pSprite, Transform* pTransform, const float& deltaTime)
 {
     pSprite->sprite->SetPosition(pTransform->position.x, pTransform->position.y);

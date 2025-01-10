@@ -35,24 +35,18 @@ namespace Engine
 
     void Engine::CEntityManager::RemoveEntity(Entity entityId)
     {
-        uint32_t index = GetEntityIndex(entityId);
-
-        if (index >= MAX_ENTITIES || GetEntityVersion(entityId) != mEntityVersions[index])
+        if (entityId < 0 || entityId >= MAX_ENTITIES)
         {
-            throw std::runtime_error("Attempted to destroy an invalid entity.");
+            throw std::runtime_error("Invalid entity ID for removal.");
+            return;
         }
-        ++mEntityVersions[index];
-       
-        mEntityMasks[index].reset();
-        mAvailableEntities.push(index);
 
-        
-        std::vector<Entity>::iterator it = std::find(mEntityList.begin(), mEntityList.end(), entityId);
+        auto it = remove(mEntityList.begin(), mEntityList.end(), entityId);
+        mEntityList.erase(it, mEntityList.end());
 
-        if (it != mEntityList.end()) 
-        {
-            mEntityList.erase(it);
-        }
+        // Reset mask for removed entity and decrease count
+        mEntityMasks[entityId].reset();
+        mAvailableEntities.push(entityId);
 
     }
 

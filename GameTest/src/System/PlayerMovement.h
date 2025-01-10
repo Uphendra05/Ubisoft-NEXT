@@ -35,6 +35,8 @@ namespace Engine
 
 		void MoveUpDown(Transform* pTransform, MovementComponent* pMovement, int direction);
 
+	     void MakeBorders(float& x, float& y);
+
 	};
 
 

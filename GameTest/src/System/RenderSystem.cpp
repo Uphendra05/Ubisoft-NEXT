@@ -55,7 +55,10 @@ namespace Engine
         {
             SpriteRenderer* pSprite = pScene->Get<SpriteRenderer>(entityId);
 
+
             GraphicUtils::DrawSprite(pSprite);
+
+
 
         }
     }

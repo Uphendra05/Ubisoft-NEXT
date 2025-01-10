@@ -44,7 +44,7 @@ namespace Engine
         EntityMask mEntityMasks[MAX_ENTITIES];
 
         std::vector<Entity> mEntityList;
-        std::queue<uint32_t> mAvailableEntities;
+        std::queue<uint64_t> mAvailableEntities;
         std::vector<uint32_t> mEntityVersions;
 
         inline uint32_t GetEntityIndex(Entity id) 
