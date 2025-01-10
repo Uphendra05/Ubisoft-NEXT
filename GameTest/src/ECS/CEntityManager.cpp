@@ -71,6 +71,11 @@ namespace Engine
         return mEntityList;
     }
 
+    Entity CEntityManager::GetEntity(int id)
+    {
+        return mEntityList[id];
+    }
+
     EntityMask Engine::CEntityManager::GetEntityMask(Entity entityId) const
     {
         if (entityId < 0 || entityId >= MAX_ENTITIES)

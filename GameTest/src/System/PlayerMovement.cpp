@@ -72,7 +72,7 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
 
             }
 
-            MakeBorders(pTransform->position.x, pTransform->position.y);
+            //MakeBorders(pTransform->position.x, pTransform->position.y);
 
         }
         

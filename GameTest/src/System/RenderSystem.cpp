@@ -51,16 +51,30 @@ namespace Engine
 
     void Engine::RenderSystem::Render(CScene* pScene)
     {
-        for (Entity entityId : SComponentIterator<SpriteRenderer>(*pScene))
+        Entity cameraEntity = pScene->GetEntityManager()->GetEntity(4);
+
+        if (cameraEntity)
         {
-            SpriteRenderer* pSprite = pScene->Get<SpriteRenderer>(entityId);
+            CameraComponent* camera = pScene->Get<CameraComponent>(cameraEntity);
 
+            Vector2 cameraOffset = camera ? camera->position : Vector2(0, 0);
 
-            GraphicUtils::DrawSprite(pSprite);
+            for (Entity entity : SComponentIterator<Transform, SpriteRenderer>(*pScene))
+            {
+                Transform* transform = pScene->Get<Transform>(entity);
+                SpriteRenderer* sprite = pScene->Get<SpriteRenderer>(entity);
 
+                if (transform && sprite)
+                {
+                    Vector2 screenPosition = transform->position - cameraOffset;
+                    sprite->sprite->SetPosition(screenPosition.x, screenPosition.y);
 
-
+                    GraphicUtils::DrawSprite(sprite);
+                }
+            }
         }
+        
+        
     }
 
     void Engine::RenderSystem::End(CScene* pScene)

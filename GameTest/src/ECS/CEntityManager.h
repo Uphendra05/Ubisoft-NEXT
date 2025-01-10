@@ -27,6 +27,8 @@ namespace Engine
         void SetComponent(Entity entityId, ComponentId componentId);
 
         const std::vector<Entity>& GetEntities() const;
+        Entity GetEntity(int id);
+
          EntityMask GetEntityMask(Entity entityId) const ;
 
          //  TODO: Need some way to look up if the entity has the component I'm looking for. psuedo code bool HasComponent(componentid id){ if id = id return true eles fasle;

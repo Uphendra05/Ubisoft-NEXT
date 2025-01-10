@@ -2,8 +2,8 @@
 #include "CameraSystem.h"
 #include "src/ECS/SComponentIterator.h"
 #include "src/Utilities/GamplayUtils.h"
-#include <iostream> 
 #include <algorithm>
+
 
 
 
@@ -22,31 +22,37 @@ void Engine::CameraSystem::Start(CScene* pScene)
 
 void Engine::CameraSystem::Update(CScene* pScene, float deltaTime)
 {
-	for (Entity entityId : SComponentIterator<Transform, CameraComponent>(*pScene))
-	{
-		Transform* pTransform = pScene->Get<Transform>(entityId);
-		CameraComponent* pCamera = pScene->Get<CameraComponent>(entityId);
+	
+	Entity player = pScene->GetEntityManager()->GetEntity(1);
+	Entity camera = pScene->GetEntityManager()->GetEntity(4);
 
-		if(pTransform && pCamera)
+	if (!player || !camera) return;
+
+	Transform* playerTransform = pScene->Get<Transform>(player);
+	CameraComponent* cameraComp = pScene->Get<CameraComponent>(camera);
+
+		if(playerTransform && cameraComp)
 		{ 
-			Vector2 targetPosition = pTransform->position;
-			pCamera->position = Lerp(pCamera->position, targetPosition, 0.1f);
+
+			
+			Vector2 targetPosition = playerTransform->position;
+			cameraComp->position = Lerp(cameraComp->position, targetPosition, 0.1f);
 
 			// Clamp camera position to bounds (if applicable)
-			//pCamera->position.x = std::clamp(pCamera->position.x, 0.0f, APP_VIRTUAL_WIDTH - pCamera->width);
-			//pCamera->position.y = std::clamp(pCamera->position.y, 0.0f, APP_VIRTUAL_HEIGHT - pCamera->height);
+			//cameraComp->position.x = Clamp(cameraComp->position.x, 0.0f, APP_VIRTUAL_WIDTH - cameraComp->width);
+			//cameraComp->position.y = Clamp(cameraComp->position.y, 0.0f, APP_VIRTUAL_HEIGHT - cameraComp->height);
 
 			// Update the transform for the camera entity
-			Transform* cameraTransform = pScene->Get<Transform>(entityId);
+			Transform* cameraTransform = pScene->Get<Transform>(camera);
 			if (cameraTransform)
 			{
-				cameraTransform->position = pCamera->position;
+				cameraTransform->position = cameraComp->position;
 			}
 
 		
 		}
 
-	}
+	
 
 }
 

@@ -28,7 +28,7 @@ void UpdateExamplePlayer(float dt);
 void RenderExamplePlayer();
 void ShutdownExamplePlayer();
 
-void HandleCameraMovement();
+
 
  
 
@@ -63,7 +63,7 @@ void Init()
 
 	GamplayUtils::CreateCollidable2(scene, Vector2(400.0f, 200.0f));
 
-	//GamplayUtils::CreateCamera(scene, Vector2(400.0f, 400.0f));
+	GamplayUtils::CreateCamera(scene, Vector2(400.0f, 400.0f));
 
 	mainGame.Start(scene);
 	
@@ -91,7 +91,6 @@ void Update(const float deltaTime)
 
 	mainGame.Update(scene, deltaTime);
 	scene->DestroyEntities();
-	HandleCameraMovement();
 	//UpdateExamplePlayer(deltaTime);
 
 	
@@ -254,14 +253,4 @@ void ShutdownExamplePlayer()
 	delete testSprite;
 }
 
-void HandleCameraMovement()
-{
 
-	if (App::IsKeyPressed(87))
-	{
-		APP_VIRTUAL_WIDTH * 110.5f;
-		APP_VIRTUAL_HEIGHT * 110.5f;
-	}
-
-
-}
