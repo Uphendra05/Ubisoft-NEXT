@@ -47,6 +47,9 @@ namespace Engine
 	{
 		Entity playerId = pScene->CreateEntity();
 
+		Tag* pTag = pScene->AddComponent<Tag>(playerId);
+		pTag->entityName = "Player";
+
 		Transform* pTransform = pScene->AddComponent<Transform>(playerId);
 		pTransform->position = position;
 		pTransform->rotation = 0;
@@ -95,6 +98,9 @@ namespace Engine
 	Entity GamplayUtils::CreateCollidable(CScene* pScene, Vector2 position)
 	{
 		Entity collidableId = pScene->CreateEntity();
+
+		Tag* pTag = pScene->AddComponent<Tag>(collidableId);
+		pTag->entityName = "Collide";
 
 		Transform* pTransform = pScene->AddComponent<Transform>(collidableId);
 		pTransform->position = position;

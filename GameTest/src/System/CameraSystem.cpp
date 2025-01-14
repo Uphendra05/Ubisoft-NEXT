@@ -39,8 +39,8 @@ void Engine::CameraSystem::Update(CScene* pScene, float deltaTime)
 			cameraComp->position = Lerp(cameraComp->position, targetPosition, 0.1f);
 
 			// Clamp camera position to bounds (if applicable)
-			//cameraComp->position.x = Clamp(cameraComp->position.x, 0.0f, APP_VIRTUAL_WIDTH - cameraComp->width);
-			//cameraComp->position.y = Clamp(cameraComp->position.y, 0.0f, APP_VIRTUAL_HEIGHT - cameraComp->height);
+			//cameraComp->position.x = Clamp(cameraComp->position.x, 0.0f,   cameraComp->width );
+			//cameraComp->position.y = Clamp(cameraComp->position.y, 0.0f,   cameraComp->height );
 
 			// Update the transform for the camera entity
 			Transform* cameraTransform = pScene->Get<Transform>(camera);

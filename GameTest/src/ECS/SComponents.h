@@ -11,7 +11,11 @@
 
 namespace Engine
 {
-
+	struct Tag
+	{
+		std::string entityName;
+		
+	};
 
 	struct Transform
 	{
@@ -71,8 +75,8 @@ namespace Engine
 	{
 		Vector2 position = Vector2(0, 0); // Camera position
 		float zoom = 1.0f;                // Zoom level
-		float width = APP_VIRTUAL_WIDTH; // Viewport width
-		float height = APP_VIRTUAL_HEIGHT; // Viewport height
+		float width = APP_VIRTUAL_WIDTH ; // Viewport width
+		float height = APP_VIRTUAL_HEIGHT ; // Viewport height
 	};
 
 

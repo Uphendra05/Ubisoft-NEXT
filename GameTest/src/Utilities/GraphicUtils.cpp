@@ -4,7 +4,7 @@
 
 void Engine::GraphicUtils::UpdateAnimation(SpriteRenderer* pSprite, Transform* pTransform, const float& deltaTime)
 {
-    pSprite->sprite->SetPosition(pTransform->position.x, pTransform->position.y);
+    pSprite->sprite->SetPosition(pTransform->position.x , pTransform->position.y );
     pSprite->sprite->SetAngle(pTransform->rotation);
     pSprite->sprite->SetScale(pTransform->scale);
 
@@ -29,7 +29,7 @@ void Engine::GraphicUtils::CreateAnimation(SpriteRenderer* pSprite)
 void Engine::GraphicUtils::SetupSprite(SpriteRenderer* pSprite, Transform* pTransform)
 {
     pSprite->sprite = App::CreateSprite(pSprite->fileName.c_str(), pSprite->cols, pSprite->rows);
-    //UpdateAnimation(pSprite, pTransform, 0.1f);
+    UpdateAnimation(pSprite, pTransform, 0.1f);
 
    // CreateAnimation(pSprite);
 

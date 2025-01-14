@@ -31,20 +31,24 @@ void Engine::DebugAABB::Start(CScene* pScene)
 void Engine::DebugAABB::Update(CScene* pScene, float deltaTime)
 {
     deltaTime = deltaTime / 1000.0f;
+ 
 
     for (Entity entityId : SComponentIterator<Transform, Rigidbody, AABB>(*pScene))
     {
         Transform* pTransform = pScene->Get<Transform>(entityId);
         Rigidbody* pRigidbody = pScene->Get<Rigidbody>(entityId);
         AABB* pAABB = pScene->Get<AABB>(entityId);
-
+       
         if (!pRigidbody->isKinematic)
         {
             //Vector2 gravityForce = Vector2(0, pRigidbody->gravity * pRigidbody->mass);
             //pTransform->position += gravityForce * deltaTime;
 
+            
             // Update AABB bounds
             pAABB->CalculateBounds(*pTransform, pAABB->halfSize * 2.0f);
+
+            
             ResolveCollision(pScene, deltaTime);
         }
     }
@@ -95,30 +99,38 @@ bool Engine::DebugAABB::CheckCollision(const AABB& a, const AABB& b)
 void Engine::DebugAABB::ResolveCollision(CScene* pScene, float deltatime)
 {
 
-    for (Entity entityA : SComponentIterator<Transform, AABB>(*pScene))
+    for (Entity entityA : SComponentIterator<Transform, AABB, Tag>(*pScene))
     {
         AABB* aabbA = pScene->Get<AABB>(entityA);
+        Tag* pTag = pScene->Get<Tag>(entityA);
 
-        for (Entity entityB : SComponentIterator<Transform, AABB>(*pScene))
+
+        for (Entity entityB : SComponentIterator<Transform, AABB, Tag>(*pScene))
         {
             if (entityA == entityB) continue;
 
             AABB* aabbB = pScene->Get<AABB>(entityB);
+            Tag* pTag1 = pScene->Get<Tag>(entityB);
 
-            if (CheckCollision(*aabbA, *aabbB))
+
+            if (pTag->entityName == "Player" && pTag1->entityName == "Collide")
             {
-                // Resolve by moving the entity out of collision (basic response)
-                Vector2 overlap = aabbA->center - aabbB->center;
-                pScene->Get<Transform>(entityA)->position += overlap * deltatime;
-                pScene->Get<Transform>(entityB)->position -= overlap * deltatime;
-
-                if (entityB != 1) // TODO : stupid fix should change it later
+                if (CheckCollision(*aabbA, *aabbB))
                 {
-                    pScene->RemoveEntity(entityB);
+                    // Resolve by moving the entity out of collision (basic response)
+                    Vector2 overlap = aabbA->center - aabbB->center;
+                    pScene->Get<Transform>(entityA)->position += overlap * deltatime;
+                    pScene->Get<Transform>(entityB)->position -= overlap * deltatime;
+
+                    if (entityB != 1) // TODO : stupid fix should change it later
+                    {
+                        // pScene->RemoveEntity(entityB);
+
+                    }
 
                 }
-
             }
+           
         }
 
     }

@@ -12,7 +12,7 @@ void Engine::GameLoop::Start(CScene* pScene)
 	systemFactory.CreateSystems<PlayerMovement>();
 	systemFactory.CreateSystems<MovementSystem>();
 	systemFactory.CreateSystems<RenderSystem>();
-	systemFactory.CreateSystems<CameraSystem>();
+	//systemFactory.CreateSystems<CameraSystem>();
 
 
 

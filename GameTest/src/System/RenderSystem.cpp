@@ -39,19 +39,20 @@ namespace Engine
 
     void Engine::RenderSystem::Update(CScene* pScene, float deltaTime)
     {
+        
         for (Entity entityId : SComponentIterator<Transform, SpriteRenderer>(*pScene))
         {
             Transform* pTransform = pScene->Get<Transform>(entityId);
             SpriteRenderer* pSprite = pScene->Get<SpriteRenderer>(entityId);
 
             GraphicUtils::UpdateAnimation(pSprite, pTransform, deltaTime);
-
+            //pSprite->sprite->Update(deltaTime);
         }
     }
 
     void Engine::RenderSystem::Render(CScene* pScene)
     {
-        Entity cameraEntity = pScene->GetEntityManager()->GetEntity(4);
+       /* Entity cameraEntity = pScene->GetEntityManager()->GetEntity(4);
 
         if (cameraEntity)
         {
@@ -70,8 +71,16 @@ namespace Engine
                     sprite->sprite->SetPosition(screenPosition.x, screenPosition.y);
 
                     GraphicUtils::DrawSprite(sprite);
+
                 }
             }
+        }*/
+
+
+        for (Entity entityId : SComponentIterator<SpriteRenderer>(*pScene))
+        {
+            SpriteRenderer* pSprite = pScene->Get<SpriteRenderer>(entityId);
+            GraphicUtils::DrawSprite(pSprite);
         }
         
         
