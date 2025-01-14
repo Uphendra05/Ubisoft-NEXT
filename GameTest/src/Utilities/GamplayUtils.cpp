@@ -78,6 +78,10 @@ namespace Engine
 		pMove->velocity = Vector2(0.0f, 0.0f);
 		pMove->isStatic = false;
 
+		HealthComponent* pHealth = pScene->AddComponent<HealthComponent>(playerId);
+		pHealth->currentHealth = pHealth->maxHealth;
+
+
 		//TODO : For Now Rigidbody is not of big use should change this
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(playerId);
 		pRigidbody->mass = 1.0f;
@@ -119,6 +123,7 @@ namespace Engine
 		pMove->acceleration = Vector2(0.0f, 0.0f);
 		pMove->velocity = Vector2(0.0f, 0.0f);
 		pMove->isStatic = true;
+
 
 		//TODO : For Now Rigidbody is not of big use should change this
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);

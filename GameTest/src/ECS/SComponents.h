@@ -79,6 +79,14 @@ namespace Engine
 		float height = APP_VIRTUAL_HEIGHT ; // Viewport height
 	};
 
+	struct HealthComponent
+	{
+		std::string componentName = "HealthComponent";
+
+		int currentHealth;
+		int maxHealth;
+	};
+
 
 
 }

@@ -19,12 +19,15 @@ void Engine::DebugAABB::Init()
 
 void Engine::DebugAABB::Start(CScene* pScene)
 {
-    for (Entity entityId : SComponentIterator<Rigidbody, AABB>(*pScene))
+    for (Entity entityId : SComponentIterator<Rigidbody, AABB,HealthComponent>(*pScene))
     {
         Rigidbody* pRigidbody = pScene->Get<Rigidbody>(entityId);
+        HealthComponent* pHealth = pScene->Get<HealthComponent>(entityId);
         pRigidbody->gravity = 9.8f;
         pRigidbody->mass = 1.0f;
         pRigidbody->isKinematic = false;
+
+        pHealth->currentHealth = 2;
     }
 }
 
@@ -99,11 +102,11 @@ bool Engine::DebugAABB::CheckCollision(const AABB& a, const AABB& b)
 void Engine::DebugAABB::ResolveCollision(CScene* pScene, float deltatime)
 {
 
-    for (Entity entityA : SComponentIterator<Transform, AABB, Tag>(*pScene))
+    for (Entity entityA : SComponentIterator<Transform, AABB, Tag, HealthComponent>(*pScene))
     {
         AABB* aabbA = pScene->Get<AABB>(entityA);
         Tag* pTag = pScene->Get<Tag>(entityA);
-
+        HealthComponent* pHealth = pScene->Get<HealthComponent>(entityA);
 
         for (Entity entityB : SComponentIterator<Transform, AABB, Tag>(*pScene))
         {
@@ -113,23 +116,24 @@ void Engine::DebugAABB::ResolveCollision(CScene* pScene, float deltatime)
             Tag* pTag1 = pScene->Get<Tag>(entityB);
 
 
-            if (pTag->entityName == "Player" && pTag1->entityName == "Collide")
-            {
+            
+            
                 if (CheckCollision(*aabbA, *aabbB))
                 {
+                    pHealth->currentHealth--;
                     // Resolve by moving the entity out of collision (basic response)
                     Vector2 overlap = aabbA->center - aabbB->center;
-                    pScene->Get<Transform>(entityA)->position += overlap * deltatime;
-                    pScene->Get<Transform>(entityB)->position -= overlap * deltatime;
+                    pScene->Get<Transform>(entityA)->position += overlap ;
+                    pScene->Get<Transform>(entityB)->position -= overlap ;
 
-                    if (entityB != 1) // TODO : stupid fix should change it later
+                    if (pHealth->currentHealth <=0) // TODO : stupid fix should change it later
                     {
-                        // pScene->RemoveEntity(entityB);
+                         pScene->RemoveEntity(entityA);
 
                     }
 
                 }
-            }
+            
            
         }
 
