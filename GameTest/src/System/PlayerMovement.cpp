@@ -17,7 +17,7 @@ void Engine::PlayerMovement::Start(CScene* pScene)
     for (Entity entityId : SComponentIterator<MovementComponent>(*pScene))
     {
        
-        MovementComponent* pMovement = pScene->Get<MovementComponent>(entityId);
+        MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
 
         pMovement->acceleration = Vector2(0.0f, 0.0f);
         pMovement->velocity = Vector2(0.0f, 0.0f);
@@ -33,8 +33,8 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
 
     for (Entity entityId : SComponentIterator<Transform, MovementComponent>(*pScene))
     {
-        Transform* pTransform = pScene->Get<Transform>(entityId);
-        MovementComponent* pMovement = pScene->Get<MovementComponent>(entityId);
+        Transform* pTransform = pScene->GetComponent<Transform>(entityId);
+        MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
 
         if (!pMovement->isStatic)
         {

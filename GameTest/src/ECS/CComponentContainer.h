@@ -13,7 +13,7 @@ namespace Engine
 		CComponentContainer(unsigned int size);
 		~CComponentContainer();
 
-		void* Get(ComponentId compId);
+		void* GetComponent(ComponentId compId);
 		void* Add( ComponentId& compIdReplace);
 		void  Remove(ComponentId& compId);
 

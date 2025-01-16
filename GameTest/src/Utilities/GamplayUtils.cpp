@@ -84,15 +84,17 @@ namespace Engine
 
 		//TODO : For Now Rigidbody is not of big use should change this
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(playerId);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
 		pRigidbody->isKinematic = false;
 
 
-        //TODO : Should change this into rigidbody this should not be here
-		AABB* pAABB = pScene->AddComponent<AABB>(playerId);
-		pAABB->CalculateBounds(*pTransform, Vector2(100.0f, 100.0f));
-
+		RaycastComponent* pRaycast = pScene->AddComponent<RaycastComponent>(playerId);
+		pRaycast->origin = Vector2(0, 0);
+		pRaycast->direction = Vector2(0, 0);
+		pRaycast->length = 0.0f;
+       
 		
 
 		return playerId;
@@ -125,14 +127,13 @@ namespace Engine
 		pMove->isStatic = true;
 
 
-		//TODO : For Now Rigidbody is not of big use should change this
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
 		pRigidbody->isKinematic = false;
 
-		AABB* pAABB = pScene->AddComponent<AABB>(collidableId);
-		pAABB->CalculateBounds(*pTransform, Vector2(100.0f, 100.0f));
+	
 
 		return collidableId;
 	}
@@ -159,14 +160,14 @@ namespace Engine
 		pMove->velocity = Vector2(0.0f, 0.0f);
 		pMove->isStatic = true;
 
-		//TODO : For Now Rigidbody is not of big use should change this
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
+		pRigidbody->physicsBody = ePhysicsBody::NONE;
+
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
 		pRigidbody->isKinematic = false;
 
-		AABB* pAABB = pScene->AddComponent<AABB>(collidableId);
-		pAABB->CalculateBounds(*pTransform, Vector2(100.0f, 100.0f));
+		
 
 		return collidableId;
 	}

@@ -28,8 +28,8 @@ void Engine::CameraSystem::Update(CScene* pScene, float deltaTime)
 
 	if (!player || !camera) return;
 
-	Transform* playerTransform = pScene->Get<Transform>(player);
-	CameraComponent* cameraComp = pScene->Get<CameraComponent>(camera);
+	Transform* playerTransform = pScene->GetComponent<Transform>(player);
+	CameraComponent* cameraComp = pScene->GetComponent<CameraComponent>(camera);
 
 		if(playerTransform && cameraComp)
 		{ 
@@ -39,11 +39,11 @@ void Engine::CameraSystem::Update(CScene* pScene, float deltaTime)
 			cameraComp->position = Lerp(cameraComp->position, targetPosition, 0.1f);
 
 			// Clamp camera position to bounds (if applicable)
-			//cameraComp->position.x = Clamp(cameraComp->position.x, 0.0f,   cameraComp->width );
-			//cameraComp->position.y = Clamp(cameraComp->position.y, 0.0f,   cameraComp->height );
+			//cameraComp->position.x = std::clamp(cameraComp->position.x, 0.0f,  cameraComp->width);
+			//cameraComp->position.y = std::clamp(cameraComp->position.y, 0.0f,   cameraComp->height );
 
 			// Update the transform for the camera entity
-			Transform* cameraTransform = pScene->Get<Transform>(camera);
+			Transform* cameraTransform = pScene->GetComponent<Transform>(camera);
 			if (cameraTransform)
 			{
 				cameraTransform->position = cameraComp->position;

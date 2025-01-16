@@ -22,7 +22,7 @@ void Engine::ECSTest::Update(CScene* pScene, float deltaTime)
 {
     for (Entity entityId : SComponentIterator<Transform>(*pScene))
     {
-        Transform* pTransform = pScene->Get<Transform>(entityId);
+        Transform* pTransform = pScene->GetComponent<Transform>(entityId);
 
         pTransform->worldPosition = pTransform->position;
         pTransform->worldrotation = pTransform->rotation;

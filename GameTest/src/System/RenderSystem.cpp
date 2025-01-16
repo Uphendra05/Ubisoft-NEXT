@@ -19,8 +19,8 @@ namespace Engine
     {
         for (Entity entityId : SComponentIterator<Transform, SpriteRenderer>(*pScene))
         {
-            Transform* pTransform = pScene->Get<Transform>(entityId);
-            SpriteRenderer* pSprite = pScene->Get<SpriteRenderer>(entityId);
+            Transform* pTransform = pScene->GetComponent<Transform>(entityId);
+            SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityId);
 
             if (pSprite)
             {
@@ -42,8 +42,8 @@ namespace Engine
         
         for (Entity entityId : SComponentIterator<Transform, SpriteRenderer>(*pScene))
         {
-            Transform* pTransform = pScene->Get<Transform>(entityId);
-            SpriteRenderer* pSprite = pScene->Get<SpriteRenderer>(entityId);
+            Transform* pTransform = pScene->GetComponent<Transform>(entityId);
+            SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityId);
 
             GraphicUtils::UpdateAnimation(pSprite, pTransform, deltaTime);
             //pSprite->sprite->Update(deltaTime);
@@ -79,7 +79,7 @@ namespace Engine
 
         for (Entity entityId : SComponentIterator<SpriteRenderer>(*pScene))
         {
-            SpriteRenderer* pSprite = pScene->Get<SpriteRenderer>(entityId);
+            SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityId);
             GraphicUtils::DrawSprite(pSprite);
         }
         

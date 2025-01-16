@@ -4,9 +4,11 @@ D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\App\SimpleController.cpp;D:\Git 
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\App\SimpleSound.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\SimpleSound.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\App\SimpleSprite.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\SimpleSprite.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\CameraSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\CameraSystem.obj
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\Debug\DebugAABB.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\DebugAABB.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\MemoryLeakFinder\MemoryLeakFinder.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\MemoryLeakFinder.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Gamplay\GameLoop.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\GameLoop.obj
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\Debug\CollisionSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\CollisionSystem.obj
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\RaycastSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\RaycastSystem.obj
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\UI\WorldUI.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\WorldUI.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Utilities\GraphicUtils.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\GraphicUtils.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\RenderSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\RenderSystem.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\MovementSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\MovementSystem.obj
@@ -18,6 +20,7 @@ D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CEntityManager.cpp;D:\Gi
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\GameTest.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\GameTest.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\miniaudio\miniaudio.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\miniaudio.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\ECS\CScene.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\CScene.obj
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Utilities\PlayerUtilities.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\PlayerUtilities.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\stb_image\stb_image.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\stb_image.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\stdafx.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\stdafx.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Utilities\Vector2.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\Vector2.obj

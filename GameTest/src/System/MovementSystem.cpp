@@ -22,8 +22,8 @@ void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
     // Update velocity and position
     for (Entity entityId : SComponentIterator<Transform, MovementComponent>(*pScene))
     {
-        Transform* pTransform = pScene->Get<Transform>(entityId);
-        MovementComponent* pMovement = pScene->Get<MovementComponent>(entityId);
+        Transform* pTransform = pScene->GetComponent<Transform>(entityId);
+        MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
 
         // Clip acceleration to max
         float currentAcceleration = pMovement->acceleration.magnitude();

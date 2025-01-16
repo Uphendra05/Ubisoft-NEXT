@@ -11,6 +11,13 @@
 
 namespace Engine
 {
+	enum ePhysicsBody  //TODO : should calculate bounds based on this choice 
+	{
+		NONE =0,
+		AABB =1,
+
+	};
+
 	struct Tag
 	{
 		std::string entityName;
@@ -60,12 +67,24 @@ namespace Engine
 
 	};
 
+	struct RotationComponent
+	{
+		std::string componentName = "RotationComponent";
+
+		float angle;
+
+		float rotationSpeed;
+
+	};
+
 	struct Rigidbody
 	{
+	public:
+		std::string componentName = "Rigibody";
 		
 		float mass;
 		float gravity;
-
+		ePhysicsBody physicsBody;
 		bool isKinematic;
 
 
@@ -85,6 +104,13 @@ namespace Engine
 
 		int currentHealth;
 		int maxHealth;
+	};
+
+	struct RaycastComponent
+	{
+		Vector2 origin;
+		Vector2 direction;
+		float length;
 	};
 
 

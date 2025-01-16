@@ -57,7 +57,7 @@ namespace Engine
 			// Add component by type
 			if (componentType == GetComponentType<Transform>())
 			{
-				Transform* pOriginal = Get<Transform>(entityId);
+				Transform* pOriginal = GetComponent<Transform>(entityId);
 				if (pOriginal)
 				{
 					Transform* pNew = AddComponent<Transform>(newEntityId);

@@ -16,7 +16,7 @@ namespace Engine
         delete[] mData;
     }
 
-    void* Engine::CComponentContainer::Get(ComponentId compId)
+    void* Engine::CComponentContainer::GetComponent(ComponentId compId)
     {
         if (compId >= mSize || mData == nullptr)
         {

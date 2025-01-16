@@ -7,7 +7,7 @@
 
 namespace Engine
 {
-	struct AABB
+	struct sAABB
 	{
 
 		Vector2 minXY;

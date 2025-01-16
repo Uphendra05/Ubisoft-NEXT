@@ -46,7 +46,7 @@ namespace Engine
                 mComponentMaps[componentType] = new BiMap<Entity, ComponentId>();
             }
 
-            T* pComponent = Get<T>(entityId);
+            T* pComponent = GetComponent<T>(entityId);
             if (pComponent != nullptr)
             {
                 
@@ -72,7 +72,7 @@ namespace Engine
 
         // Get an entity component using the BiMap and ComponentPool
         template<typename T>
-        T* Get(Entity entityId)
+        T* GetComponent(Entity entityId)
         {
             if (mComponentCounter < 0)
             {
@@ -95,7 +95,7 @@ namespace Engine
                 return nullptr;
             }
 
-            T* pComponent = static_cast<T*>(mComponentPools[componentType]->Get(componentId));
+            T* pComponent = static_cast<T*>(mComponentPools[componentType]->GetComponent(componentId));
             return pComponent;
         }
 
