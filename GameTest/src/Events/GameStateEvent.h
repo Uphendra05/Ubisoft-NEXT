@@ -21,7 +21,7 @@ namespace Engine
 			Event<eGameStateEvents>(eGameStateEvents::GAME_STARTED, "GameStarted") {};
 		virtual ~GameStartedEvent() {};
 
-		CScene* pScene;
+		CScene* pScene = nullptr;
 	};
 
 	class GameRunningEvent : public Event<eGameStateEvents>
@@ -31,7 +31,7 @@ namespace Engine
 			Event<eGameStateEvents>(eGameStateEvents::GAME_RUNNING, "GameRunning") {};
 		virtual ~GameRunningEvent() {};
 
-		CScene* pScene;
+		CScene* pScene = nullptr;
 	};
 
 	class GameLevelUpEvent : public Event<eGameStateEvents>
@@ -41,7 +41,7 @@ namespace Engine
 			Event<eGameStateEvents>(eGameStateEvents::GAME_LEVELUP, "GameLevelUp") {};
 		virtual ~GameLevelUpEvent() {};
 
-		CScene* pScene;
+		CScene* pScene = nullptr;
 	};
 
 	class GameOverEvent : public Event<eGameStateEvents>
@@ -51,6 +51,6 @@ namespace Engine
 			Event<eGameStateEvents>(eGameStateEvents::GAME_OVER, "GameOver") {};
 		virtual ~GameOverEvent() {};
 
-		CScene* pScene;
+		CScene* pScene = nullptr;
 	};
 }

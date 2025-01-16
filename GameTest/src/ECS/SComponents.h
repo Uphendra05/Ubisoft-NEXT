@@ -6,7 +6,7 @@
 #include "../Utilities/Vector2.h"
 #include "App/SimpleSprite.h"
 #include "App/AppSettings.h"
-#include "src/System/Debug/PhysicsProperties.h"
+#include "src/Physics/PhysicsProperties.h"
 #include <set>
 
 const int   FRAME_RATE = 60;  // Frames per second

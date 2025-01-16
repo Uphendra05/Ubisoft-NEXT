@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Event.hpp"
-#include "src/System/Debug/PhysicsProperties.h"
+#include "src/Physics/PhysicsProperties.h"
 
 namespace Engine
 {
@@ -14,21 +14,21 @@ namespace Engine
 	class CollisionEnterEvent : public Event<eCollisionEvents>
 	{
 	public:
-		CollisionEnterEvent() :
-			Event<eCollisionEvents>(eCollisionEvents::ONCOLLISION_ENTER, "OnCollisionEnter") {};
+		CollisionEnterEvent() : Event<eCollisionEvents>(eCollisionEvents::ONCOLLISION_ENTER, "OnCollisionEnter") {};
+
 		virtual ~CollisionEnterEvent() {};
 
-		sCollisionData collisionData;
+		sCollisionData collisionData = sCollisionData();
 	};
 
 	class CollisionExitEvent : public Event<eCollisionEvents>
 	{
 	public:
-		CollisionExitEvent() :
-			Event<eCollisionEvents>(eCollisionEvents::ONCOLLISION_EXIT, "OnCollisionEnter") {};
+		CollisionExitEvent() : Event<eCollisionEvents>(eCollisionEvents::ONCOLLISION_EXIT, "OnCollisionEnter") {};
+
 		virtual ~CollisionExitEvent() {};
 
-		Entity entityA;
-		Entity entityB;
+		Entity entityA = 0;
+		Entity entityB = 0;
 	};
 }

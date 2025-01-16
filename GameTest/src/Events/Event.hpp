@@ -5,7 +5,6 @@
 namespace Engine
 {
 	// Base class for all events
-	// Ref: Oddstone Games - https://www.youtube.com/watch?v=u-J3SbW3cqE
 	template <typename T>
 	class Event
 	{
