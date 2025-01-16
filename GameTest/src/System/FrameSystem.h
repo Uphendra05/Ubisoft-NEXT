@@ -6,6 +6,10 @@ namespace Engine
 {
 	class FrameSystem :public iSystems		
 	{
+
+		FrameSystem() = default;
+		virtual ~FrameSystem() {};
+
 		// Inherited via iSystems
 		std::string SystemName() override;
 

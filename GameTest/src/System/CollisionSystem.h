@@ -19,7 +19,8 @@ namespace Engine
 
 
 
-
+		CollisionSystem() = default;
+		virtual ~CollisionSystem() {};
 
 		// Inherited via iSystems
 		std::string SystemName() override;

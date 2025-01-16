@@ -12,6 +12,9 @@ namespace Engine
 
 		public:
 
+		RaycastSystem() = default;
+		virtual ~RaycastSystem() {};
+
 		// Inherited via iSystems
 		std::string SystemName() override;
 

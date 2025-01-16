@@ -9,9 +9,9 @@ D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\FrameSystem.cpp;D:\Gi
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\CameraSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\CameraSystem.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\MemoryLeakFinder\MemoryLeakFinder.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\MemoryLeakFinder.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Gamplay\GameLoop.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\GameLoop.obj
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\Debug\CollisionSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\CollisionSystem.obj
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\CollisionSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\CollisionSystem.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\RaycastSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\RaycastSystem.obj
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\UI\WorldUI.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\WorldUI.obj
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\WorldUISystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\WorldUISystem.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Utilities\GraphicUtils.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\GraphicUtils.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\RenderSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\RenderSystem.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\MovementSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\MovementSystem.obj

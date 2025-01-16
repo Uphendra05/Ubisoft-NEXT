@@ -10,6 +10,10 @@ namespace Engine
 	class WorldUISystem : public iSystems
 	{
 	public :
+		WorldUISystem() = default;
+		virtual ~WorldUISystem() {};
+
+
 		// Inherited via iSystems
 		std::string SystemName() override;
 		void Init() override;

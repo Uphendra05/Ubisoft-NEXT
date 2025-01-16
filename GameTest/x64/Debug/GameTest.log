@@ -1,8 +1,7 @@
-﻿  PlayerHealthSystem.cpp
-  GameLoop.cpp
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Gamplay\GameLoop.cpp(7,10): error C1083: Cannot open include file: 'src/System/Debug/CollisionSystem.h': No such file or directory
-  (compiling source file '/src/Gamplay/GameLoop.cpp')
-  
+﻿  GameLoop.cpp
   CollisionSystem.cpp
   PlayerUtilities.cpp
   Generating Code...
+  GameTest.vcxproj -> D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Debug\GameTest.exe
+  D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\\GameTest\glut\bin\x64\freeglut.dll
+  1 File(s) copied

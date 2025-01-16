@@ -204,7 +204,7 @@
     <ClInclude Include="src\System\CollisionSystem.h" />
     <ClInclude Include="src\Physics\PhysicsProperties.h" />
     <ClInclude Include="src\System\RaycastSystem.h" />
-    <ClInclude Include="src\System\WorldUISystem..h" />
+    <ClInclude Include="src\System\WorldUISystem.h" />
     <ClInclude Include="src\Utilities\GraphicUtils.h" />
     <ClInclude Include="src\System\RenderSystem.h" />
     <ClInclude Include="src\System\MovementSystem.h" />

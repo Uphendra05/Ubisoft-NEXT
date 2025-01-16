@@ -8,6 +8,10 @@ namespace Engine
 {
 	class PlayerHealthSystem :public iSystems		
 	{
+	public:
+		PlayerHealthSystem() = default;
+		virtual ~PlayerHealthSystem() {};
+
 		// Inherited via iSystems
 		std::string SystemName() override;
 

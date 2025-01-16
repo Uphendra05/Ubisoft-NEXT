@@ -12,6 +12,9 @@ namespace Engine
 {
     class CameraSystem : public iSystems
     {
+        CameraSystem() = default;
+        virtual ~CameraSystem() {};
+
         // Inherited via iSystems
         std::string SystemName() override;
 
