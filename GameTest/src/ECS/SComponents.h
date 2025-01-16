@@ -6,12 +6,13 @@
 #include "../Utilities/Vector2.h"
 #include "App/SimpleSprite.h"
 #include "App/AppSettings.h"
+#include "src/System/Debug/PhysicsProperties.h"
+#include <set>
 
-
-
+const int   FRAME_RATE = 60;  // Frames per second
 namespace Engine
 {
-	enum ePhysicsBody  //TODO : should calculate bounds based on this choice 
+	enum ePhysicsBody  
 	{
 		NONE =0,
 		AABB =1,
@@ -114,6 +115,18 @@ namespace Engine
 	};
 
 
+	struct FrameCollisionComponent
+	{
+		std::set<sCollisionData> collisions[FRAME_RATE];
+		size_t currSize;
+	};
+
+	struct FrameCounterComponent
+	{
+		int frameCount;
+		float fpsTimer;
+		float fps;
+	};
 
 }
 #endif

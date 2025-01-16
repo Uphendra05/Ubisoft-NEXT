@@ -4,8 +4,22 @@
 #include "App/app.h"
 #include "src/ECS/SComponentIterator.h"
 #include "src/Utilities/PlayerUtilities.h"
+#include "src/Utilities/ComponentUtils.h"
 
-float RED[] = { 1.0f, 0.0f, 0.0f };
+const float POSITIONX = 400.0f;
+const float POSITIONY = 600.0f;
+std::string FRAMECOLTEXT = " I ";
+
+const float HEALTHPOSITIONX = 200.0f;
+const float HEALTHPOSITIONY = 600.0f;
+std::string HEALTHTEXT = " HEa ";
+
+
+
+const float COLOR[3] = { 1.0f, 1.0f, 1.0f };
+
+
+
 float BLUE[] = { 0.0f, 0.0f, 1.0f };
 
 std::string Engine::CollisionSystem::SystemName()
@@ -30,6 +44,15 @@ void Engine::CollisionSystem::Start(CScene* pScene)
 
 
         CreateAABB(entityId, pRigidbody, pTransform,pScene);
+    }
+
+    for (Entity entityId : SComponentIterator<HealthComponent>(*pScene))
+    {
+        HealthComponent* pHealth = pScene->GetComponent<HealthComponent>(entityId);
+
+        pHealth->currentHealth = 15;
+        pHealth->maxHealth = 15;
+
     }
 }
 
@@ -73,6 +96,9 @@ void Engine::CollisionSystem::Render(CScene* pScene)
         }
        
     }
+
+    App::Print(POSITIONX, POSITIONY, FRAMECOLTEXT.c_str(), COLOR[0], COLOR[2], COLOR[2]);
+    App::Print(HEALTHPOSITIONX, HEALTHPOSITIONY, HEALTHTEXT.c_str(), COLOR[0], COLOR[2], COLOR[2]);
 #endif
 }
 
@@ -117,24 +143,47 @@ void Engine::CollisionSystem::ResolveCollision(CScene* pScene, float deltatime)
             sAABB* aabbB = pScene->GetComponent<sAABB>(entityB);
             Tag* pTag1 = pScene->GetComponent<Tag>(entityB);
 
+            HEALTHTEXT = "HEALTH : " + std::to_string(pScene->GetComponent<HealthComponent>(PlayerUtilities::GetPlayerID(pScene))->currentHealth);
 
              if (CheckCollision(*aabbA, *aabbB))
              {
-                 // Resolve by moving the entity out of collision
-                 Vector2 overlap = aabbA->center - aabbB->center;
-                 pScene->GetComponent<Transform>(entityA)->position += overlap * deltatime ;
-                 pScene->GetComponent<Transform>(entityB)->position -= overlap * deltatime;
 
-                 if (entityA == PlayerUtilities::GetPlayerID(pScene))
+                 sCollisionData collData = sCollisionData();
+                 collData.pScene = pScene;
+                 collData.entityA = entityA;
+                 collData.entityB = entityB;
+
+                 bool isNewCollision = FrameCollision(collData);
+                 if (!isNewCollision)
                  {
-                     //pScene->RemoveEntity(entityB);
+
+                     FRAMECOLTEXT = "New Collisions : " + std::to_string(isNewCollision);
+                     pScene->GetComponent<HealthComponent>(PlayerUtilities::GetPlayerID(pScene))->currentHealth -= 1;
+
+                     continue;
+
                  }
+               
+
+                 // Resolve by moving the entity out of collision
+                // Vector2 overlap = aabbA->center - aabbB->center;
+                // pScene->GetComponent<Transform>(entityA)->position += overlap * deltatime ;
+                // pScene->GetComponent<Transform>(entityB)->position -= overlap * deltatime;
+
+               //  if (entityA == PlayerUtilities::GetPlayerID(pScene))
+                // {
+                     //pScene->RemoveEntity(entityB);
+                // }
                     
 
                  
 
              }
-            
+             else
+             {
+                 FRAMECOLTEXT = "No New Collisions";
+
+             }
            
         }
 
@@ -159,5 +208,17 @@ void Engine::CollisionSystem::CreateAABB(Entity entityID, Rigidbody* pRb, Transf
         aabb->CalculateBounds(*pTransform, Vector2(100.0f, 100.0f));
     }
 
+
+}
+
+bool Engine::CollisionSystem::FrameCollision(const sCollisionData& collData)
+{
+    FrameCollisionComponent* pFrameColl = ComponentUtils::GetFrameCollision();
+    FrameCounterComponent* pFrames = ComponentUtils::GetFrameCounter();
+
+    int currFrame = pFrames->frameCount % FRAME_RATE;
+    bool isNewCollision = pFrameColl->collisions[currFrame].insert(collData).second;
+
+    return isNewCollision;
 
 }

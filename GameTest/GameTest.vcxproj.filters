@@ -37,8 +37,13 @@
     <ClCompile Include="src\UnitTests\ECSTest.cpp" />
     <ClCompile Include="src\UnitTests\Vector2Tests.cpp" />
     <ClCompile Include="src\MemoryLeakFinder\MemoryLeakFinder.cpp" />
-    <ClCompile Include="src\System\Debug\DebugAABB.cpp" />
     <ClCompile Include="src\System\CameraSystem.cpp" />
+    <ClCompile Include="src\System\Debug\CollisionSystem.cpp" />
+    <ClCompile Include="src\System\RaycastSystem.cpp" />
+    <ClCompile Include="src\System\UI\WorldUI.cpp" />
+    <ClCompile Include="src\Utilities\PlayerUtilities.cpp" />
+    <ClCompile Include="src\System\FrameSystem.cpp" />
+    <ClCompile Include="src\Utilities\ComponentUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -89,9 +94,15 @@
     <ClInclude Include="src\Gamplay\SystemFactory.h" />
     <ClInclude Include="src\UnitTests\Vector2Tests.h" />
     <ClInclude Include="src\MemoryLeakFinder\MemoryLeakFinder.h" />
-    <ClInclude Include="src\System\Debug\DebugAABB.h" />
     <ClInclude Include="src\Physics\AABB.h" />
     <ClInclude Include="src\System\CameraSystem.h" />
+    <ClInclude Include="src\System\Debug\CollisionSystem.h" />
+    <ClInclude Include="src\System\RaycastSystem.h" />
+    <ClInclude Include="src\System\UI\WorldUI.h" />
+    <ClInclude Include="src\Utilities\PlayerUtilities.h" />
+    <ClInclude Include="src\System\Debug\PhysicsProperties.h" />
+    <ClInclude Include="src\System\FrameSystem.h" />
+    <ClInclude Include="src\Utilities\ComponentUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

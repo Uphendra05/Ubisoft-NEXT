@@ -186,11 +186,14 @@
     <ClInclude Include="App\SimpleController.h" />
     <ClInclude Include="App\SimpleSound.h" />
     <ClInclude Include="App\SimpleSprite.h" />
+    <ClInclude Include="src\Utilities\ComponentUtils.h" />
+    <ClInclude Include="src\System\FrameSystem.h" />
     <ClInclude Include="src\System\CameraSystem.h" />
     <ClInclude Include="src\Physics\AABB.h" />
     <ClInclude Include="src\MemoryLeakFinder\MemoryLeakFinder.h" />
     <ClInclude Include="src\Gamplay\GameLoop.h" />
     <ClInclude Include="src\System\Debug\CollisionSystem.h" />
+    <ClInclude Include="src\System\Debug\PhysicsProperties.h" />
     <ClInclude Include="src\System\RaycastSystem.h" />
     <ClInclude Include="src\System\UI\WorldUI.h" />
     <ClInclude Include="src\Utilities\GraphicUtils.h" />
@@ -223,6 +226,8 @@
     <ClCompile Include="App\SimpleController.cpp" />
     <ClCompile Include="App\SimpleSound.cpp" />
     <ClCompile Include="App\SimpleSprite.cpp" />
+    <ClCompile Include="src\Utilities\ComponentUtils.cpp" />
+    <ClCompile Include="src\System\FrameSystem.cpp" />
     <ClCompile Include="src\System\CameraSystem.cpp" />
     <ClCompile Include="src\MemoryLeakFinder\MemoryLeakFinder.cpp" />
     <ClCompile Include="src\Gamplay\GameLoop.cpp" />

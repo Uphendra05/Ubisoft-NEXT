@@ -8,6 +8,7 @@
 #include "src/System/CameraSystem.h"
 #include "src/System/UI/WorldUI.h"
 #include "src/System/RaycastSystem.h"
+#include "src/System/FrameSystem.h"
 
 void Engine::GameLoop::Start(CScene* pScene)
 {
@@ -18,6 +19,7 @@ void Engine::GameLoop::Start(CScene* pScene)
 	systemFactory.CreateSystems<WorldUI>();
 	systemFactory.CreateSystems<CollisionSystem>();
 	systemFactory.CreateSystems<RaycastSystem>();
+	systemFactory.CreateSystems<FrameSystem>();
 
 
 

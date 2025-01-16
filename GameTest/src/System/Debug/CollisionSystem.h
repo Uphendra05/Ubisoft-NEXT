@@ -42,6 +42,10 @@ namespace Engine
 
 		void CreateAABB(Entity entityID, Rigidbody* pRb, Transform* pTransform, CScene* pScene);
 
+		bool FrameCollision(const sCollisionData& collData);
+
+	private : 
+
 	};
 
 }
