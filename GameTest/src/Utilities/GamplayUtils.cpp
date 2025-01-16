@@ -142,6 +142,9 @@ namespace Engine
 	{
 		Entity collidableId = pScene->CreateEntity();
 
+		Tag* pTag = pScene->AddComponent<Tag>(collidableId);
+		pTag->entityName = "Collide2";
+
 		Transform* pTransform = pScene->AddComponent<Transform>(collidableId);
 		pTransform->position = position;
 		pTransform->rotation = 0;
@@ -161,8 +164,7 @@ namespace Engine
 		pMove->isStatic = true;
 
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
-		pRigidbody->physicsBody = ePhysicsBody::NONE;
-
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
 		pRigidbody->isKinematic = false;

@@ -186,6 +186,15 @@
     <ClInclude Include="App\SimpleController.h" />
     <ClInclude Include="App\SimpleSound.h" />
     <ClInclude Include="App\SimpleSprite.h" />
+    <ClInclude Include="src\System\PlayerHealthSystem.h" />
+    <ClInclude Include="src\Events\CollisionEvent.h" />
+    <ClInclude Include="src\Events\Event.hpp" />
+    <ClInclude Include="src\Events\EventBus.hpp" />
+    <ClInclude Include="src\Events\EventBusLocator.hpp" />
+    <ClInclude Include="src\Events\GameStateEvent.h" />
+    <ClInclude Include="src\Events\iEventBus.h" />
+    <ClInclude Include="src\Events\NullEventBus.h" />
+    <ClInclude Include="src\Events\NullEventBus.hpp" />
     <ClInclude Include="src\Utilities\ComponentUtils.h" />
     <ClInclude Include="src\System\FrameSystem.h" />
     <ClInclude Include="src\System\CameraSystem.h" />
@@ -226,6 +235,7 @@
     <ClCompile Include="App\SimpleController.cpp" />
     <ClCompile Include="App\SimpleSound.cpp" />
     <ClCompile Include="App\SimpleSprite.cpp" />
+    <ClCompile Include="src\System\PlayerHealthSystem.cpp" />
     <ClCompile Include="src\Utilities\ComponentUtils.cpp" />
     <ClCompile Include="src\System\FrameSystem.cpp" />
     <ClCompile Include="src\System\CameraSystem.cpp" />

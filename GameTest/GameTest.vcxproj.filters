@@ -103,6 +103,14 @@
     <ClInclude Include="src\System\Debug\PhysicsProperties.h" />
     <ClInclude Include="src\System\FrameSystem.h" />
     <ClInclude Include="src\Utilities\ComponentUtils.h" />
+    <ClInclude Include="src\Events\CollisionEvent.h" />
+    <ClInclude Include="src\Events\Event.hpp" />
+    <ClInclude Include="src\Events\EventBus.hpp" />
+    <ClInclude Include="src\Events\EventBusLocator.hpp" />
+    <ClInclude Include="src\Events\GameStateEvent.h" />
+    <ClInclude Include="src\Events\iEventBus.h" />
+    <ClInclude Include="src\Events\NullEventBus.h" />
+    <ClInclude Include="src\Events\NullEventBus.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

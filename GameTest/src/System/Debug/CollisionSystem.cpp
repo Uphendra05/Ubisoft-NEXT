@@ -5,6 +5,8 @@
 #include "src/ECS/SComponentIterator.h"
 #include "src/Utilities/PlayerUtilities.h"
 #include "src/Utilities/ComponentUtils.h"
+#include "src/Events/EventBus.hpp"
+#include "src/Events/EventBusLocator.hpp"
 
 const float POSITIONX = 400.0f;
 const float POSITIONY = 600.0f;
@@ -29,6 +31,8 @@ std::string Engine::CollisionSystem::SystemName()
 
 void Engine::CollisionSystem::Init()
 {
+    m_pEventBusCollision = new EventBus<eCollisionEvents, CollisionEnterEvent>();
+    EventBusLocator<eCollisionEvents, CollisionEnterEvent>::Set(m_pEventBusCollision);
 }
 
 void Engine::CollisionSystem::Start(CScene* pScene)
@@ -50,8 +54,8 @@ void Engine::CollisionSystem::Start(CScene* pScene)
     {
         HealthComponent* pHealth = pScene->GetComponent<HealthComponent>(entityId);
 
-        pHealth->currentHealth = 15;
-        pHealth->maxHealth = 15;
+        pHealth->currentHealth = 150;
+        pHealth->maxHealth = 150;
 
     }
 }
@@ -143,7 +147,7 @@ void Engine::CollisionSystem::ResolveCollision(CScene* pScene, float deltatime)
             sAABB* aabbB = pScene->GetComponent<sAABB>(entityB);
             Tag* pTag1 = pScene->GetComponent<Tag>(entityB);
 
-            HEALTHTEXT = "HEALTH : " + std::to_string(pScene->GetComponent<HealthComponent>(PlayerUtilities::GetPlayerID(pScene))->currentHealth);
+           HEALTHTEXT = "HEALTH : " + std::to_string(pScene->GetComponent<HealthComponent>(PlayerUtilities::GetPlayerID(pScene))->currentHealth);
 
              if (CheckCollision(*aabbA, *aabbB))
              {
@@ -157,33 +161,31 @@ void Engine::CollisionSystem::ResolveCollision(CScene* pScene, float deltatime)
                  if (!isNewCollision)
                  {
 
-                     FRAMECOLTEXT = "New Collisions : " + std::to_string(isNewCollision);
-                     pScene->GetComponent<HealthComponent>(PlayerUtilities::GetPlayerID(pScene))->currentHealth -= 1;
-
                      continue;
 
                  }
-               
+                 TriggerCollision(collData);
+
+
+                 if (entityA == PlayerUtilities::GetPlayerID(pScene))
+                 {
+                     pScene->RemoveEntity(entityB);
+                 }
+
+
 
                  // Resolve by moving the entity out of collision
                 // Vector2 overlap = aabbA->center - aabbB->center;
                 // pScene->GetComponent<Transform>(entityA)->position += overlap * deltatime ;
                 // pScene->GetComponent<Transform>(entityB)->position -= overlap * deltatime;
 
-               //  if (entityA == PlayerUtilities::GetPlayerID(pScene))
-                // {
-                     //pScene->RemoveEntity(entityB);
-                // }
+               
                     
 
                  
 
              }
-             else
-             {
-                 FRAMECOLTEXT = "No New Collisions";
-
-             }
+             
            
         }
 
@@ -220,5 +222,15 @@ bool Engine::CollisionSystem::FrameCollision(const sCollisionData& collData)
     bool isNewCollision = pFrameColl->collisions[currFrame].insert(collData).second;
 
     return isNewCollision;
+
+}
+
+void Engine::CollisionSystem::TriggerCollision(const sCollisionData& collData)
+{
+    iEventBus<eCollisionEvents, CollisionEnterEvent>* pEventBus = EventBusLocator<eCollisionEvents, CollisionEnterEvent>::Get();
+
+    CollisionEnterEvent collEvent = CollisionEnterEvent();
+    collEvent.collisionData = collData;
+    pEventBus->Publish(collEvent);
 
 }

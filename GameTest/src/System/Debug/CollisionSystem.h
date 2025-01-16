@@ -7,6 +7,8 @@
 #include "src/Utilities/Vector2.h"
 #include "src/ECS/SComponents.h"
 #include "src/Physics/AABB.h"
+#include "src/Events/CollisionEvent.h"
+#include "src/Events/iEventBus.h"
 
 
 namespace Engine
@@ -44,7 +46,11 @@ namespace Engine
 
 		bool FrameCollision(const sCollisionData& collData);
 
+		void TriggerCollision(const sCollisionData& collData);
+
 	private : 
+		iEventBus<eCollisionEvents, CollisionEnterEvent>* m_pEventBusCollision;
+		
 
 	};
 

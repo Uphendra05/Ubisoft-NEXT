@@ -43,9 +43,8 @@ namespace Engine
 			Entity outEntity;
 			bool hitEntity = Raycast(pScene, *pRay, hitDistance, outEntity);
 
-			if (hitEntity == true)
+			if (hitEntity)
 			{
-				std::cout << "Ray hit entity ID: " << " at distance: " << hitDistance << std::endl;
 				
 				UITEXT = "Entity HIT !";
 
