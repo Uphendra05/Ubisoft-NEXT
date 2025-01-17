@@ -22,6 +22,7 @@ namespace Engine
             Transform* pTransform = pScene->GetComponent<Transform>(entityId);
             SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityId);
 
+
             if (pSprite)
             {
                 continue;
@@ -82,7 +83,17 @@ namespace Engine
             SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityId);
             GraphicUtils::DrawSprite(pSprite);
         }
-        
+
+        for (Entity entityId : SComponentIterator<MovementComponent>(*pScene))
+        {
+            MovementComponent* pPlayer = pScene->GetComponent<MovementComponent>(entityId);
+
+
+            App::Print(600, 600, std::to_string(pPlayer->chargePower/10000).c_str(), 1, 1, 1);
+
+            
+        }
+
         
     }
 

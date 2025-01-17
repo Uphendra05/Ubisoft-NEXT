@@ -17,7 +17,7 @@ namespace Engine
 	{
 
 
-
+	public:
 
 		CollisionSystem() = default;
 		virtual ~CollisionSystem() {};
@@ -49,7 +49,7 @@ namespace Engine
 
 		void TriggerCollision(const sCollisionData& collData);
 
-	private : 
+	
 		iEventBus<eCollisionEvents, CollisionEnterEvent>* m_pEventBusCollision;
 		
 

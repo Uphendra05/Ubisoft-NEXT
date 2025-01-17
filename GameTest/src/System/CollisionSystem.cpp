@@ -101,8 +101,8 @@ void Engine::CollisionSystem::Render(CScene* pScene)
        
     }
 
-    App::Print(POSITIONX, POSITIONY, FRAMECOLTEXT.c_str(), COLOR[0], COLOR[2], COLOR[2]);
-    App::Print(HEALTHPOSITIONX, HEALTHPOSITIONY, HEALTHTEXT.c_str(), COLOR[0], COLOR[2], COLOR[2]);
+    //App::Print(POSITIONX, POSITIONY, FRAMECOLTEXT.c_str(), COLOR[0], COLOR[2], COLOR[2]);
+   // App::Print(HEALTHPOSITIONX, HEALTHPOSITIONY, HEALTHTEXT.c_str(), COLOR[0], COLOR[2], COLOR[2]);
 #endif
 }
 
@@ -169,7 +169,7 @@ void Engine::CollisionSystem::ResolveCollision(CScene* pScene, float deltatime)
 
                  if (entityA == PlayerUtilities::GetPlayerID(pScene))
                  {
-                     pScene->RemoveEntity(entityB);
+                     //pScene->RemoveEntity(entityB);
                  }
 
 

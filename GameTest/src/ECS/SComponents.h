@@ -66,6 +66,12 @@ namespace Engine
 
 		bool isStatic;
 
+
+		bool isCharging = false;   // Is the player charging a shot?
+		float chargePower = 0.0f;  // Current shot power
+		float maxPower = 500.0f;   // Maximum shot power
+		float chargeRate = 100.0f; // Rate of power increase per second
+
 	};
 
 	struct RotationComponent
@@ -126,6 +132,11 @@ namespace Engine
 		int frameCount;
 		float fpsTimer;
 		float fps;
+	};
+
+	struct GolfBallComponent
+	{
+
 	};
 
 }

@@ -56,8 +56,8 @@ namespace Engine
 		pTransform->scale = 1;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(playerId);
-		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/PlayerIdle.png";  //TODO : Should Change this
-		pSprite->cols = 5;
+		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/golf.png";  //TODO : Should Change this
+		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
 

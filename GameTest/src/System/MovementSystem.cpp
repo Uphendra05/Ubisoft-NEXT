@@ -36,16 +36,16 @@ void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
         Vector2 dragForce = newVelocity * -(pMovement->drag * deltaTime);
         pMovement->velocity = newVelocity + dragForce;
 
-        // Clip velocity between min and max
-        float currentSpeed = pMovement->velocity.magnitude();
-        if (currentSpeed > pMovement->maxSpeed)
-        {
-            pMovement->velocity = pMovement->velocity.normalized() * pMovement->maxSpeed;
-        }
-        else if (currentSpeed <= minSpeed)
-        {
-            pMovement->velocity = Vector2(0.0f, 0.0f);
-        }
+        //// Clip velocity between min and max
+        //float currentSpeed = pMovement->velocity.magnitude();
+        //if (currentSpeed > pMovement->maxSpeed)
+        //{
+        //    pMovement->velocity = pMovement->velocity.normalized() * pMovement->maxSpeed;
+        //}
+        //else if (currentSpeed <= minSpeed)
+        //{
+        //    pMovement->velocity = Vector2(0.0f, 0.0f);
+        //}
 
         pTransform->position += (pMovement->velocity * deltaTime);
     }
@@ -53,6 +53,7 @@ void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
 
 void Engine::MovementSystem::Render(CScene* pScene)
 {
+
 }
 
 void Engine::MovementSystem::End(CScene* pScene)

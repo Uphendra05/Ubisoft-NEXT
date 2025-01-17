@@ -37,6 +37,8 @@ namespace Engine
 
 	     void MakeBorders(float& x, float& y);
 
+		 void ShootGolfBall();
+
 	};
 
 

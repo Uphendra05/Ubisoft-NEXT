@@ -2,6 +2,12 @@
 #include "PlayerMovement.h"
 #include "src/ECS/SComponentIterator.h"
 
+const float CHARGEPOWERX = 600.0f;
+const float CHARGEPOWERY = 600.0f;
+std::string CHARGEPOWERTEXT = " POWER ";
+const float COLOR[3] = { 1.0f, 1.0f, 1.0f };
+
+
 std::string Engine::PlayerMovement::SystemName()
 {
     return std::string();
@@ -24,56 +30,61 @@ void Engine::PlayerMovement::Start(CScene* pScene)
         pMovement->drag = 5;
         pMovement->maxSpeed = 1000;
         pMovement->maxAcceleration = 1000;
+
+        pMovement->chargePower = 0.0f;  // Current shot power
+        pMovement->maxPower = 5000.0f;   // Maximum shot power
+        pMovement->chargeRate = 500.0f; // Rate of power increase per second
+
+
     }
 
 }
 
 void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
 {
+    deltaTime = deltaTime / 100.0f;
+    CHARGEPOWERTEXT = "POWER : " ;
 
     for (Entity entityId : SComponentIterator<Transform, MovementComponent>(*pScene))
     {
         Transform* pTransform = pScene->GetComponent<Transform>(entityId);
         MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
-
+       
         if (!pMovement->isStatic)
         {
             bool moving = false;
 
-
-            if (App::IsKeyPressed(87))
+            // Golf shot mechanics
+            if (App::IsKeyPressed(32)) // Start charging
             {
-                MoveUpDown(pTransform, pMovement, -1);
-                moving = true;
+                pMovement->isCharging = true;
+                pMovement->chargePower += pMovement->chargeRate * deltaTime;
 
-            }
-            if (App::IsKeyPressed(83))
-            {
-                MoveUpDown(pTransform, pMovement, 1);
-                moving = true;
-
-            }
-            if (App::IsKeyPressed(65))
-            {
-                MoveLeftRight(pTransform, pMovement, -1);
-                moving = true;
-
-            }
-            if (App::IsKeyPressed(68))
-            {
-                MoveLeftRight(pTransform, pMovement, 1);
+                // Cap the charge power
+                if (pMovement->chargePower > pMovement->maxPower)
+                {
+                    pMovement->chargePower = pMovement->maxPower;
+                }
                 moving = true;
             }
-
-            if (!moving)
+            else if (pMovement->isCharging && !App::IsKeyPressed(32)) // Release shot
             {
+                pMovement->isCharging = false;
 
-                pMovement->acceleration = Vector2(0.0f, 0.0f);
+                Vector2 mousePos = Vector2();
+                App::GetMousePos(mousePos.x, mousePos.y);
+                Vector2 direction = mousePos - pTransform->position;
+                
+                // Apply the shot
+                Vector2 shotDirection = direction.normalized();
+                pMovement->velocity = shotDirection * pMovement->chargePower;
 
+                // Reset charge power
+                pMovement->chargePower = 0.0f;
+                moving = false;
             }
 
-            //MakeBorders(pTransform->position.x, pTransform->position.y);
-
+            MakeBorders(pTransform->position.x, pTransform->position.y);
         }
         
 
@@ -82,6 +93,9 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
 
 void Engine::PlayerMovement::Render(CScene* pScene)
 {
+
+
+
 }
 
 void Engine::PlayerMovement::End(CScene* pScene)

@@ -6,7 +6,7 @@ namespace Engine
 {
 	class FrameSystem :public iSystems		
 	{
-
+	public:
 		FrameSystem() = default;
 		virtual ~FrameSystem() {};
 

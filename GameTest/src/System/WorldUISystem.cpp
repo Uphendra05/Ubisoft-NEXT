@@ -28,6 +28,8 @@ void Engine::WorldUISystem::Render(CScene* pScene)
 {
 
     App::Print(POSITIONX, POSITIONY, UITEXT.c_str(), COLOR[0], COLOR[1], COLOR[2]);
+
+	
 }
 
 void Engine::WorldUISystem::End(CScene* pScene)
