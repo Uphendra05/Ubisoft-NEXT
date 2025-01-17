@@ -17,10 +17,10 @@ void Engine::GameLoop::Start(CScene* pScene)
 	systemFactory.CreateSystems<MovementSystem>();
 	systemFactory.CreateSystems<RenderSystem>();
 	systemFactory.CreateSystems<WorldUISystem>();
-	systemFactory.CreateSystems<CollisionSystem>();
 	systemFactory.CreateSystems<RaycastSystem>();
 	systemFactory.CreateSystems<FrameSystem>();
 	systemFactory.CreateSystems<PlayerHealthSystem>();
+	systemFactory.CreateSystems<CollisionSystem>();
 
 
 

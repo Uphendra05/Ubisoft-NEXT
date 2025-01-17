@@ -44,7 +44,6 @@ void Engine::CollisionSystem::Start(CScene* pScene)
 
         pRigidbody->gravity = 9.8f;
         pRigidbody->mass = 1.0f;
-        pRigidbody->isKinematic = false;
 
 
         CreateAABB(entityId, pRigidbody, pTransform,pScene);
@@ -78,10 +77,9 @@ void Engine::CollisionSystem::Update(CScene* pScene, float deltaTime)
 
             
             // Update AABB bounds
-            pAABB->CalculateBounds(*pTransform, pAABB->halfSize * 2.0f);
-
-            
+            pAABB->CalculateBounds(*pTransform, pAABB->halfSize * 2.0f);            
             ResolveCollision(pScene, deltaTime);
+
         }
     }
 }
@@ -102,8 +100,8 @@ void Engine::CollisionSystem::Render(CScene* pScene)
     }
 
     //App::Print(POSITIONX, POSITIONY, FRAMECOLTEXT.c_str(), COLOR[0], COLOR[2], COLOR[2]);
-   // App::Print(HEALTHPOSITIONX, HEALTHPOSITIONY, HEALTHTEXT.c_str(), COLOR[0], COLOR[2], COLOR[2]);
 #endif
+   // App::Print(HEALTHPOSITIONX, HEALTHPOSITIONY, HEALTHTEXT.c_str(), COLOR[0], COLOR[2], COLOR[2]);
 }
 
 void Engine::CollisionSystem::End(CScene* pScene)
@@ -146,13 +144,20 @@ void Engine::CollisionSystem::ResolveCollision(CScene* pScene, float deltatime)
 
             sAABB* aabbB = pScene->GetComponent<sAABB>(entityB);
             Tag* pTag1 = pScene->GetComponent<Tag>(entityB);
+          //  HEALTHTEXT = "HEALTH : " + std::to_string(pScene->GetComponent<HealthComponent>(PlayerUtilities::GetPlayerID(pScene))->currentHealth);
 
-           HEALTHTEXT = "HEALTH : " + std::to_string(pScene->GetComponent<HealthComponent>(PlayerUtilities::GetPlayerID(pScene))->currentHealth);
-
+           
+            
              if (CheckCollision(*aabbA, *aabbB))
              {
+                
+                 Vector2 overlap = aabbA->center - aabbB->center;
+                 pScene->GetComponent<MovementComponent>(entityA)->velocity += overlap;
+                 pScene->GetComponent<MovementComponent>(entityB)->velocity -= overlap;
+                // pScene->GetComponent<HealthComponent>(PlayerUtilities::GetPlayerID(pScene))->currentHealth -= 1;
 
-                 sCollisionData collData = sCollisionData();
+
+                sCollisionData collData = sCollisionData();
                  collData.pScene = pScene;
                  collData.entityA = entityA;
                  collData.entityB = entityB;
@@ -160,6 +165,10 @@ void Engine::CollisionSystem::ResolveCollision(CScene* pScene, float deltatime)
                  bool isNewCollision = FrameCollision(collData);
                  if (!isNewCollision)
                  {
+                     FrameCollisionComponent* pFrameColl = ComponentUtils::GetFrameCollision();
+                     FrameCounterComponent* pFrames = ComponentUtils::GetFrameCounter();
+                     int currFrame = pFrames->frameCount % FRAME_RATE;
+                     pFrameColl->collisions[currFrame].clear();
 
                      continue;
 
@@ -169,18 +178,9 @@ void Engine::CollisionSystem::ResolveCollision(CScene* pScene, float deltatime)
 
                  if (entityA == PlayerUtilities::GetPlayerID(pScene))
                  {
-                     //pScene->RemoveEntity(entityB);
-                 }
-
-
-
-                 // Resolve by moving the entity out of collision
-                // Vector2 overlap = aabbA->center - aabbB->center;
-                // pScene->GetComponent<Transform>(entityA)->position += overlap * deltatime ;
-                // pScene->GetComponent<Transform>(entityB)->position -= overlap * deltatime;
-
-               
                     
+                   // pScene->RemoveEntity(entityB);
+                 }
 
                  
 
@@ -207,7 +207,7 @@ void Engine::CollisionSystem::CreateAABB(Entity entityID, Rigidbody* pRb, Transf
     {
         sAABB* aabb = new sAABB();
         aabb = pScene->AddComponent<sAABB>(entityID);
-        aabb->CalculateBounds(*pTransform, Vector2(100.0f, 100.0f));
+        aabb->CalculateBounds(*pTransform, pRb->colliderSize);
     }
 
 
@@ -220,7 +220,7 @@ bool Engine::CollisionSystem::FrameCollision(const sCollisionData& collData)
 
     int currFrame = pFrames->frameCount % FRAME_RATE;
     bool isNewCollision = pFrameColl->collisions[currFrame].insert(collData).second;
-
+    //pFrameColl->collisions[currFrame].clear();
     return isNewCollision;
 
 }

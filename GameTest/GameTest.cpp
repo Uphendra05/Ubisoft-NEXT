@@ -55,11 +55,12 @@ void Init()
 	//Vector2Tests::RunAllTests();
 	
 	
-	GamplayUtils::CreateBackground(scene, Vector2(400, 400));
+	GamplayUtils::CreateBackground(scene, Vector2(510,385));
 
 	GamplayUtils::CreatePlayer(scene, Vector2(400.0f, 400.0f));
 
 	GamplayUtils::CreateCollidable(scene, Vector2(200.0f, 200.0f));
+
 
 	GamplayUtils::CreateCollidable2(scene, Vector2(400.0f, 200.0f));
 

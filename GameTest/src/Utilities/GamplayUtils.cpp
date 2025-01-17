@@ -33,7 +33,7 @@ namespace Engine
 		pTransform->scale = 1;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(backgroundId);
-		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Backgroound.png";  //TODO : Should Change this
+		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/BG.png";  //TODO : Should Change this
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
@@ -85,6 +85,7 @@ namespace Engine
 		//TODO : For Now Rigidbody is not of big use should change this
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(playerId);
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->colliderSize = Vector2(50, 50);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
 		pRigidbody->isKinematic = false;
@@ -111,15 +112,16 @@ namespace Engine
 		Transform* pTransform = pScene->AddComponent<Transform>(collidableId);
 		pTransform->position = position;
 		pTransform->rotation = 0;
-		pTransform->scale = 1;
+		pTransform->scale = 0.15f;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(collidableId);
-		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Attack_1.png";  //TODO : Should Change this
-		pSprite->cols = 5;
+		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Hole.png";  //TODO : Should Change this
+		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
 
 		GraphicUtils::SetupSprite(pSprite, pTransform);
+		pSprite->isStatic = true;
 
 		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(collidableId);
 		pMove->acceleration = Vector2(0.0f, 0.0f);
@@ -129,9 +131,10 @@ namespace Engine
 
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->colliderSize = Vector2(10, 10);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
-		pRigidbody->isKinematic = false;
+		pRigidbody->isKinematic = true;
 
 	
 

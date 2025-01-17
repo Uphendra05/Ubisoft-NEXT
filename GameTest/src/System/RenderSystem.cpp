@@ -84,15 +84,7 @@ namespace Engine
             GraphicUtils::DrawSprite(pSprite);
         }
 
-        for (Entity entityId : SComponentIterator<MovementComponent>(*pScene))
-        {
-            MovementComponent* pPlayer = pScene->GetComponent<MovementComponent>(entityId);
-
-
-            App::Print(600, 600, std::to_string(pPlayer->chargePower/10000).c_str(), 1, 1, 1);
-
-            
-        }
+       
 
         
     }

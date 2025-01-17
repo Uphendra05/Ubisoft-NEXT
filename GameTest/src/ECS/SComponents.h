@@ -47,9 +47,10 @@ namespace Engine
 		int rows = 0;
 		int cols = 0;
 
-		float animSpeed = 5.0f;
+		float animSpeed = 0.0f;
 
 		CSimpleSprite* sprite;
+		bool isStatic;
 	};
 
 	struct MovementComponent
@@ -93,7 +94,7 @@ namespace Engine
 		float gravity;
 		ePhysicsBody physicsBody;
 		bool isKinematic;
-
+		Vector2 colliderSize = Vector2(100, 100);
 
 	};
 

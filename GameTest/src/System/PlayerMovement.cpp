@@ -28,12 +28,12 @@ void Engine::PlayerMovement::Start(CScene* pScene)
         pMovement->acceleration = Vector2(0.0f, 0.0f);
         pMovement->velocity = Vector2(0.0f, 0.0f);
         pMovement->drag = 5;
-        pMovement->maxSpeed = 1000;
+        pMovement->maxSpeed = 2000;
         pMovement->maxAcceleration = 1000;
 
         pMovement->chargePower = 0.0f;  // Current shot power
-        pMovement->maxPower = 5000.0f;   // Maximum shot power
-        pMovement->chargeRate = 500.0f; // Rate of power increase per second
+        pMovement->maxPower = 2000.0f;   // Maximum shot power
+        pMovement->chargeRate = 200.0f; // Rate of power increase per second
 
 
     }
@@ -74,10 +74,8 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
                 Vector2 mousePos = Vector2();
                 App::GetMousePos(mousePos.x, mousePos.y);
                 Vector2 direction = mousePos - pTransform->position;
-                
-                // Apply the shot
-                Vector2 shotDirection = direction.normalized();
-                pMovement->velocity = shotDirection * pMovement->chargePower;
+               
+                pMovement->velocity = direction.normalized() * pMovement->chargePower;
 
                 // Reset charge power
                 pMovement->chargePower = 0.0f;
@@ -94,7 +92,7 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
 void Engine::PlayerMovement::Render(CScene* pScene)
 {
 
-
+  
 
 }
 

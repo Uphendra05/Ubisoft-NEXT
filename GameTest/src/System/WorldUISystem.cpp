@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "WorldUISystem.h"
+#include "src/ECS/SComponentIterator.h"
+#include "src/ECS/SComponents.h"
 
 const float POSITIONX = 200.0f;
 const float POSITIONY = 500.0f;
@@ -28,6 +30,34 @@ void Engine::WorldUISystem::Render(CScene* pScene)
 {
 
     App::Print(POSITIONX, POSITIONY, UITEXT.c_str(), COLOR[0], COLOR[1], COLOR[2]);
+
+    //Should This be here ?
+
+    for (Entity entityId : SComponentIterator<MovementComponent>(*pScene))
+    {
+        MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
+        Transform* pTransform = pScene->GetComponent<Transform>(entityId);
+
+        if (pMovement && pTransform)
+        {
+            // Debug power line visualization
+            if (pMovement->isCharging)
+            {
+                Vector2 mousePos = Vector2();
+                App::GetMousePos(mousePos.x, mousePos.y);
+                Vector2 direction = mousePos - pTransform->position;
+                Vector2 shotDirection = direction.normalized();
+
+                // Calculate the start and end points of the debug line
+                Vector2 startPoint = pTransform->position; // Start at the entity's position
+                Vector2 endPoint = startPoint + shotDirection * (pMovement->chargePower * 0.1f); 
+
+                // Draw the debug line
+                float color[3] = { 0.0f, 0.0f, 1.0f }; 
+                App::DrawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y, color[0], color[1], color[2]);
+            }
+        }
+    }
 
 	
 }

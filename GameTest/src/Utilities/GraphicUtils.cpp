@@ -4,11 +4,15 @@
 
 void Engine::GraphicUtils::UpdateAnimation(SpriteRenderer* pSprite, Transform* pTransform, const float& deltaTime)
 {
-    pSprite->sprite->SetPosition(pTransform->position.x , pTransform->position.y );
-    pSprite->sprite->SetAngle(pTransform->rotation);
-    pSprite->sprite->SetScale(pTransform->scale);
+    if (!pSprite->isStatic)
+    {
+        pSprite->sprite->SetPosition(pTransform->position.x, pTransform->position.y);
+        pSprite->sprite->SetAngle(pTransform->rotation);
+        pSprite->sprite->SetScale(pTransform->scale);
 
-    pSprite->sprite->Update(deltaTime);
+        pSprite->sprite->Update(deltaTime);
+    }
+   
 }
 
 void Engine::GraphicUtils::CreateAnimation(SpriteRenderer* pSprite)
