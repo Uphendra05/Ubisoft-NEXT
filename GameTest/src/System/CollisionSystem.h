@@ -49,10 +49,14 @@ namespace Engine
 
 		void TriggerCollision(const sCollisionData& collData);
 
+		Vector2 ComputeNormals(std::vector<Vector2> collisionNormals);
+
 	
 		iEventBus<eCollisionEvents, CollisionEnterEvent>* m_pEventBusCollision;
 		
+		std::vector<Vector2> collisionNormals;
 
+		
 	};
 
 }

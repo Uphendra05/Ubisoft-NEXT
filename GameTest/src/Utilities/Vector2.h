@@ -24,7 +24,19 @@ namespace Engine
 
 
 		//Static Methods
-		float Dot(const Vector2& other);
+		 float Dot(const Vector2& other);
+
+		static float Dot(const Vector2& lhs, const Vector2& rhs)
+		{
+			return lhs.x * rhs.x + lhs.y * rhs.y;
+		}
+
+		static Vector2 Reflect(Vector2& incident, Vector2& normal) {
+			Vector2 norm = normal;
+			float dotProduct = Vector2::Dot(incident, norm);
+			return incident - norm * (2.0f * dotProduct);
+		}
+
 		float Cross(const Vector2& other);
 		
 

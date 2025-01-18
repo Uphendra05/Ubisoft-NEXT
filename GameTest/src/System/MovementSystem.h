@@ -28,6 +28,9 @@ namespace Engine
 
 		void Cleanup() override;
 
+		const float timeStep = 1 / 60.0f;
+		float timer = timeStep;
+
 	};
 
 }

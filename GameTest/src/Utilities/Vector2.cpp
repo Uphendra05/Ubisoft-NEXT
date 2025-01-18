@@ -30,11 +30,13 @@ namespace Engine
 		return x * other.x + y * other.y;
 	}
 
+	
 	float Engine::Vector2::Cross(const Vector2& other)
 	{
 		return x * other.y - y * other.x;
 	}
 
+	
 	Vector2& Engine::Vector2::down()
 	{
 		static Vector2 downVector(0, -1);

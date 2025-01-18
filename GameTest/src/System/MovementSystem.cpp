@@ -17,8 +17,10 @@ void Engine::MovementSystem::Start(CScene* pScene)
 
 void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
 {
-    float minSpeed = 1.0f;
+    float minSpeed = 10.0f;
     deltaTime = deltaTime / 1000.0f;
+    timer += deltaTime;
+
     // Update velocity and position
     for (Entity entityId : SComponentIterator<Transform, MovementComponent>(*pScene))
     {

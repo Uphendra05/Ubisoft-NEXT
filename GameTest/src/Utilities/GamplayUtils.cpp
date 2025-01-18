@@ -131,7 +131,7 @@ namespace Engine
 
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
-		pRigidbody->colliderSize = Vector2(10, 10);
+		pRigidbody->colliderSize = Vector2(100, 300);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
 		pRigidbody->isKinematic = true;
