@@ -12,5 +12,14 @@ namespace Engine
 
 		return *it;
 	}
+
+	Entity PlayerUtilities::GetMirroPlayerID(CScene* pScene)
+	{
+		SComponentIterator<MovementComponent>::Iterator it = SComponentIterator<MovementComponent>(*pScene).begin();
+
+		++it;
+
+		return *it;
+	}
 }
 

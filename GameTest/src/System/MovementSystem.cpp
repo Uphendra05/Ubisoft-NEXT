@@ -55,15 +55,15 @@ void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
 
     for (Entity entity : SComponentIterator<Transform,ShuffleHoleComponent,sAABB>(*pScene))
     {
-        if (entity != NULL)
-        {
+       
             Transform* transform = pScene->GetComponent<Transform>(entity);
             ShuffleHoleComponent* pHole = pScene->GetComponent<ShuffleHoleComponent>(entity);
             sAABB* pAabb = pScene->GetComponent<sAABB>(entity);
 
             pAabb->CalculateBounds(*transform, pAabb->halfSize * 2.0f);
 
-            if (transform && pHole->isMoving)
+
+            if ( pHole->isMoving)
             {
 
                 // Calculate the direction and move toward the target position
@@ -80,21 +80,21 @@ void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
                     {
                         transform->position = pHole->position;
                         pHole->isMoving = false;
-                        
                     }
                 }
-                //else
-                //{
-                //    // Snap to the target position if already close enough
-                //    transform->position = pHole->targetPosition;
-                //    pHole->isMoving = false;
-                //}
+                else
+                {
+                    // Snap to the target position if already close enough
+                    transform->position = pHole->targetPosition;
+                    pHole->isMoving = false;
+                }
             }
 
 
 
             
-        }
+        
+
        
 
        

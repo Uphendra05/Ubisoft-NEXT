@@ -56,7 +56,7 @@ namespace Engine
 		pTransform->scale = 1;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(playerId);
-		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/golf.png";  //TODO : Should Change this
+		pSprite->fileName = ".\\Assets\\golf.png";  //TODO : Should Change this
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
@@ -116,7 +116,7 @@ namespace Engine
 		pTransform->scale = 0.15f;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(collidableId);
-		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Hole.png";  //TODO : Should Change this
+		pSprite->fileName = ".\\Assets\\Hole.png";  //TODO : Should Change this
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
@@ -203,7 +203,7 @@ namespace Engine
 		Entity holeId = pScene->CreateEntity();
 
 		Tag* pTag = pScene->AddComponent<Tag>(holeId);
-		pTag->entityName = "Collide2";
+		pTag->entityName = "Hole";
 
 		Transform* pTransform = pScene->AddComponent<Transform>(holeId);
 		pTransform->position = position;
@@ -213,7 +213,7 @@ namespace Engine
 		ShuffleHoleComponent* pHole = pScene->AddComponent<ShuffleHoleComponent>(holeId);
 		pHole->position = Vector2(0, 0);
 		pHole->targetPosition = Vector2(0, 0);
-		pHole->isMoving = true;
+		pHole->isMoving = false;
 		pHole->speed = 0;
 
 		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(holeId);
@@ -256,7 +256,7 @@ namespace Engine
 		ShuffleHoleComponent* pHole = pScene->AddComponent<ShuffleHoleComponent>(holeId);
 		pHole->position = Vector2(0, 0);
 		pHole->targetPosition = Vector2(0, 0);
-		pHole->isMoving = true;
+		pHole->isMoving = false;
 		pHole->speed = 100;
 
 		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(holeId);

@@ -168,8 +168,11 @@ namespace Engine
 
             for (Entity& entitesPassive : passiveEntites)
             {
-                if (entitesPassive)
+                if (entitesActive == entitesPassive)
                 {
+                    continue;
+                }
+                
                     sAABB* aabbB = pScene->GetComponent<sAABB>(entitesPassive);
                     Tag* pTag1 = pScene->GetComponent<Tag>(entitesPassive);
                     if (CheckCollision(*aabbA, *aabbB))
@@ -196,7 +199,7 @@ namespace Engine
                             float distancedReflected = reflected.magnitude();
                             if (distancedReflected > 0.001f)
                             {
-                                if (pTag1->entityName == "Collide2")
+                                if (pTag1->entityName == "Hole")
                                 {
                                     reflected = Vector2(deltatime * 1500, deltatime * 1500);
                                     pScene->RemoveEntity(entitesPassive);
@@ -206,7 +209,7 @@ namespace Engine
                                         passiveEntites.erase(it);
                                     }
 
-                                    sCollisionData collData = sCollisionData();
+                                   /* sCollisionData collData = sCollisionData();
                                     collData.pScene = pScene;
                                     collData.entityA = entitesActive;
                                     collData.entityB = entitesPassive;
@@ -217,7 +220,7 @@ namespace Engine
                                         continue;
                                     }
 
-                                    TriggerCollision(collData);
+                                    TriggerCollision(collData);*/
                                 }
 
                                 pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 2;
@@ -230,7 +233,7 @@ namespace Engine
 
                       
                     }
-                }
+               
               
 
             }

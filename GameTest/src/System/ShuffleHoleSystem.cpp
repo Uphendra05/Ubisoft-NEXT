@@ -70,6 +70,11 @@ void Engine::ShuffleHoleSystem::ShufflePositions(CScene* pScene, std::vector<Ent
         }
     }
 
+    if (positions.size() != entities.size())
+    {
+        return; 
+    }
+
     std::random_device rd;
     std::mt19937 g(rd());
     std::shuffle(positions.begin(), positions.end(), g);
@@ -85,4 +90,6 @@ void Engine::ShuffleHoleSystem::ShufflePositions(CScene* pScene, std::vector<Ent
             pHole->isMoving = true;
         }
     }
+   
+   
 }

@@ -28,6 +28,7 @@ void Engine::PlayerHealthSystem::Update(CScene* pScene, float deltaTime)
 
 void Engine::PlayerHealthSystem::Render(CScene* pScene)
 {
+
 }
 
 void Engine::PlayerHealthSystem::End(CScene* pScene)
@@ -45,10 +46,12 @@ void Engine::PlayerHealthSystem::OnCollision(const CollisionEnterEvent& event)
 {
     CScene* pScene = event.collisionData.pScene;
     Entity entityActive = event.collisionData.entityA;
-    Entity entityPassive = event.collisionData.entityB;
 
     SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityActive);
-    pSprite->sprite = new CSimpleSprite("D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Red.png", 1, 1);
+    pSprite->sprite = new CSimpleSprite(".\\Assets\\Red.png", 1, 1); 
+
+
+    
 
 
 }

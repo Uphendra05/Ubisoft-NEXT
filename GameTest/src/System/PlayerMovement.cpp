@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PlayerMovement.h"
 #include "src/ECS/SComponentIterator.h"
+#include "src/Utilities/PlayerUtilities.h"
 
 const float CHARGEPOWERX = 600.0f;
 const float CHARGEPOWERY = 600.0f;
@@ -49,6 +50,8 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
     {
         Transform* pTransform = pScene->GetComponent<Transform>(entityId);
         MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
+
+       
        
         if (!pMovement->isStatic)
         {
@@ -71,16 +74,31 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
             {
                 pMovement->isCharging = false;
 
-                Vector2 mousePos = Vector2();
+                Vector2 mousePos = Vector2() ;
                 App::GetMousePos(mousePos.x, mousePos.y);
                 Vector2 direction = mousePos - pTransform->position;
                
-                pMovement->velocity = direction.normalized() * pMovement->chargePower;
+                pMovement->velocity = direction.normalized() * pMovement->chargePower ;
 
                 // Reset charge power
                 pMovement->chargePower = 0.0f;
                 moving = false;
             }
+
+            //if (mirrorTransform && mirrorMovement)
+            //{
+            //    // Mirror position (example: horizontal mirroring around a central axis)
+            //    float mirrorAxisX = 500.0f; // Replace with your axis position if needed
+            //    mirrorTransform->position.x = 2 * mirrorAxisX - pTransform->position.x;
+            //    mirrorTransform->position.y = pTransform->position.y; // Same vertical position
+
+            //    // Mirror velocity
+            //    mirrorMovement->velocity = Vector2(-pMovement->velocity.x, pMovement->velocity.y);
+
+            //    // Copy charging status
+            //    mirrorMovement->isCharging = pMovement->isCharging;
+            //    mirrorMovement->chargePower = pMovement->chargePower;
+            //}
 
             MakeBorders(pTransform->position.x, pTransform->position.y);
         }

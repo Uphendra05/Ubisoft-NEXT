@@ -12,6 +12,8 @@ namespace Engine
 	public:
 		static Entity GetPlayerID(CScene* pScene);
 
+		static Entity GetMirroPlayerID(CScene* pScene);
+
 		// Need a way to get player lives sprites as entites
 
 	};
