@@ -38,12 +38,14 @@
     <ClCompile Include="src\UnitTests\Vector2Tests.cpp" />
     <ClCompile Include="src\MemoryLeakFinder\MemoryLeakFinder.cpp" />
     <ClCompile Include="src\System\CameraSystem.cpp" />
-    <ClCompile Include="src\System\Debug\CollisionSystem.cpp" />
     <ClCompile Include="src\System\RaycastSystem.cpp" />
-    <ClCompile Include="src\System\UI\WorldUI.cpp" />
     <ClCompile Include="src\Utilities\PlayerUtilities.cpp" />
     <ClCompile Include="src\System\FrameSystem.cpp" />
     <ClCompile Include="src\Utilities\ComponentUtils.cpp" />
+    <ClCompile Include="src\System\PlayerHealthSystem.cpp" />
+    <ClCompile Include="src\System\CollisionSystem.cpp" />
+    <ClCompile Include="src\System\WorldUISystem.cpp" />
+    <ClCompile Include="src\System\ShuffleHoleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -96,11 +98,8 @@
     <ClInclude Include="src\MemoryLeakFinder\MemoryLeakFinder.h" />
     <ClInclude Include="src\Physics\AABB.h" />
     <ClInclude Include="src\System\CameraSystem.h" />
-    <ClInclude Include="src\System\Debug\CollisionSystem.h" />
     <ClInclude Include="src\System\RaycastSystem.h" />
-    <ClInclude Include="src\System\UI\WorldUI.h" />
     <ClInclude Include="src\Utilities\PlayerUtilities.h" />
-    <ClInclude Include="src\System\Debug\PhysicsProperties.h" />
     <ClInclude Include="src\System\FrameSystem.h" />
     <ClInclude Include="src\Utilities\ComponentUtils.h" />
     <ClInclude Include="src\Events\CollisionEvent.h" />
@@ -111,6 +110,11 @@
     <ClInclude Include="src\Events\iEventBus.h" />
     <ClInclude Include="src\Events\NullEventBus.h" />
     <ClInclude Include="src\Events\NullEventBus.hpp" />
+    <ClInclude Include="src\System\PlayerHealthSystem.h" />
+    <ClInclude Include="src\System\CollisionSystem.h" />
+    <ClInclude Include="src\Physics\PhysicsProperties.h" />
+    <ClInclude Include="src\System\WorldUISystem.h" />
+    <ClInclude Include="src\System\ShuffleHoleSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

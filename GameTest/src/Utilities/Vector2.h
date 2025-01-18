@@ -24,7 +24,7 @@ namespace Engine
 
 
 		//Static Methods
-		 float Dot(const Vector2& other);
+		  float Dot(const Vector2& other) const ;
 
 		static float Dot(const Vector2& lhs, const Vector2& rhs)
 		{
@@ -37,7 +37,7 @@ namespace Engine
 			return incident - norm * (2.0f * dotProduct);
 		}
 
-		float Cross(const Vector2& other);
+		 float Cross(const Vector2& other) const ;
 		
 
 		//Static Properties

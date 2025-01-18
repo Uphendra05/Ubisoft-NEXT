@@ -61,11 +61,19 @@ void Init()
 
 
 	GamplayUtils::CreateCollidable(scene, Vector2(200.0f, 200.0f));
+	GamplayUtils::CreateCollidable(scene, Vector2(600.0f, 200.0f));
 
 
-	GamplayUtils::CreateCollidable2(scene, Vector2(700.0f, 200.0f));
+	//GamplayUtils::CreateCollidable2(scene, Vector2(700.0f, 200.0f));
 
-	GamplayUtils::CreateCollidable2(scene, Vector2(500.0f, 200.0f));
+	//GamplayUtils::CreateCollidable2(scene, Vector2(500.0f, 200.0f));
+
+	//GamplayUtils::CreateHole(scene, Vector2(200.0f, 200.0f));
+
+	//GamplayUtils::CreateHole2(scene, Vector2(400.0f, 200.0f));
+
+	//GamplayUtils::CreateHole2(scene, Vector2(600.0f, 200.0f));
+
 
 	GamplayUtils::CreateCamera(scene, Vector2(400.0f, 400.0f));
 

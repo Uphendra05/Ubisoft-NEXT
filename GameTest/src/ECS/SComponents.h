@@ -19,6 +19,12 @@ namespace Engine
 
 	};
 
+	enum ePhysicsType
+	{
+		ACTIVE = 0,
+		PASSIVE = 1,
+	};
+
 	struct Tag
 	{
 		std::string entityName;
@@ -93,6 +99,7 @@ namespace Engine
 		float mass;
 		float gravity;
 		ePhysicsBody physicsBody;
+		ePhysicsType physicsType;
 		bool isKinematic;
 		Vector2 colliderSize = Vector2(100, 100);
 
@@ -135,8 +142,12 @@ namespace Engine
 		float fps;
 	};
 
-	struct GolfBallComponent
+	struct ShuffleHoleComponent
 	{
+		Vector2 position = Vector2(0,0);
+		Vector2 targetPosition = Vector2(0,0);
+		bool isMoving = false;
+		float speed = 2000.0f;
 
 	};
 

@@ -25,13 +25,13 @@ namespace Engine
 
 
 
-	float Engine::Vector2::Dot(const Vector2& other)
+	 float Engine::Vector2::Dot(const Vector2& other) const
 	{
 		return x * other.x + y * other.y;
 	}
 
 	
-	float Engine::Vector2::Cross(const Vector2& other)
+	 float Engine::Vector2::Cross(const Vector2& other) const
 	{
 		return x * other.y - y * other.x;
 	}

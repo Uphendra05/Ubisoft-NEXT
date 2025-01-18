@@ -1,4 +1,9 @@
-﻿  CollisionSystem.cpp
+﻿  GameTest.cpp
+  GamplayUtils.cpp
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Utilities\GamplayUtils.cpp(209,23): warning C4305: '=': truncation from 'double' to 'float'
+  (compiling source file '/src/Utilities/GamplayUtils.cpp')
+  
+  Generating Code...
   GameTest.vcxproj -> D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Debug\GameTest.exe
   D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\\GameTest\glut\bin\x64\freeglut.dll
   1 File(s) copied

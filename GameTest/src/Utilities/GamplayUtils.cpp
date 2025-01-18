@@ -3,7 +3,7 @@
 
 #include "src/ECS/SComponents.h"
 #include "src/Physics/AABB.h"
-
+#include <random>
 
 #include "src/Utilities/GraphicUtils.h"
 
@@ -85,6 +85,7 @@ namespace Engine
 		//TODO : For Now Rigidbody is not of big use should change this
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(playerId);
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->physicsType = ePhysicsType::ACTIVE;
 		pRigidbody->colliderSize = Vector2(50, 50);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
@@ -126,11 +127,14 @@ namespace Engine
 		pMove->acceleration = Vector2(0.0f, 0.0f);
 		pMove->velocity = Vector2(0.0f, 0.0f);
 		pMove->isStatic = true;
+		
+		
 
 
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
-		pRigidbody->colliderSize = Vector2(50, 300);
+		pRigidbody->physicsType = ePhysicsType::PASSIVE;
+		pRigidbody->colliderSize = Vector2(50, 1150);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
 		pRigidbody->isKinematic = true;
@@ -191,6 +195,88 @@ namespace Engine
 
 
 		return cameraId;
+	}
+
+	Entity GamplayUtils::CreateHole(CScene* pScene, Vector2 position)
+	{
+		Entity holeId = pScene->CreateEntity();
+
+		Tag* pTag = pScene->AddComponent<Tag>(holeId);
+
+		Transform* pTransform = pScene->AddComponent<Transform>(holeId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 0.15;
+
+		ShuffleHoleComponent* pHole = pScene->AddComponent<ShuffleHoleComponent>(holeId);
+		pHole->position = Vector2(0, 0);
+		pHole->targetPosition = Vector2(0, 0);
+		pHole->isMoving = true;
+		pHole->speed = 0;
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(holeId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = true;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(holeId);
+		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Hole.png";  //TODO : Should Change this
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(holeId);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->colliderSize = Vector2(50, 50);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = true;
+
+		return holeId;
+
+	}
+
+	Entity GamplayUtils::CreateHole2(CScene* pScene, Vector2 position)
+	{
+		Entity holeId = pScene->CreateEntity();
+
+		Tag* pTag = pScene->AddComponent<Tag>(holeId);
+
+		Transform* pTransform = pScene->AddComponent<Transform>(holeId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 1;
+
+		ShuffleHoleComponent* pHole = pScene->AddComponent<ShuffleHoleComponent>(holeId);
+		pHole->position = Vector2(0, 0);
+		pHole->targetPosition = Vector2(0, 0);
+		pHole->isMoving = true;
+		pHole->speed = 100;
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(holeId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = true;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(holeId);
+		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Attack_1.png";  //TODO : Should Change this
+		pSprite->cols = 5;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(holeId);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->colliderSize = Vector2(50, 50);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = true;
+
+		return holeId;
+
 	}
 
 	

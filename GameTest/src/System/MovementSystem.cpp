@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "MovementSystem.h"
 #include "src/ECS/SComponentIterator.h"
+#include "src/Physics/AABB.h"
 
 std::string Engine::MovementSystem::SystemName()
 {
@@ -51,6 +52,22 @@ void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
 
         pTransform->position += (pMovement->velocity * deltaTime);
     }
+
+    for (Entity entity : SComponentIterator<Transform,ShuffleHoleComponent,sAABB>(*pScene))
+    {
+        Transform* transform = pScene->GetComponent<Transform>(entity);
+        ShuffleHoleComponent* pHole = pScene->GetComponent<ShuffleHoleComponent>(entity);
+        sAABB* pAabb = pScene->GetComponent<sAABB>(entity);
+
+
+           
+        Vector2 direction = Vector2(0,1);
+        transform->position += direction * 2.0f ;
+        pAabb->CalculateBounds(*transform, pAabb->halfSize * 2.0f);
+
+       
+    }
+
 }
 
 void Engine::MovementSystem::Render(CScene* pScene)

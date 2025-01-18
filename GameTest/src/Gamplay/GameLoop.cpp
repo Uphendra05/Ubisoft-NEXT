@@ -10,17 +10,19 @@
 #include "src/System/RaycastSystem.h"
 #include "src/System/FrameSystem.h"
 #include "src/System/PlayerHealthSystem.h"
+#include "src/System/ShuffleHoleSystem.h"
 
 void Engine::GameLoop::Start(CScene* pScene)
 {
 	systemFactory.CreateSystems<PlayerMovement>();
-	systemFactory.CreateSystems<MovementSystem>();
 	systemFactory.CreateSystems<RenderSystem>();
 	systemFactory.CreateSystems<WorldUISystem>();
 	systemFactory.CreateSystems<RaycastSystem>();
 	systemFactory.CreateSystems<FrameSystem>();
 	systemFactory.CreateSystems<PlayerHealthSystem>();
 	systemFactory.CreateSystems<CollisionSystem>();
+	systemFactory.CreateSystems<ShuffleHoleSystem>();
+	systemFactory.CreateSystems<MovementSystem>();
 
 
 

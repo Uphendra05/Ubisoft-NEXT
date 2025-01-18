@@ -3,7 +3,6 @@ d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\vc143.pdb
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\vc143.idb
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\stdafx.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\ecstest.obj
-d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gamplayutils.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\playermovement.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\movementsystem.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\rendersystem.obj
@@ -31,6 +30,8 @@ d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\miniaudio.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\centitymanager.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\ccomponentcontainer.obj
+d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gamplayutils.obj
+d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\shuffleholesystem.obj
 d:\git repos\ubisoft_next\ubisoft-next\x64\debug\gametest.exe
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.ilk
 d:\git repos\ubisoft_next\ubisoft-next\x64\debug\gametest.pdb

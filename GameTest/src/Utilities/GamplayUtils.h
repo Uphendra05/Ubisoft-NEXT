@@ -28,6 +28,10 @@ namespace Engine
 
 		static Entity CreateCamera(CScene* pScene, Vector2 position);
 
+		static Entity CreateHole(CScene* pScene, Vector2 position);
+
+		static Entity CreateHole2(CScene* pScene, Vector2 position);
+
 
 
 		
