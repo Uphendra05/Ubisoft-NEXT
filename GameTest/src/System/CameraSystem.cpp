@@ -36,7 +36,7 @@ void Engine::CameraSystem::Update(CScene* pScene, float deltaTime)
 
 			
 			Vector2 targetPosition = playerTransform->position;
-			cameraComp->position = Lerp(cameraComp->position, targetPosition, 0.1f);
+			cameraComp->position = Vector2::Lerp(cameraComp->position, targetPosition, 0.1f);
 
 			// Clamp camera position to bounds (if applicable)
 			//cameraComp->position.x = std::clamp(cameraComp->position.x, 0.0f,  cameraComp->width);
@@ -68,9 +68,6 @@ void Engine::CameraSystem::Cleanup()
 {
 }
 
-Engine::Vector2 Engine::CameraSystem::Lerp(const Vector2& start, const Vector2& end, float t)
-{
-	return start + (end - start) * t;
-}
+
 
 

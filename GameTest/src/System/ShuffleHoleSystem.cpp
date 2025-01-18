@@ -39,6 +39,10 @@ void Engine::ShuffleHoleSystem::Update(CScene* pScene, float deltaTime)
             ShufflePositions(pScene, movableEntities);
 
         }
+        else
+        {
+            movableEntities.clear();
+        }
 
 }
 
@@ -81,5 +85,4 @@ void Engine::ShuffleHoleSystem::ShufflePositions(CScene* pScene, std::vector<Ent
             pHole->isMoving = true;
         }
     }
-
 }

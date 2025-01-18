@@ -18,7 +18,7 @@ void Engine::MovementSystem::Start(CScene* pScene)
 
 void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
 {
-    float minSpeed = 90.0f;
+    float minSpeed = 10.0f;
     deltaTime = deltaTime / 1000.0f;
     timer += deltaTime;
 
@@ -55,15 +55,47 @@ void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
 
     for (Entity entity : SComponentIterator<Transform,ShuffleHoleComponent,sAABB>(*pScene))
     {
-        Transform* transform = pScene->GetComponent<Transform>(entity);
-        ShuffleHoleComponent* pHole = pScene->GetComponent<ShuffleHoleComponent>(entity);
-        sAABB* pAabb = pScene->GetComponent<sAABB>(entity);
+        if (entity != NULL)
+        {
+            Transform* transform = pScene->GetComponent<Transform>(entity);
+            ShuffleHoleComponent* pHole = pScene->GetComponent<ShuffleHoleComponent>(entity);
+            sAABB* pAabb = pScene->GetComponent<sAABB>(entity);
+
+            pAabb->CalculateBounds(*transform, pAabb->halfSize * 2.0f);
+
+            if (transform && pHole->isMoving)
+            {
+
+                // Calculate the direction and move toward the target position
+                Vector2 direction = pHole->targetPosition - pHole->position;
+                float distance = direction.magnitude();
+
+                if (distance > 0.01f) // Threshold to avoid jitter
+                {
+                    direction = direction.normalized();
+                    transform->position += direction * 2.0f;
+
+                    // Stop moving if close enough to the target
+                    if (distance <= 2.0)
+                    {
+                        transform->position = pHole->position;
+                        pHole->isMoving = false;
+                        
+                    }
+                }
+                //else
+                //{
+                //    // Snap to the target position if already close enough
+                //    transform->position = pHole->targetPosition;
+                //    pHole->isMoving = false;
+                //}
+            }
 
 
-           
-        Vector2 direction = Vector2(0,1);
-        transform->position += direction * 2.0f ;
-        pAabb->CalculateBounds(*transform, pAabb->halfSize * 2.0f);
+
+            
+        }
+       
 
        
     }
@@ -82,3 +114,5 @@ void Engine::MovementSystem::End(CScene* pScene)
 void Engine::MovementSystem::Cleanup()
 {
 }
+
+

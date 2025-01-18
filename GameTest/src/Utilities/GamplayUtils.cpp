@@ -108,6 +108,7 @@ namespace Engine
 		Entity collidableId = pScene->CreateEntity();
 
 		Tag* pTag = pScene->AddComponent<Tag>(collidableId);
+		pTag->entityName = "Collide2";
 
 		Transform* pTransform = pScene->AddComponent<Transform>(collidableId);
 		pTransform->position = position;
@@ -202,6 +203,7 @@ namespace Engine
 		Entity holeId = pScene->CreateEntity();
 
 		Tag* pTag = pScene->AddComponent<Tag>(holeId);
+		pTag->entityName = "Collide2";
 
 		Transform* pTransform = pScene->AddComponent<Transform>(holeId);
 		pTransform->position = position;
@@ -229,6 +231,7 @@ namespace Engine
 
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(holeId);
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->physicsType = ePhysicsType::PASSIVE;
 		pRigidbody->colliderSize = Vector2(50, 50);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
@@ -243,6 +246,7 @@ namespace Engine
 		Entity holeId = pScene->CreateEntity();
 
 		Tag* pTag = pScene->AddComponent<Tag>(holeId);
+		pTag->entityName = "Collide2";
 
 		Transform* pTransform = pScene->AddComponent<Transform>(holeId);
 		pTransform->position = position;
@@ -270,6 +274,7 @@ namespace Engine
 
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(holeId);
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->physicsType = ePhysicsType::PASSIVE;
 		pRigidbody->colliderSize = Vector2(50, 50);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;

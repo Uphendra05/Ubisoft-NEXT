@@ -118,6 +118,13 @@ namespace Engine
     void Engine::CollisionSystem::Cleanup()
     {
 
+
+        collisionNormals.clear();
+        activeEntites.clear();
+        passiveEntites.clear();
+
+      
+
     }
 
     void Engine::CollisionSystem::AABBDebug(const Vector2& min, const Vector2& max, const float color[3])
@@ -155,181 +162,136 @@ namespace Engine
     {
 
 
-        for (auto& entitesActive : activeEntites)
+        for (Entity& entitesActive : activeEntites)
         {
             sAABB* aabbA = pScene->GetComponent<sAABB>(entitesActive);
 
-            for (auto& entitesPassive : passiveEntites)
+            for (Entity& entitesPassive : passiveEntites)
             {
-
-                sAABB* aabbB = pScene->GetComponent<sAABB>(entitesPassive);
-
-                if (CheckCollision(*aabbA, *aabbB))
+                if (entitesPassive)
                 {
-                  
-                    if (collisionNormals.size() > 0)
+                    sAABB* aabbB = pScene->GetComponent<sAABB>(entitesPassive);
+                    Tag* pTag1 = pScene->GetComponent<Tag>(entitesPassive);
+                    if (CheckCollision(*aabbA, *aabbB))
                     {
 
-                        Vector2 normal = ComputeNormals(collisionNormals);
-                        normal = normal.normalized();
-
-
-
-                        Vector2 incident = pScene->GetComponent<MovementComponent>(entitesActive)->velocity;
-                        float dotProduct = Vector2::Dot(incident, normal);
-                        if (dotProduct < 0)
+                        if (collisionNormals.size() > 0)
                         {
-                            normal = normal * -1;
-                            dotProduct = -dotProduct;
-                        }
 
-                        Vector2 reflected = Vector2::Reflect(incident, normal);
+                            Vector2 normal = ComputeNormals(collisionNormals);
+                            normal = normal.normalized();
 
-                        float distancedReflected = reflected.magnitude();
-                        if (distancedReflected > 0.001f)
-                        {
-                            /*if (pTag1->entityName == "Collide2")
+
+
+                            Vector2 incident = pScene->GetComponent<MovementComponent>(entitesActive)->velocity;
+                            float dotProduct = Vector2::Dot(incident, normal);
+                            if (dotProduct < 0)
                             {
-                                reflected = Vector2(deltatime * 1500, deltatime * 1500);
-                                pScene->RemoveEntity(entityB);
-                            }*/
+                                normal = normal * -1;
+                                dotProduct = -dotProduct;
+                            }
 
-                            pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 3;
-                            pScene->GetComponent<MovementComponent>(entitesPassive)->velocity = reflected * 3;
+                            Vector2 reflected = Vector2::Reflect(incident, normal);
+
+                            float distancedReflected = reflected.magnitude();
+                            if (distancedReflected > 0.001f)
+                            {
+                                if (pTag1->entityName == "Collide2")
+                                {
+                                    reflected = Vector2(deltatime * 1500, deltatime * 1500);
+                                    pScene->RemoveEntity(entitesPassive);
+                                    auto it = std::find(passiveEntites.begin(), passiveEntites.end(), entitesPassive);
+                                    if (it != passiveEntites.end())
+                                    {
+                                        passiveEntites.erase(it);
+                                    }
+
+                                    sCollisionData collData = sCollisionData();
+                                    collData.pScene = pScene;
+                                    collData.entityA = entitesActive;
+                                    collData.entityB = entitesPassive;
+
+                                    bool isNewCollision = FrameCollision(collData);
+                                    if (!isNewCollision)
+                                    {
+                                        continue;
+                                    }
+
+                                    TriggerCollision(collData);
+                                }
+
+                                pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 2;
+                                pScene->GetComponent<MovementComponent>(entitesPassive)->velocity = reflected * 2;
+                            }
+
+
+
                         }
 
-
-
+                      
                     }
                 }
+              
 
             }
 
 
-            //for (auto& otherEntites : activeEntites)
+#if USELESS CODE
+
+            //for (Entity& otherActive : activeEntites)
             //{
-            //    sAABB* aabbB = pScene->GetComponent<sAABB>(otherEntites);
+            //    if (entitesActive == otherActive) continue;
+
+            //    sAABB* aabbB = pScene->GetComponent<sAABB>(entitesActive);
 
             //    if (CheckCollision(*aabbA, *aabbB))
             //    {
 
-            //        //ResolveCollisionWithNormals(pScene, otherEntites);
+            //        if (collisionNormals.size() > 0)
+            //        {
+
+            //            Vector2 normal = ComputeNormals(collisionNormals);
+            //            normal = normal.normalized();
+
+
+
+            //            Vector2 incident = pScene->GetComponent<MovementComponent>(entitesActive)->velocity;
+            //            float dotProduct = Vector2::Dot(incident, normal);
+            //            if (dotProduct < 0)
+            //            {
+            //                normal = normal * -1;
+            //                dotProduct = -dotProduct;
+            //            }
+
+            //            Vector2 reflected = Vector2::Reflect(incident, normal);
+
+            //            float distancedReflected = reflected.magnitude();
+            //            if (distancedReflected > 0.001f)
+            //            {
+            //                /*if (pTag1->entityName == "Collide2")
+            //                {
+            //                    reflected = Vector2(deltatime * 1500, deltatime * 1500);
+            //                    pScene->RemoveEntity(entityB);
+            //                }*/
+
+            //                pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 2;
+            //                pScene->GetComponent<MovementComponent>(otherActive)->velocity = reflected * 2;
+            //            }
+
+
+
+            //        }
             //    }
 
             //}
 
+#endif // USELESS CODE
 
-            //ResolveCollisionWithNormals(pScene, entitesActive);
-
-
+            
 
 
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //for (Entity entityA : SComponentIterator<Transform, sAABB, Tag>(*pScene))
-        //{
-        //    sAABB* aabbA = pScene->GetComponent<sAABB>(entityA);
-        //    Tag* pTag = pScene->GetComponent<Tag>(entityA);
-
-        //    for (Entity entityB : SComponentIterator<Transform, sAABB, Tag>(*pScene))
-        //    {
-        //        if (entityA == entityB) continue;
-
-        //        sAABB* aabbB = pScene->GetComponent<sAABB>(entityB);
-        //        Tag* pTag1 = pScene->GetComponent<Tag>(entityB);
-        //        //  HEALTHTEXT = "HEALTH : " + std::to_string(pScene->GetComponent<HealthComponent>(PlayerUtilities::GetPlayerID(pScene))->currentHealth);
-
-
-
-        //        if (CheckCollision(*aabbA, *aabbB))
-        //        {
-        //            //Vector2 overlap = aabbA->center - aabbB->center;
-        //            //pScene->GetComponent<MovementComponent>(entityA)->velocity += overlap;
-        //            //pScene->GetComponent<MovementComponent>(entityB)->velocity -= overlap;
-        //           
-        //            if (collisionNormals.size() > 0)
-        //            {
-
-        //                Vector2 normal = ComputeNormals(collisionNormals);
-        //                normal = normal.normalized();
-
-
-
-        //                Vector2 incident = pScene->GetComponent<MovementComponent>(entityA)->velocity;
-        //                float dotProduct = Vector2::Dot(incident, normal);
-        //                if (dotProduct < 0)
-        //                {
-        //                    normal = normal * -1;
-        //                    dotProduct = -dotProduct;
-        //                }
-
-        //                Vector2 reflected = Vector2::Reflect(incident, normal);
-
-        //                float distancedReflected = reflected.magnitude();
-        //                if (distancedReflected > 0.001f)
-        //                {
-        //                    if (pTag1->entityName == "Collide2")
-        //                    {
-        //                        reflected = Vector2(deltatime * 1500, deltatime * 1500)  ;
-        //                        pScene->RemoveEntity(entityB);
-        //                    }
-
-        //                    pScene->GetComponent<MovementComponent>(entityA)->velocity = reflected * 3;
-        //                    pScene->GetComponent<MovementComponent>(entityB)->velocity = reflected * 3;
-        //                }
-        //               
-        //               
-
-        //            }
-
-        //           
-        //           
-        //            // pScene->GetComponent<HealthComponent>(PlayerUtilities::GetPlayerID(pScene))->currentHealth -= 1;
-
-
-        //            sCollisionData collData = sCollisionData();
-        //            collData.pScene = pScene;
-        //            collData.entityA = entityA;
-        //            collData.entityB = entityB;
-
-        //            bool isNewCollision = FrameCollision(collData);
-        //            if (!isNewCollision)
-        //            {
-        //                FrameCollisionComponent* pFrameColl = ComponentUtils::GetFrameCollision();
-        //                FrameCounterComponent* pFrames = ComponentUtils::GetFrameCounter();
-        //                int currFrame = pFrames->frameCount % FRAME_RATE;
-        //                pFrameColl->collisions[currFrame].clear();
-
-        //                continue;
-
-        //            }
-        //            TriggerCollision(collData);
-
-
-        //           
-
-
-
-        //        }
-
-
-        //    }
-
-        //}
-
 
 
 
@@ -340,7 +302,7 @@ namespace Engine
 
         if (pRb->physicsBody == ePhysicsBody::NONE)
         {
-
+            //No Collider
         }
         else if (pRb->physicsBody == ePhysicsBody::AABB && pRb->physicsType == ePhysicsType::ACTIVE)
         {

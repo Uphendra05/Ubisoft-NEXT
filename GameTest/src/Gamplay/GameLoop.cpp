@@ -17,7 +17,7 @@ void Engine::GameLoop::Start(CScene* pScene)
 	systemFactory.CreateSystems<PlayerMovement>();
 	systemFactory.CreateSystems<RenderSystem>();
 	systemFactory.CreateSystems<WorldUISystem>();
-	systemFactory.CreateSystems<RaycastSystem>();
+	//systemFactory.CreateSystems<RaycastSystem>();
 	systemFactory.CreateSystems<FrameSystem>();
 	systemFactory.CreateSystems<PlayerHealthSystem>();
 	systemFactory.CreateSystems<CollisionSystem>();

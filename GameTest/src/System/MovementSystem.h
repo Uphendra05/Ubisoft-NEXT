@@ -31,6 +31,8 @@ namespace Engine
 		const float timeStep = 1 / 60.0f;
 		float timer = timeStep;
 
+		Vector2 Lerp(const Vector2& start, const Vector2& end, float t);
+
 	};
 
 }

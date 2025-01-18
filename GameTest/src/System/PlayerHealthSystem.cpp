@@ -47,21 +47,8 @@ void Engine::PlayerHealthSystem::OnCollision(const CollisionEnterEvent& event)
     Entity entityActive = event.collisionData.entityA;
     Entity entityPassive = event.collisionData.entityB;
 
-    HealthComponent* pPlayer = pScene->GetComponent<HealthComponent>(entityActive);
-    if (!pPlayer)
-    {
-        // Not colliding against player
-        return;
-    }
-
-    if (pPlayer->currentHealth == 0)
-    {
-        return;
-    }
-
-   
-
-    pPlayer->currentHealth -= 1;
+    SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityActive);
+    pSprite->sprite = new CSimpleSprite("D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Red.png", 1, 1);
 
 
 }

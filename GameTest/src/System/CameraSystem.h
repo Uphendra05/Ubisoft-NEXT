@@ -30,7 +30,6 @@ namespace Engine
 
         void Cleanup() override;
 
-        Vector2 Lerp(const Vector2& start, const Vector2& end, float t);
 
 
        

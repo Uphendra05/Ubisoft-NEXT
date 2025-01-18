@@ -37,6 +37,11 @@ namespace Engine
 			return incident - norm * (2.0f * dotProduct);
 		}
 
+		static Vector2 Lerp(const Vector2& start, const Vector2& end, float t)
+		{
+			return start + (end - start) * t;
+		}
+
 		 float Cross(const Vector2& other) const ;
 		
 
