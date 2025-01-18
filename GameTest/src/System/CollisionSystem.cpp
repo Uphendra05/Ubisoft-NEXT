@@ -54,7 +54,7 @@ namespace Engine
             CreateAABB(entityId, pRigidbody, pTransform, pScene);
         }
 
-        for (Entity entityId : SComponentIterator<HealthComponent>(*pScene))
+        for (Entity entityId : SComponentIterator<HealthComponent>(*pScene)) // TODO : Should Remove this from here
         {
             HealthComponent* pHealth = pScene->GetComponent<HealthComponent>(entityId);
 
@@ -161,11 +161,17 @@ namespace Engine
 
                 if (CheckCollision(*aabbA, *aabbB))
                 {
-
+                    //Vector2 overlap = aabbA->center - aabbB->center;
+                    //pScene->GetComponent<MovementComponent>(entityA)->velocity += overlap;
+                    //pScene->GetComponent<MovementComponent>(entityB)->velocity -= overlap;
+                   
                     if (collisionNormals.size() > 0)
                     {
+
                         Vector2 normal = ComputeNormals(collisionNormals);
                         normal = normal.normalized();
+
+
 
                         Vector2 incident = pScene->GetComponent<MovementComponent>(entityA)->velocity;
                         float dotProduct = Vector2::Dot(incident, normal);
@@ -180,17 +186,21 @@ namespace Engine
                         float distancedReflected = reflected.magnitude();
                         if (distancedReflected > 0.001f)
                         {
-                           
-                            pScene->GetComponent<MovementComponent>(entityA)->velocity += reflected * 7;
+                            if (pTag1->entityName == "Collide2")
+                            {
+                                reflected = Vector2(deltatime * 1500, deltatime * 1500)  ;
+                                pScene->RemoveEntity(entityB);
+                            }
+
+                            pScene->GetComponent<MovementComponent>(entityA)->velocity = reflected * 3;
+                            pScene->GetComponent<MovementComponent>(entityB)->velocity = reflected * 3;
                         }
+                       
                        
 
                     }
 
-                    /*Vector2 overlap = aabbA->center - aabbB->center;
-                    pScene->GetComponent<MovementComponent>(entityA)->velocity += overlap;
-                    pScene->GetComponent<MovementComponent>(entityB)->velocity -= overlap;*/
-
+                   
                    
                     // pScene->GetComponent<HealthComponent>(PlayerUtilities::GetPlayerID(pScene))->currentHealth -= 1;
 
@@ -214,11 +224,7 @@ namespace Engine
                     TriggerCollision(collData);
 
 
-                    if (entityA == PlayerUtilities::GetPlayerID(pScene))
-                    {
-
-                        // pScene->RemoveEntity(entityB);
-                    }
+                   
 
 
 

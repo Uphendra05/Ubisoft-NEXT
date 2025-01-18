@@ -17,7 +17,7 @@ void Engine::MovementSystem::Start(CScene* pScene)
 
 void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
 {
-    float minSpeed = 10.0f;
+    float minSpeed = 90.0f;
     deltaTime = deltaTime / 1000.0f;
     timer += deltaTime;
 
