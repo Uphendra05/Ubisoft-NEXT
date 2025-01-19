@@ -8,7 +8,7 @@ namespace Engine
 {
 	Entity Engine::PlayerUtilities::GetPlayerID(CScene* pScene)
 	{
-		SComponentIterator<MovementComponent>::Iterator it = SComponentIterator<MovementComponent>(*pScene).begin();
+		SComponentIterator<ScoreComponent>::Iterator it = SComponentIterator<ScoreComponent>(*pScene).begin();
 
 		return *it;
 	}

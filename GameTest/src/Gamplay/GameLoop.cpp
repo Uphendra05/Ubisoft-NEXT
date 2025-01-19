@@ -13,6 +13,7 @@
 #include "src/System/ShuffleHoleSystem.h"
 #include "src/System/GameStateEventSystem.h"
 #include "src/System/LevelSystem.h"
+#include "src/Gamplay/LevelOne.h"
 
 
 #include "src/Events/EventBus.hpp"
@@ -38,13 +39,14 @@ namespace Engine
 		systemFactory->CreateSystems<WorldUISystem>();
 		systemFactory->CreateSystems<FrameSystem>();
 		systemFactory->CreateSystems<LevelSystem>();
-		systemFactory->CreateSystems<GameStateEventSystem>();		
+		systemFactory->CreateSystems<GameStateEventSystem>();
+		systemFactory->CreateSystems<LevelOne>();
 	
 
 		// Should this be here ?
 		GameStateComponent* pState = ComponentUtils::GetGameState();
 		pState->currState = eGameStates::STARTED;
-
+		systemFactory->Start(pScene);
 
 		//systemFactory.CreateSystems<RaycastSystem>();
 		//systemFactory.CreateSystems<CameraSystem>();

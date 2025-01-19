@@ -31,7 +31,7 @@ namespace Engine
 		pTransform->scale = 1;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(backgroundId);
-		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/Wackground.png";  
+		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/LevelOneBG.png";  
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
@@ -52,7 +52,7 @@ namespace Engine
 		Transform* pTransform = pScene->AddComponent<Transform>(playerId);
 		pTransform->position = position;
 		pTransform->rotation = 0;
-		pTransform->scale = 1;
+		pTransform->scale = 0.05f;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(playerId);
 		pSprite->fileName = ".\\Assets\\golf.png";  //TODO : Should Change this
@@ -72,12 +72,18 @@ namespace Engine
 		HealthComponent* pHealth = pScene->AddComponent<HealthComponent>(playerId);
 		pHealth->currentHealth = pHealth->maxHealth;
 
+		ScoreComponent* pScore = pScene->AddComponent<ScoreComponent>(playerId);
+		pScore->strokes = 0;
+		pScore->maxStrokes = 6;
+		pScore->multiplier = 1;
+		pScore->isGoal = false;
+
 
 		//TODO : For Now Rigidbody is not of big use should change this
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(playerId);
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
 		pRigidbody->physicsType = ePhysicsType::ACTIVE;
-		pRigidbody->colliderSize = Vector2(50, 50);
+		pRigidbody->colliderSize = Vector2(30, 30);
 		pRigidbody->isKinematic = false;
 		pRigidbody->useGravity = false;
 
@@ -127,7 +133,7 @@ namespace Engine
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(playerId);
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
 		pRigidbody->physicsType = ePhysicsType::ACTIVE;
-		pRigidbody->colliderSize = Vector2(50, 50);
+		pRigidbody->colliderSize = Vector2(30, 30);
 		pRigidbody->isKinematic = false;
 
 
@@ -181,6 +187,46 @@ namespace Engine
 	
 
 		return collidableId;
+	}
+
+	Entity GamplayUtils::CreateGoal(CScene* pScene, Vector2 position)
+	{
+		Entity goalId = pScene->CreateEntity();
+
+		Tag* pTag = pScene->AddComponent<Tag>(goalId);
+		pTag->entityName = "Goal";
+
+		Transform* pTransform = pScene->AddComponent<Transform>(goalId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 0.15f;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(goalId);
+		pSprite->fileName = ".\\Assets\\Hole.png";  //TODO : Should Change this
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+		pSprite->isStatic = true;
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(goalId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = true;
+
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(goalId);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->physicsType = ePhysicsType::PASSIVE;
+		pRigidbody->colliderSize = Vector2(20, 20);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = true;
+
+
+
+		return goalId;
 	}
 
 	Entity GamplayUtils::CreateCamera(CScene* pScene, Vector2 position)

@@ -1,4 +1,9 @@
-﻿  ObjectPool.cpp
+﻿  GameLoop.cpp
+  LevelOne.cpp
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Gamplay\LevelOne.cpp(90,28): warning C4244: '-=': conversion from 'float' to 'size_t', possible loss of data
+  (compiling source file '/src/Gamplay/LevelOne.cpp')
+  
+  Generating Code...
   GameTest.vcxproj -> D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Debug\GameTest.exe
   D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\\GameTest\glut\bin\x64\freeglut.dll
   1 File(s) copied

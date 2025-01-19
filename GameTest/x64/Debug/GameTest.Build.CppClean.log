@@ -2,8 +2,6 @@ d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.pch
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\vc143.pdb
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\vc143.idb
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\stdafx.obj
-d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\movementsystem.obj
-d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\rendersystem.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\graphicutils.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\worlduisystem.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\raycastsystem.obj
@@ -17,6 +15,7 @@ d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\playerhealthsystem.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\shuffleholesystem.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\levelsystem.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gamestateeventsystem.obj
+d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\objectpool.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\simplesprite.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\simplesound.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\simplecontroller.obj
@@ -34,14 +33,8 @@ d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\ccomponentcontainer.ob
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\ecstest.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gamplayutils.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\playermovement.obj
-d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\objectpool.obj
-d:\git repos\ubisoft_next\ubisoft-next\x64\debug\gametest.exe
-d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.ilk
-d:\git repos\ubisoft_next\ubisoft-next\x64\debug\gametest.pdb
+d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\movementsystem.obj
+d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\rendersystem.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.tlog\cl.command.1.tlog
-d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.tlog\cl.items.tlog
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.tlog\cl.read.1.tlog
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.tlog\cl.write.1.tlog
-d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.tlog\link.command.1.tlog
-d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.tlog\link.read.1.tlog
-d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.tlog\link.write.1.tlog

@@ -16,4 +16,12 @@ enum eKeycodes
 	X = 88,
 	C = 67,
 	V = 86,
+	E = 69,
+};
+
+enum eGameStreaks
+{
+	HOLEINONE = 1,
+	TWOTOFOUR = 2,
+    FIVETOSEVEN = 3
 };

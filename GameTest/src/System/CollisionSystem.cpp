@@ -137,10 +137,10 @@ namespace Engine
 
     void Engine::CollisionSystem::AABBDebug(const Vector2& min, const Vector2& max, const float color[3])
     {
-        App::DrawLine(min.x, min.y, max.x, min.y, color[0], color[1], color[2]);
-        App::DrawLine(max.x, min.y, max.x, max.y, color[0], color[1], color[2]);
-        App::DrawLine(max.x, max.y, min.x, max.y, color[0], color[1], color[2]);
-        App::DrawLine(min.x, max.y, min.x, min.y, color[0], color[1], color[2]);
+        //App::DrawLine(min.x, min.y, max.x, min.y, color[0], color[1], color[2]);
+        //App::DrawLine(max.x, min.y, max.x, max.y, color[0], color[1], color[2]);
+        //App::DrawLine(max.x, max.y, min.x, max.y, color[0], color[1], color[2]);
+       // App::DrawLine(min.x, max.y, min.x, min.y, color[0], color[1], color[2]);
 
     }
 
@@ -207,16 +207,15 @@ namespace Engine
                             float distancedReflected = reflected.magnitude();
                             if (distancedReflected > 0.001f)
                             {
-                                if (pTag1->entityName == "Collide2")
-                                {
-                                    reflected = Vector2(deltatime * 1500, deltatime * 1500);
+                                
+                                   /* reflected = Vector2(deltatime * 1500, deltatime * 1500);
                                     pScene->RemoveEntity(entitesPassive);
 
                                     auto it = std::find(passiveEntites.begin(), passiveEntites.end(), entitesPassive);
                                     if (it != passiveEntites.end())
                                     {
                                         passiveEntites.erase(it);
-                                    }
+                                    }*/
 
                                     sCollisionData collData = sCollisionData();
                                     collData.pScene = pScene;
@@ -230,7 +229,7 @@ namespace Engine
                                     }
 
                                     TriggerCollision(collData);
-                                }
+                               
 
                                 pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 1.4;
                                 pScene->GetComponent<MovementComponent>(entitesPassive)->velocity = reflected * 1.4;

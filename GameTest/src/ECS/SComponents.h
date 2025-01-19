@@ -80,6 +80,16 @@ namespace Engine
 		float maxPower = 500.0f;   // Maximum shot power
 		float chargeRate = 100.0f; // Rate of power increase per second
 
+
+	};
+
+	struct ScoreComponent
+	{
+		size_t strokes;
+		size_t maxStrokes;
+		size_t multiplier;
+		bool isGoal;
+
 	};
 
 	struct RotationComponent

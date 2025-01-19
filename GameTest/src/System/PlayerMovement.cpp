@@ -50,10 +50,11 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
     {
         Transform* pTransform = pScene->GetComponent<Transform>(entityId);
         MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
+        ScoreComponent* pScore= pScene->GetComponent<ScoreComponent>(entityId);
 
        
        
-        if (!pMovement->isStatic)
+        if (!pMovement->isStatic && pScore->strokes < 6)
         {
             bool moving = false;
 
@@ -82,14 +83,15 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
 
                 // Reset charge power
                 pMovement->chargePower = 0.0f;
+                pScore->strokes +=1 ;
                 moving = false;
             }
 
            
 
-            MakeBorders(pTransform->position.x, pTransform->position.y);
         }
         
+        MakeBorders(pTransform->position.x, pTransform->position.y);
 
     }
 }

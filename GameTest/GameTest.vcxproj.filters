@@ -49,6 +49,7 @@
     <ClCompile Include="src\System\LevelSystem.cpp" />
     <ClCompile Include="src\System\GameStateEventSystem.cpp" />
     <ClCompile Include="src\Gamplay\ObjectPool.cpp" />
+    <ClCompile Include="src\Gamplay\LevelOne.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -122,6 +123,7 @@
     <ClInclude Include="src\System\GameStateEventSystem.h" />
     <ClInclude Include="src\Gamplay\Enums.h" />
     <ClInclude Include="src\Gamplay\ObjectPool.h" />
+    <ClInclude Include="src\Gamplay\LevelOne.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

@@ -26,6 +26,8 @@ namespace Engine
 
 		static Entity CreateCollidable(CScene* pScene, Vector2 position);
 
+		static Entity CreateGoal(CScene* pScene, Vector2 position);
+
 
 		static Entity CreateCamera(CScene* pScene, Vector2 position);
 
