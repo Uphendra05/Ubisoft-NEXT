@@ -186,6 +186,7 @@
     <ClInclude Include="App\SimpleController.h" />
     <ClInclude Include="App\SimpleSound.h" />
     <ClInclude Include="App\SimpleSprite.h" />
+    <ClInclude Include="src\Gamplay\ObjectPool.h" />
     <ClInclude Include="src\Gamplay\Enums.h" />
     <ClInclude Include="src\System\GameStateEventSystem.h" />
     <ClInclude Include="src\System\LevelSystem.h" />
@@ -239,6 +240,7 @@
     <ClCompile Include="App\SimpleController.cpp" />
     <ClCompile Include="App\SimpleSound.cpp" />
     <ClCompile Include="App\SimpleSprite.cpp" />
+    <ClCompile Include="src\Gamplay\ObjectPool.cpp" />
     <ClCompile Include="src\System\GameStateEventSystem.cpp" />
     <ClCompile Include="src\System\LevelSystem.cpp" />
     <ClCompile Include="src\System\ShuffleHoleSystem.cpp" />

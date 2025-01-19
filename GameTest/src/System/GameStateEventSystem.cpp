@@ -15,8 +15,7 @@ void Engine::GameStateEventSystem::Init()
 
 void Engine::GameStateEventSystem::Start(CScene* pScene)
 {
-	//GameStateComponent* pState = ComponentUtils::GetGameState();
-	//pState->currState = eGameStates::RUNNING;
+	
 }
 
 void Engine::GameStateEventSystem::Update(CScene* pScene, float deltaTime)

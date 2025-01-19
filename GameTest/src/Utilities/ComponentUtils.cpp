@@ -7,8 +7,8 @@ namespace Engine
 {
 	FrameCounterComponent* ComponentUtils::mFrameCounter = new FrameCounterComponent();
 	FrameCollisionComponent* ComponentUtils::pFrameCol = new FrameCollisionComponent();
-	GameStateComponent* ComponentUtils::m_pGameState = new GameStateComponent();
-	SystemFactory* ComponentUtils::factory = new SystemFactory();
+	GameStateComponent* ComponentUtils::mGameState = new GameStateComponent();
+	SystemFactory* ComponentUtils::mSystemFactory = new SystemFactory();
 
 
 
@@ -24,18 +24,18 @@ namespace Engine
 
 	GameStateComponent* ComponentUtils::GetGameState()
 	{
-		return m_pGameState;
+		return mGameState;
 	}
 
-	SystemFactory* ComponentUtils::GetFactory()
+	SystemFactory* ComponentUtils::GetSystemFactory()
 	{
-		return factory;
+		return mSystemFactory;
 	}
 
 	void ComponentUtils::SetGameState(GameStateComponent* pGameState)
 	{
-		delete m_pGameState;
-		m_pGameState = pGameState;
+		delete mGameState;
+		mGameState = pGameState;
 	}
 
 	void ComponentUtils::Clear()
@@ -43,6 +43,8 @@ namespace Engine
 
 		delete mFrameCounter;
 		delete pFrameCol;
+		delete mGameState;
+		delete mSystemFactory;
 	}
 
 }

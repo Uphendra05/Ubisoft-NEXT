@@ -4,12 +4,18 @@
 #include "src/ECS/SComponents.h"
 #include "src/Utilities/ComponentUtils.h"
 #include "src/Utilities/GamplayUtils.h"
+#include "src/Utilities/GraphicUtils.h"
+#include "src/Gamplay/ObjectPool.h"
 
 const float POSX = 500.0f;
 const float POSY = 500.0f;
 std::string EVENTTEXT = " EVENTS: ";
 const float COLOR[3] = { 1.0f, 1.0f, 1.0f };
 
+
+Engine::ObjectPool holePool;
+
+// TODO : should refactor this code and should find a way to remove gameplay systems and add them again.
 
 std::string Engine::LevelSystem::SystemName()
 {
@@ -32,8 +38,38 @@ void Engine::LevelSystem::Init()
 
 void Engine::LevelSystem::Start(CScene* pScene)
 {
+	holePool.Initialize(pScene, 2, [](Entity entity, CScene* pScene) {
+		Tag* pTag = pScene->AddComponent<Tag>(entity);
+		pTag->entityName = "Hole";
 
-	
+		Transform* pTransform = pScene->AddComponent<Transform>(entity);
+		//pTransform->position = Vector2(800, 600);
+		pTransform->rotation = 0;
+		pTransform->scale = 0.15f;
+
+		ShuffleHoleComponent* pHole = pScene->AddComponent<ShuffleHoleComponent>(entity);
+		pHole->isMoving = false;
+		pHole->speed = 0;
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(entity);
+		pMove->isStatic = true;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(entity);
+		pSprite->fileName = ".\\Assets\\Hole.png";
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(entity);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->physicsType = ePhysicsType::PASSIVE;
+		pRigidbody->colliderSize = Vector2(50, 50);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = true;
+		});
 
 }
 
@@ -87,35 +123,26 @@ void Engine::LevelSystem::Cleanup()
 	pGameRuning->Unsubscribe(eGameStateEvents::GAME_RUNNING, OnRunning);
 	pLeveUpBus->Unsubscribe(eGameStateEvents::GAME_NEWLEVEL, OnNewLevel);
 	pEventBus->Unsubscribe(eGameStateEvents::GAME_OVER, OnGameOver);
+
+
+
+	ComponentUtils::Clear();
 }
 
 void Engine::LevelSystem::OnStart(const GameStartedEvent& event)
 {
 	event.pScene->DestroyAllEntities();
 	EVENTTEXT = "EVENT STARTED !" ;
+
+
 }
 
 void Engine::LevelSystem::OnRunning(const GameRunningEvent& event)
 {
 	
-	event.pScene->DestroyAllEntities();
+	
 
-	EVENTTEXT = "EVENT RUNNING !" ;
-	SystemFactory* systemFactory = ComponentUtils::GetFactory();
-
-	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
-	GamplayUtils::CreatePlayer(event.pScene, Vector2(400.0f, 400.0f));
-	GamplayUtils::CreateCollidable(event.pScene, Vector2(200.0f, 200.0f));
-	GamplayUtils::CreateCollidable(event.pScene, Vector2(600.0f, 200.0f));
-	GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 600.0f));
-	GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 200.0f));
-
-
-
-
-	systemFactory->Start(event.pScene);
-
-
+	LevelOne(event);
 	
 	
 
@@ -124,10 +151,71 @@ void Engine::LevelSystem::OnRunning(const GameRunningEvent& event)
 
 void Engine::LevelSystem::OnNewLevel(const GameNewLevelEvent& event)
 {
+	
+
+	LevelTwo(event);
+	
+
+
+}
+
+void Engine::LevelSystem::OnGameOver(const GameOverEvent& event)
+{
+
+	event.pScene->DestroyAllEntities();
+	EVENTTEXT = "EVENT GAMEOVER !";
+	//SystemFactory* systemFactory = ComponentUtils::GetSystemFactory();
+
+	//systemFactory->RemoveSystems(event.pScene);
+
+}
+
+void Engine::LevelSystem::LevelOne(const GameRunningEvent& event)
+{
 	event.pScene->DestroyAllEntities();
 
-	EVENTTEXT = "EVENT NEW LEVEL !" ;
-	SystemFactory* systemFactory = ComponentUtils::GetFactory();
+	EVENTTEXT = "EVENT RUNNING !";
+	SystemFactory* systemFactory = ComponentUtils::GetSystemFactory();
+
+	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
+	GamplayUtils::CreatePlayer(event.pScene, Vector2(400.0f, 400.0f));
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(200.0f, 200.0f));
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(600.0f, 200.0f));
+
+	
+
+	//GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 600.0f));
+	//GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 200.0f));
+
+
+
+
+	systemFactory->Start(event.pScene);
+
+	Entity holeId = holePool.RequestEntity(event.pScene);
+	Transform* pTransform = event.pScene->GetComponent<Transform>(holeId);
+	if (pTransform)
+	{
+		pTransform->position = Vector2(800.0f, 600.0f);
+	}
+
+	Entity holeId2 = holePool.RequestEntity(event.pScene);
+	Transform* pTransform2 = event.pScene->GetComponent<Transform>(holeId2);
+	if (pTransform)
+	{
+		pTransform2->position = Vector2(800.0f, 200.0f);
+	}
+	systemFactory->Start(event.pScene);
+
+}
+
+void Engine::LevelSystem::LevelTwo(const GameNewLevelEvent& event)
+{
+
+	event.pScene->DestroyAllEntities();
+
+	EVENTTEXT = "EVENT NEW LEVEL !";
+	SystemFactory* systemFactory = ComponentUtils::GetSystemFactory();
 
 	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
 	GamplayUtils::CreatePlayer(event.pScene, Vector2(400.0f, 400.0f));
@@ -140,17 +228,5 @@ void Engine::LevelSystem::OnNewLevel(const GameNewLevelEvent& event)
 
 
 	systemFactory->Start(event.pScene);
-
-
-	
-
-
-}
-
-void Engine::LevelSystem::OnGameOver(const GameOverEvent& event)
-{
-	EVENTTEXT = "EVENT GAMEOVER !";
-
-	event.pScene->DestroyAllEntities();
 
 }

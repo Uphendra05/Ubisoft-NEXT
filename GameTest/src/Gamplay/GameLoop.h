@@ -21,10 +21,7 @@ namespace Engine
 		void End(CScene* pScene);
 		void Cleanup();
 
-		static void OnStart(const GameStartedEvent& event);
-		static void OnRunning(const GameRunningEvent& event);
-		static void OnNewLevel(const GameNewLevelEvent& event);
-		static void OnGameOver(const GameOverEvent& event);
+		
 
 	private :
 

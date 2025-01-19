@@ -9,3 +9,11 @@ enum eGameStates
 	NEWLEVEL,
 	GAMEOVER
 };
+
+enum eKeycodes
+{
+	Z = 90,
+	X = 88,
+	C = 67,
+	V = 86,
+};

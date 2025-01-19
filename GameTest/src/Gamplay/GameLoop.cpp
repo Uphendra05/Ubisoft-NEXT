@@ -22,25 +22,29 @@
 
 namespace Engine
 {
-	SystemFactory* systemFactory = ComponentUtils::GetFactory();
+	SystemFactory* systemFactory = ComponentUtils::GetSystemFactory();
 
 	void Engine::GameLoop::Start(CScene* pScene)
 	{
 		InitGameEvents();
 
 	
-		systemFactory->CreateSystems<PlayerMovement>(pScene);
-		systemFactory->CreateSystems<MovementSystem>(pScene);
-		systemFactory->CreateSystems<RenderSystem>(pScene);
-		systemFactory->CreateSystems<CollisionSystem>(pScene);
-		systemFactory->CreateSystems<PlayerHealthSystem>(pScene);
-		systemFactory->CreateSystems<ShuffleHoleSystem>(pScene);
-		systemFactory->CreateSystems<WorldUISystem>(pScene);
-		systemFactory->CreateSystems<FrameSystem>(pScene);
-		systemFactory->CreateSystems<GameStateEventSystem>(pScene);		
-		systemFactory->CreateSystems<LevelSystem>(pScene);
+		systemFactory->CreateSystems<PlayerMovement>();
+		systemFactory->CreateSystems<MovementSystem>();
+		systemFactory->CreateSystems<RenderSystem>();
+		systemFactory->CreateSystems<CollisionSystem>();
+		systemFactory->CreateSystems<PlayerHealthSystem>();
+		systemFactory->CreateSystems<ShuffleHoleSystem>();
+		systemFactory->CreateSystems<WorldUISystem>();
+		systemFactory->CreateSystems<FrameSystem>();
+		systemFactory->CreateSystems<LevelSystem>();
+		systemFactory->CreateSystems<GameStateEventSystem>();		
 	
-		//systemFactory->Start(pScene);
+
+		// Should this be here ?
+		GameStateComponent* pState = ComponentUtils::GetGameState();
+		pState->currState = eGameStates::STARTED;
+
 
 		//systemFactory.CreateSystems<RaycastSystem>();
 		//systemFactory.CreateSystems<CameraSystem>();
@@ -73,31 +77,12 @@ namespace Engine
 		delete	m_pEventBusGameRunning;
 		delete	m_pEventBusNewLevel;
 		delete	m_pEventBusGameOver;
-		delete systemFactory;
+		delete  systemFactory;
 
 
 	}
 
-	void Engine::GameLoop::OnStart(const GameStartedEvent& event)
-	{
-
-	}
-
-	void Engine::GameLoop::OnRunning(const GameRunningEvent& event)
-	{
 	
-		
-					
-	}
-
-	void Engine::GameLoop::OnNewLevel(const GameNewLevelEvent& event)
-	{
-	}
-
-	void Engine::GameLoop::OnGameOver(const GameOverEvent& event)
-	{
-
-	}
 
 	void Engine::GameLoop::InitGameEvents()
 	{

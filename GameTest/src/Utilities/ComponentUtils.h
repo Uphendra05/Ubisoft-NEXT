@@ -13,17 +13,16 @@ namespace Engine
 		static FrameCounterComponent* GetFrameCounter();
 		static FrameCollisionComponent* GetFrameCollision();
 		static GameStateComponent* GetGameState();
-		static SystemFactory* GetFactory();
+		static SystemFactory* GetSystemFactory();
 
 		static void SetGameState(GameStateComponent* pGameState);
-
 		static void Clear();
 
 	private:
 		static FrameCounterComponent* mFrameCounter;
 		static FrameCollisionComponent* pFrameCol;
-		static GameStateComponent* m_pGameState;
-		static SystemFactory* factory;
+		static GameStateComponent* mGameState;
+		static SystemFactory* mSystemFactory;
 
 
 	};

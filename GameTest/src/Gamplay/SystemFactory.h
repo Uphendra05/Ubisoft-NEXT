@@ -9,85 +9,100 @@ namespace Engine
 	class SystemFactory
 	{
 		
-    public:
-        template <typename T>
-        T* CreateSystems(CScene* pScene)
-        {
-            static_assert(std::is_base_of<iSystems, T>::value, "T must derive from iSystems interface");
+	public:
 
-            // Create a new system
-            T* system = new T();
-            mSystems.push_back(system);
-            system->Init();
-            // Store the system pointer
+		template <typename T>
+		std::shared_ptr<iSystems> CreateSystems()
+		{
+			static_assert(std::is_base_of<iSystems, T>::value, "T must derive from iSystems interface"); // To ensure only types derived from iSystems can be created.
 
-            return system; // Return the pointer for direct use
-        }
+			std::shared_ptr<iSystems> system = std::make_shared<T>();
+			system->Init();
 
-        void RemoveSystems(CScene* pScene)
-        {
-            for (auto it = mSystems.begin(); it != mSystems.end();)
-            {
-                (*it)->End(pScene);
-                (*it)->Cleanup();
+			std::shared_ptr<iSystems> baseSystem = std::static_pointer_cast<iSystems>(system);
+			mSystems.push_back(baseSystem);
 
-                delete* it;              // Delete the system
-                it = mSystems.erase(it); // Remove the pointer from the vector
-            }
-        }
+			return baseSystem;
+		}
 
-        void Start(CScene* pScene)
-        {
-            for (iSystems* system : mSystems)
-            {
-                system->Start(pScene);
-            }
-        }
+		inline void RemoveSystems(CScene* pScene)
+		{
 
-        void Update(CScene* pScene, float deltaTime)
-        {
-            for (iSystems* system : mSystems)
-            {
-                system->Update(pScene, deltaTime);
-            }
-        }
+			for (size_t i = 0; i < mSystems.size(); i++)
+			{
+				if (mSystems.size() == 0)
+				{
+					continue;
+				}
 
-        void Render(CScene* pScene)
-        {
-            for (iSystems* system : mSystems)
-            {
-                system->Render(pScene);
-            }
-        }
+				mSystems[i]->End(pScene);
+				mSystems[i]->Cleanup();
+				mSystems.erase(mSystems.begin() + i);
 
-        void End(CScene* pScene)
-        {
-            for (iSystems* system : mSystems)
-            {
-                system->End(pScene);
-            }
-        }
 
-        void Cleanup()
-        {
-            for (iSystems* system : mSystems)
-            {
-                system->Cleanup();
-            }
-        }
+			}
 
-        ~SystemFactory()
-        {
-            // Ensure all systems are properly deleted
-            for (iSystems* system : mSystems)
-            {
-                delete system;
-            }
-            mSystems.clear();
-        }
 
-    private:
-        std::vector<iSystems*> mSystems; // Store raw pointers to systems
+		}
+
+		inline void Start(CScene* pScene)
+		{
+			for (std::shared_ptr<iSystems>& system : mSystems)
+			{
+				system->Start(pScene);
+			}
+		}
+
+
+
+		inline void Update(CScene* pScene, float deltaTime)
+		{
+			for (std::shared_ptr<iSystems>& system : mSystems)
+			{
+				if (system == nullptr)
+				{
+					continue;
+				}
+
+				system->Update(pScene, deltaTime);
+			}
+		}
+
+		inline void Render(CScene* pScene)
+		{
+			for (std::shared_ptr<iSystems>& system : mSystems)
+			{
+				system->Render(pScene);
+			}
+		}
+
+
+
+		inline void End(CScene* pScene)
+		{
+			for (std::shared_ptr<iSystems>& system : mSystems)
+			{
+				system->End(pScene);
+			}
+		}
+
+		inline void Cleanup()
+		{
+			for (std::shared_ptr<iSystems>& system : mSystems)
+			{
+				system->Cleanup();
+			}
+
+		}
+
+
+
+
+	private:
+
+		std::vector<std::shared_ptr<iSystems>> mSystems;
+
+	
     };
 }
 
