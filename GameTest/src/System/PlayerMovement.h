@@ -17,19 +17,19 @@ namespace Engine
 
 
 		// Inherited via iSystems
-		std::string SystemName() override;
+		virtual std::string SystemName() ;
 
-		void Init() override;
+		virtual void Init() ;
 
-		void Start(CScene* pScene) override;
+		virtual void Start(CScene* pScene) ;
 
-		void Update(CScene* pScene, float deltaTime) override;
+		virtual void Update(CScene* pScene, float deltaTime) ;
 
-		void Render(CScene* pScene) override;
+		virtual void Render(CScene* pScene) ;
 
-		void End(CScene* pScene) override;
+		virtual void End(CScene* pScene) ;
 
-		void Cleanup() override;
+		virtual void Cleanup() ;
 
 		void MoveLeftRight(Transform* pTransform, MovementComponent* pMovement, int direction);
 

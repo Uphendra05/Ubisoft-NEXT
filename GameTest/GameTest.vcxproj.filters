@@ -46,6 +46,8 @@
     <ClCompile Include="src\System\CollisionSystem.cpp" />
     <ClCompile Include="src\System\WorldUISystem.cpp" />
     <ClCompile Include="src\System\ShuffleHoleSystem.cpp" />
+    <ClCompile Include="src\System\LevelSystem.cpp" />
+    <ClCompile Include="src\System\GameStateEventSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -115,6 +117,8 @@
     <ClInclude Include="src\Physics\PhysicsProperties.h" />
     <ClInclude Include="src\System\WorldUISystem.h" />
     <ClInclude Include="src\System\ShuffleHoleSystem.h" />
+    <ClInclude Include="src\System\LevelSystem.h" />
+    <ClInclude Include="src\System\GameStateEventSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

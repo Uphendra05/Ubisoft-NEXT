@@ -118,7 +118,7 @@ namespace Engine
     void Engine::CollisionSystem::Cleanup()
     {
 
-
+        delete m_pEventBusCollision;
         collisionNormals.clear();
         activeEntites.clear();
         passiveEntites.clear();
@@ -209,7 +209,7 @@ namespace Engine
                                         passiveEntites.erase(it);
                                     }
 
-                                   /* sCollisionData collData = sCollisionData();
+                                    sCollisionData collData = sCollisionData();
                                     collData.pScene = pScene;
                                     collData.entityA = entitesActive;
                                     collData.entityB = entitesPassive;
@@ -220,7 +220,7 @@ namespace Engine
                                         continue;
                                     }
 
-                                    TriggerCollision(collData);*/
+                                    TriggerCollision(collData);
                                 }
 
                                 pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 2;

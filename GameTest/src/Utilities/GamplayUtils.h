@@ -22,15 +22,15 @@ namespace Engine
 
 		static Entity CreatePlayer(CScene* pScene, Vector2 position);
 
+		static Entity CreatePlayer2(CScene* pScene, Vector2 position);
+
 		static Entity CreateCollidable(CScene* pScene, Vector2 position);
 
-		static Entity CreateCollidable2(CScene* pScene, Vector2 position);
 
 		static Entity CreateCamera(CScene* pScene, Vector2 position);
 
 		static Entity CreateHole(CScene* pScene, Vector2 position);
 
-		static Entity CreateHole2(CScene* pScene, Vector2 position);
 
 
 

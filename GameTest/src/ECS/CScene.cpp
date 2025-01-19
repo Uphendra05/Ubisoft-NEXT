@@ -39,6 +39,7 @@ namespace Engine
 			AddComponent<Transform>(entityId); 
 		}
 
+		mDestroyAllEntities.push_back(entityId);
 		return entityId;
 	}
 
@@ -104,6 +105,33 @@ namespace Engine
 
 		// Clear the list of entities to destroy
 		mEntitiesToDestroy.clear();
+	}
+
+	void CScene::DestroyAllEntities()
+	{
+		for (Entity entityId : mDestroyAllEntities)
+		{
+			
+
+			// Remove all components associated with the entity
+			for (auto& componentMap : mComponentMaps)
+			{
+				// Find the component map for the current entity and remove the components
+				BiMap<Entity, ComponentId>* entityComponentMap = componentMap.second;
+				if (entityComponentMap->ContainsKey(entityId))
+				{
+					entityComponentMap->RemoveByKey(entityId);
+				}
+			}
+
+			// Mark the entity for removal in the entity manager
+			mEntityManager->RemoveEntity(entityId);
+		}
+
+		// Clear the list of entities to destroy
+		mDestroyAllEntities.clear();
+		mEntitiesToDestroy.clear();
+
 	}
 
 	CEntityManager* Engine::CScene::GetEntityManager()

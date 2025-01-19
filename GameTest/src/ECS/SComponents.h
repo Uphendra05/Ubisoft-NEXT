@@ -8,6 +8,7 @@
 #include "App/AppSettings.h"
 #include "src/Physics/PhysicsProperties.h"
 #include <set>
+#include "src/Gamplay/Enums.h"
 
 const int   FRAME_RATE = 60;  // Frames per second
 namespace Engine
@@ -149,6 +150,12 @@ namespace Engine
 		bool isMoving = false;
 		float speed = 2000.0f;
 
+	};
+
+	struct GameStateComponent
+	{
+		eGameStates prevState; // Only state system should modify this
+		eGameStates currState; // Any system can modify this to stop/run simulation
 	};
 
 }

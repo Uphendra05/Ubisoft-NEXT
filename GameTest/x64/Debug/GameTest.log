@@ -1,4 +1,6 @@
-﻿  ShuffleHoleSystem.cpp
+﻿  GameTest.cpp
+  LevelSystem.cpp
+  Generating Code...
   GameTest.vcxproj -> D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Debug\GameTest.exe
   D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\\GameTest\glut\bin\x64\freeglut.dll
   1 File(s) copied

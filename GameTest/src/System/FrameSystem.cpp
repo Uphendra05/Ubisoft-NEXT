@@ -2,8 +2,8 @@
 #include "FrameSystem.h"
 #include "src/Utilities/ComponentUtils.h"
 
-const float POSITIONX = 600.0f;
-const float POSITIONY = 600.0f;
+const float POSITIONX = 750.0f;
+const float POSITIONY = 700.0f;
 std::string FRAMETEXT = " I ";
 const float COLOR[3] = { 1.0f, 1.0f, 1.0f };
 

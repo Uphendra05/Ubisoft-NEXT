@@ -10,7 +10,7 @@ namespace Engine
 	{
 		GAME_STARTED,
 		GAME_RUNNING,
-		GAME_LEVELUP,
+		GAME_NEWLEVEL,
 		GAME_OVER
 	};
 
@@ -27,19 +27,18 @@ namespace Engine
 	class GameRunningEvent : public Event<eGameStateEvents>
 	{
 	public:
-		GameRunningEvent() :
-			Event<eGameStateEvents>(eGameStateEvents::GAME_RUNNING, "GameRunning") {};
+		GameRunningEvent() : Event<eGameStateEvents>(eGameStateEvents::GAME_RUNNING, "GameRunning") {};
 		virtual ~GameRunningEvent() {};
 
 		CScene* pScene = nullptr;
 	};
 
-	class GameLevelUpEvent : public Event<eGameStateEvents>
+	class GameNewLevelEvent : public Event<eGameStateEvents>
 	{
 	public:
-		GameLevelUpEvent() :
-			Event<eGameStateEvents>(eGameStateEvents::GAME_LEVELUP, "GameLevelUp") {};
-		virtual ~GameLevelUpEvent() {};
+		GameNewLevelEvent() :
+			Event<eGameStateEvents>(eGameStateEvents::GAME_NEWLEVEL, "GameLevelUp") {};
+		virtual ~GameNewLevelEvent() {};
 
 		CScene* pScene = nullptr;
 	};

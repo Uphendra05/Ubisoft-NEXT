@@ -3,6 +3,8 @@ D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\App\main.cpp;D:\Git Repos\Ubisof
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\App\SimpleController.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\SimpleController.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\App\SimpleSound.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\SimpleSound.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\App\SimpleSprite.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\SimpleSprite.obj
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\GameStateEventSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\GameStateEventSystem.obj
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\LevelSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\LevelSystem.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\ShuffleHoleSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\ShuffleHoleSystem.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\PlayerHealthSystem.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\PlayerHealthSystem.obj
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Utilities\ComponentUtils.cpp;D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\x64\Debug\ComponentUtils.obj

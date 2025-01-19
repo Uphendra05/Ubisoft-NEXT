@@ -47,21 +47,21 @@ enum
 using namespace Engine;
 
 CScene* scene = new CScene();
-GameLoop mainGame;
+GameLoop* mainGame = new GameLoop();
 void Init()
 {
 
 
 	//Vector2Tests::RunAllTests();
 	
-	
-	GamplayUtils::CreateBackground(scene, Vector2(510,385));
 
-	GamplayUtils::CreatePlayer(scene, Vector2(400.0f, 400.0f));
+	//GamplayUtils::CreateBackground(scene, Vector2(510, 385));
+
+	//GamplayUtils::CreatePlayer(scene, Vector2(400.0f, 400.0f));
 
 
 
-	GamplayUtils::CreateCollidable(scene, Vector2(200.0f, 200.0f));
+	//GamplayUtils::CreateCollidable(scene, Vector2(200.0f, 200.0f));
 	//GamplayUtils::CreateCollidable(scene, Vector2(600.0f, 200.0f));
 
 
@@ -69,11 +69,11 @@ void Init()
 
 	//GamplayUtils::CreateCollidable2(scene, Vector2(500.0f, 200.0f));
 
-	GamplayUtils::CreateHole(scene, Vector2(800.0f, 600.0f));
+	//GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 600.0f));
 
-	GamplayUtils::CreateHole(scene, Vector2(800.0f, 200.0f));
+	//GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 200.0f));
 
-	
+
 	//GamplayUtils::CreateHole2(scene, Vector2(400.0f, 200.0f));
 
 	//GamplayUtils::CreateHole2(scene, Vector2(600.0f, 200.0f));
@@ -81,8 +81,8 @@ void Init()
 
 	//GamplayUtils::CreateCamera(scene, Vector2(400.0f, 400.0f));
 
-	mainGame.Start(scene);
-	
+	mainGame->Start(scene);
+
 	
 
 	//------------------------------------------------------------------------
@@ -104,8 +104,9 @@ void Update(const float deltaTime)
 
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
+	
 
-	mainGame.Update(scene, deltaTime);
+	mainGame->Update(scene, deltaTime);
 	scene->DestroyEntities();
 	//UpdateExamplePlayer(deltaTime);
 
@@ -121,7 +122,7 @@ void Render()
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
 	
-	mainGame.Render(scene);
+	mainGame->Render(scene);
 
 	
 
@@ -149,7 +150,7 @@ void Shutdown()
 	
 	//ShutdownExamplePlayer();
 
-	mainGame.Cleanup();
+	mainGame->Cleanup();
 
 	delete scene;
 	//------------------------------------------------------------------------

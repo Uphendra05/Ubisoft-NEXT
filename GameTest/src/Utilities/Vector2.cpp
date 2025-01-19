@@ -88,6 +88,7 @@ namespace Engine
 
 	Vector2 Engine::Vector2::operator-(const Vector2& other) const
 	{
+
 		return Vector2(x - other.x, y - other.y);
 	}
 

@@ -11,49 +11,107 @@
 #include "src/System/FrameSystem.h"
 #include "src/System/PlayerHealthSystem.h"
 #include "src/System/ShuffleHoleSystem.h"
+#include "src/System/GameStateEventSystem.h"
+#include "src/System/LevelSystem.h"
 
-void Engine::GameLoop::Start(CScene* pScene)
+
+#include "src/Events/EventBus.hpp"
+#include "src/Events/EventBusLocator.hpp"
+#include "src/Utilities/ComponentUtils.h"
+
+
+namespace Engine
 {
-	systemFactory.CreateSystems<PlayerMovement>();
-	systemFactory.CreateSystems<RenderSystem>();
-	systemFactory.CreateSystems<WorldUISystem>();
-	//systemFactory.CreateSystems<RaycastSystem>();
-	systemFactory.CreateSystems<FrameSystem>();
-	systemFactory.CreateSystems<PlayerHealthSystem>();
-	systemFactory.CreateSystems<CollisionSystem>();
-	systemFactory.CreateSystems<ShuffleHoleSystem>();
-	systemFactory.CreateSystems<MovementSystem>();
+	SystemFactory* systemFactory = ComponentUtils::GetFactory();
+
+	void Engine::GameLoop::Start(CScene* pScene)
+	{
+		InitGameEvents();
+
+	
+		systemFactory->CreateSystems<PlayerMovement>(pScene);
+		systemFactory->CreateSystems<MovementSystem>(pScene);
+		systemFactory->CreateSystems<RenderSystem>(pScene);
+		systemFactory->CreateSystems<CollisionSystem>(pScene);
+		systemFactory->CreateSystems<PlayerHealthSystem>(pScene);
+		systemFactory->CreateSystems<ShuffleHoleSystem>(pScene);
+		systemFactory->CreateSystems<WorldUISystem>(pScene);
+		systemFactory->CreateSystems<FrameSystem>(pScene);
+		systemFactory->CreateSystems<GameStateEventSystem>(pScene);
+		
+		systemFactory->CreateSystems<LevelSystem>(pScene);
+	
+		systemFactory->Start(pScene);
+
+		//systemFactory.CreateSystems<RaycastSystem>();
+		//systemFactory.CreateSystems<CameraSystem>();
+	}
+
+	void Engine::GameLoop::Update(CScene* pScene, float deltaTime)
+	{
+		systemFactory->Update(pScene, deltaTime);
+
+	}
+
+	void Engine::GameLoop::Render(CScene* pScene)
+	{
+		systemFactory->Render(pScene);
+
+	}
+
+	void Engine::GameLoop::End(CScene* pScene)
+	{
+
+		systemFactory->End(pScene);
+
+	}
+
+	void Engine::GameLoop::Cleanup()
+	{
+		systemFactory->Cleanup();
+
+		delete   m_pEventBusGameStarted;
+		delete	m_pEventBusGameRunning;
+		delete	m_pEventBusNewLevel;
+		delete	m_pEventBusGameOver;
+		delete systemFactory;
 
 
+	}
 
+	void Engine::GameLoop::OnStart(const GameStartedEvent& event)
+	{
 
+	}
 
+	void Engine::GameLoop::OnRunning(const GameRunningEvent& event)
+	{
+	
+		
+					
+	}
 
+	void Engine::GameLoop::OnNewLevel(const GameNewLevelEvent& event)
+	{
+	}
 
+	void Engine::GameLoop::OnGameOver(const GameOverEvent& event)
+	{
 
-	//systemFactory.CreateSystems<CameraSystem>();
-	systemFactory.Start(pScene);
-}
+	}
 
-void Engine::GameLoop::Update(CScene* pScene, float deltaTime)
-{
-	systemFactory.Update(pScene, deltaTime);
-}
+	void Engine::GameLoop::InitGameEvents()
+	{
+		m_pEventBusGameStarted = new EventBus<eGameStateEvents, GameStartedEvent>();
+		m_pEventBusGameRunning = new EventBus<eGameStateEvents, GameRunningEvent>();
+		m_pEventBusNewLevel = new EventBus<eGameStateEvents, GameNewLevelEvent>();
+		m_pEventBusGameOver = new EventBus<eGameStateEvents, GameOverEvent>();
 
-void Engine::GameLoop::Render(CScene* pScene)
-{
-	systemFactory.Render(pScene);
+		EventBusLocator<eGameStateEvents, GameStartedEvent>::Set(m_pEventBusGameStarted);
+		EventBusLocator<eGameStateEvents, GameRunningEvent>::Set(m_pEventBusGameRunning);
+		EventBusLocator<eGameStateEvents, GameNewLevelEvent>::Set(m_pEventBusNewLevel);
+		EventBusLocator<eGameStateEvents, GameOverEvent>::Set(m_pEventBusGameOver);
 
-}
-
-void Engine::GameLoop::End(CScene* pScene)
-{
-	systemFactory.End(pScene);
-
-}
-
-void Engine::GameLoop::Cleanup()
-{
-	systemFactory.Cleanup();
+	}
 
 }

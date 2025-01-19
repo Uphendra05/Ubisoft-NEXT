@@ -72,6 +72,7 @@ void Engine::ShuffleHoleSystem::ShufflePositions(CScene* pScene, std::vector<Ent
 
     if (positions.size() != entities.size())
     {
+        
         return; 
     }
 

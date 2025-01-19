@@ -22,6 +22,7 @@ namespace Engine
 		void RemoveEntity(Entity entityId);
         int GetComponentCount();    
         void DestroyEntities();
+        void DestroyAllEntities();
 
         CEntityManager* GetEntityManager();
 
@@ -109,7 +110,8 @@ namespace Engine
 		CEntityManager* mEntityManager;
         std::unordered_map<ComponentType, BiMap<Entity, ComponentId>*> mComponentMaps;
         std::unordered_map<ComponentType, CComponentContainer*>        mComponentPools;
-        std::vector<Entity> mEntitiesToDestroy; 
+        std::vector<Entity> mEntitiesToDestroy;
+        std::vector<Entity> mDestroyAllEntities;
 
        
        
