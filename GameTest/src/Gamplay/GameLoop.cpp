@@ -37,11 +37,10 @@ namespace Engine
 		systemFactory->CreateSystems<ShuffleHoleSystem>(pScene);
 		systemFactory->CreateSystems<WorldUISystem>(pScene);
 		systemFactory->CreateSystems<FrameSystem>(pScene);
-		systemFactory->CreateSystems<GameStateEventSystem>(pScene);
-		
+		systemFactory->CreateSystems<GameStateEventSystem>(pScene);		
 		systemFactory->CreateSystems<LevelSystem>(pScene);
 	
-		systemFactory->Start(pScene);
+		//systemFactory->Start(pScene);
 
 		//systemFactory.CreateSystems<RaycastSystem>();
 		//systemFactory.CreateSystems<CameraSystem>();

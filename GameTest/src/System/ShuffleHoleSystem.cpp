@@ -15,6 +15,7 @@ void Engine::ShuffleHoleSystem::Init()
 
 void Engine::ShuffleHoleSystem::Start(CScene* pScene)
 {
+    movableEntities.clear();
 
     for (Entity entity : SComponentIterator<ShuffleHoleComponent,Transform>(*pScene))
     {

@@ -42,6 +42,9 @@ namespace Engine
 
     void Engine::CollisionSystem::Start(CScene* pScene)
     {
+        activeEntites.clear();
+        passiveEntites.clear();
+
         for (Entity entityId : SComponentIterator<Rigidbody, Transform>(*pScene))
         {
             Transform* pTransform = pScene->GetComponent<Transform>(entityId);
@@ -68,10 +71,10 @@ namespace Engine
     {
         deltaTime = deltaTime / 1000.0f;
        
-
-
         for (Entity entityId : SComponentIterator<Transform, Rigidbody, sAABB>(*pScene))
         {
+            if (entityId == NULL) return;
+
             Transform* pTransform = pScene->GetComponent<Transform>(entityId);
             Rigidbody* pRigidbody = pScene->GetComponent<Rigidbody>(entityId);
             sAABB* pAABB = pScene->GetComponent<sAABB>(entityId);

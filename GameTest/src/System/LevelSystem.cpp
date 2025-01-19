@@ -106,8 +106,8 @@ void Engine::LevelSystem::OnRunning(const GameRunningEvent& event)
 	GamplayUtils::CreatePlayer(event.pScene, Vector2(400.0f, 400.0f));
 	GamplayUtils::CreateCollidable(event.pScene, Vector2(200.0f, 200.0f));
 	GamplayUtils::CreateCollidable(event.pScene, Vector2(600.0f, 200.0f));
-	//GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 600.0f));
-	//GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 200.0f));
+	GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 600.0f));
+	GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 200.0f));
 
 
 
@@ -123,7 +123,23 @@ void Engine::LevelSystem::OnRunning(const GameRunningEvent& event)
 
 void Engine::LevelSystem::OnNewLevel(const GameNewLevelEvent& event)
 {
-	
+	event.pScene->DestroyAllEntities();
+
+	EVENTTEXT = "EVENT NEW LEVEL !";
+	SystemFactory* systemFactory = ComponentUtils::GetFactory();
+
+	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
+	GamplayUtils::CreatePlayer(event.pScene, Vector2(400.0f, 400.0f));
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(200.0f, 200.0f));
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(600.0f, 200.0f));
+	GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 600.0f));
+	GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 200.0f));
+
+
+
+
+	systemFactory->Start(event.pScene);
+
 
 	
 

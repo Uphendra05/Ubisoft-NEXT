@@ -8,6 +8,7 @@ d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\graphicutils.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\worlduisystem.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\raycastsystem.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\collisionsystem.obj
+d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gameloop.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\memoryleakfinder.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\camerasystem.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\framesystem.obj
@@ -33,7 +34,6 @@ d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\ccomponentcontainer.ob
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\ecstest.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gamplayutils.obj
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\playermovement.obj
-d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gameloop.obj
 d:\git repos\ubisoft_next\ubisoft-next\x64\debug\gametest.exe
 d:\git repos\ubisoft_next\ubisoft-next\gametest\x64\debug\gametest.ilk
 d:\git repos\ubisoft_next\ubisoft-next\x64\debug\gametest.pdb
