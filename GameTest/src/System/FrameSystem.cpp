@@ -4,7 +4,7 @@
 
 const float POSITIONX = 750.0f;
 const float POSITIONY = 700.0f;
-std::string FRAMETEXT = " I ";
+std::string FRAMETEXT = "  ";
 const float COLOR[3] = { 1.0f, 1.0f, 1.0f };
 
 std::string Engine::FrameSystem::SystemName()
@@ -43,8 +43,7 @@ void Engine::FrameSystem::Update(CScene* pScene, float deltaTime)
 
 void Engine::FrameSystem::Render(CScene* pScene)
 {
-	App::Print(POSITIONX, POSITIONY, FRAMETEXT.c_str(), COLOR[0], COLOR[1], COLOR[2]);
-
+	//App::Print(POSITIONX, POSITIONY, FRAMETEXT.c_str(), COLOR[0], COLOR[1], COLOR[2]);
 
 }
 

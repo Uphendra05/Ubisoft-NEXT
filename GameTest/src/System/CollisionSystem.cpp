@@ -50,8 +50,8 @@ namespace Engine
             Transform* pTransform = pScene->GetComponent<Transform>(entityId);
             Rigidbody* pRigidbody = pScene->GetComponent<Rigidbody>(entityId);
 
-            pRigidbody->gravity = 9.8f;
-            pRigidbody->mass = 1.0f;
+            pRigidbody->gravity = -9.8f;
+            pRigidbody->mass = 10.0f;
 
 
             CreateAABB(entityId, pRigidbody, pTransform, pScene);
@@ -81,14 +81,19 @@ namespace Engine
 
             if (!pRigidbody->isKinematic)
             {
-                //Vector2 gravityForce = Vector2(0, pRigidbody->gravity * pRigidbody->mass);
-                //pTransform->position += gravityForce * deltaTime;
+                if (pRigidbody->useGravity)
+                {
+                    Vector2 gravityForce = Vector2(0, pRigidbody->gravity * pRigidbody->mass);
+                    pTransform->position += gravityForce * deltaTime;
+
+                }
+                
                 
 
-                    // Update AABB bounds
-                    pAABB->CalculateBounds(*pTransform, pAABB->halfSize * 2.0f);
-                    ResolveCollision(pScene, deltaTime);
-                    collisionNormals.clear();
+                // Update AABB bounds
+                pAABB->CalculateBounds(*pTransform, pAABB->halfSize * 2.0f);
+                ResolveCollision(pScene, deltaTime);
+                collisionNormals.clear();
                 
             }
         }
@@ -202,10 +207,11 @@ namespace Engine
                             float distancedReflected = reflected.magnitude();
                             if (distancedReflected > 0.001f)
                             {
-                                if (pTag1->entityName == "Hole")
+                                if (pTag1->entityName == "Collide2")
                                 {
                                     reflected = Vector2(deltatime * 1500, deltatime * 1500);
                                     pScene->RemoveEntity(entitesPassive);
+
                                     auto it = std::find(passiveEntites.begin(), passiveEntites.end(), entitesPassive);
                                     if (it != passiveEntites.end())
                                     {
@@ -226,8 +232,8 @@ namespace Engine
                                     TriggerCollision(collData);
                                 }
 
-                                pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 2;
-                                pScene->GetComponent<MovementComponent>(entitesPassive)->velocity = reflected * 2;
+                                pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 1.4;
+                                pScene->GetComponent<MovementComponent>(entitesPassive)->velocity = reflected * 1.4;
                             }
 
 
@@ -240,6 +246,88 @@ namespace Engine
               
 
             }
+
+
+
+
+
+            for (Entity& otherAcive : activeEntites)
+            {
+                if (entitesActive == otherAcive)
+                {
+                    continue;
+                }
+
+                sAABB* aabbB = pScene->GetComponent<sAABB>(otherAcive);
+                Tag* pTag1 = pScene->GetComponent<Tag>(otherAcive);
+                if (CheckCollision(*aabbA, *aabbB))
+                {
+
+                    if (collisionNormals.size() > 0)
+                    {
+
+                        Vector2 normal = ComputeNormals(collisionNormals);
+                        normal = normal.normalized();
+
+
+
+                        Vector2 incident = pScene->GetComponent<MovementComponent>(entitesActive)->velocity;
+                        float dotProduct = Vector2::Dot(incident, normal);
+                        if (dotProduct < 0)
+                        {
+                            normal = normal * -1;
+                            dotProduct = -dotProduct;
+                        }
+
+                        Vector2 reflected = Vector2::Reflect(incident, normal);
+
+                        float distancedReflected = reflected.magnitude();
+                        if (distancedReflected > 0.001f)
+                        {
+                            if (pTag1->entityName == "Hole")
+                            {
+                                reflected = Vector2(deltatime * 1500, deltatime * 1500);
+                                pScene->RemoveEntity(otherAcive);
+
+                                auto it = std::find(activeEntites.begin(), activeEntites.end(), otherAcive);
+                                if (it != activeEntites.end())
+                                {
+                                    activeEntites.erase(it);
+                                }
+
+                                sCollisionData collData = sCollisionData();
+                                collData.pScene = pScene;
+                                collData.entityA = entitesActive;
+                                collData.entityB = otherAcive;
+
+                                bool isNewCollision = FrameCollision(collData);
+                                if (!isNewCollision)
+                                {
+                                    continue;
+                                }
+
+                                TriggerCollision(collData);
+
+
+        }
+
+                              pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 1.4;
+                              pScene->GetComponent<MovementComponent>(otherAcive)->velocity    = reflected * 1.4;    
+                        }
+
+
+
+                    }
+
+
+                }
+
+
+
+            }
+
+
+
 
 
 #if USELESS CODE
@@ -338,7 +426,7 @@ namespace Engine
 
         int currFrame = pFrames->frameCount % FRAME_RATE;
         bool isNewCollision = pFrameColl->collisions[currFrame].insert(collData).second;
-        //pFrameColl->collisions[currFrame].clear();
+        
         return isNewCollision;
 
     }

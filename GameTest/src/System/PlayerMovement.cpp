@@ -28,7 +28,7 @@ void Engine::PlayerMovement::Start(CScene* pScene)
 
         pMovement->acceleration = Vector2(0.0f, 0.0f);
         pMovement->velocity = Vector2(0.0f, 0.0f);
-        pMovement->drag = 5;
+        pMovement->drag = 2.5f;
         pMovement->maxSpeed = 2000;
         pMovement->maxAcceleration = 1000;
 
@@ -85,20 +85,7 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
                 moving = false;
             }
 
-            //if (mirrorTransform && mirrorMovement)
-            //{
-            //    // Mirror position (example: horizontal mirroring around a central axis)
-            //    float mirrorAxisX = 500.0f; // Replace with your axis position if needed
-            //    mirrorTransform->position.x = 2 * mirrorAxisX - pTransform->position.x;
-            //    mirrorTransform->position.y = pTransform->position.y; // Same vertical position
-
-            //    // Mirror velocity
-            //    mirrorMovement->velocity = Vector2(-pMovement->velocity.x, pMovement->velocity.y);
-
-            //    // Copy charging status
-            //    mirrorMovement->isCharging = pMovement->isCharging;
-            //    mirrorMovement->chargePower = pMovement->chargePower;
-            //}
+           
 
             MakeBorders(pTransform->position.x, pTransform->position.y);
         }

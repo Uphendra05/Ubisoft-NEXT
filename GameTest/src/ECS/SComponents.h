@@ -67,7 +67,7 @@ namespace Engine
 		Vector2 velocity;
 		Vector2 acceleration;
 
-		float drag = 0.0f;
+		float drag = 10.0f;
 
 		float maxSpeed = 0.0f;
 		float maxAcceleration = 0.0f;
@@ -102,6 +102,7 @@ namespace Engine
 		ePhysicsBody physicsBody;
 		ePhysicsType physicsType;
 		bool isKinematic;
+		bool useGravity;
 		Vector2 colliderSize = Vector2(100, 100);
 
 	};

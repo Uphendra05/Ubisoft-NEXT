@@ -69,7 +69,7 @@ void Engine::LevelSystem::Update(CScene* pScene, float deltaTime)
 
 void Engine::LevelSystem::Render(CScene* pScene)
 {
-	App::Print(POSX, POSY, EVENTTEXT.c_str(), COLOR[0], COLOR[1], COLOR[2]);
+	App::Print(POSX, POSY, EVENTTEXT.c_str() , COLOR[0], COLOR[1], COLOR[2]);
 }
 
 void Engine::LevelSystem::End(CScene* pScene)
@@ -91,15 +91,16 @@ void Engine::LevelSystem::Cleanup()
 
 void Engine::LevelSystem::OnStart(const GameStartedEvent& event)
 {
-	
-	EVENTTEXT = "EVENT STARTED !";
+	event.pScene->DestroyAllEntities();
+	EVENTTEXT = "EVENT STARTED !" ;
 }
 
 void Engine::LevelSystem::OnRunning(const GameRunningEvent& event)
 {
+	
 	event.pScene->DestroyAllEntities();
 
-	EVENTTEXT = "EVENT RUNNING !";
+	EVENTTEXT = "EVENT RUNNING !" ;
 	SystemFactory* systemFactory = ComponentUtils::GetFactory();
 
 	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
@@ -125,7 +126,7 @@ void Engine::LevelSystem::OnNewLevel(const GameNewLevelEvent& event)
 {
 	event.pScene->DestroyAllEntities();
 
-	EVENTTEXT = "EVENT NEW LEVEL !";
+	EVENTTEXT = "EVENT NEW LEVEL !" ;
 	SystemFactory* systemFactory = ComponentUtils::GetFactory();
 
 	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));

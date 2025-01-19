@@ -48,8 +48,8 @@ void Engine::PlayerHealthSystem::OnCollision(const CollisionEnterEvent& event)
     CScene* pScene = event.collisionData.pScene;
     Entity entityActive = event.collisionData.entityA;
 
-    GameStateComponent* pState = ComponentUtils::GetGameState();
-    pState->currState = eGameStates::NEWLEVEL;
+    //GameStateComponent* pState = ComponentUtils::GetGameState();
+   // pState->currState = eGameStates::NEWLEVEL;
 
     SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityActive);
     pSprite->sprite = new CSimpleSprite(".\\Assets\\Red.png", 1, 1); 

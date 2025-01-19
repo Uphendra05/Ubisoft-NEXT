@@ -66,6 +66,7 @@ namespace Engine
 		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(playerId);
 		pMove->acceleration = Vector2(0.0f, 0.0f);
 		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->drag = 1000.0f;
 		pMove->isStatic = false;
 
 		HealthComponent* pHealth = pScene->AddComponent<HealthComponent>(playerId);
@@ -77,9 +78,8 @@ namespace Engine
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
 		pRigidbody->physicsType = ePhysicsType::ACTIVE;
 		pRigidbody->colliderSize = Vector2(50, 50);
-		pRigidbody->mass = 1.0f;
-		pRigidbody->gravity = -9.8f;
 		pRigidbody->isKinematic = false;
+		pRigidbody->useGravity = false;
 
 
 		RaycastComponent* pRaycast = pScene->AddComponent<RaycastComponent>(playerId);
@@ -128,8 +128,6 @@ namespace Engine
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
 		pRigidbody->physicsType = ePhysicsType::ACTIVE;
 		pRigidbody->colliderSize = Vector2(50, 50);
-		pRigidbody->mass = 1.0f;
-		pRigidbody->gravity = -9.8f;
 		pRigidbody->isKinematic = false;
 
 
@@ -234,7 +232,7 @@ namespace Engine
 
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(holeId);
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
-		pRigidbody->physicsType = ePhysicsType::PASSIVE;
+		pRigidbody->physicsType = ePhysicsType::ACTIVE;
 		pRigidbody->colliderSize = Vector2(50, 50);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
