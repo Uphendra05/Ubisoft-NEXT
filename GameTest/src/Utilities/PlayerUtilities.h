@@ -12,6 +12,8 @@ namespace Engine
 	public:
 		static Entity GetPlayerID(CScene* pScene);
 
+		static Entity GetFogOfWarID(CScene* pScene);
+
 		static size_t PointStreaks(size_t strokes, size_t multiplier,eGameStreaks mGameStreaks );
 
 	private:

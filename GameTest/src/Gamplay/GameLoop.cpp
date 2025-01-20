@@ -15,6 +15,7 @@
 #include "src/System/LevelSystem.h"
 #include "src/Gamplay/LevelOne.h"
 #include "src/Gamplay/LevelTwo.h"
+#include "src/Gamplay/LevelModifier.h"
 
 
 #include "src/Events/EventBus.hpp"
@@ -43,12 +44,13 @@ namespace Engine
 		systemFactory->CreateSystems<GameStateEventSystem>();
 		systemFactory->CreateSystems<LevelOne>();
 		systemFactory->CreateSystems<LevelTwo>();
+		systemFactory->CreateSystems<LevelModifier>();
 	
 
 		// Should this be here ?
 		GameStateComponent* pState = ComponentUtils::GetGameState();
 		pState->currState = eGameStates::STARTED;
-		systemFactory->Start(pScene);
+		//systemFactory->Start(pScene);
 
 		//systemFactory.CreateSystems<RaycastSystem>();
 		//systemFactory.CreateSystems<CameraSystem>();

@@ -1,16 +1,4 @@
-﻿  LevelOne.cpp
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Utilities\MathUtils.hpp(31,3): warning C4091: 'static ': ignored on left of 'Engine::MathUtils' when no variable is declared
-  (compiling source file '/src/Gamplay/LevelOne.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Gamplay\LevelOne.cpp(91,36): warning C4244: '-=': conversion from 'float' to 'size_t', possible loss of data
-  (compiling source file '/src/Gamplay/LevelOne.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Gamplay\LevelOne.cpp(102,36): warning C4244: '-=': conversion from 'float' to 'size_t', possible loss of data
-  (compiling source file '/src/Gamplay/LevelOne.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Gamplay\LevelOne.cpp(118,32): warning C4244: '-=': conversion from 'float' to 'size_t', possible loss of data
-  (compiling source file '/src/Gamplay/LevelOne.cpp')
-  
+﻿  LevelSystem.cpp
   GameTest.vcxproj -> D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Debug\GameTest.exe
   D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\\GameTest\glut\bin\x64\freeglut.dll
   1 File(s) copied

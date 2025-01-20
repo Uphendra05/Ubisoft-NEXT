@@ -30,6 +30,8 @@ namespace Engine
 		pTransform->rotation = 0;
 		pTransform->scale = 1;
 
+		
+
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(backgroundId);
 		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/LevelOneBG.png";  
 		pSprite->cols = 1;
@@ -41,6 +43,30 @@ namespace Engine
 
 		return backgroundId;
 
+	}
+
+	Entity GamplayUtils::CreateFogOfWar(CScene* pScene, Vector2 position)
+	{
+		Entity backgroundId = pScene->CreateEntity();
+		Transform* pTransform = pScene->AddComponent<Transform>(backgroundId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 1;
+
+		FogOfWarComponent* pFogOfWar = pScene->AddComponent<FogOfWarComponent>(backgroundId);
+		pFogOfWar->centre = Vector2(0, 0);
+		pFogOfWar->targetPos = Vector2(0, 0);
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(backgroundId);
+		pSprite->fileName = ".\\Assets\\FogOfWar.png";
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+		pSprite->isVisible = false;
+
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+
+		return backgroundId;;
 	}
 
 	Entity GamplayUtils::CreatePlayer(CScene* pScene, Vector2 position)

@@ -17,6 +17,7 @@ enum eKeycodes
 	C = 67,
 	V = 86,
 	E = 69,
+	SPACE = 32,
 };
 
 enum eGameStreaks
@@ -24,4 +25,12 @@ enum eGameStreaks
 	HOLEINONE = 1,
 	TWOTOFOUR = 2,
     FIVETOSEVEN = 3
+};
+
+enum eLevelModifiers
+{
+	
+	UNPREDTICTABLEMOVE = 1,
+	RIGIDMOVEMENT = 2,
+	FOGOFWAR = 3,
 };

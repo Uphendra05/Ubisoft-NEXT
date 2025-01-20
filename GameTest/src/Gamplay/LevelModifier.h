@@ -1,5 +1,6 @@
 #pragma once
 #include "src/System/iSystems.h"
+#include "src/Gamplay/Enums.h"
 
 namespace Engine
 {
@@ -19,6 +20,25 @@ namespace Engine
 		void End(CScene* pScene) override;
 
 		void Cleanup() override;
+
+	private:
+
+		void DecideLevelModifier(CScene* pScene, float deltaTime);
+
+		eLevelModifiers mLevelModifier;
+
+		const std::vector<eLevelModifiers> modifiers = {
+		
+		UNPREDTICTABLEMOVE,
+		RIGIDMOVEMENT,
+		FOGOFWAR
+		};
+
+		bool isModified = false;
+
+
+
+
 	};
 
 }

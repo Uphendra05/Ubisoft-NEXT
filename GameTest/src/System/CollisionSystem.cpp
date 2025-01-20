@@ -140,10 +140,10 @@ namespace Engine
 
     void Engine::CollisionSystem::AABBDebug(const Vector2& min, const Vector2& max, const float color[3])
     {
-       App::DrawLine(min.x, min.y, max.x, min.y, color[0], color[1], color[2]);
-       App::DrawLine(max.x, min.y, max.x, max.y, color[0], color[1], color[2]);
-       App::DrawLine(max.x, max.y, min.x, max.y, color[0], color[1], color[2]);
-       App::DrawLine(min.x, max.y, min.x, min.y, color[0], color[1], color[2]);
+       //App::DrawLine(min.x, min.y, max.x, min.y, color[0], color[1], color[2]);
+       //App::DrawLine(max.x, min.y, max.x, max.y, color[0], color[1], color[2]);
+       //App::DrawLine(max.x, max.y, min.x, max.y, color[0], color[1], color[2]);
+       //App::DrawLine(min.x, max.y, min.x, min.y, color[0], color[1], color[2]);
 
     }
 

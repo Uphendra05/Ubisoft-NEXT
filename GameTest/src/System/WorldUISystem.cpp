@@ -41,12 +41,22 @@ void Engine::WorldUISystem::Render(CScene* pScene)
         if (pMovement && pTransform)
         {
             // Debug power line visualization
-            if (pMovement->isCharging)
+            if (pMovement->isCharging )
             {
                 Vector2 mousePos = Vector2();
                 App::GetMousePos(mousePos.x, mousePos.y);
                 Vector2 direction = mousePos - pTransform->position;
                 Vector2 shotDirection = direction.normalized();
+
+                if (pMovement->isWobble)
+                {
+                    float wobbleStrength = 1.0f; // Adjust wobble intensity
+                    shotDirection.x += (static_cast<float>(std::rand()) / RAND_MAX - 0.5f) * wobbleStrength;
+                    shotDirection.y += (static_cast<float>(std::rand()) / RAND_MAX - 0.5f) * wobbleStrength;
+                    shotDirection = shotDirection.normalized();
+
+                }
+               
 
                 // Calculate the start and end points of the debug line
                 Vector2 startPoint = pTransform->position; // Start at the entity's position

@@ -80,7 +80,7 @@ namespace Engine
 		float chargePower = 0.0f;  // Current shot power
 		float maxPower = 500.0f;   // Maximum shot power
 		float chargeRate = 100.0f; // Rate of power increase per second
-
+		bool isWobble;
 
 	};
 
@@ -168,6 +168,13 @@ namespace Engine
 	{
 		eGameStates prevState; // Only state system should modify this
 		eGameStates currState; // Any system can modify this to stop/run simulation
+	};
+
+	struct FogOfWarComponent
+	{
+		Vector2 centre;
+		Vector2 targetPos;
+
 	};
 
 }

@@ -13,6 +13,13 @@ namespace Engine
 		return *it;
 	}
 
+    Entity PlayerUtilities::GetFogOfWarID(CScene* pScene)
+    {
+        SComponentIterator<FogOfWarComponent>::Iterator it = SComponentIterator<FogOfWarComponent>(*pScene).begin();
+
+        return *it;
+    }
+
 	size_t PlayerUtilities::CalculateResult(size_t strokes, size_t points, size_t multiplier)
 	{
         size_t result = points / strokes;

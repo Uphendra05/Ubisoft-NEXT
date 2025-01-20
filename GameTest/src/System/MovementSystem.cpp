@@ -2,6 +2,7 @@
 #include "MovementSystem.h"
 #include "src/ECS/SComponentIterator.h"
 #include "src/Physics/AABB.h"
+#include "src/Utilities/PlayerUtilities.h"
 
 std::string Engine::MovementSystem::SystemName()
 {
@@ -29,6 +30,7 @@ void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
 
         Transform* pTransform = pScene->GetComponent<Transform>(entityId);
         MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
+        Transform* pFogOfWar = pScene->GetComponent<Transform>(PlayerUtilities::GetFogOfWarID(pScene));
 
         // Clip acceleration to max
         float currentAcceleration = pMovement->acceleration.magnitude();
@@ -102,6 +104,16 @@ void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
        
     }
 
+    // fog of war movement
+    for (Entity entityId : SComponentIterator<Transform, FogOfWarComponent>(*pScene))
+    {
+
+
+        Transform* pTransform = pScene->GetComponent<Transform>(PlayerUtilities::GetPlayerID(pScene));
+        Transform* pFogOfWar = pScene->GetComponent<Transform>(entityId);
+
+        pFogOfWar->position = (pTransform->position);
+    }
 }
 
 void Engine::MovementSystem::Render(CScene* pScene)

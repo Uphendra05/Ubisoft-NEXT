@@ -2,6 +2,7 @@
 #include "PlayerMovement.h"
 #include "src/ECS/SComponentIterator.h"
 #include "src/Utilities/PlayerUtilities.h"
+#include "src/Gamplay/Enums.h"
 
 const float CHARGEPOWERX = 600.0f;
 const float CHARGEPOWERY = 600.0f;
@@ -60,7 +61,7 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
             bool moving = false;
 
             // Golf shot mechanics
-            if (App::IsKeyPressed(32)) // Start charging
+            if (App::IsKeyPressed(eKeycodes::SPACE)) // Start charging
             {
                 pMovement->isCharging = true;
                 pMovement->chargePower += pMovement->chargeRate * deltaTime;
@@ -72,15 +73,33 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
                 }
                 moving = true;
             }
-            else if (pMovement->isCharging && !App::IsKeyPressed(32)) // Release shot
+            else if (pMovement->isCharging && !App::IsKeyPressed(eKeycodes::SPACE)) // Release shot
             {
                 pMovement->isCharging = false;
 
                 Vector2 mousePos = Vector2() ;
                 App::GetMousePos(mousePos.x, mousePos.y);
                 Vector2 direction = mousePos - pTransform->position;
+                Vector2 shotDirection = direction.normalized();
+
+
+                if (pMovement->isWobble)
+                {
+                    float wobbleStrength = 1.0f; // Adjust wobble intensity
+                    shotDirection.x += (static_cast<float>(std::rand()) / RAND_MAX - 0.5f) * wobbleStrength;
+                    shotDirection.y += (static_cast<float>(std::rand()) / RAND_MAX - 0.5f) * wobbleStrength;
+                    shotDirection = shotDirection.normalized();
+                    pMovement->velocity = shotDirection * pMovement->chargePower;
+
+                }
+                else
+                {
+                    pMovement->velocity = shotDirection * pMovement->chargePower;
+
+                }
+
+
                
-                pMovement->velocity = direction.normalized() * pMovement->chargePower ;
 
                 // Reset charge power
                 pMovement->chargePower = 0.0f;

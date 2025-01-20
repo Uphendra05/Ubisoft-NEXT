@@ -51,6 +51,7 @@
     <ClCompile Include="src\Gamplay\ObjectPool.cpp" />
     <ClCompile Include="src\Gamplay\LevelOne.cpp" />
     <ClCompile Include="src\Gamplay\LevelTwo.cpp" />
+    <ClCompile Include="src\Gamplay\LevelModifier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -127,6 +128,7 @@
     <ClInclude Include="src\Gamplay\LevelOne.h" />
     <ClInclude Include="src\Utilities\MathUtils.hpp" />
     <ClInclude Include="src\Gamplay\LevelTwo.h" />
+    <ClInclude Include="src\Gamplay\LevelModifier.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

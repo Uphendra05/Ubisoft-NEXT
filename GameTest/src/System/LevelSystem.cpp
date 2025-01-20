@@ -185,6 +185,7 @@ void Engine::LevelSystem::LevelOne(const GameRunningEvent& event)
 	EVENTTEXT = "EVENT NEW LEVEL !";
 	SystemFactory* systemFactory = ComponentUtils::GetSystemFactory();
 
+
 	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
 	GamplayUtils::CreateGoal(event.pScene, Vector2(100.0f, 100.0f));
 	GamplayUtils::CreatePlayer(event.pScene, Vector2(100.0f, 400.0f));
@@ -209,6 +210,7 @@ void Engine::LevelSystem::LevelOne(const GameRunningEvent& event)
 	GamplayUtils::CreateWall2(event.pScene, Vector2(375.0f, 200.0f));
 
 	GamplayUtils::CreateWall2(event.pScene, Vector2(1275.0f, 300.0f));
+	GamplayUtils::CreateFogOfWar(event.pScene, Vector2(0, 0));
 
 
 
@@ -270,6 +272,7 @@ void Engine::LevelSystem::LevelTwo(const GameNewLevelEvent& event)
 	GamplayUtils::CreateWall(event.pScene, Vector2(250.0f, 705.0f));
 	GamplayUtils::CreateWall(event.pScene, Vector2(250.0f, 165.0f));
 
+	GamplayUtils::CreateFogOfWar(event.pScene, Vector2(0, 0));
 
 
 	//GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 600.0f));
