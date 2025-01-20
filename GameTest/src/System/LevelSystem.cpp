@@ -6,11 +6,11 @@
 #include "src/Utilities/GamplayUtils.h"
 #include "src/Utilities/GraphicUtils.h"
 #include "src/Gamplay/ObjectPool.h"
+#include "src/Gamplay/UITexts.hpp"
 
 const float POSX = 500.0f;
 const float POSY = 500.0f;
-std::string EVENTTEXT = " EVENTS: ";
-const float COLOR[3] = { 1.0f, 1.0f, 1.0f };
+std::string EVENTTEXT = "  ";
 
 
 Engine::ObjectPool holePool;
@@ -101,22 +101,37 @@ void Engine::LevelSystem::Update(CScene* pScene, float deltaTime)
 
 	}
 
-	if (App::IsKeyPressed(eKeycodes::E))
+	if (pState->currState == eGameStates::STARTED || pState->currState == eGameStates::GAMEOVER)
 	{
-		GameStateComponent* pState = ComponentUtils::GetGameState();
-		pState->currState = eGameStates::RUNNING;
+		if (App::IsKeyPressed(eKeycodes::E))
+		{
+			//GameStateComponent* pState = ComponentUtils::GetGameState();
+			pState->currState = eGameStates::RUNNING;
+		}
 	}
+	
 	
 
 }
 
 void Engine::LevelSystem::Render(CScene* pScene)
 {
-	App::Print(POSX, POSY, EVENTTEXT.c_str() , COLOR[0], COLOR[1], COLOR[2]);
+	GameStateComponent* pState = ComponentUtils::GetGameState();
+
+	if (pState->currState == eGameStates::STARTED )
+	{
+		App::Print(POSITIONX, POSITIONY, TITLE.c_str(), COLOR[0], COLOR[1], COLOR[2]);
+	}
+	if (pState->currState == eGameStates::GAMEOVER)
+	{
+		App::Print(POSITIONX, POSITIONY, TITLE.c_str(), COLOR[0], COLOR[1], COLOR[2]);
+	}
+
 }
 
 void Engine::LevelSystem::End(CScene* pScene)
 {
+
 }
 
 void Engine::LevelSystem::Cleanup()
@@ -138,9 +153,9 @@ void Engine::LevelSystem::Cleanup()
 
 void Engine::LevelSystem::OnStart(const GameStartedEvent& event)
 {
-	//event.pScene->DestroyAllEntities();
-	EVENTTEXT = "EVENT STARTED !" ;
-
+	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
+	GamplayUtils::CreateTitle(event.pScene, Vector2(510, 385));
+	TITLE = "PRESS E TO START";
 
 }
 
@@ -170,10 +185,10 @@ void Engine::LevelSystem::OnGameOver(const GameOverEvent& event)
 {
 
 	event.pScene->DestroyAllEntities();
-	EVENTTEXT = "EVENT GAMEOVER !";
-	//SystemFactory* systemFactory = ComponentUtils::GetSystemFactory();
-
-	//systemFactory->RemoveSystems(event.pScene);
+	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
+	GamplayUtils::CreateGameOver(event.pScene, Vector2(510, 385));
+	TITLE = "PRESS E TO RESTART GAME";
+	
 
 }
 
@@ -192,24 +207,17 @@ void Engine::LevelSystem::LevelOne(const GameRunningEvent& event)
 	GamplayUtils::CreateRed(event.pScene, Vector2(50.0f, 600.0f));
 	GamplayUtils::CreateBlue(event.pScene, Vector2(150.0f, 600.0f));
 
-	//GamplayUtils::CreateCollidable(event.pScene, Vector2(300.0f, 400.0f));
-	//GamplayUtils::CreateCollidable(event.pScene, Vector2(700.0f, 600.0f));
-	//GamplayUtils::CreateCollidable(event.pScene, Vector2(800.0f, 200.0f));
-
-
-	//GamplayUtils::CreateCollidable(event.pScene, Vector2(450.0f, 345.0f));
-
+	
 	GamplayUtils::CreateCollidable2(event.pScene, Vector2(950.0f, 100.0f));
 	GamplayUtils::CreateCollidable2(event.pScene, Vector2(300.0f, 400.0f));
 
 	GamplayUtils::CreateCollidable3(event.pScene, Vector2(400.0f, 600.0f));
 
-	//GamplayUtils::CreateWall(event.pScene, Vector2(250.0f, 705.0f));
-	//GamplayUtils::CreateWall(event.pScene, Vector2(250.0f, 165.0f));
+	
 
 	GamplayUtils::CreateWall2(event.pScene, Vector2(375.0f, 200.0f));
-
 	GamplayUtils::CreateWall2(event.pScene, Vector2(1275.0f, 300.0f));
+
 	GamplayUtils::CreateFogOfWar(event.pScene, Vector2(0, 0));
 
 
@@ -221,26 +229,7 @@ void Engine::LevelSystem::LevelOne(const GameRunningEvent& event)
 
 	
 
-	/*Entity holeId = holePool.RequestEntity(event.pScene);
-	Transform* pTransform = event.pScene->GetComponent<Transform>(holeId);
-	SpriteRenderer* pSprite = event.pScene->AddComponent<SpriteRenderer>(holeId);
 
-	if (pTransform)
-	{
-		pTransform->position = Vector2(800.0f, 600.0f);
-
-	}
-
-	Entity holeId2 = holePool.RequestEntity(event.pScene);
-	Transform* pTransform2 = event.pScene->GetComponent<Transform>(holeId2);
-	SpriteRenderer* pSprite2 = event.pScene->AddComponent<SpriteRenderer>(holeId2);
-
-	if (pTransform)
-	{
-		pTransform2->position = Vector2(800.0f, 200.0f);
-
-	}
-	systemFactory->Start(event.pScene);*/
 
 }
 

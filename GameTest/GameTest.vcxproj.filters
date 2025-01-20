@@ -129,6 +129,7 @@
     <ClInclude Include="src\Utilities\MathUtils.hpp" />
     <ClInclude Include="src\Gamplay\LevelTwo.h" />
     <ClInclude Include="src\Gamplay\LevelModifier.h" />
+    <ClInclude Include="src\Gamplay\UITexts.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

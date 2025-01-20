@@ -69,6 +69,46 @@ namespace Engine
 		return backgroundId;;
 	}
 
+	Entity GamplayUtils::CreateTitle(CScene* pScene, Vector2 position)
+	{
+		Entity backgroundId = pScene->CreateEntity();
+		Transform* pTransform = pScene->AddComponent<Transform>(backgroundId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 1;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(backgroundId);
+		pSprite->fileName = ".\\Assets\\Title.png";
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+		pSprite->isVisible = true;
+
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+
+		return backgroundId;;
+	}
+
+	Entity GamplayUtils::CreateGameOver(CScene* pScene, Vector2 position)
+	{
+		Entity backgroundId = pScene->CreateEntity();
+		Transform* pTransform = pScene->AddComponent<Transform>(backgroundId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 1;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(backgroundId);
+		pSprite->fileName = ".\\Assets\\GameOver.png";
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+		pSprite->isVisible = true;
+
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+
+		return backgroundId;;
+	}
+
 	Entity GamplayUtils::CreatePlayer(CScene* pScene, Vector2 position)
 	{
 		Entity playerId = pScene->CreateEntity();
@@ -103,7 +143,7 @@ namespace Engine
 		ScoreComponent* pScore = pScene->AddComponent<ScoreComponent>(playerId);
 		pScore->strokes = 0;
 		pScore->maxStrokes = 6;
-		pScore->multiplier = 1;
+		pScore->multiplier = 15;
 		pScore->isGoal = false;
 
 

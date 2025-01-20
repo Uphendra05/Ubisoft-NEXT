@@ -191,6 +191,7 @@
     <ClInclude Include="src\Gamplay\LevelOne.h" />
     <ClInclude Include="src\Gamplay\ObjectPool.h" />
     <ClInclude Include="src\Gamplay\Enums.h" />
+    <ClInclude Include="src\Gamplay\UITexts.hpp" />
     <ClInclude Include="src\System\GameStateEventSystem.h" />
     <ClInclude Include="src\System\LevelSystem.h" />
     <ClInclude Include="src\System\ShuffleHoleSystem.h" />

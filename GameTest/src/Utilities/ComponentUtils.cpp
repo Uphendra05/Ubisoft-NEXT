@@ -44,7 +44,7 @@ namespace Engine
 		delete mFrameCounter;
 		delete pFrameCol;
 		delete mGameState;
-		delete mSystemFactory;
+		//delete mSystemFactory;
 	}
 
 }

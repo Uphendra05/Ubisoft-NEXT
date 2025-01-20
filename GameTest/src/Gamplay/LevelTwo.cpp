@@ -137,12 +137,12 @@ namespace Engine
         if (pState->currState == eGameStates::NEWLEVEL)
         {
 
-            App::Print(10, 700, objective.c_str(), 1, 1, 1);
-            App::Print(200, 700, multiplier.c_str(), 1, 1, 1);
-            App::Print(400, 700, strokes.c_str(), 1, 1, 1);
-            App::Print(600, 700, maxStrokes.c_str(), 1, 1, 1);
-            App::Print(800, 700, finalResult.c_str(), 1, 1, 1);
-            App::Print(800, 200, winLevel2.c_str(), 1, 1, 1);
+            App::Print(50, 700, objective.c_str(), 1, 1, 1);
+            App::Print(250, 700, multiplier.c_str(), 1, 1, 1);
+            App::Print(450, 700, strokes.c_str(), 1, 1, 1);
+            App::Print(650, 700, maxStrokes.c_str(), 1, 1, 1);
+            App::Print(850, 700, finalResult.c_str(), 1, 1, 1);
+            App::Print(850, 200, winLevel2.c_str(), 1, 1, 1);
 
         }
 	}
@@ -162,6 +162,7 @@ namespace Engine
 
 	void Engine::LevelTwo::Cleanup()
 	{
+
 	}
 
 	void LevelTwo::OnCollision(const CollisionEnterEvent& event)

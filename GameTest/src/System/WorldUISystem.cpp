@@ -3,10 +3,7 @@
 #include "src/ECS/SComponentIterator.h"
 #include "src/ECS/SComponents.h"
 
-const float POSITIONX = 200.0f;
-const float POSITIONY = 500.0f;
-std::string UITEXT = " PRESS WASD TO MOVE ENTITY";
-const float COLOR[3] = { 1.0f, 1.0f, 1.0f };
+
 
 
 std::string Engine::WorldUISystem::SystemName()

@@ -22,6 +22,10 @@ namespace Engine
 
 		static Entity CreateFogOfWar(CScene* pScene, Vector2 position);
 
+		static Entity CreateTitle(CScene* pScene, Vector2 position);
+
+		static Entity CreateGameOver(CScene* pScene, Vector2 position);
+
 		static Entity CreatePlayer(CScene* pScene, Vector2 position);		
 
 		static Entity CreateGoal(CScene* pScene, Vector2 position);

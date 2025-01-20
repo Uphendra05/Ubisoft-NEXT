@@ -27,11 +27,11 @@ namespace Engine
 
 		eLevelModifiers mLevelModifier;
 
-		const std::vector<eLevelModifiers> modifiers = {
-		
-		UNPREDTICTABLEMOVE,
-		RIGIDMOVEMENT,
-		FOGOFWAR
+		const std::vector<eLevelModifiers> modifiers = 
+		{
+		   UNPREDTICTABLEMOVE,
+		   RIGIDMOVEMENT,
+		   FOGOFWAR
 		};
 
 		bool isModified = false;

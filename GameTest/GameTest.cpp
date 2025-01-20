@@ -151,7 +151,6 @@ void Shutdown()
 	//ShutdownExamplePlayer();
 
 	mainGame->Cleanup();
-
 	delete scene;
 	//------------------------------------------------------------------------
 }

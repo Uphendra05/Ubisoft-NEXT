@@ -42,7 +42,7 @@ void Engine::FrameSystem::Update(CScene* pScene, float deltaTime)
 
 void Engine::FrameSystem::Render(CScene* pScene)
 {
-	App::Print(POSITIONX, POSITIONY, FRAMETEXT.c_str(), COLOR[0], COLOR[1], COLOR[2]);
+	//App::Print(POSITIONX, POSITIONY, FRAMETEXT.c_str(), COLOR[0], COLOR[1], COLOR[2]);
 
 }
 
