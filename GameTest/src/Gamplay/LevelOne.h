@@ -33,6 +33,7 @@ namespace Engine
 
     private:
 
+
         size_t CalculateResult(size_t strokes, size_t points, size_t multiplier);
         size_t PointStreaks(size_t strokes, size_t multiplier);
 
@@ -40,7 +41,7 @@ namespace Engine
 
         size_t mObjectivePoints = 0;
         size_t mMultiplier = 0;
-         size_t mStrokes;
+        size_t mStrokes;
         size_t mMaxStrokes = 6;
 
         size_t timer;

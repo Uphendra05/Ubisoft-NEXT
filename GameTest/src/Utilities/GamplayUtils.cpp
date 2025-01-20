@@ -53,7 +53,7 @@ namespace Engine
 		Transform* pTransform = pScene->AddComponent<Transform>(playerId);
 		pTransform->position = position;
 		pTransform->rotation = 0;
-		pTransform->scale = 0.05f;
+		pTransform->scale = 0.75f;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(playerId);
 		pSprite->fileName = ".\\Assets\\Golf.png";  //TODO : Should Change this
@@ -154,19 +154,19 @@ namespace Engine
 		Entity collidableId = pScene->CreateEntity();
 
 		Tag* pTag = pScene->AddComponent<Tag>(collidableId);
-		pTag->entityName = "Collide2";
+		pTag->entityName = "Block";
 
 		Transform* pTransform = pScene->AddComponent<Transform>(collidableId);
 		pTransform->position = position;
 		pTransform->rotation = 0;
-		pTransform->scale = 0.15f;
+		pTransform->scale = 0.75f;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(collidableId);
-		pSprite->fileName = ".\\Assets\\Hole.png";  //TODO : Should Change this
+		pSprite->fileName = ".\\Assets\\Block.png";  //TODO : Should Change this
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
-
+		pSprite->isVisible = true;
 		GraphicUtils::SetupSprite(pSprite, pTransform);
 		pSprite->isStatic = true;
 
@@ -175,13 +175,11 @@ namespace Engine
 		pMove->velocity = Vector2(0.0f, 0.0f);
 		pMove->isStatic = true;
 		
-		
-
-
+	
 		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
 		pRigidbody->physicsBody = ePhysicsBody::AABB;
-		pRigidbody->physicsType = ePhysicsType::PASSIVE;
-		pRigidbody->colliderSize = Vector2(50, 1150);
+		pRigidbody->physicsType = ePhysicsType::ACTIVE;
+		pRigidbody->colliderSize = Vector2(50, 50);
 		pRigidbody->mass = 1.0f;
 		pRigidbody->gravity = -9.8f;
 		pRigidbody->isKinematic = true;
@@ -242,7 +240,7 @@ namespace Engine
 		Transform* pTransform = pScene->AddComponent<Transform>(redBallId);
 		pTransform->position = position;
 		pTransform->rotation = 0;
-		pTransform->scale = 0.05f;
+		pTransform->scale = 0.75f;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(redBallId);
 		pSprite->fileName = ".\\Assets\\Red.png";  //TODO : Should Change this
@@ -283,7 +281,7 @@ namespace Engine
 		Transform* pTransform = pScene->AddComponent<Transform>(blueBallId);
 		pTransform->position = position;
 		pTransform->rotation = 0;
-		pTransform->scale = 0.05f;
+		pTransform->scale = 0.75f;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(blueBallId);
 		pSprite->fileName = ".\\Assets\\Blue.png";  //TODO : Should Change this

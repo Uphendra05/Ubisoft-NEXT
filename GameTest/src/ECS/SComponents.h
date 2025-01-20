@@ -90,7 +90,7 @@ namespace Engine
 		size_t maxStrokes;
 		size_t multiplier;
 		bool isGoal;
-
+		
 	};
 
 	struct RotationComponent
@@ -115,7 +115,7 @@ namespace Engine
 		bool isKinematic;
 		bool useGravity;
 		Vector2 colliderSize = Vector2(100, 100);
-
+		float bounciness;
 	};
 
 	struct CameraComponent

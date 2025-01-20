@@ -87,6 +87,7 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
                 pScore->strokes +=1 ;
                 moving = false;
             }
+            
 
            
 

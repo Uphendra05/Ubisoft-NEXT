@@ -227,6 +227,7 @@
     <ClInclude Include="src\ECS\Example.h" />
     <ClInclude Include="src\ECS\SComponents.h" />
     <ClInclude Include="src\System\iSystems.h" />
+    <ClInclude Include="src\Utilities\MathUtils.hpp" />
     <ClInclude Include="src\Utilities\PlayerUtilities.h" />
     <ClInclude Include="stb_image\stb_image.h" />
     <ClInclude Include="stdafx.h" />

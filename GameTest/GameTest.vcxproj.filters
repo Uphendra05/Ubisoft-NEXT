@@ -124,6 +124,7 @@
     <ClInclude Include="src\Gamplay\Enums.h" />
     <ClInclude Include="src\Gamplay\ObjectPool.h" />
     <ClInclude Include="src\Gamplay\LevelOne.h" />
+    <ClInclude Include="src\Utilities\MathUtils.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API">

@@ -186,9 +186,14 @@ void Engine::LevelSystem::LevelOne(const GameRunningEvent& event)
 
 	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
 	GamplayUtils::CreateGoal(event.pScene, Vector2(900.0f, 400.0f));
-	GamplayUtils::CreatePlayer(event.pScene, Vector2(150.0f, 400.0f));
-	GamplayUtils::CreateRed(event.pScene, Vector2(550.0f, 400.0f));
-	GamplayUtils::CreateBlue(event.pScene, Vector2(550.0f, 200.0f));
+	GamplayUtils::CreatePlayer(event.pScene, Vector2(50.0f, 400.0f));
+	GamplayUtils::CreateRed(event.pScene, Vector2(150.0f, 600.0f));
+	GamplayUtils::CreateBlue(event.pScene, Vector2(150.0f, 200.0f));
+
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(400.0f, 400.0f));
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(300.0f, 200.0f));
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(600.0f, 600.0f));
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(600.0f, 200.0f));
 
 	
 

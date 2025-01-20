@@ -8,6 +8,8 @@
 #include "src/Events/EventBus.hpp"
 #include "src/Events/EventBusLocator.hpp"
 
+#include "src/Utilities/MathUtils.hpp"
+
 
 namespace Engine
 {
@@ -52,6 +54,7 @@ namespace Engine
 
             pRigidbody->gravity = -9.8f;
             pRigidbody->mass = 10.0f;
+            pRigidbody->bounciness = 1.4f;
 
 
             CreateAABB(entityId, pRigidbody, pTransform, pScene);
@@ -137,27 +140,32 @@ namespace Engine
 
     void Engine::CollisionSystem::AABBDebug(const Vector2& min, const Vector2& max, const float color[3])
     {
-        //App::DrawLine(min.x, min.y, max.x, min.y, color[0], color[1], color[2]);
-        //App::DrawLine(max.x, min.y, max.x, max.y, color[0], color[1], color[2]);
-        //App::DrawLine(max.x, max.y, min.x, max.y, color[0], color[1], color[2]);
-       // App::DrawLine(min.x, max.y, min.x, min.y, color[0], color[1], color[2]);
+       App::DrawLine(min.x, min.y, max.x, min.y, color[0], color[1], color[2]);
+       App::DrawLine(max.x, min.y, max.x, max.y, color[0], color[1], color[2]);
+       App::DrawLine(max.x, max.y, min.x, max.y, color[0], color[1], color[2]);
+       App::DrawLine(min.x, max.y, min.x, min.y, color[0], color[1], color[2]);
 
     }
 
     bool Engine::CollisionSystem::CheckCollision(const sAABB& a, const sAABB& b)
     {
-        Vector2 centerDiff = a.center - b.center;
+        float overlapX = MathUtils::Min(a.maxXY.x, b.maxXY.x) - MathUtils::Max(a.minXY.x, b.minXY.x);
+        float overlapY = MathUtils::Min(a.maxXY.y, b.maxXY.y) - MathUtils::Max(a.minXY.y, b.minXY.y);
 
-        float overlapX = Min(a.maxXY.x, b.maxXY.x) - Max(a.minXY.x, b.minXY.x);
-        float overlapY = Min(a.maxXY.y, b.maxXY.y) - Max(a.minXY.y, b.minXY.y);
+        if (overlapX <= 0 || overlapY <= 0)
+        {
+            return false;  // No collision
+        }
 
         if (overlapX < overlapY)
         {
-            collisionNormals.push_back(Vector2(centerDiff.x < 0 ? -1 : 1, 0)); // X-axis normal
+            float normalX = (a.center.x < b.center.x) ? -1.0f : 1.0f;
+            collisionNormals.push_back(Vector2(normalX, 0));
         }
         else
         {
-            collisionNormals.push_back(Vector2(0, centerDiff.y < 0 ? -1 : 1)); // Y-axis normal
+            float normalY = (a.center.y < b.center.y) ? -1.0f : 1.0f;
+            collisionNormals.push_back(Vector2(0, normalY));
         }
 
         return (a.maxXY.x > b.minXY.x &&
@@ -173,6 +181,7 @@ namespace Engine
         for (Entity& entitesActive : activeEntites)
         {
             sAABB* aabbA = pScene->GetComponent<sAABB>(entitesActive);
+            Rigidbody* pRb = pScene->GetComponent<Rigidbody>(entitesActive);
 
             for (Entity& entitesPassive : passiveEntites)
             {
@@ -204,8 +213,13 @@ namespace Engine
                             Vector2 reflected = Vector2::Reflect(incident, normal);
 
                             float distancedReflected = reflected.magnitude();
+
                             if (distancedReflected > 0.001f)
                             {
+
+                                
+
+
                                 sCollisionData collData = sCollisionData();
                                 collData.pScene = pScene;
                                 collData.entityA = entitesActive;
@@ -219,17 +233,6 @@ namespace Engine
 
                                 TriggerCollision(collData);
 
-
-                                // Find a way to remove player
-                               /* pScene->RemoveEntity(entitesActive);
-
-                                auto it = std::find(activeEntites.begin(), activeEntites.end(), entitesActive);
-                                if (it != activeEntites.end())
-                                {
-                                    activeEntites.erase(it);
-                                }*/
-
-
                                 for (auto it = passiveEntites.begin(); it != passiveEntites.end();)
                                 {
 
@@ -237,7 +240,7 @@ namespace Engine
 
                                     if (pTag1 && pTag1->entityName == "Red" || pTag1->entityName == "Blue")
                                     {
-                                        reflected = Vector2(deltatime * 1500, deltatime * 1500);
+                                        //reflected = Vector2(deltatime * 1500, deltatime * 1500);
 
                                         pScene->RemoveEntity(*it);
                                         it = passiveEntites.erase(it);
@@ -251,24 +254,24 @@ namespace Engine
                                 }
 
 
-                               
+                                // Find a way to remove player
+                               /* pScene->RemoveEntity(entitesActive);
+
+                                auto it = std::find(activeEntites.begin(), activeEntites.end(), entitesActive);
+                                if (it != activeEntites.end())
+                                {
+                                    activeEntites.erase(it);
+                                }*/
 
 
+                                
 
 
                                    // reflected = Vector2(deltatime * 1500, deltatime * 1500);
                                    
 
-
-
-                                   
-                                    
-
-                                   
-                               
-
-                                pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 1.4;
-                                pScene->GetComponent<MovementComponent>(entitesPassive)->velocity = reflected * 1.4;
+                                pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected *  pRb->bounciness;
+                                pScene->GetComponent<Transform>(entitesPassive)->position = reflected * pRb->bounciness;
                             }
 
 
@@ -321,15 +324,8 @@ namespace Engine
                         {
                             if (pTag1->entityName == "Hole")
                             {
-                                reflected = Vector2(deltatime * 1500, deltatime * 1500);
-                                pScene->RemoveEntity(otherAcive);
-
-                                auto it = std::find(activeEntites.begin(), activeEntites.end(), otherAcive);
-                                if (it != activeEntites.end())
-                                {
-                                    activeEntites.erase(it);
-                                }
-
+                                //reflected = Vector2(deltatime * 1500, deltatime * 1500);
+                             
                                 sCollisionData collData = sCollisionData();
                                 collData.pScene = pScene;
                                 collData.entityA = entitesActive;
@@ -343,11 +339,19 @@ namespace Engine
 
                                 TriggerCollision(collData);
 
+                               /* pScene->RemoveEntity(otherAcive);
 
-        }
+                                auto it = std::find(activeEntites.begin(), activeEntites.end(), otherAcive);
+                                if (it != activeEntites.end())
+                                {
+                                    activeEntites.erase(it);
+                                }*/
 
-                              pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 1.4;
-                              pScene->GetComponent<MovementComponent>(otherAcive)->velocity    = reflected * 1.4;    
+
+                            }
+
+                              pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * pRb->bounciness;
+                              pScene->GetComponent<MovementComponent>(otherAcive)->velocity    = reflected * pRb->bounciness;    
                         }
 
 

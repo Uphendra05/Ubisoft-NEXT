@@ -28,13 +28,13 @@ namespace Engine
 
 		static Entity CreateBlue(CScene* pScene, Vector2 position);
 
+		static Entity CreateCollidable(CScene* pScene, Vector2 position);
 
 
 
 
 		static Entity CreatePlayer2(CScene* pScene, Vector2 position);
 
-		static Entity CreateCollidable(CScene* pScene, Vector2 position);
 
 		static Entity CreateCamera(CScene* pScene, Vector2 position);
 
