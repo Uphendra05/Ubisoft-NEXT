@@ -55,7 +55,7 @@ namespace Engine
 		pTransform->scale = 0.05f;
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(playerId);
-		pSprite->fileName = ".\\Assets\\golf.png";  //TODO : Should Change this
+		pSprite->fileName = ".\\Assets\\Golf.png";  //TODO : Should Change this
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
@@ -227,6 +227,86 @@ namespace Engine
 
 
 		return goalId;
+	}
+
+	Entity GamplayUtils::CreateRed(CScene* pScene, Vector2 position)
+	{
+		Entity redBallId = pScene->CreateEntity();
+
+		Tag* pTag = pScene->AddComponent<Tag>(redBallId);
+		pTag->entityName = "Red";
+
+		Transform* pTransform = pScene->AddComponent<Transform>(redBallId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 0.05f;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(redBallId);
+		pSprite->fileName = ".\\Assets\\Red.png";  //TODO : Should Change this
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+		pSprite->isStatic = true;
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(redBallId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = true;
+
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(redBallId);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->physicsType = ePhysicsType::PASSIVE;
+		pRigidbody->colliderSize = Vector2(20, 20);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = true;
+
+
+
+		return redBallId;
+	}
+
+	Entity GamplayUtils::CreateBlue(CScene* pScene, Vector2 position)
+	{
+		Entity blueBallId = pScene->CreateEntity();
+
+		Tag* pTag = pScene->AddComponent<Tag>(blueBallId);
+		pTag->entityName = "Blue";
+
+		Transform* pTransform = pScene->AddComponent<Transform>(blueBallId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 0.05f;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(blueBallId);
+		pSprite->fileName = ".\\Assets\\Blue.png";  //TODO : Should Change this
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+		pSprite->isStatic = true;
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(blueBallId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = true;
+
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(blueBallId);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->physicsType = ePhysicsType::PASSIVE;
+		pRigidbody->colliderSize = Vector2(20, 20);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = true;
+
+
+
+		return blueBallId;
 	}
 
 	Entity GamplayUtils::CreateCamera(CScene* pScene, Vector2 position)

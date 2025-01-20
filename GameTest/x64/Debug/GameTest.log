@@ -1,9 +1,25 @@
-﻿  GameLoop.cpp
-  LevelOne.cpp
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Gamplay\LevelOne.cpp(90,28): warning C4244: '-=': conversion from 'float' to 'size_t', possible loss of data
-  (compiling source file '/src/Gamplay/LevelOne.cpp')
+﻿  CollisionSystem.cpp
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\CollisionSystem.cpp(156,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  (compiling source file '/src/System/CollisionSystem.cpp')
   
-  Generating Code...
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\CollisionSystem.cpp(160,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  (compiling source file '/src/System/CollisionSystem.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\CollisionSystem.cpp(239,112): warning C4305: 'argument': truncation from 'double' to 'float'
+  (compiling source file '/src/System/CollisionSystem.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\CollisionSystem.cpp(240,113): warning C4305: 'argument': truncation from 'double' to 'float'
+  (compiling source file '/src/System/CollisionSystem.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\CollisionSystem.cpp(318,110): warning C4305: 'argument': truncation from 'double' to 'float'
+  (compiling source file '/src/System/CollisionSystem.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\CollisionSystem.cpp(319,110): warning C4305: 'argument': truncation from 'double' to 'float'
+  (compiling source file '/src/System/CollisionSystem.cpp')
+  
+D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\CollisionSystem.cpp(337,13): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file '/src/System/CollisionSystem.cpp')
+  
   GameTest.vcxproj -> D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Debug\GameTest.exe
   D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\\GameTest\glut\bin\x64\freeglut.dll
   1 File(s) copied

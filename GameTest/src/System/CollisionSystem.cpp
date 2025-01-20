@@ -207,28 +207,33 @@ namespace Engine
                             float distancedReflected = reflected.magnitude();
                             if (distancedReflected > 0.001f)
                             {
-                                
-                                   /* reflected = Vector2(deltatime * 1500, deltatime * 1500);
+                                sCollisionData collData = sCollisionData();
+                                collData.pScene = pScene;
+                                collData.entityA = entitesActive;
+                                collData.entityB = entitesPassive;
+
+                                bool isNewCollision = FrameCollision(collData);
+                                if (!isNewCollision)
+                                {
+                                    continue;
+                                }
+
+                                TriggerCollision(collData);
+
+                                if (pTag1->entityName == "Red" || pTag1->entityName == "Blue")
+                                {
+                                   // reflected = Vector2(deltatime * 1500, deltatime * 1500);
                                     pScene->RemoveEntity(entitesPassive);
 
                                     auto it = std::find(passiveEntites.begin(), passiveEntites.end(), entitesPassive);
                                     if (it != passiveEntites.end())
                                     {
                                         passiveEntites.erase(it);
-                                    }*/
-
-                                    sCollisionData collData = sCollisionData();
-                                    collData.pScene = pScene;
-                                    collData.entityA = entitesActive;
-                                    collData.entityB = entitesPassive;
-
-                                    bool isNewCollision = FrameCollision(collData);
-                                    if (!isNewCollision)
-                                    {
-                                        continue;
                                     }
+                                }
+                                    
 
-                                    TriggerCollision(collData);
+                                   
                                
 
                                 pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 1.4;

@@ -39,12 +39,14 @@ void Engine::LevelOne::Update(CScene* pScene, float deltaTime)
     GameStateComponent* pState = ComponentUtils::GetGameState();
 
 
-    if (pState->currState == eGameStates::RUNNING)
+    if (pState->currState == eGameStates::RUNNING )
     {
 
-
-
+       
+       
         MovementComponent* pMove = pScene->GetComponent<MovementComponent>(PlayerUtilities::GetPlayerID(pScene));
+        
+
         ScoreComponent* pScore = pScene->GetComponent<ScoreComponent>(PlayerUtilities::GetPlayerID(pScene));
 
         mStrokes = pScore->strokes;
@@ -204,6 +206,22 @@ void Engine::LevelOne::OnCollision(const CollisionEnterEvent& event)
         pPlayer->isGoal = true;
 
     }
+
+    if (passiveEntityTag->entityName == "Red")
+    {
+
+        winLevel = "Red Ball Hit";
+    }
+
+    if (passiveEntityTag->entityName == "Blue")
+    {
+
+        winLevel = "Blue Ball Hit";
+
+    }
+
     
+
+
 
 }
