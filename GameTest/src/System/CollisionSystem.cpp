@@ -182,7 +182,6 @@ namespace Engine
                 }
                 
                     sAABB* aabbB = pScene->GetComponent<sAABB>(entitesPassive);
-                    Tag* pTag1 = pScene->GetComponent<Tag>(entitesPassive);
                     if (CheckCollision(*aabbA, *aabbB))
                     {
 
@@ -220,17 +219,49 @@ namespace Engine
 
                                 TriggerCollision(collData);
 
-                                if (pTag1->entityName == "Red" || pTag1->entityName == "Blue")
-                                {
-                                   // reflected = Vector2(deltatime * 1500, deltatime * 1500);
-                                    pScene->RemoveEntity(entitesPassive);
 
-                                    auto it = std::find(passiveEntites.begin(), passiveEntites.end(), entitesPassive);
-                                    if (it != passiveEntites.end())
+                                // Find a way to remove player
+                               /* pScene->RemoveEntity(entitesActive);
+
+                                auto it = std::find(activeEntites.begin(), activeEntites.end(), entitesActive);
+                                if (it != activeEntites.end())
+                                {
+                                    activeEntites.erase(it);
+                                }*/
+
+
+                                for (auto it = passiveEntites.begin(); it != passiveEntites.end();)
+                                {
+
+                                    Tag* pTag1 = pScene->GetComponent<Tag>(*it);
+
+                                    if (pTag1 && pTag1->entityName == "Red" || pTag1->entityName == "Blue")
                                     {
-                                        passiveEntites.erase(it);
+                                        reflected = Vector2(deltatime * 1500, deltatime * 1500);
+
+                                        pScene->RemoveEntity(*it);
+                                        it = passiveEntites.erase(it);
                                     }
+                                    else
+                                    {
+                                        ++it;
+                                    }
+
+
                                 }
+
+
+                               
+
+
+
+
+                                   // reflected = Vector2(deltatime * 1500, deltatime * 1500);
+                                   
+
+
+
+                                   
                                     
 
                                    

@@ -48,6 +48,7 @@ namespace Engine
 
 	struct SpriteRenderer
 	{
+		bool isVisible;
 		std::string componenetName = "SpriteRenderer";
 
 		std::string fileName;

@@ -46,15 +46,16 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
     deltaTime = deltaTime / 100.0f;
     CHARGEPOWERTEXT = "POWER : " ;
 
-    for (Entity entityId : SComponentIterator<Transform, MovementComponent>(*pScene))
+    for (Entity entityId : SComponentIterator<Transform, MovementComponent, ScoreComponent, SpriteRenderer>(*pScene))
     {
         Transform* pTransform = pScene->GetComponent<Transform>(entityId);
         MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
-        ScoreComponent* pScore= pScene->GetComponent<ScoreComponent>(entityId);
+        ScoreComponent* pScore = pScene->GetComponent<ScoreComponent>(entityId);
+        SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityId);
 
        
        
-        if (!pMovement->isStatic && pScore->strokes < 6)
+        if (!pMovement->isStatic && pScore->strokes < pScore->maxStrokes && pSprite->isVisible)
         {
             bool moving = false;
 

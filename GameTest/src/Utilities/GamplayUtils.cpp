@@ -35,6 +35,7 @@ namespace Engine
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
+		pSprite->isVisible = true;
 
 		GraphicUtils::SetupSprite(pSprite, pTransform);
 
@@ -59,6 +60,7 @@ namespace Engine
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
+		pSprite->isVisible = true;
 
 		GraphicUtils::SetupSprite(pSprite, pTransform);
 		
@@ -206,9 +208,10 @@ namespace Engine
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
-
+		pSprite->isVisible = true;
 		GraphicUtils::SetupSprite(pSprite, pTransform);
 		pSprite->isStatic = true;
+		
 
 		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(goalId);
 		pMove->acceleration = Vector2(0.0f, 0.0f);
@@ -246,9 +249,10 @@ namespace Engine
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
+		pSprite->isVisible = true;
 
 		GraphicUtils::SetupSprite(pSprite, pTransform);
-		pSprite->isStatic = true;
+		//pSprite->isStatic = true;
 
 		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(redBallId);
 		pMove->acceleration = Vector2(0.0f, 0.0f);
@@ -286,9 +290,9 @@ namespace Engine
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
-
 		GraphicUtils::SetupSprite(pSprite, pTransform);
-		pSprite->isStatic = true;
+		//pSprite->isStatic = true;
+		pSprite->isVisible = true;
 
 		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(blueBallId);
 		pMove->acceleration = Vector2(0.0f, 0.0f);

@@ -14,6 +14,7 @@ namespace Engine
 		CScene* pScene;
 		Entity entityA;
 		Entity entityB;
+		std::vector<Entity> passiveEntites;
 
 		bool operator==(const sCollisionData& other) const
 		{

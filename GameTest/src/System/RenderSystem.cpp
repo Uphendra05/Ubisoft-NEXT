@@ -22,12 +22,10 @@ namespace Engine
             Transform* pTransform = pScene->GetComponent<Transform>(entityId);
             SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityId);
 
-
             if (pSprite)
             {
                 continue;
             }
-
             GraphicUtils::SetupSprite(pSprite, pTransform);
 
 
@@ -46,6 +44,7 @@ namespace Engine
             Transform* pTransform = pScene->GetComponent<Transform>(entityId);
             SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityId);
 
+          
             GraphicUtils::UpdateAnimation(pSprite, pTransform, deltaTime);
             //pSprite->sprite->Update(deltaTime);
         }
@@ -81,6 +80,12 @@ namespace Engine
         for (Entity entityId : SComponentIterator<SpriteRenderer>(*pScene))
         {
             SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityId);
+
+            if (!pSprite->isVisible)
+            {
+                continue;
+            }
+
             GraphicUtils::DrawSprite(pSprite);
         }
 

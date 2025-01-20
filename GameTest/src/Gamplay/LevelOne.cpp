@@ -44,13 +44,12 @@ void Engine::LevelOne::Update(CScene* pScene, float deltaTime)
 
        
        
-        MovementComponent* pMove = pScene->GetComponent<MovementComponent>(PlayerUtilities::GetPlayerID(pScene));
-        
-
+        MovementComponent* pMove = pScene->GetComponent<MovementComponent>(PlayerUtilities::GetPlayerID(pScene));      
         ScoreComponent* pScore = pScene->GetComponent<ScoreComponent>(PlayerUtilities::GetPlayerID(pScene));
 
         mStrokes = pScore->strokes;
-
+        mMultiplier = pScore->multiplier;
+        mMaxStrokes = pScore->maxStrokes;
 
         if (pScore->isGoal)
         {
@@ -73,6 +72,30 @@ void Engine::LevelOne::Update(CScene* pScene, float deltaTime)
             }
 
             result = PointStreaks(mStrokes, mMultiplier);
+
+            if (result >= mObjectivePoints)
+            {
+                if (timer <= 0)
+                {
+                    pState->currState = eGameStates::NEWLEVEL;
+                }
+                else
+                {
+                    timer -= 1 * deltaTime;
+                }
+            }
+            else
+            {
+                if (timer <= 0)
+                {
+                    pState->currState = eGameStates::GAMEOVER;
+                }
+                else
+                {
+                    timer -= 1 * deltaTime;
+                }
+            }
+            
 
            
         }
@@ -199,26 +222,31 @@ void Engine::LevelOne::OnCollision(const CollisionEnterEvent& event)
 
     Tag* passiveEntityTag = pScene->GetComponent<Tag>(entityPassive);
     ScoreComponent* pPlayer = pScene->GetComponent<ScoreComponent>(entityActive);
+    SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityActive);
 
     if (passiveEntityTag->entityName == "Goal")
     {
 
         pPlayer->isGoal = true;
+        pSprite->isVisible = false;
 
     }
-
     if (passiveEntityTag->entityName == "Red")
     {
+        //pPlayer->strokes *= 2;
+        pPlayer->multiplier = 120;
 
-        winLevel = "Red Ball Hit";
+        winLevel = "RED Ball Hit";
     }
-
     if (passiveEntityTag->entityName == "Blue")
     {
+        pPlayer->maxStrokes += 2;
+        pPlayer->multiplier = 10;
 
-        winLevel = "Blue Ball Hit";
-
+        winLevel = "BLUE Ball Hit";
     }
+
+ 
 
     
 
