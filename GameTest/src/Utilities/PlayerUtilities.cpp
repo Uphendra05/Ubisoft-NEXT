@@ -13,13 +13,44 @@ namespace Engine
 		return *it;
 	}
 
-	Entity PlayerUtilities::GetMirroPlayerID(CScene* pScene)
+	size_t PlayerUtilities::CalculateResult(size_t strokes, size_t points, size_t multiplier)
 	{
-		SComponentIterator<MovementComponent>::Iterator it = SComponentIterator<MovementComponent>(*pScene).begin();
-
-		++it;
-
-		return *it;
+        size_t result = points / strokes;
+        result *= multiplier;
+        return result;
 	}
+
+	size_t PlayerUtilities::PointStreaks(size_t strokes, size_t multiplier, eGameStreaks mGameStreaks)
+	{
+        size_t _points = 0;
+
+
+        switch (mGameStreaks)
+        {
+        case HOLEINONE:
+            _points = 1300;
+            return CalculateResult(strokes, _points, multiplier);
+
+            break;
+        case TWOTOFOUR:
+            _points = 1100;
+            return CalculateResult(strokes, _points, multiplier);
+
+            break;
+        case FIVETOSEVEN:
+            _points = 150;
+
+            return CalculateResult(strokes, _points, multiplier);
+
+            break;
+        default:
+            return size_t();
+            break;
+
+        }
+
+	}
+
+	
 }
 

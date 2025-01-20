@@ -1,10 +1,4 @@
-﻿  stdafx.cpp
-  app.cpp
-  main.cpp
-  SimpleController.cpp
-  SimpleSound.cpp
-  SimpleSprite.cpp
-  LevelOne.cpp
+﻿  LevelOne.cpp
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Utilities\MathUtils.hpp(31,3): warning C4091: 'static ': ignored on left of 'Engine::MathUtils' when no variable is declared
   (compiling source file '/src/Gamplay/LevelOne.cpp')
   
@@ -17,43 +11,6 @@ D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Gamplay\LevelOne.cpp(102,36)
 D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Gamplay\LevelOne.cpp(118,32): warning C4244: '-=': conversion from 'float' to 'size_t', possible loss of data
   (compiling source file '/src/Gamplay/LevelOne.cpp')
   
-  ObjectPool.cpp
-  GameStateEventSystem.cpp
-  LevelSystem.cpp
-  ShuffleHoleSystem.cpp
-  PlayerHealthSystem.cpp
-  ComponentUtils.cpp
-  FrameSystem.cpp
-  CameraSystem.cpp
-  MemoryLeakFinder.cpp
-  GameLoop.cpp
-  CollisionSystem.cpp
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\Utilities\MathUtils.hpp(31,3): warning C4091: 'static ': ignored on left of 'Engine::MathUtils' when no variable is declared
-  (compiling source file '/src/System/CollisionSystem.cpp')
-  
-D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\GameTest\src\System\CollisionSystem.cpp(372,13): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file '/src/System/CollisionSystem.cpp')
-  
-  RaycastSystem.cpp
-  WorldUISystem.cpp
-  GraphicUtils.cpp
-  Generating Code...
-  Compiling...
-  RenderSystem.cpp
-  MovementSystem.cpp
-  PlayerMovement.cpp
-  GamplayUtils.cpp
-  ECSTest.cpp
-  CComponentContainer.cpp
-  CEntityManager.cpp
-  GameTest.cpp
-  miniaudio.cpp
-  CScene.cpp
-  PlayerUtilities.cpp
-  stb_image.cpp
-  Vector2.cpp
-  Vector2Tests.cpp
-  Generating Code...
   GameTest.vcxproj -> D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Debug\GameTest.exe
   D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\\GameTest\glut\bin\x64\freeglut.dll
   1 File(s) copied

@@ -78,7 +78,7 @@ namespace Engine
 
                 }
 
-                result = PointStreaks(mStrokes, mMultiplier);
+                result = PlayerUtilities::PointStreaks(mStrokes, mMultiplier, mGameStreaks);
 
                 if (result >= mObjectivePoints)
                 {
@@ -135,8 +135,6 @@ namespace Engine
         std::string finalResult = "RESULT : " + std::to_string(result);
 
         GameStateComponent* pState = ComponentUtils::GetGameState();
-
-
         if (pState->currState == eGameStates::RUNNING)
         {
 
@@ -170,95 +168,53 @@ namespace Engine
     }
 
 
-
-    size_t Engine::LevelOne::CalculateResult(size_t strokes, size_t points, size_t multiplier)
-    {
-
-        size_t result = points / strokes;
-        result *= multiplier;
-        return result;
-
-    }
-
-    size_t Engine::LevelOne::PointStreaks(size_t strokes, size_t multiplier)
-    {
-        size_t _points = 0;
-
-
-        switch (mGameStreaks)
-        {
-        case HOLEINONE:
-            _points = 300;
-            return CalculateResult(strokes, _points, multiplier);
-
-            break;
-        case TWOTOFOUR:
-            _points = 100;
-            return CalculateResult(strokes, _points, multiplier);
-
-            break;
-        case FIVETOSEVEN:
-            _points = 50;
-
-            return CalculateResult(strokes, _points, multiplier);
-
-            break;
-        default:
-            return size_t();
-            break;
-
-        }
-
-
-
-
-
-    }
-
     void Engine::LevelOne::OnCollision(const CollisionEnterEvent& event)
     {
-
-        CScene* pScene = event.collisionData.pScene;
-        Entity entityActive = event.collisionData.entityA;
-        Entity entityPassive = event.collisionData.entityB;
-
-        Tag* passiveEntityTag = pScene->GetComponent<Tag>(entityPassive);
-        Transform* pTransform = pScene->GetComponent<Transform>(entityActive);
-        ScoreComponent* pPlayer = pScene->GetComponent<ScoreComponent>(entityActive);
-        SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityActive);
-        Rigidbody* pRb = pScene->GetComponent<Rigidbody>(entityActive);
-
-        if (passiveEntityTag->entityName == "Goal")
+        GameStateComponent* pState = ComponentUtils::GetGameState();
+        if (pState->currState == eGameStates::RUNNING)
         {
 
-            pPlayer->isGoal = true;
-            pSprite->isVisible = false;
+            CScene* pScene = event.collisionData.pScene;
+            Entity entityActive = event.collisionData.entityA;
+            Entity entityPassive = event.collisionData.entityB;
+
+            Tag* passiveEntityTag = pScene->GetComponent<Tag>(entityPassive);
+            Transform* pTransform = pScene->GetComponent<Transform>(entityActive);
+            ScoreComponent* pPlayer = pScene->GetComponent<ScoreComponent>(entityActive);
+            SpriteRenderer* pSprite = pScene->GetComponent<SpriteRenderer>(entityActive);
+            Rigidbody* pRb = pScene->GetComponent<Rigidbody>(entityActive);
+
+            if (passiveEntityTag->entityName == "Goal")
+            {
+
+                pPlayer->isGoal = true;
+                pSprite->isVisible = false;
+
+            }
+            if (passiveEntityTag->entityName == "Red")
+            {
+
+                pSprite->sprite = new CSimpleSprite(".\\Assets\\Red.png", 1, 1);
+                pPlayer->maxStrokes = 5;
+                pPlayer->multiplier = 120;
+                pRb->bounciness = 2.7f;
+                winLevel = "RED Ball Hit";
+
+            }
+            if (passiveEntityTag->entityName == "Blue")
+            {
+                pSprite->sprite = new CSimpleSprite(".\\Assets\\Blue.png", 1, 1);
+                pPlayer->maxStrokes = 8;
+                pPlayer->multiplier = 25;
+                pRb->bounciness = 0.8f;
+
+                winLevel = "BLUE Ball Hit";
+
+            }
 
         }
-        if (passiveEntityTag->entityName == "Red")
-        {
-
-            pSprite->sprite = new CSimpleSprite(".\\Assets\\Red.png", 1, 1);
-            pPlayer->maxStrokes = 3;
-            pPlayer->multiplier = 120;
-            pRb->bounciness = 2.7f;
-            winLevel = "RED Ball Hit";
-
-        }
-        if (passiveEntityTag->entityName == "Blue")
-        {
-            pSprite->sprite = new CSimpleSprite(".\\Assets\\Blue.png", 1, 1);
-            pPlayer->maxStrokes = 8;
-            pPlayer->multiplier = 10;
-            pRb->bounciness = 0.8f;
-
-            winLevel = "BLUE Ball Hit";
-
-        }
-
-
 
     }
 
 }
-//TODO : Change Timer Classes
+//TODO : Change Timer 

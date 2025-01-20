@@ -189,6 +189,164 @@ namespace Engine
 		return collidableId;
 	}
 
+	Entity GamplayUtils::CreateCollidable2(CScene* pScene, Vector2 position)
+	{
+		Entity collidableId = pScene->CreateEntity();
+
+		Tag* pTag = pScene->AddComponent<Tag>(collidableId);
+		pTag->entityName = "Block";
+
+		Transform* pTransform = pScene->AddComponent<Transform>(collidableId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 0.75f;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(collidableId);
+		pSprite->fileName = ".\\Assets\\BlockTwo.png";  //TODO : Should Change this
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+		pSprite->isVisible = true;
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+		pSprite->isStatic = true;
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(collidableId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = true;
+
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->physicsType = ePhysicsType::ACTIVE;
+		pRigidbody->colliderSize = Vector2(50, 95);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = true;
+
+
+
+		return collidableId;
+	}
+
+	Entity GamplayUtils::CreateCollidable3(CScene* pScene, Vector2 position)
+	{
+		Entity collidableId = pScene->CreateEntity();
+
+		Tag* pTag = pScene->AddComponent<Tag>(collidableId);
+		pTag->entityName = "Block";
+
+		Transform* pTransform = pScene->AddComponent<Transform>(collidableId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 0.75f;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(collidableId);
+		pSprite->fileName = ".\\Assets\\BlockThree.png";  //TODO : Should Change this
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+		pSprite->isVisible = true;
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+		pSprite->isStatic = true;
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(collidableId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = true;
+
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->physicsType = ePhysicsType::ACTIVE;
+		pRigidbody->colliderSize = Vector2(95, 50);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = true;
+
+
+
+		return collidableId;
+	}
+
+	Entity GamplayUtils::CreateWall(CScene* pScene, Vector2 position)
+	{
+		Entity collidableId = pScene->CreateEntity();
+
+		Tag* pTag = pScene->AddComponent<Tag>(collidableId);
+		pTag->entityName = "Block";
+
+		Transform* pTransform = pScene->AddComponent<Transform>(collidableId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 0.75f;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(collidableId);
+		pSprite->fileName = ".\\Assets\\Wall.png";  //TODO : Should Change this
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+		pSprite->isVisible = true;
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+		pSprite->isStatic = true;
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(collidableId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = true;
+
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->physicsType = ePhysicsType::ACTIVE;
+		pRigidbody->colliderSize = Vector2(50, 330);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = true;
+
+
+		return collidableId;
+	}
+
+	Entity GamplayUtils::CreateWall2(CScene* pScene, Vector2 position)
+	{
+		Entity collidableId = pScene->CreateEntity();
+
+		Tag* pTag = pScene->AddComponent<Tag>(collidableId);
+		pTag->entityName = "Block";
+
+		Transform* pTransform = pScene->AddComponent<Transform>(collidableId);
+		pTransform->position = position;
+		pTransform->rotation = 0;
+		pTransform->scale = 0.75f;
+
+		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(collidableId);
+		pSprite->fileName = ".\\Assets\\Wall2.png";  //TODO : Should Change this
+		pSprite->cols = 1;
+		pSprite->rows = 1;
+		pSprite->animSpeed = 1.0f;
+		pSprite->isVisible = true;
+		GraphicUtils::SetupSprite(pSprite, pTransform);
+		pSprite->isStatic = true;
+
+		MovementComponent* pMove = pScene->AddComponent<MovementComponent>(collidableId);
+		pMove->acceleration = Vector2(0.0f, 0.0f);
+		pMove->velocity = Vector2(0.0f, 0.0f);
+		pMove->isStatic = true;
+
+
+		Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(collidableId);
+		pRigidbody->physicsBody = ePhysicsBody::AABB;
+		pRigidbody->physicsType = ePhysicsType::ACTIVE;
+		pRigidbody->colliderSize = Vector2(765, 50);
+		pRigidbody->mass = 1.0f;
+		pRigidbody->gravity = -9.8f;
+		pRigidbody->isKinematic = true;
+
+
+		return collidableId;
+	}
+
 	Entity GamplayUtils::CreateGoal(CScene* pScene, Vector2 position)
 	{
 		Entity goalId = pScene->CreateEntity();

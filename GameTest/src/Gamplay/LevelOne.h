@@ -34,8 +34,7 @@ namespace Engine
     private:
 
 
-        size_t CalculateResult(size_t strokes, size_t points, size_t multiplier);
-        size_t PointStreaks(size_t strokes, size_t multiplier);
+       
 
        static void OnCollision(const CollisionEnterEvent& event);
 

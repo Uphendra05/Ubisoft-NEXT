@@ -14,6 +14,7 @@
 #include "src/System/GameStateEventSystem.h"
 #include "src/System/LevelSystem.h"
 #include "src/Gamplay/LevelOne.h"
+#include "src/Gamplay/LevelTwo.h"
 
 
 #include "src/Events/EventBus.hpp"
@@ -41,6 +42,7 @@ namespace Engine
 		systemFactory->CreateSystems<LevelSystem>();
 		systemFactory->CreateSystems<GameStateEventSystem>();
 		systemFactory->CreateSystems<LevelOne>();
+		systemFactory->CreateSystems<LevelTwo>();
 	
 
 		// Should this be here ?

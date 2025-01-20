@@ -240,7 +240,7 @@ namespace Engine
 
                                     if (pTag1 && pTag1->entityName == "Red" || pTag1->entityName == "Blue")
                                     {
-                                        //reflected = Vector2(deltatime * 1500, deltatime * 1500);
+                                        reflected = Vector2(deltatime * 1500, deltatime * 1500);
 
                                         pScene->RemoveEntity(*it);
                                         it = passiveEntites.erase(it);
@@ -298,66 +298,70 @@ namespace Engine
 
                 sAABB* aabbB = pScene->GetComponent<sAABB>(otherAcive);
                 Tag* pTag1 = pScene->GetComponent<Tag>(otherAcive);
+
+
                 if (CheckCollision(*aabbA, *aabbB))
                 {
-
-                    if (collisionNormals.size() > 0)
-                    {
-
-                        Vector2 normal = ComputeNormals(collisionNormals);
-                        normal = normal.normalized();
-
-
-
-                        Vector2 incident = pScene->GetComponent<MovementComponent>(entitesActive)->velocity;
-                        float dotProduct = Vector2::Dot(incident, normal);
-                        if (dotProduct < 0)
+                    
+                        if (collisionNormals.size() > 0)
                         {
-                            normal = normal * -1;
-                            dotProduct = -dotProduct;
-                        }
 
-                        Vector2 reflected = Vector2::Reflect(incident, normal);
+                            Vector2 normal = ComputeNormals(collisionNormals);
+                            normal = normal.normalized();
 
-                        float distancedReflected = reflected.magnitude();
-                        if (distancedReflected > 0.001f)
-                        {
-                            if (pTag1->entityName == "Hole")
+
+
+                            Vector2 incident = pScene->GetComponent<MovementComponent>(entitesActive)->velocity;
+                            float dotProduct = Vector2::Dot(incident, normal);
+                            if (dotProduct < 0)
                             {
-                                //reflected = Vector2(deltatime * 1500, deltatime * 1500);
-                             
-                                sCollisionData collData = sCollisionData();
-                                collData.pScene = pScene;
-                                collData.entityA = entitesActive;
-                                collData.entityB = otherAcive;
-
-                                bool isNewCollision = FrameCollision(collData);
-                                if (!isNewCollision)
-                                {
-                                    continue;
-                                }
-
-                                TriggerCollision(collData);
-
-                               /* pScene->RemoveEntity(otherAcive);
-
-                                auto it = std::find(activeEntites.begin(), activeEntites.end(), otherAcive);
-                                if (it != activeEntites.end())
-                                {
-                                    activeEntites.erase(it);
-                                }*/
-
-
+                                normal = normal * -1;
+                                dotProduct = -dotProduct;
                             }
 
-                              pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * pRb->bounciness;
-                              pScene->GetComponent<MovementComponent>(otherAcive)->velocity    = reflected * pRb->bounciness;    
+                            Vector2 reflected = Vector2::Reflect(incident, normal);
+
+                            float distancedReflected = reflected.magnitude();
+                            if (distancedReflected > 0.001f)
+                            {
+                                if (pTag1->entityName == "Hole")
+                                {
+                                    //reflected = Vector2(deltatime * 1500, deltatime * 1500);
+
+                                    sCollisionData collData = sCollisionData();
+                                    collData.pScene = pScene;
+                                    collData.entityA = entitesActive;
+                                    collData.entityB = otherAcive;
+
+                                    bool isNewCollision = FrameCollision(collData);
+                                    if (!isNewCollision)
+                                    {
+                                        continue;
+                                    }
+
+                                    TriggerCollision(collData);
+
+                                    /* pScene->RemoveEntity(otherAcive);
+
+                                     auto it = std::find(activeEntites.begin(), activeEntites.end(), otherAcive);
+                                     if (it != activeEntites.end())
+                                     {
+                                         activeEntites.erase(it);
+                                     }*/
+
+
+                                }
+
+                                pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * pRb->bounciness;
+                                pScene->GetComponent<MovementComponent>(otherAcive)->velocity = reflected * pRb->bounciness;
+                            }
+
+
+
                         }
 
 
-
-                    }
-
+                    
 
                 }
 

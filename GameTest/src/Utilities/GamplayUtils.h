@@ -30,6 +30,14 @@ namespace Engine
 
 		static Entity CreateCollidable(CScene* pScene, Vector2 position);
 
+		static Entity CreateCollidable2(CScene* pScene, Vector2 position);
+
+		static Entity CreateCollidable3(CScene* pScene, Vector2 position);
+
+		static Entity CreateWall(CScene* pScene, Vector2 position);
+
+		static Entity CreateWall2(CScene* pScene, Vector2 position);
+
 
 
 

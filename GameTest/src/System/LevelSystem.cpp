@@ -179,31 +179,45 @@ void Engine::LevelSystem::OnGameOver(const GameOverEvent& event)
 
 void Engine::LevelSystem::LevelOne(const GameRunningEvent& event)
 {
+
 	event.pScene->DestroyAllEntities();
 
-	EVENTTEXT = "EVENT LEVEL ONE !";
+	EVENTTEXT = "EVENT NEW LEVEL !";
 	SystemFactory* systemFactory = ComponentUtils::GetSystemFactory();
 
 	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
-	GamplayUtils::CreateGoal(event.pScene, Vector2(900.0f, 400.0f));
-	GamplayUtils::CreatePlayer(event.pScene, Vector2(50.0f, 400.0f));
-	GamplayUtils::CreateRed(event.pScene, Vector2(150.0f, 600.0f));
-	GamplayUtils::CreateBlue(event.pScene, Vector2(150.0f, 200.0f));
+	GamplayUtils::CreateGoal(event.pScene, Vector2(100.0f, 100.0f));
+	GamplayUtils::CreatePlayer(event.pScene, Vector2(100.0f, 400.0f));
+	GamplayUtils::CreateRed(event.pScene, Vector2(50.0f, 600.0f));
+	GamplayUtils::CreateBlue(event.pScene, Vector2(150.0f, 600.0f));
 
-	GamplayUtils::CreateCollidable(event.pScene, Vector2(400.0f, 400.0f));
-	GamplayUtils::CreateCollidable(event.pScene, Vector2(300.0f, 200.0f));
-	GamplayUtils::CreateCollidable(event.pScene, Vector2(600.0f, 600.0f));
-	GamplayUtils::CreateCollidable(event.pScene, Vector2(600.0f, 200.0f));
+	//GamplayUtils::CreateCollidable(event.pScene, Vector2(300.0f, 400.0f));
+	//GamplayUtils::CreateCollidable(event.pScene, Vector2(700.0f, 600.0f));
+	//GamplayUtils::CreateCollidable(event.pScene, Vector2(800.0f, 200.0f));
 
-	
 
-	//GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 600.0f));
-	//GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 200.0f));
+	//GamplayUtils::CreateCollidable(event.pScene, Vector2(450.0f, 345.0f));
+
+	GamplayUtils::CreateCollidable2(event.pScene, Vector2(950.0f, 100.0f));
+	GamplayUtils::CreateCollidable2(event.pScene, Vector2(300.0f, 400.0f));
+
+	GamplayUtils::CreateCollidable3(event.pScene, Vector2(400.0f, 600.0f));
+
+	//GamplayUtils::CreateWall(event.pScene, Vector2(250.0f, 705.0f));
+	//GamplayUtils::CreateWall(event.pScene, Vector2(250.0f, 165.0f));
+
+	GamplayUtils::CreateWall2(event.pScene, Vector2(375.0f, 200.0f));
+
+	GamplayUtils::CreateWall2(event.pScene, Vector2(1275.0f, 300.0f));
 
 
 
 
 	systemFactory->Start(event.pScene);
+
+
+
+	
 
 	/*Entity holeId = holePool.RequestEntity(event.pScene);
 	Transform* pTransform = event.pScene->GetComponent<Transform>(holeId);
@@ -230,22 +244,40 @@ void Engine::LevelSystem::LevelOne(const GameRunningEvent& event)
 
 void Engine::LevelSystem::LevelTwo(const GameNewLevelEvent& event)
 {
-
 	event.pScene->DestroyAllEntities();
 
-	EVENTTEXT = "EVENT NEW LEVEL !";
+	EVENTTEXT = "EVENT LEVEL ONE !";
 	SystemFactory* systemFactory = ComponentUtils::GetSystemFactory();
 
 	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
-	GamplayUtils::CreatePlayer(event.pScene, Vector2(400.0f, 400.0f));
-	GamplayUtils::CreateCollidable(event.pScene, Vector2(200.0f, 200.0f));
-	GamplayUtils::CreateCollidable(event.pScene, Vector2(600.0f, 200.0f));
-	GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 600.0f));
-	GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 200.0f));
+	GamplayUtils::CreateGoal(event.pScene, Vector2(700.0f, 100.0f));
+	GamplayUtils::CreatePlayer(event.pScene, Vector2(100.0f, 100.0f));
+	GamplayUtils::CreateRed(event.pScene, Vector2(50.0f, 200.0f));
+	GamplayUtils::CreateBlue(event.pScene, Vector2(150.0f, 200.0f));
+
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(300.0f, 400.0f));
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(700.0f, 600.0f));
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(800.0f, 200.0f));
+
+
+	GamplayUtils::CreateCollidable(event.pScene, Vector2(450.0f, 345.0f));
+
+	GamplayUtils::CreateCollidable2(event.pScene, Vector2(800.0f, 400.0f));
+	GamplayUtils::CreateCollidable2(event.pScene, Vector2(600.0f, 100.0f));
+
+	GamplayUtils::CreateCollidable3(event.pScene, Vector2(400.0f, 600.0f));
+
+	GamplayUtils::CreateWall(event.pScene, Vector2(250.0f, 705.0f));
+	GamplayUtils::CreateWall(event.pScene, Vector2(250.0f, 165.0f));
+
+
+
+	//GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 600.0f));
+	//GamplayUtils::CreateHole(event.pScene, Vector2(800.0f, 200.0f));
 
 
 
 
 	systemFactory->Start(event.pScene);
-
+	
 }

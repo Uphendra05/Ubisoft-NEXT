@@ -3,7 +3,7 @@
 #define _PLAYERUTILITIES_H
 
 #include "src/ECS/SComponentIterator.h"
-
+#include "src/Gamplay/Enums.h"
 namespace Engine
 {
 	class PlayerUtilities
@@ -12,10 +12,11 @@ namespace Engine
 	public:
 		static Entity GetPlayerID(CScene* pScene);
 
-		static Entity GetMirroPlayerID(CScene* pScene);
+		static size_t PointStreaks(size_t strokes, size_t multiplier,eGameStreaks mGameStreaks );
 
-		// Need a way to get player lives sprites as entites
+	private:
 
+		static size_t CalculateResult(size_t strokes, size_t points, size_t multiplier);
 	};
 }
 

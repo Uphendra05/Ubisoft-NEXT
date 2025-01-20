@@ -11,7 +11,7 @@ namespace Engine
 {
 	struct sCollisionData
 	{
-		CScene* pScene;
+		CScene* pScene = nullptr;
 		Entity entityA;
 		Entity entityB;
 		std::vector<Entity> passiveEntites;
