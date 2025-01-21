@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _PLAYERMOVEMENT_H
+#define _PLAYERMOVEMENT_H
+
 #include "iSystems.h"
 #include "src/ECS/SComponents.h"
 
@@ -42,3 +45,4 @@ namespace Engine
 
 
 }
+#endif

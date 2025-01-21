@@ -56,22 +56,14 @@ namespace Engine
 		void ResolveCollisionWithNormals(CScene* pScene, Entity entities);
 
 	
-		iEventBus<eCollisionEvents, CollisionEnterEvent>* mEventBusCollision ;
+		iEventBus<eCollisionEvents, CollisionEnterEvent>* mEventBusCollision = nullptr;
 		
 		std::vector<Vector2> collisionNormals;
 
 		std::vector<Entity> activeEntites;
 		std::vector<Entity> passiveEntites;
 
-		template <typename T>
-		T Max(T a, T b) {
-			return (a > b) ? a : b;
-		}
-
-		template <typename T>
-		T Min(T a, T b) {
-			return (a < b) ? a : b;
-		}
+		
 
 		
 	};

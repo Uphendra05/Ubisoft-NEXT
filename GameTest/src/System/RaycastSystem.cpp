@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "RaycastSystem.h"
 #include "src/ECS/SComponentIterator.h"
+#include "src/Utilities/MathUtils.hpp"
 
 namespace Engine
 {
@@ -128,8 +129,8 @@ namespace Engine
 
 				if (t1 > t2) std::swap(t1, t2);
 
-				tMin = Max(tMin, t1);
-				tMax = Min(tMax, t2);
+				tMin = MathUtils::Max(tMin, t1);
+				tMax = MathUtils::Min(tMax, t2);
 
 				if (tMin > tMax) return false; // No intersection
 			}

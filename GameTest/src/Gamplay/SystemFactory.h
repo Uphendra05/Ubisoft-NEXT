@@ -1,6 +1,7 @@
 #pragma once
 #ifndef _SYSTEMFACTORY_H
 #define _SYSTEMFACTORY_H
+
 #include "src/System/iSystems.h"
 #include "src/ECS/CScene.h"
 

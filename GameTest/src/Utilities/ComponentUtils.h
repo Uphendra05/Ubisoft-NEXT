@@ -1,6 +1,7 @@
 #pragma once
 #ifndef _COMPONENTUTILS_H
 #define _COMPONENTUTILS_H
+
 #include "src/ECS/SComponents.h"
 #include "src/Gamplay/SystemFactory.h"
 

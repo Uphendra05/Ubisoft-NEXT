@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _PLAYERHEALTHSYSTEM_H
+#define _PLAYERHEALTHSYSTEM_H
+
 #include "iSystems.h"
 #include "src/ECS/SComponents.h"
 
@@ -31,4 +34,4 @@ namespace Engine
 	};
 
 }
-
+#endif

@@ -4,6 +4,10 @@
 #include "src/Events/EventBusLocator.hpp"
 #include "src/Utilities/ComponentUtils.h"
 
+
+namespace Engine
+{
+
 std::string Engine::GameStateEventSystem::SystemName()
 {
     return std::string();
@@ -95,4 +99,5 @@ void Engine::GameStateEventSystem::StateChanged(CScene* pScene, const eGameState
 		return;
 	}
 
+}
 }

@@ -1,5 +1,11 @@
 #pragma once
+#ifndef _UITEXTS_H
+#define _UITEXTS_H
+
 #include <iostream>
+
+namespace Engine
+{
 
 
 	//MAIN MENU
@@ -23,3 +29,5 @@
 	const float INSTRUCTIONSPOSY = 500.0f;
 	const float INSTRUCTIONSCOLOR[3] = { 1.0f, 1.0f, 1.0f };
 
+}
+#endif

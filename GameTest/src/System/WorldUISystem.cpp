@@ -4,7 +4,8 @@
 #include "src/ECS/SComponents.h"
 
 
-
+namespace Engine
+{
 
 std::string Engine::WorldUISystem::SystemName()
 {
@@ -70,4 +71,5 @@ void Engine::WorldUISystem::End(CScene* pScene)
 
 void Engine::WorldUISystem::Cleanup()
 {
+}
 }

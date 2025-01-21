@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _RENDERSYSTEM_H
+#define _RENDERSYSTEM_H
+
 #include "iSystems.h"
 
 #include "src/ECS/SComponents.h"
@@ -33,3 +36,4 @@ namespace Engine
 
 
 }
+#endif

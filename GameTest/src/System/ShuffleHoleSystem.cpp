@@ -4,6 +4,10 @@
 #include <random>
 #include "App/app.h"
 
+
+namespace Engine
+{
+
 std::string Engine::ShuffleHoleSystem::SystemName()
 {
     return std::string();
@@ -94,4 +98,5 @@ void Engine::ShuffleHoleSystem::ShufflePositions(CScene* pScene, std::vector<Ent
     }
    
    
+}
 }

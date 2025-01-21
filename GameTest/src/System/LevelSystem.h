@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _LEVELSYSTEM_H
+#define _LEVELSYSTEM_H
+
 #include "iSystems.h"
 #include "src/Events/GameStateEvent.h"
 #include "src/Events/CollisionEvent.h"
@@ -11,6 +14,8 @@ namespace Engine
 	class LevelSystem :public iSystems		
 	{
 	public:
+		LevelSystem() = default;
+		virtual ~LevelSystem() {};
 
 		// Inherited via iSystems
 		std::string SystemName() override;
@@ -49,5 +54,5 @@ namespace Engine
 
 	};
 }
-
+#endif
 

@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _GRAPHICUTILS_H
+#define _GRAPHICUTILS_H
+
 #include "src/ECS/SComponents.h"
 #include "src/ECS/CScene.h"
 namespace Engine
@@ -18,7 +21,6 @@ namespace Engine
 
 		static void DrawSprite(SpriteRenderer* pSprite);
 
-		static void CreateUIWidget();
 
 		
 
@@ -29,5 +31,5 @@ namespace Engine
 
 
 }
-
+#endif
 

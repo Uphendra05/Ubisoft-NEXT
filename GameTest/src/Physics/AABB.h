@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _AABB_H
+#define _AABB_H
+
 #include "src/Utilities/Vector2.h"
 #include "src/ECS/SComponents.h"
 
@@ -30,3 +33,4 @@ namespace Engine
 	};
 
 }
+#endif

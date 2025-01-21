@@ -4,6 +4,8 @@
 #include "src/Events/EventBusLocator.hpp"
 #include "src/Utilities/ComponentUtils.h"
 
+namespace Engine
+{
 
 std::string Engine::PlayerHealthSystem::SystemName()
 {
@@ -58,4 +60,5 @@ void Engine::PlayerHealthSystem::OnCollision(const CollisionEnterEvent& event)
     
 
 
+}
 }

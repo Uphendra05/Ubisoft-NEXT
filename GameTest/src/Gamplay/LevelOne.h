@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _LEVELONE_H
+#define _LEVELONE_H
+
 #include "src/System/iSystems.h"
 #include "src/Gamplay/Enums.h"
 
@@ -43,12 +46,13 @@ namespace Engine
         size_t mStrokes = 0;
         size_t mMaxStrokes = 6;
 
-        float timer;
-        eGameStreaks mGameStreaks = eGameStreaks::NONE;
+        float timer = 0.0f;
+
+        eGameStreaks mGameStreaks = eGameStreaks::ZERO;
 
 
     };
 
 
 }
-
+#endif

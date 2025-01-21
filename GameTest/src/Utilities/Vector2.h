@@ -1,6 +1,7 @@
 #pragma once
 #ifndef _VECTOR2_H
 #define _VECTOR2_H
+
 #include <iostream>
 #include <cmath>
 

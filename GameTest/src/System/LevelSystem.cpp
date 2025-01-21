@@ -10,8 +10,9 @@
 
 
 
+namespace Engine
+{
 
-Engine::ObjectPool holePool;
 
 // TODO : should refactor this code and should find a way to remove gameplay systems and add them again.
 
@@ -38,40 +39,7 @@ void Engine::LevelSystem::Init()
 
 void Engine::LevelSystem::Start(CScene* pScene)
 {
-	//holePool.Initialize(pScene, 2, [](Entity entity, CScene* pScene) {
-	//	Tag* pTag = pScene->AddComponent<Tag>(entity);
-	//	pTag->entityName = "Hole";
-
-	//	Transform* pTransform = pScene->AddComponent<Transform>(entity);
-	//	//pTransform->position = Vector2(800, 600);
-	//	pTransform->rotation = 0;
-	//	pTransform->scale = 0.15f;
-
-	//	ShuffleHoleComponent* pHole = pScene->AddComponent<ShuffleHoleComponent>(entity);
-	//	pHole->isMoving = false;
-	//	pHole->speed = 0;
-
-	//	MovementComponent* pMove = pScene->AddComponent<MovementComponent>(entity);
-	//	pMove->isStatic = true;
-
-	//	SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(entity);
-	//	pSprite->fileName = ".\\Assets\\Hole.png";
-	//	pSprite->cols = 1;
-	//	pSprite->rows = 1;
-	//	pSprite->animSpeed = 1.0f;
-
-	//	GraphicUtils::SetupSprite(pSprite, pTransform);
-
-	//	Rigidbody* pRigidbody = pScene->AddComponent<Rigidbody>(entity);
-	//	pRigidbody->physicsBody = ePhysicsBody::AABB;
-	//	pRigidbody->physicsType = ePhysicsType::PASSIVE;
-	//	pRigidbody->colliderSize = Vector2(50, 50);
-	//	pRigidbody->mass = 1.0f;
-	//	pRigidbody->gravity = -9.8f;
-	//	pRigidbody->isKinematic = true;
-
-	//	});
-
+	
 }
 
 void Engine::LevelSystem::Update(CScene* pScene, float deltaTime)
@@ -332,4 +300,5 @@ void Engine::LevelSystem::LevelTwo(const GameNewLevelEvent& event)
 
 	systemFactory->Start(event.pScene);
 	
+}
 }

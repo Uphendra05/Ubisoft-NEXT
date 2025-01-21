@@ -3,6 +3,9 @@
 #include "src/ECS/SComponentIterator.h"
 #include "src/ECS/SComponents.h"
 
+namespace Engine
+{
+
 std::string Engine::ECSTest::SystemName()
 {
     return "ECSTEST SYSTEM";
@@ -41,4 +44,5 @@ void Engine::ECSTest::End(CScene* pScene)
 
 void Engine::ECSTest::Cleanup()
 {
+}
 }

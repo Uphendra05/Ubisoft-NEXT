@@ -1,11 +1,9 @@
 #pragma once
+#ifndef _PHYSICSPROPERTIES_H
+#define _PHYSICSPROPERTIES_H
 
 #include "src/ECS/ECSCore.h"
 #include "src/ECS/CScene.h"
-
-#include "src/Utilities/Vector2.h"
-
-#include <vector>
 
 namespace Engine
 {
@@ -14,7 +12,6 @@ namespace Engine
 		CScene* pScene = nullptr;
 		Entity entityA = -1;
 		Entity entityB = -1;
-		std::vector<Entity> passiveEntites;
 
 		bool operator==(const sCollisionData& other) const
 		{
@@ -27,3 +24,4 @@ namespace Engine
 		}
 	};
 }
+#endif

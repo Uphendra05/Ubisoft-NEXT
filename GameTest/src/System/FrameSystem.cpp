@@ -2,6 +2,11 @@
 #include "FrameSystem.h"
 #include "src/Utilities/ComponentUtils.h"
 
+
+
+namespace Engine
+{
+
 const float POSITIONX = 890.0f;
 const float POSITIONY = 500.0f;
 std::string FRAMETEXT = "  ";
@@ -56,4 +61,5 @@ void Engine::FrameSystem::End(CScene* pScene)
 
 void Engine::FrameSystem::Cleanup()
 {
+}
 }

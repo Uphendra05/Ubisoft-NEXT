@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _SHUFFLEHOLESYSTEM_H
+#define _SHUFFLEHOLESYSTEM_H
+
 #include "iSystems.h"
 #include "src/ECS/SComponents.h"
 
@@ -35,3 +38,4 @@ namespace Engine
 
 }
 
+#endif

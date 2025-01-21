@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "GraphicUtils.h"
 
+namespace Engine
+{
 
 void Engine::GraphicUtils::UpdateAnimation(SpriteRenderer* pSprite, Transform* pTransform, const float& deltaTime)
 {
@@ -48,5 +50,6 @@ void Engine::GraphicUtils::DrawSprite(SpriteRenderer* pSprite)
     {
         pSprite->sprite->Draw();
     }
+}
 }
 

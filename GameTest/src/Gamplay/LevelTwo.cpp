@@ -7,12 +7,12 @@
 #include "src/Events/EventBusLocator.hpp"
 #include "src/Utilities/MathUtils.hpp"
 
-size_t result2 = 0;
-std::string winLevel2 = " ";
+
 
 namespace Engine
 {
-	
+    size_t result2 = 0;
+    std::string winLevel2 = " ";
 
 	std::string Engine::LevelTwo::SystemName()
 	{

@@ -1,4 +1,8 @@
 #pragma once
+#ifndef _OBJECTPOOL_H
+#define _OBJECTPOOL_H
+
+
 #include "src/ECS/CScene.h"
 #include <queue>
 #include <functional>
@@ -28,4 +32,4 @@ namespace Engine
 	};
 }
 
-
+#endif

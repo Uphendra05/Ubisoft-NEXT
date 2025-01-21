@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _RAYCASTSYSTEM_H
+#define _RAYCASTSYSTEM_H
+
 #include "iSystems.h"
 #include <iostream>
 #include "src/ECS/SComponents.h"
@@ -36,16 +39,8 @@ namespace Engine
 
 		void DebugRay(const RaycastComponent& ray, const float color[3]);
 
-		template <typename T>
-		T Max(T a, T b) {
-			return (a > b) ? a : b;
-		}
-
-		template <typename T>
-		T Min(T a, T b) {
-			return (a < b) ? a : b;
-		}
+		
 		
 	};
 }
-
+#endif

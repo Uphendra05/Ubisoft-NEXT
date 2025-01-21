@@ -6,6 +6,8 @@
 
 
 
+namespace Engine
+{
 
 std::string Engine::CameraSystem::SystemName()
 {
@@ -66,6 +68,8 @@ void Engine::CameraSystem::End(CScene* pScene)
 
 void Engine::CameraSystem::Cleanup()
 {
+}
+
 }
 
 

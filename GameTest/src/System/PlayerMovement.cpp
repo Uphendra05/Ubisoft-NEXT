@@ -4,11 +4,9 @@
 #include "src/Utilities/PlayerUtilities.h"
 #include "src/Gamplay/Enums.h"
 
-const float CHARGEPOWERX = 600.0f;
-const float CHARGEPOWERY = 600.0f;
-std::string CHARGEPOWERTEXT = " POWER ";
-const float COLOR[3] = { 1.0f, 1.0f, 1.0f };
 
+namespace Engine
+{
 
 std::string Engine::PlayerMovement::SystemName()
 {
@@ -45,7 +43,6 @@ void Engine::PlayerMovement::Start(CScene* pScene)
 void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
 {
     deltaTime = deltaTime / 100.0f;
-    CHARGEPOWERTEXT = "POWER : " ;
 
     for (Entity entityId : SComponentIterator<Transform, MovementComponent, ScoreComponent, SpriteRenderer>(*pScene))
     {
@@ -174,4 +171,5 @@ void Engine::PlayerMovement::MoveLeftRight(Transform* pTransform, MovementCompon
 
     pMovement->acceleration +=  (forward * (float)direction * 1000);
 
+}
 }

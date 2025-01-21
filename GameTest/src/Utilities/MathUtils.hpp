@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _MATHUTILS_H
+#define _MATHUTILS_H
+
 namespace Engine
 {
 
@@ -34,3 +37,4 @@ namespace Engine
 
 
 }
+#endif

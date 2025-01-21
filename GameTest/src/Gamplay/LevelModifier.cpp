@@ -5,6 +5,11 @@
 #include "src/Utilities/PlayerUtilities.h"
 #include <random>
 
+
+namespace Engine
+{
+
+
 //LEVEL MODIFIER
 const float MODIFIERPOSX = 400.0f;
 const float MODIFIERPOSY = 30.0f;
@@ -126,3 +131,4 @@ void Engine::LevelModifier::DecideLevelModifier(CScene* pScene, float deltaTime)
 }
 
 
+}

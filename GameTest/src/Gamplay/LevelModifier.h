@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _LEVELMODIFIER_H
+#define _LEVELMODIFIER_H
+
 #include "src/System/iSystems.h"
 #include "src/Gamplay/Enums.h"
 
@@ -43,3 +46,4 @@ namespace Engine
 
 }
 
+#endif

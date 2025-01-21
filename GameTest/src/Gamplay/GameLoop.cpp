@@ -20,7 +20,7 @@
 
 #include "src/Events/EventBus.hpp"
 #include "src/Events/EventBusLocator.hpp"
-#include "src/Utilities/ComponentUtils.h"
+
 
 
 namespace Engine
@@ -38,7 +38,6 @@ namespace Engine
 		systemFactory->CreateSystems<MovementSystem>();
 		systemFactory->CreateSystems<RenderSystem>();
 		systemFactory->CreateSystems<CollisionSystem>();
-		systemFactory->CreateSystems<PlayerHealthSystem>();
 		systemFactory->CreateSystems<ShuffleHoleSystem>();
 		systemFactory->CreateSystems<WorldUISystem>();
 		systemFactory->CreateSystems<FrameSystem>();
@@ -54,6 +53,7 @@ namespace Engine
 		pState->currState = eGameStates::STARTED;
 		//systemFactory->Start(pScene);
 
+		//systemFactory->CreateSystems<PlayerHealthSystem>();
 		//systemFactory.CreateSystems<RaycastSystem>();
 		//systemFactory.CreateSystems<CameraSystem>();
 	}

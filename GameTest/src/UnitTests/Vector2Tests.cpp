@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "Vector2Tests.h"
 
+
+namespace Engine
+{
+
 void Engine::Vector2Tests::RunAllTests()
 {
 	Vector2 v = Vector2(1.5f, 3.5f);
@@ -122,3 +126,4 @@ void Engine::Vector2Tests::TestNormalized(Vector2& v)
 	assert(u == Vector2(v.x / length, v.y / length));
 }
 
+}

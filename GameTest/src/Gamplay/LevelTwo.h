@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _LEVELTWO_H
+#define _LEVELTWO_H
+
 #include "src/System/iSystems.h"
 #include "src/Gamplay/Enums.h"
 
@@ -27,10 +30,10 @@ namespace Engine
 		size_t mStrokes;
 		size_t mMaxStrokes = 6;
 
-		float timer;
+		float timer = 0.0f;
 		eGameStreaks mGameStreaks;
 
 	};
 }
-
+#endif
 

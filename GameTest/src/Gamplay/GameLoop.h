@@ -1,10 +1,13 @@
 #pragma once
 #ifndef _GAMELOOP_H
 #define _GAMELOOP_H
+
 #include "src/Gamplay/SystemFactory.h"
 #include "src/Events/GameStateEvent.h"
 #include "src/Events/CollisionEvent.h"
 #include "src/Events/iEventBus.h"
+#include "src/Utilities/ComponentUtils.h"
+
 
 namespace Engine
 {

@@ -7,12 +7,12 @@
 #include "src/Events/EventBusLocator.hpp"
 #include "src/Utilities/MathUtils.hpp"
 
-size_t result = 0;
-std::string winLevel = " ";
+
 
 namespace Engine
 {
-
+    size_t result = 0;
+    std::string winLevel = " ";
 
     std::string Engine::LevelOne::SystemName()
     {
@@ -235,4 +235,4 @@ namespace Engine
     }
 
 }
-//TODO : Change Timer 
+

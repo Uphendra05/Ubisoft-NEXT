@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _GAMESTATEEVENTSYSTEM_H
+#define _GAMESTATEEVENTSYSTEM_H
+
 #include "iSystems.h"
 #include "src/ECS/CScene.h"
 #include "src/ECS/SComponents.h"
@@ -31,5 +34,5 @@ namespace Engine
 
 	};
 }
-
+#endif
 

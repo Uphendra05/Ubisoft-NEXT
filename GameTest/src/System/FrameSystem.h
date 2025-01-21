@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _FRAMESYSTEM_H
+#define _FRAMESYSTEM_H
+
 #include "iSystems.h"
 #include "src/ECS/SComponents.h"
 
@@ -30,4 +33,4 @@ namespace Engine
 	};
 
 }
-
+#endif

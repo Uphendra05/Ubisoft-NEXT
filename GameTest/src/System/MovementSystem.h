@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _MOVEMENTSYSTEM_H
+#define _MOVEMENTSYSTEM_H
+
 #include "iSystems.h"
 #include "src/ECS/SComponents.h"
 
@@ -35,4 +38,4 @@ namespace Engine
 	};
 
 }
-
+#endif

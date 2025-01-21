@@ -13,23 +13,9 @@
 
 namespace Engine
 {
-    const float POSITIONX = 400.0f;
-    const float POSITIONY = 600.0f;
-    std::string FRAMECOLTEXT = " I ";
-
-    const float HEALTHPOSITIONX = 200.0f;
-    const float HEALTHPOSITIONY = 600.0f;
-    std::string HEALTHTEXT = " HEa ";
-
-
-
+  
     const float COLOR[3] = { 1.0f, 1.0f, 1.0f };
-
-
-
-    float BLUE[] = { 0.0f, 0.0f, 1.0f };
-
-
+    const float BLUE[] = { 0.0f, 0.0f, 1.0f };
 
     std::string Engine::CollisionSystem::SystemName()
     {
@@ -60,14 +46,7 @@ namespace Engine
             CreateAABB(entityId, pRigidbody, pTransform, pScene);
         }
 
-        for (Entity entityId : SComponentIterator<HealthComponent>(*pScene)) // TODO : Should Remove this from here
-        {
-            HealthComponent* pHealth = pScene->GetComponent<HealthComponent>(entityId);
-
-            pHealth->currentHealth = 150;
-            pHealth->maxHealth = 150;
-
-        }
+        
     }
 
     void Engine::CollisionSystem::Update(CScene* pScene, float deltaTime)
@@ -117,9 +96,7 @@ namespace Engine
 
         }
 
-        //App::Print(POSITIONX, POSITIONY, FRAMECOLTEXT.c_str(), COLOR[0], COLOR[2], COLOR[2]);
 #endif
-   // App::Print(HEALTHPOSITIONX, HEALTHPOSITIONY, HEALTHTEXT.c_str(), COLOR[0], COLOR[2], COLOR[2]);
     }
 
     void Engine::CollisionSystem::End(CScene* pScene)
@@ -135,15 +112,14 @@ namespace Engine
         passiveEntites.clear();
 
       
-
     }
 
     void Engine::CollisionSystem::AABBDebug(const Vector2& min, const Vector2& max, const float color[3])
     {
-       //App::DrawLine(min.x, min.y, max.x, min.y, color[0], color[1], color[2]);
-       //App::DrawLine(max.x, min.y, max.x, max.y, color[0], color[1], color[2]);
-       //App::DrawLine(max.x, max.y, min.x, max.y, color[0], color[1], color[2]);
-       //App::DrawLine(min.x, max.y, min.x, min.y, color[0], color[1], color[2]);
+       App::DrawLine(min.x, min.y, max.x, min.y, color[0], color[1], color[2]);
+       App::DrawLine(max.x, min.y, max.x, max.y, color[0], color[1], color[2]);
+       App::DrawLine(max.x, max.y, min.x, max.y, color[0], color[1], color[2]);
+       App::DrawLine(min.x, max.y, min.x, min.y, color[0], color[1], color[2]);
 
     }
 
@@ -284,8 +260,6 @@ namespace Engine
               
 
             }
-
-
 
 
 

@@ -4,62 +4,66 @@
 #include "src/Physics/AABB.h"
 #include "src/Utilities/PlayerUtilities.h"
 
-std::string Engine::MovementSystem::SystemName()
-{
-    return std::string();
-}
 
-void Engine::MovementSystem::Init()
+namespace Engine
 {
-}
 
-void Engine::MovementSystem::Start(CScene* pScene)
-{
-}
-
-void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
-{
-    float minSpeed = 10.0f;
-    deltaTime = deltaTime / 1000.0f;
-    timer += deltaTime;
-
-    // Update velocity and position
-    for (Entity entityId : SComponentIterator<Transform, MovementComponent>(*pScene))
+    std::string Engine::MovementSystem::SystemName()
     {
-        
-
-        Transform* pTransform = pScene->GetComponent<Transform>(entityId);
-        MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
-        Transform* pFogOfWar = pScene->GetComponent<Transform>(PlayerUtilities::GetFogOfWarID(pScene));
-
-        // Clip acceleration to max
-        float currentAcceleration = pMovement->acceleration.magnitude();
-        if (currentAcceleration > pMovement->maxAcceleration)
-        {
-            pMovement->acceleration = pMovement->acceleration.normalized() * pMovement->maxAcceleration;
-        }
-
-        Vector2 newVelocity = pMovement->velocity + (pMovement->acceleration * deltaTime);
-        Vector2 dragForce = newVelocity * -(pMovement->drag * deltaTime);
-        pMovement->velocity = newVelocity + dragForce;
-
-        // Clip velocity between min and max
-        float currentSpeed = pMovement->velocity.magnitude();
-        if (currentSpeed > pMovement->maxSpeed)
-        {
-            pMovement->velocity = pMovement->velocity.normalized() * pMovement->maxSpeed;
-        }
-        else if (currentSpeed <= minSpeed)
-        {
-            pMovement->velocity = Vector2(0.0f, 0.0f);
-        }
-
-        pTransform->position += (pMovement->velocity * deltaTime);
+        return std::string();
     }
 
-    for (Entity entity : SComponentIterator<Transform,ShuffleHoleComponent,sAABB>(*pScene))
+    void Engine::MovementSystem::Init()
     {
-       
+    }
+
+    void Engine::MovementSystem::Start(CScene* pScene)
+    {
+    }
+
+    void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
+    {
+        float minSpeed = 10.0f;
+        deltaTime = deltaTime / 1000.0f;
+        timer += deltaTime;
+
+        // Update velocity and position
+        for (Entity entityId : SComponentIterator<Transform, MovementComponent>(*pScene))
+        {
+
+
+            Transform* pTransform = pScene->GetComponent<Transform>(entityId);
+            MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
+            Transform* pFogOfWar = pScene->GetComponent<Transform>(PlayerUtilities::GetFogOfWarID(pScene));
+
+            // Clip acceleration to max
+            float currentAcceleration = pMovement->acceleration.magnitude();
+            if (currentAcceleration > pMovement->maxAcceleration)
+            {
+                pMovement->acceleration = pMovement->acceleration.normalized() * pMovement->maxAcceleration;
+            }
+
+            Vector2 newVelocity = pMovement->velocity + (pMovement->acceleration * deltaTime);
+            Vector2 dragForce = newVelocity * -(pMovement->drag * deltaTime);
+            pMovement->velocity = newVelocity + dragForce;
+
+            // Clip velocity between min and max
+            float currentSpeed = pMovement->velocity.magnitude();
+            if (currentSpeed > pMovement->maxSpeed)
+            {
+                pMovement->velocity = pMovement->velocity.normalized() * pMovement->maxSpeed;
+            }
+            else if (currentSpeed <= minSpeed)
+            {
+                pMovement->velocity = Vector2(0.0f, 0.0f);
+            }
+
+            pTransform->position += (pMovement->velocity * deltaTime);
+        }
+
+        for (Entity entity : SComponentIterator<Transform, ShuffleHoleComponent, sAABB>(*pScene))
+        {
+
             Transform* transform = pScene->GetComponent<Transform>(entity);
             ShuffleHoleComponent* pHole = pScene->GetComponent<ShuffleHoleComponent>(entity);
             sAABB* pAabb = pScene->GetComponent<sAABB>(entity);
@@ -67,7 +71,7 @@ void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
             pAabb->CalculateBounds(*transform, pAabb->halfSize * 2.0f);
 
 
-            if ( pHole->isMoving)
+            if (pHole->isMoving)
             {
 
                 // Calculate the direction and move toward the target position
@@ -96,37 +100,38 @@ void Engine::MovementSystem::Update(CScene* pScene, float deltaTime)
 
 
 
-            
-        
 
-       
 
-       
+
+
+
+
+        }
+
+        // fog of war movement
+        for (Entity entityId : SComponentIterator<Transform, FogOfWarComponent>(*pScene))
+        {
+
+
+            Transform* pTransform = pScene->GetComponent<Transform>(PlayerUtilities::GetPlayerID(pScene));
+            Transform* pFogOfWar = pScene->GetComponent<Transform>(entityId);
+
+            pFogOfWar->position = (pTransform->position);
+        }
     }
 
-    // fog of war movement
-    for (Entity entityId : SComponentIterator<Transform, FogOfWarComponent>(*pScene))
+    void Engine::MovementSystem::Render(CScene* pScene)
     {
 
-
-        Transform* pTransform = pScene->GetComponent<Transform>(PlayerUtilities::GetPlayerID(pScene));
-        Transform* pFogOfWar = pScene->GetComponent<Transform>(entityId);
-
-        pFogOfWar->position = (pTransform->position);
     }
+
+    void Engine::MovementSystem::End(CScene* pScene)
+    {
+    }
+
+    void Engine::MovementSystem::Cleanup()
+    {
+    }
+
 }
-
-void Engine::MovementSystem::Render(CScene* pScene)
-{
-
-}
-
-void Engine::MovementSystem::End(CScene* pScene)
-{
-}
-
-void Engine::MovementSystem::Cleanup()
-{
-}
-
 
