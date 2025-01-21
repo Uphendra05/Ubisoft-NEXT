@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _EVENTBUSLOCATOR_HPP
+#define _EVENTBUSLOCATOR_HPP
 
 #include "NullEventBus.hpp"
 #include "iEventBus.h"
@@ -33,3 +35,4 @@ namespace Engine
 	template <typename T, typename F>
 	iEventBus<T, F>* EventBusLocator<T, F>::m_eventBus = &(EventBusLocator<T, F>::m_nullService);
 }
+#endif

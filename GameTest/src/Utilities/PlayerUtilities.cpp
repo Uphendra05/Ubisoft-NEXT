@@ -35,17 +35,17 @@ namespace Engine
         switch (mGameStreaks)
         {
         case HOLEINONE:
-            _points = 1300;
+            _points = 500;
             return CalculateResult(strokes, _points, multiplier);
 
             break;
         case TWOTOFOUR:
-            _points = 1100;
+            _points = 300;
             return CalculateResult(strokes, _points, multiplier);
 
             break;
         case FIVETOSEVEN:
-            _points = 150;
+            _points = 100;
 
             return CalculateResult(strokes, _points, multiplier);
 

@@ -54,6 +54,16 @@ void Engine::GameStateEventSystem::StateChanged(CScene* pScene, const eGameState
 
 		return;
 	}
+	else if (newState == eGameStates::CONTROLS)
+	{
+		iEventBus<eGameStateEvents, GameControlsEvent>* pEventBus = EventBusLocator<eGameStateEvents, GameControlsEvent>::Get();
+
+		GameControlsEvent stateEvent = GameControlsEvent();
+		stateEvent.pScene = pScene;
+		pEventBus->Publish(stateEvent);
+
+		return;
+	}
 	else if (newState == eGameStates::RUNNING)
 	{
 		iEventBus<eGameStateEvents, GameRunningEvent>* pEventBus = EventBusLocator<eGameStateEvents, GameRunningEvent>::Get();

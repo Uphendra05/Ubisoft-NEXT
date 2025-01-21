@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _GAMESTATEEVENT_H
+#define _GAMESTATEEVENT_H
 
 #include "Event.hpp"
 
@@ -9,6 +11,7 @@ namespace Engine
 	enum eGameStateEvents
 	{
 		GAME_STARTED,
+		GAME_CONTROLS,
 		GAME_RUNNING,
 		GAME_NEWLEVEL,
 		GAME_OVER
@@ -23,6 +26,17 @@ namespace Engine
 
 		CScene* pScene = nullptr;
 	};
+
+	class GameControlsEvent : public Event<eGameStateEvents>
+	{
+	public:
+		GameControlsEvent() :
+			Event<eGameStateEvents>(eGameStateEvents::GAME_CONTROLS, "GameControls") {};
+		virtual ~GameControlsEvent() {};
+
+		CScene* pScene = nullptr;
+	};
+
 
 	class GameRunningEvent : public Event<eGameStateEvents>
 	{
@@ -53,3 +67,4 @@ namespace Engine
 		CScene* pScene = nullptr;
 	};
 }
+#endif

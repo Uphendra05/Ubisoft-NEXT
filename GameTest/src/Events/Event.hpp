@@ -1,5 +1,6 @@
 #pragma once
-
+#ifndef _EVENT_HPP
+#define _EVENT_HPP
 #include <string>
 
 namespace Engine
@@ -25,3 +26,4 @@ namespace Engine
 		bool m_handled = false;
 	};
 }
+#endif

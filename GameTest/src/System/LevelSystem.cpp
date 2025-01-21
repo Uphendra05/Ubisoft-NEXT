@@ -8,9 +8,7 @@
 #include "src/Gamplay/ObjectPool.h"
 #include "src/Gamplay/UITexts.hpp"
 
-const float POSX = 500.0f;
-const float POSY = 500.0f;
-std::string EVENTTEXT = "  ";
+
 
 
 Engine::ObjectPool holePool;
@@ -26,11 +24,13 @@ void Engine::LevelSystem::Init()
 {
 
 	iEventBus<eGameStateEvents, GameStartedEvent>* pGameStarted = EventBusLocator<eGameStateEvents, GameStartedEvent>::Get();
+	iEventBus<eGameStateEvents, GameControlsEvent>* pGameControls = EventBusLocator<eGameStateEvents, GameControlsEvent>::Get();
 	iEventBus<eGameStateEvents, GameRunningEvent>* pGameRuning = EventBusLocator<eGameStateEvents, GameRunningEvent>::Get();
 	iEventBus<eGameStateEvents, GameNewLevelEvent>* pLeveUpBus = EventBusLocator<eGameStateEvents, GameNewLevelEvent>::Get();
 	iEventBus<eGameStateEvents, GameOverEvent>* pEventBus = EventBusLocator<eGameStateEvents, GameOverEvent>::Get();
 
 	pGameStarted->Subscribe(eGameStateEvents::GAME_STARTED, OnStart);
+	pGameControls->Subscribe(eGameStateEvents::GAME_CONTROLS, OnControls);
 	pGameRuning->Subscribe(eGameStateEvents::GAME_RUNNING, OnRunning);
 	pLeveUpBus->Subscribe(eGameStateEvents::GAME_NEWLEVEL, OnNewLevel);
 	pEventBus->Subscribe(eGameStateEvents::GAME_OVER, OnGameOver);
@@ -83,6 +83,7 @@ void Engine::LevelSystem::Update(CScene* pScene, float deltaTime)
 	{
 		pState->currState = eGameStates::STARTED;
 	}
+	
 	if (App::IsKeyPressed(eKeycodes::X))
 	{
 
@@ -106,9 +107,26 @@ void Engine::LevelSystem::Update(CScene* pScene, float deltaTime)
 		if (App::IsKeyPressed(eKeycodes::E))
 		{
 			//GameStateComponent* pState = ComponentUtils::GetGameState();
-			pState->currState = eGameStates::RUNNING;
+			pState->currState = eGameStates::CONTROLS;
+			App::PlaySoundW(".\\Assets\\Sounds\\Menu.wav", false);
+
+			
+			
+
 		}
+		
 	}
+
+	if (pState->currState == eGameStates::CONTROLS && App::IsKeyPressed(eKeycodes::F))
+	{
+
+		//GameStateComponent* pState = ComponentUtils::GetGameState();
+		pState->currState = eGameStates::RUNNING;
+		App::PlaySoundW(".\\Assets\\Sounds\\Menu.wav", false);
+
+
+	}
+	
 	
 	
 
@@ -120,12 +138,42 @@ void Engine::LevelSystem::Render(CScene* pScene)
 
 	if (pState->currState == eGameStates::STARTED )
 	{
-		App::Print(POSITIONX, POSITIONY, TITLE.c_str(), COLOR[0], COLOR[1], COLOR[2]);
+		App::Print(POSITIONX, POSITIONY - 50, TITLE.c_str(), COLOR[0], COLOR[1], COLOR[2]);
+
+		
+
+	}
+	if (pState->currState == eGameStates::CONTROLS)
+	{
+		App::Print(POSITIONX, POSITIONY - 50, TITLE.c_str(), COLOR[0], COLOR[1], COLOR[2]);
+
+		App::Print(REDBALLPOSX, REDBALLPOSY, "RED BALL REDUCES YOUR MAX STROKES", REDBALLCOLOR[0], REDBALLCOLOR[1], REDBALLCOLOR[2]);
+		App::Print(REDBALLPOSX + 20, REDBALLPOSY - 30, "BUT BOOSTS YOUR MULTIPLIER", REDBALLCOLOR[0], REDBALLCOLOR[1], REDBALLCOLOR[2]);
+		App::Print(REDBALLPOSX, REDBALLPOSY - 60, "ALSO GREATLY INCREASES BOUNCINESS", REDBALLCOLOR[0], REDBALLCOLOR[1], REDBALLCOLOR[2]);
+
+
+		App::Print(BLUEBALLPOSX, BLUEBALLPOSY, "BLUE BALL INCREASES YOUR MAX STROKES", BLUEBALLCOLOR[0], BLUEBALLCOLOR[1], BLUEBALLCOLOR[2]);
+		App::Print(BLUEBALLPOSX + 20, BLUEBALLPOSY - 30, "BUT REDUCES YOUR MULTIPLIER", BLUEBALLCOLOR[0], BLUEBALLCOLOR[1], BLUEBALLCOLOR[2]);
+		App::Print(BLUEBALLPOSX, BLUEBALLPOSY - 60, "ALSO GREATLY DECREASES BOUNCINESS", BLUEBALLCOLOR[0], BLUEBALLCOLOR[1], BLUEBALLCOLOR[2]);
+		
+		App::Print(INSTRUCTIONSPOSX, INSTRUCTIONSPOSY - 50, "PRESS AND HOLD SPACE TO CHARGE BALL AND RELEASE TO SHOOT", INSTRUCTIONSCOLOR[0], INSTRUCTIONSCOLOR[1], INSTRUCTIONSCOLOR[2]);
+		App::Print(INSTRUCTIONSPOSX + 40, INSTRUCTIONSPOSY - 100, "USE YOUR MOUSE TO CONTROL DIRECTION OF YOUR BALL", INSTRUCTIONSCOLOR[0], INSTRUCTIONSCOLOR[1], INSTRUCTIONSCOLOR[2]);
+		App::Print(INSTRUCTIONSPOSX + 100, INSTRUCTIONSPOSY - 150, "GET THE OBJECTIVE POINT TO WIN LEVEL", INSTRUCTIONSCOLOR[0], INSTRUCTIONSCOLOR[1], INSTRUCTIONSCOLOR[2]);
+		App::Print(INSTRUCTIONSPOSX + 100, INSTRUCTIONSPOSY - 200, "YOUR MULTIPLIER BOOSTS YOUR POINTS", INSTRUCTIONSCOLOR[0], INSTRUCTIONSCOLOR[1], INSTRUCTIONSCOLOR[2]);
+		App::Print(INSTRUCTIONSPOSX + 120, INSTRUCTIONSPOSY - 250, "HIGHER THE STROKES LESSER THE POINTS", INSTRUCTIONSCOLOR[0], INSTRUCTIONSCOLOR[1], INSTRUCTIONSCOLOR[2]);
+		App::Print(INSTRUCTIONSPOSX + 40, INSTRUCTIONSPOSY - 300, "EACH TIME YOU LOAD A LEVEL YOU GET A RANDOM LEVEL MODIFIER", INSTRUCTIONSCOLOR[0], INSTRUCTIONSCOLOR[1], INSTRUCTIONSCOLOR[2]);
+		App::Print(INSTRUCTIONSPOSX + 40, INSTRUCTIONSPOSY - 350, "CHOOSE YOUR BALL COLORS WISELY TO FINISH THE LEVEL", INSTRUCTIONSCOLOR[0], INSTRUCTIONSCOLOR[1], INSTRUCTIONSCOLOR[2]);
+
+
+
 	}
 	if (pState->currState == eGameStates::GAMEOVER)
 	{
 		App::Print(POSITIONX, POSITIONY, TITLE.c_str(), COLOR[0], COLOR[1], COLOR[2]);
 	}
+	
+
+
 
 }
 
@@ -137,11 +185,13 @@ void Engine::LevelSystem::End(CScene* pScene)
 void Engine::LevelSystem::Cleanup()
 {
 	iEventBus<eGameStateEvents, GameStartedEvent>* pGameStarted = EventBusLocator<eGameStateEvents, GameStartedEvent>::Get();
+	iEventBus<eGameStateEvents, GameControlsEvent>* pGameControls = EventBusLocator<eGameStateEvents, GameControlsEvent>::Get();
 	iEventBus<eGameStateEvents, GameRunningEvent>* pGameRuning = EventBusLocator<eGameStateEvents, GameRunningEvent>::Get();
 	iEventBus<eGameStateEvents, GameNewLevelEvent>* pLeveUpBus = EventBusLocator<eGameStateEvents, GameNewLevelEvent>::Get();
 	iEventBus<eGameStateEvents, GameOverEvent>* pEventBus = EventBusLocator<eGameStateEvents, GameOverEvent>::Get();
 
 	pGameStarted->Unsubscribe(eGameStateEvents::GAME_STARTED, OnStart);
+	pGameControls->Unsubscribe(eGameStateEvents::GAME_STARTED, OnControls);
 	pGameRuning->Unsubscribe(eGameStateEvents::GAME_RUNNING, OnRunning);
 	pLeveUpBus->Unsubscribe(eGameStateEvents::GAME_NEWLEVEL, OnNewLevel);
 	pEventBus->Unsubscribe(eGameStateEvents::GAME_OVER, OnGameOver);
@@ -155,8 +205,19 @@ void Engine::LevelSystem::OnStart(const GameStartedEvent& event)
 {
 	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
 	GamplayUtils::CreateTitle(event.pScene, Vector2(510, 385));
+	
 	TITLE = "PRESS E TO START";
 
+}
+
+void Engine::LevelSystem::OnControls(const GameControlsEvent& event)
+{
+	event.pScene->DestroyAllEntities();
+	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));
+
+	GamplayUtils::CreateBlueUi(event.pScene, Vector2(810, 650));
+	GamplayUtils::CreateRedUi(event.pScene, Vector2(210,  650));
+	TITLE = "PRESS F TO CONTINUE";
 }
 
 void Engine::LevelSystem::OnRunning(const GameRunningEvent& event)
@@ -197,7 +258,6 @@ void Engine::LevelSystem::LevelOne(const GameRunningEvent& event)
 
 	event.pScene->DestroyAllEntities();
 
-	EVENTTEXT = "EVENT NEW LEVEL !";
 	SystemFactory* systemFactory = ComponentUtils::GetSystemFactory();
 
 
@@ -215,6 +275,7 @@ void Engine::LevelSystem::LevelOne(const GameRunningEvent& event)
 
 	
 
+	GamplayUtils::CreateWall(event.pScene, Vector2(675.0f, 700.0f));
 	GamplayUtils::CreateWall2(event.pScene, Vector2(375.0f, 200.0f));
 	GamplayUtils::CreateWall2(event.pScene, Vector2(1275.0f, 300.0f));
 
@@ -237,7 +298,6 @@ void Engine::LevelSystem::LevelTwo(const GameNewLevelEvent& event)
 {
 	event.pScene->DestroyAllEntities();
 
-	EVENTTEXT = "EVENT LEVEL ONE !";
 	SystemFactory* systemFactory = ComponentUtils::GetSystemFactory();
 
 	GamplayUtils::CreateBackground(event.pScene, Vector2(510, 385));

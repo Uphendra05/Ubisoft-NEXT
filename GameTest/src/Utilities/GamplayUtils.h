@@ -18,27 +18,35 @@ namespace Engine
 
 		static Entity CreateECSTEST(CScene* pScene, Vector2 position);
 
+
 		static Entity CreateBackground(CScene* pScene, Vector2 position);
 
 		static Entity CreateFogOfWar(CScene* pScene, Vector2 position);
+
 
 		static Entity CreateTitle(CScene* pScene, Vector2 position);
 
 		static Entity CreateGameOver(CScene* pScene, Vector2 position);
 
-		static Entity CreatePlayer(CScene* pScene, Vector2 position);		
+
+		static Entity CreatePlayer(CScene* pScene, Vector2 position);
+
 
 		static Entity CreateGoal(CScene* pScene, Vector2 position);
 
 		static Entity CreateRed(CScene* pScene, Vector2 position);
+		static Entity CreateRedUi(CScene* pScene, Vector2 position);
 
 		static Entity CreateBlue(CScene* pScene, Vector2 position);
+		static Entity CreateBlueUi(CScene* pScene, Vector2 position);
+
 
 		static Entity CreateCollidable(CScene* pScene, Vector2 position);
 
 		static Entity CreateCollidable2(CScene* pScene, Vector2 position);
 
 		static Entity CreateCollidable3(CScene* pScene, Vector2 position);
+
 
 		static Entity CreateWall(CScene* pScene, Vector2 position);
 
@@ -47,12 +55,7 @@ namespace Engine
 
 
 
-		static Entity CreatePlayer2(CScene* pScene, Vector2 position);
-
-
-		static Entity CreateCamera(CScene* pScene, Vector2 position);
-
-		static Entity CreateHole(CScene* pScene, Vector2 position);
+		
 
 
 

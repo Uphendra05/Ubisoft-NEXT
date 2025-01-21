@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _IEVENTBUS_H
+#define _IEVENTBUS_H
 
 #include "Event.hpp"
 
@@ -25,3 +27,4 @@ namespace Engine
         virtual void Publish(const F& event) = 0;
     };
 }
+#endif

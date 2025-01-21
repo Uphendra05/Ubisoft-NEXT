@@ -31,6 +31,8 @@ namespace Engine
 
 		static void OnStart(const GameStartedEvent& event);
 
+		static void OnControls(const GameControlsEvent& event);
+
 		static void OnRunning(const GameRunningEvent& event);
 
 		static void OnNewLevel(const GameNewLevelEvent& event);

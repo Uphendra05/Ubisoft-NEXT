@@ -5,6 +5,7 @@ enum eGameStates
 {
 	NOT_STARTED = 0,
 	STARTED,
+	CONTROLS,
 	RUNNING,
 	NEWLEVEL,
 	GAMEOVER
@@ -17,11 +18,13 @@ enum eKeycodes
 	C = 67,
 	V = 86,
 	E = 69,
+	F = 70,
 	SPACE = 32,
 };
 
 enum eGameStreaks
 {
+	NONE = 0,
 	HOLEINONE = 1,
 	TWOTOFOUR = 2,
     FIVETOSEVEN = 3
@@ -29,8 +32,8 @@ enum eGameStreaks
 
 enum eLevelModifiers
 {
-	
-	UNPREDTICTABLEMOVE = 1,
-	RIGIDMOVEMENT = 2,
-	FOGOFWAR = 3,
+	NIL = 1,
+	UNPREDTICTABLEMOVE = 2,
+	RIGIDMOVEMENT = 3,
+	FOGOFWAR = 4,
 };

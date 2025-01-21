@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _EVENTBUS_HPP
+#define _EVENTBUS_HPP
 
 #include "iEventBus.h"
 #include "Event.hpp"
@@ -60,3 +62,4 @@ namespace Engine
         std::unordered_map<T, std::vector<EventHandler>> m_subscribers;
     };
 }
+#endif

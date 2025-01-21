@@ -56,7 +56,7 @@ namespace Engine
 		void ResolveCollisionWithNormals(CScene* pScene, Entity entities);
 
 	
-		iEventBus<eCollisionEvents, CollisionEnterEvent>* m_pEventBusCollision;
+		iEventBus<eCollisionEvents, CollisionEnterEvent>* mEventBusCollision ;
 		
 		std::vector<Vector2> collisionNormals;
 

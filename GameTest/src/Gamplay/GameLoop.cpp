@@ -29,6 +29,8 @@ namespace Engine
 
 	void Engine::GameLoop::Start(CScene* pScene)
 	{
+		//App::PlaySoundW(".\\Assets\\Sounds\\BackgroundMusic.wav", true);
+
 		InitGameEvents();
 
 	
@@ -92,11 +94,13 @@ namespace Engine
 	void Engine::GameLoop::InitGameEvents()
 	{
 		m_pEventBusGameStarted = new EventBus<eGameStateEvents, GameStartedEvent>();
+		m_pEventBusGameControls = new EventBus<eGameStateEvents, GameControlsEvent>();
 		m_pEventBusGameRunning = new EventBus<eGameStateEvents, GameRunningEvent>();
 		m_pEventBusNewLevel = new EventBus<eGameStateEvents, GameNewLevelEvent>();
 		m_pEventBusGameOver = new EventBus<eGameStateEvents, GameOverEvent>();
 
 		EventBusLocator<eGameStateEvents, GameStartedEvent>::Set(m_pEventBusGameStarted);
+		EventBusLocator<eGameStateEvents, GameControlsEvent>::Set(m_pEventBusGameControls);
 		EventBusLocator<eGameStateEvents, GameRunningEvent>::Set(m_pEventBusGameRunning);
 		EventBusLocator<eGameStateEvents, GameNewLevelEvent>::Set(m_pEventBusNewLevel);
 		EventBusLocator<eGameStateEvents, GameOverEvent>::Set(m_pEventBusGameOver);

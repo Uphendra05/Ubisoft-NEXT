@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _COLLISIONEVENT_H
+#define _COLLISIONEVENT_H
 
 #include "Event.hpp"
 #include "src/Physics/PhysicsProperties.h"
@@ -32,3 +34,4 @@ namespace Engine
 		Entity entityB = 0;
 	};
 }
+#endif

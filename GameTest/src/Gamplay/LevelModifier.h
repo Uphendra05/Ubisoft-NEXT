@@ -25,7 +25,7 @@ namespace Engine
 
 		void DecideLevelModifier(CScene* pScene, float deltaTime);
 
-		eLevelModifiers mLevelModifier;
+		eLevelModifiers mLevelModifier = eLevelModifiers::NIL;
 
 		const std::vector<eLevelModifiers> modifiers = 
 		{

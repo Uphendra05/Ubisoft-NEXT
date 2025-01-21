@@ -5,6 +5,12 @@
 #include "src/Utilities/PlayerUtilities.h"
 #include <random>
 
+//LEVEL MODIFIER
+const float MODIFIERPOSX = 400.0f;
+const float MODIFIERPOSY = 30.0f;
+extern std::string MODIFIER = " ";
+const float MODIFIERCOLOR[3] = { 0.0f, 0.0f, 0.0f };
+
 std::string Engine::LevelModifier::SystemName()
 {
     return std::string();
@@ -63,6 +69,16 @@ void Engine::LevelModifier::Update(CScene* pScene, float deltaTime)
 
 void Engine::LevelModifier::Render(CScene* pScene)
 {
+	GameStateComponent* pState = ComponentUtils::GetGameState();
+
+	if (pState->currState == eGameStates::RUNNING && isModified)
+	{
+		App::Print(MODIFIERPOSX, MODIFIERPOSY, MODIFIER.c_str(), MODIFIERCOLOR[0], MODIFIERCOLOR[1], MODIFIERCOLOR[2]);
+	}
+	if (pState->currState == eGameStates::NEWLEVEL && isModified)
+	{
+		App::Print(MODIFIERPOSX, MODIFIERPOSY, MODIFIER.c_str(), MODIFIERCOLOR[0], MODIFIERCOLOR[1], MODIFIERCOLOR[2]);
+	}
 }
 
 void Engine::LevelModifier::End(CScene* pScene)
@@ -88,12 +104,17 @@ void Engine::LevelModifier::DecideLevelModifier(CScene* pScene, float deltaTime)
 		{
 	
 		case UNPREDTICTABLEMOVE:
+			MODIFIER = "LEVEL MODIFIER: UNPREDTICTABLE MOVEMENT";
 			pPlayerMove->isWobble = true;
 			break;
 		case RIGIDMOVEMENT:
+			MODIFIER = "LEVEL MODIFIER: RIGID MOVEMENT";
+
 			pPlayerMove->drag = 5.2f;
 			break;
 		case FOGOFWAR:
+			MODIFIER = "LEVEL MODIFIER: FOG OF WAR";
+
 			pFogOfWar->isVisible = true;
 			break;
 		default:

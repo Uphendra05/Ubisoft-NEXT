@@ -12,8 +12,8 @@ namespace Engine
 	struct sCollisionData
 	{
 		CScene* pScene = nullptr;
-		Entity entityA;
-		Entity entityB;
+		Entity entityA = -1;
+		Entity entityB = -1;
 		std::vector<Entity> passiveEntites;
 
 		bool operator==(const sCollisionData& other) const

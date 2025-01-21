@@ -28,6 +28,7 @@ namespace Engine
 		void InitGameEvents();
 
 		iEventBus<eGameStateEvents, GameStartedEvent>* m_pEventBusGameStarted = nullptr;
+		iEventBus<eGameStateEvents, GameControlsEvent>* m_pEventBusGameControls = nullptr;
 		iEventBus<eGameStateEvents, GameRunningEvent>* m_pEventBusGameRunning = nullptr;
 		iEventBus<eGameStateEvents, GameNewLevelEvent>* m_pEventBusNewLevel = nullptr;
 		iEventBus<eGameStateEvents, GameOverEvent>*    m_pEventBusGameOver = nullptr;

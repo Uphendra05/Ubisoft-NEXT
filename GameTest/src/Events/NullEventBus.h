@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _NULLEVENTBUS_H
+#define _NULLEVENTBUS_H
 
 #include "iEventBus.h"
 #include "Event.hpp"
@@ -25,3 +27,4 @@ namespace Engine
         virtual void Publish(const Event<T>& event) {};
     };
 }
+#endif

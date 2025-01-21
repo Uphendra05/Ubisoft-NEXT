@@ -25,11 +25,6 @@ void Engine::WorldUISystem::Update(CScene* pScene, float deltaTime)
 
 void Engine::WorldUISystem::Render(CScene* pScene)
 {
-
-    //App::Print(POSITIONX, POSITIONY, UITEXT.c_str(), COLOR[0], COLOR[1], COLOR[2]);
-
-    //Should This be here ?
-
     for (Entity entityId : SComponentIterator<MovementComponent>(*pScene))
     {
         MovementComponent* pMovement = pScene->GetComponent<MovementComponent>(entityId);
@@ -38,7 +33,7 @@ void Engine::WorldUISystem::Render(CScene* pScene)
         if (pMovement && pTransform)
         {
             // Debug power line visualization
-            if (pMovement->isCharging )
+            if (pMovement->isCharging)
             {
                 Vector2 mousePos = Vector2();
                 App::GetMousePos(mousePos.x, mousePos.y);
@@ -47,20 +42,20 @@ void Engine::WorldUISystem::Render(CScene* pScene)
 
                 if (pMovement->isWobble)
                 {
-                    float wobbleStrength = 1.0f; // Adjust wobble intensity
+                    float wobbleStrength = 0.3f; // Adjust wobble intensity
                     shotDirection.x += (static_cast<float>(std::rand()) / RAND_MAX - 0.5f) * wobbleStrength;
                     shotDirection.y += (static_cast<float>(std::rand()) / RAND_MAX - 0.5f) * wobbleStrength;
                     shotDirection = shotDirection.normalized();
 
                 }
-               
+
 
                 // Calculate the start and end points of the debug line
                 Vector2 startPoint = pTransform->position; // Start at the entity's position
-                Vector2 endPoint = startPoint + shotDirection * (pMovement->chargePower * 0.1f); 
+                Vector2 endPoint = startPoint + shotDirection * (pMovement->chargePower * 0.1f);
 
                 // Draw the debug line
-                float color[3] = { 0.0f, 0.0f, 1.0f }; 
+                float color[3] = { 0.0f, 0.0f, 1.0f };
                 App::DrawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y, color[0], color[1], color[2]);
             }
         }

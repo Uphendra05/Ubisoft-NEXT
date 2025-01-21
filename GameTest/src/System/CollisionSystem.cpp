@@ -38,8 +38,8 @@ namespace Engine
 
     void Engine::CollisionSystem::Init()
     {
-        m_pEventBusCollision = new EventBus<eCollisionEvents, CollisionEnterEvent>();
-        EventBusLocator<eCollisionEvents, CollisionEnterEvent>::Set(m_pEventBusCollision);
+        mEventBusCollision = new EventBus<eCollisionEvents, CollisionEnterEvent>();
+        EventBusLocator<eCollisionEvents, CollisionEnterEvent>::Set(mEventBusCollision);
     }
 
     void Engine::CollisionSystem::Start(CScene* pScene)
@@ -129,7 +129,7 @@ namespace Engine
     void Engine::CollisionSystem::Cleanup()
     {
 
-        delete m_pEventBusCollision;
+        delete mEventBusCollision;
         collisionNormals.clear();
         activeEntites.clear();
         passiveEntites.clear();
@@ -324,6 +324,7 @@ namespace Engine
                             float distancedReflected = reflected.magnitude();
                             if (distancedReflected > 0.001f)
                             {
+
                                 if (pTag1->entityName == "Hole")
                                 {
                                     //reflected = Vector2(deltatime * 1500, deltatime * 1500);
@@ -341,16 +342,10 @@ namespace Engine
 
                                     TriggerCollision(collData);
 
-                                    /* pScene->RemoveEntity(otherAcive);
-
-                                     auto it = std::find(activeEntites.begin(), activeEntites.end(), otherAcive);
-                                     if (it != activeEntites.end())
-                                     {
-                                         activeEntites.erase(it);
-                                     }*/
-
+                                  
 
                                 }
+                                App::PlaySoundW(".\\Assets\\Sounds\\Bounce.wav", false);
 
                                 pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * pRb->bounciness;
                                 pScene->GetComponent<MovementComponent>(otherAcive)->velocity = reflected * pRb->bounciness;
@@ -370,61 +365,6 @@ namespace Engine
             }
 
 
-
-
-
-#if USELESS CODE
-
-            //for (Entity& otherActive : activeEntites)
-            //{
-            //    if (entitesActive == otherActive) continue;
-
-            //    sAABB* aabbB = pScene->GetComponent<sAABB>(entitesActive);
-
-            //    if (CheckCollision(*aabbA, *aabbB))
-            //    {
-
-            //        if (collisionNormals.size() > 0)
-            //        {
-
-            //            Vector2 normal = ComputeNormals(collisionNormals);
-            //            normal = normal.normalized();
-
-
-
-            //            Vector2 incident = pScene->GetComponent<MovementComponent>(entitesActive)->velocity;
-            //            float dotProduct = Vector2::Dot(incident, normal);
-            //            if (dotProduct < 0)
-            //            {
-            //                normal = normal * -1;
-            //                dotProduct = -dotProduct;
-            //            }
-
-            //            Vector2 reflected = Vector2::Reflect(incident, normal);
-
-            //            float distancedReflected = reflected.magnitude();
-            //            if (distancedReflected > 0.001f)
-            //            {
-            //                /*if (pTag1->entityName == "Collide2")
-            //                {
-            //                    reflected = Vector2(deltatime * 1500, deltatime * 1500);
-            //                    pScene->RemoveEntity(entityB);
-            //                }*/
-
-            //                pScene->GetComponent<MovementComponent>(entitesActive)->velocity = reflected * 2;
-            //                pScene->GetComponent<MovementComponent>(otherActive)->velocity = reflected * 2;
-            //            }
-
-
-
-            //        }
-            //    }
-
-            //}
-
-#endif // USELESS CODE
-
-            
 
 
 

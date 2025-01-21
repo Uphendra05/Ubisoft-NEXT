@@ -2,7 +2,7 @@
 namespace Engine
 {
 
-	static class MathUtils
+	 class MathUtils
 	{
 
 	public:
@@ -20,7 +20,7 @@ namespace Engine
 		}
 
 		template <typename T>
-		static T Clamp(T value, T min, T max)
+		static  T Clamp(T value, T min, T max)
 		{
 			if (value < min) return min;
 			if (value > max) return max;

@@ -88,7 +88,6 @@
     <ClInclude Include="src\ECS\SComponents.h" />
     <ClInclude Include="src\Utilities\Vector2.h" />
     <ClInclude Include="src\ECS\CScene.h" />
-    <ClInclude Include="src\ECS\Example.h" />
     <ClInclude Include="src\ECS\SComponentIterator.h" />
     <ClInclude Include="src\System\iSystems.h" />
     <ClInclude Include="src\Utilities\GamplayUtils.h" />

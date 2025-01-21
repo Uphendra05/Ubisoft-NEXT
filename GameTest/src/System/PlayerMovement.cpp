@@ -76,6 +76,7 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
             else if (pMovement->isCharging && !App::IsKeyPressed(eKeycodes::SPACE)) // Release shot
             {
                 pMovement->isCharging = false;
+                App::PlaySoundW(".\\Assets\\Sounds\\Shoot.wav", false);
 
                 Vector2 mousePos = Vector2() ;
                 App::GetMousePos(mousePos.x, mousePos.y);
@@ -85,7 +86,7 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
 
                 if (pMovement->isWobble)
                 {
-                    float wobbleStrength = 1.0f; // Adjust wobble intensity
+                    float wobbleStrength = 0.3f; // Adjust wobble intensity
                     shotDirection.x += (static_cast<float>(std::rand()) / RAND_MAX - 0.5f) * wobbleStrength;
                     shotDirection.y += (static_cast<float>(std::rand()) / RAND_MAX - 0.5f) * wobbleStrength;
                     shotDirection = shotDirection.normalized();
@@ -119,7 +120,7 @@ void Engine::PlayerMovement::Update(CScene* pScene, float deltaTime)
 
 void Engine::PlayerMovement::Render(CScene* pScene)
 {
-
+    
   
 
 }

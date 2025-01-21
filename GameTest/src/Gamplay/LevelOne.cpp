@@ -32,8 +32,8 @@ namespace Engine
         mObjectivePoints = 3000;
         mMultiplier = 15;
         mStrokes = 0;
-        mMaxStrokes = 6;
-        timer = 115;
+        mMaxStrokes = 10;
+        timer = 3.0f;
         result = 0;
         winLevel = " ";
         //MathUtils::Clamp(mStrokes, (size_t)0, mMaxStrokes);
@@ -56,6 +56,24 @@ namespace Engine
             mMultiplier = pScore->multiplier;
             mMaxStrokes = pScore->maxStrokes;
 
+            if (mStrokes == 1 || mStrokes == 0)
+            {
+                mGameStreaks = eGameStreaks::HOLEINONE;
+                winLevel = "HOLE POINT: 500";
+            }
+            else if (mStrokes >= 2 && mStrokes <= 4)
+            {
+                mGameStreaks = eGameStreaks::TWOTOFOUR;
+                winLevel = "HOLE POINT: 300";
+
+            }
+            else
+            {
+                mGameStreaks = eGameStreaks::FIVETOSEVEN;
+                winLevel = "HOLE POINT: 100";
+
+            }
+
 
 
             if (pScore->isGoal)
@@ -63,18 +81,15 @@ namespace Engine
                 if (mStrokes == 1)
                 {
                     mGameStreaks = eGameStreaks::HOLEINONE;
-                    winLevel = "HOLE IN ONE";
                 }
                 else if (mStrokes >= 2 && mStrokes <= 4)
                 {
                     mGameStreaks = eGameStreaks::TWOTOFOUR;
-                    winLevel = "MID";
 
                 }
                 else
                 {
                     mGameStreaks = eGameStreaks::FIVETOSEVEN;
-                    winLevel = "NOOB";
 
                 }
 
@@ -138,12 +153,12 @@ namespace Engine
         if (pState->currState == eGameStates::RUNNING)
         {
 
-            App::Print(50, 700, objective.c_str(), 1, 1, 1);
-            App::Print(250, 700, multiplier.c_str(), 1, 1, 1);
-            App::Print(450, 700, strokes.c_str(), 1, 1, 1);
-            App::Print(650, 700, maxStrokes.c_str(), 1, 1, 1);
-            App::Print(850, 700, finalResult.c_str(), 1, 1, 1);
-            App::Print(850, 200, winLevel.c_str(), 1, 1, 1);
+            App::Print(50, 700, objective.c_str(),   0, 0, 0);
+            App::Print(250, 700, multiplier.c_str(), 0, 0, 0);
+            App::Print(450, 700, strokes.c_str(),    0, 0, 0);
+            App::Print(650, 700, maxStrokes.c_str(), 0, 0, 0);
+            App::Print(850, 700, finalResult.c_str(),0, 0, 0);
+            App::Print(850, 200, winLevel.c_str(),   0, 0, 0);
 
         }
     }
@@ -189,26 +204,29 @@ namespace Engine
 
                 pPlayer->isGoal = true;
                 pSprite->isVisible = false;
+                App::PlaySoundW(".\\Assets\\Sounds\\Pocket.wav", false);
+
 
             }
             if (passiveEntityTag->entityName == "Red")
             {
 
                 pSprite->sprite = new CSimpleSprite(".\\Assets\\Red.png", 1, 1);
-                pPlayer->maxStrokes = 5;
-                pPlayer->multiplier = 120;
+                pPlayer->maxStrokes = 7;
+                pPlayer->multiplier = 100;
                 pRb->bounciness = 2.7f;
-                winLevel = "RED Ball Hit";
+                App::PlaySoundW(".\\Assets\\Sounds\\Power.wav", false);
+
 
             }
             if (passiveEntityTag->entityName == "Blue")
             {
                 pSprite->sprite = new CSimpleSprite(".\\Assets\\Blue.png", 1, 1);
-                pPlayer->maxStrokes = 8;
-                pPlayer->multiplier = 25;
+                pPlayer->maxStrokes = 13;
+                pPlayer->multiplier = 50;
                 pRb->bounciness = 0.8f;
+                App::PlaySoundW(".\\Assets\\Sounds\\Power.wav", false);
 
-                winLevel = "BLUE Ball Hit";
 
             }
 

@@ -27,7 +27,7 @@ namespace Engine
 		size_t mStrokes;
 		size_t mMaxStrokes = 6;
 
-		size_t timer;
+		float timer;
 		eGameStreaks mGameStreaks;
 
 	};

@@ -40,11 +40,11 @@ namespace Engine
 
         size_t mObjectivePoints = 0;
         size_t mMultiplier = 0;
-        size_t mStrokes;
+        size_t mStrokes = 0;
         size_t mMaxStrokes = 6;
 
-        size_t timer;
-        eGameStreaks mGameStreaks;
+        float timer;
+        eGameStreaks mGameStreaks = eGameStreaks::NONE;
 
 
     };

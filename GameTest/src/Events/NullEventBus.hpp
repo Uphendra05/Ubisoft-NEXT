@@ -1,4 +1,8 @@
 #pragma once
+#ifndef _NULLEVENTBUS_HPP
+#define _NULLEVENTBUS_HPP
+
+
 #include "stdafx.h"
 
 #include "iEventBus.h"
@@ -29,3 +33,4 @@ namespace Engine
         {};
     };
 }
+#endif
