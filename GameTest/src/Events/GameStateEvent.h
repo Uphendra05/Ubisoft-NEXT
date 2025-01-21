@@ -6,6 +6,13 @@
 
 #include "src/ECS/CScene.h"
 
+//*******************************************************************************************
+//  GameStateEvents
+//*******************************************************************************************
+/* handles the states for the Game Loop
+
+ */
+
 namespace Engine
 {
 	enum eGameStateEvents

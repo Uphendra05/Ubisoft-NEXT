@@ -6,7 +6,12 @@
 #include "src/ECS/CScene.h"
 #include "src/ECS/SComponents.h"
 
+//*******************************************************************************************
+//  GameStateEventSysten
+//*******************************************************************************************
+/* This class is derived from the iSystems interface and handles publising the game state events
 
+ */
 
 namespace Engine
 {

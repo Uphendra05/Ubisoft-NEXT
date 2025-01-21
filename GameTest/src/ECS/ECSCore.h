@@ -6,6 +6,13 @@
 #include<iostream>
 #include <bitset>
 
+//*******************************************************************************************
+// ECSCore
+//*******************************************************************************************
+/* Header for all the necessary information for the Entities.
+
+ */
+
 namespace Engine
 {
 	using Entity = uint64_t;

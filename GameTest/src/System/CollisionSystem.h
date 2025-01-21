@@ -10,6 +10,13 @@
 #include "src/Events/CollisionEvent.h"
 #include "src/Events/iEventBus.h"
 
+//*******************************************************************************************
+//  CollisionSysten
+//*******************************************************************************************
+/* This class is derived from the iSystems interface and handles all the collision data, aabb creations
+* and trigger collision events 
+
+ */
 
 namespace Engine
 {

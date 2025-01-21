@@ -5,6 +5,13 @@
 #include "NullEventBus.hpp"
 #include "iEventBus.h"
 
+//*******************************************************************************************
+//  EventBusLocator
+//*******************************************************************************************
+/* This class is a locator for the Event Bus
+
+ */
+
 namespace Engine
 {
 	template <typename T, typename F>

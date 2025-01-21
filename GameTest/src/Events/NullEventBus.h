@@ -7,6 +7,12 @@
 #include <functional>
 #include <unordered_map>
 
+
+//*******************************************************************************************
+//  NullEventBuss
+//*******************************************************************************************
+/* Checks for null events
+ */
 namespace Engine
 {
     // Null service only to avoid crashes in locator

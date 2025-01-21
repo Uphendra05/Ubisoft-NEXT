@@ -7,6 +7,13 @@
 
 #include "src/Events/CollisionEvent.h"
 
+//*******************************************************************************************
+//  LevelOne
+//*******************************************************************************************
+/* This class handles the flow of level one from start to end
+
+ */
+
 namespace Engine
 {
     class LevelOne : public iSystems       

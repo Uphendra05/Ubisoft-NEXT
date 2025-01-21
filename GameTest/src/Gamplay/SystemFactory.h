@@ -4,6 +4,13 @@
 
 #include "src/System/iSystems.h"
 #include "src/ECS/CScene.h"
+//*******************************************************************************************
+//  SystenFactory
+//*******************************************************************************************
+/* This class is a factoy for creating the systems which is a sharedptr derived from isystems
+* for automatice memory deallocations
+
+ */
 
 namespace Engine
 {

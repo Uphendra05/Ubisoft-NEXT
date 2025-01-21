@@ -5,6 +5,13 @@
 #include "iSystems.h"
 #include "src/ECS/SComponents.h"
 
+//*******************************************************************************************
+//  CollisionSysten
+//*******************************************************************************************
+/* This class is derived from the iSystems interface and updates the FPS for the game
+
+ */
+
 namespace Engine
 {
 	class FrameSystem :public iSystems		

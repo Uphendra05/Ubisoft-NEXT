@@ -8,6 +8,13 @@
 #include <functional>
 #include <unordered_map>
 
+//*******************************************************************************************
+//  EventBus
+//*******************************************************************************************
+/* This class handles all the Event functionalities
+
+ */
+
 namespace Engine
 {
     // T -> Event category

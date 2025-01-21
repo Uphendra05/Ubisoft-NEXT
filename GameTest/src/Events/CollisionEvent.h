@@ -4,7 +4,12 @@
 
 #include "Event.hpp"
 #include "src/Physics/PhysicsProperties.h"
+//*******************************************************************************************
+// Collision Event
+//*******************************************************************************************
+/* this class handles events for Collision enter and exit
 
+ */
 namespace Engine
 {
 	enum eCollisionEvents

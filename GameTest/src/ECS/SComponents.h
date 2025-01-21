@@ -10,21 +10,17 @@
 #include <set>
 #include "src/Gamplay/Enums.h"
 
+//*******************************************************************************************
+// Component
+//*******************************************************************************************
+/* All the components that needed for the Entities
+
+ */
+
 const int   FRAME_RATE = 60;  // Frames per second
 namespace Engine
 {
-	enum ePhysicsBody  
-	{
-		NONE =0,
-		AABB =1,
-
-	};
-
-	enum ePhysicsType
-	{
-		ACTIVE = 0,
-		PASSIVE = 1,
-	};
+	
 
 	struct Tag
 	{

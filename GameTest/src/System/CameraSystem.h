@@ -7,6 +7,12 @@
 #include "iSystems.h"
 #include "src/ECS/SComponents.h"
 
+//*******************************************************************************************
+//  CameraSystem
+//*******************************************************************************************
+/* This class is derived from the iSystems interface and creates and camera movement system 
+
+ */
 
 namespace Engine
 {

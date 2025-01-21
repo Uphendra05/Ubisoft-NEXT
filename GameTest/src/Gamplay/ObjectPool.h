@@ -7,7 +7,12 @@
 #include <queue>
 #include <functional>
 
+//*******************************************************************************************
+//  ObjectPool
+//*******************************************************************************************
+/* This class handles object pool for the engine
 
+ */
 namespace Engine
 {
 	class ObjectPool

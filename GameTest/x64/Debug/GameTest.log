@@ -15,13 +15,12 @@
   ComponentUtils.cpp
   FrameSystem.cpp
   CameraSystem.cpp
-  MemoryLeakFinder.cpp
   GameLoop.cpp
   CollisionSystem.cpp
   RaycastSystem.cpp
+  WorldUISystem.cpp
   Generating Code...
   Compiling...
-  WorldUISystem.cpp
   GraphicUtils.cpp
   RenderSystem.cpp
   MovementSystem.cpp

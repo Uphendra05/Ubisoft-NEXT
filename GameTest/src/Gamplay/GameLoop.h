@@ -8,6 +8,14 @@
 #include "src/Events/iEventBus.h"
 #include "src/Utilities/ComponentUtils.h"
 
+//*******************************************************************************************
+//  GameLoop
+//*******************************************************************************************
+/* This class creates all the systems and necessary event initializations. the systems are created
+* with the help of the system factory.
+
+ */
+
 
 namespace Engine
 {

@@ -7,6 +7,16 @@
 #include "../Utilities/BiMap.h"
 #include "App/app.h"
 
+
+//*******************************************************************************************
+// Scene
+//*******************************************************************************************
+/* This class creates all the entities in the Engine. this class gives all the info needed to 
+* create an entity in the world and communicates with the entitymanager for management.
+
+ */
+
+
 namespace Engine
 {
 	class CScene
@@ -17,12 +27,12 @@ namespace Engine
         CScene();
         ~CScene();
 
-		Entity CreateEntity(bool addDefault = false);		
-		Entity CreateEntity(Entity entityId);		
-		void RemoveEntity(Entity entityId);
+		Entity CreateEntity(bool addDefault = false);		//Actually creates the entity to game world
+		Entity CreateEntity(Entity entityId);		//Duplicates the created Entity
+		void RemoveEntity(Entity entityId); //Removes Entities
         int GetComponentCount();    
         void DestroyEntities();
-        void DestroyAllEntities();
+        void DestroyAllEntities(); //Destroys everything
 
         CEntityManager* GetEntityManager();
 

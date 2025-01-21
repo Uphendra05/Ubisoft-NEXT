@@ -5,6 +5,17 @@
 #include "ECSCore.h"
 #include "CScene.h"
 
+//*******************************************************************************************
+// ComponentIterator
+//*******************************************************************************************
+/* This is handy method to iterate all the entites with the necessary componenets attached to it
+* instead of iterating throught every entity we can find necessary components and check if the entity has the component
+* and the find the required entity.
+
+ */
+
+
+
 namespace Engine
 {
 	template<typename... ComponentTypes>

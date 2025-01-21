@@ -36,7 +36,6 @@
     <ClCompile Include="src\Gamplay\GameLoop.cpp" />
     <ClCompile Include="src\UnitTests\ECSTest.cpp" />
     <ClCompile Include="src\UnitTests\Vector2Tests.cpp" />
-    <ClCompile Include="src\MemoryLeakFinder\MemoryLeakFinder.cpp" />
     <ClCompile Include="src\System\CameraSystem.cpp" />
     <ClCompile Include="src\System\RaycastSystem.cpp" />
     <ClCompile Include="src\Utilities\PlayerUtilities.cpp" />
@@ -100,7 +99,6 @@
     <ClInclude Include="src\UnitTests\ECSTest.h" />
     <ClInclude Include="src\Gamplay\SystemFactory.h" />
     <ClInclude Include="src\UnitTests\Vector2Tests.h" />
-    <ClInclude Include="src\MemoryLeakFinder\MemoryLeakFinder.h" />
     <ClInclude Include="src\Physics\AABB.h" />
     <ClInclude Include="src\System\CameraSystem.h" />
     <ClInclude Include="src\System\RaycastSystem.h" />

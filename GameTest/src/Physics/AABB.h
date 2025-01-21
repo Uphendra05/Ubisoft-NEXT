@@ -8,6 +8,14 @@
 #include <vector>
 #include "src/ECS/ECSCore.h"
 
+//*******************************************************************************************
+//  AABB
+//*******************************************************************************************
+/* This class holds the struct for creating AABB collision between entities
+
+ */
+
+
 namespace Engine
 {
 	struct sAABB

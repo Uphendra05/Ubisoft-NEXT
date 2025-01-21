@@ -90,6 +90,7 @@
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>.\glut;$(IncludePath)</IncludePath>
     <LibraryPath>.\glut\lib\x64;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -208,7 +209,6 @@
     <ClInclude Include="src\System\FrameSystem.h" />
     <ClInclude Include="src\System\CameraSystem.h" />
     <ClInclude Include="src\Physics\AABB.h" />
-    <ClInclude Include="src\MemoryLeakFinder\MemoryLeakFinder.h" />
     <ClInclude Include="src\Gamplay\GameLoop.h" />
     <ClInclude Include="src\System\CollisionSystem.h" />
     <ClInclude Include="src\Physics\PhysicsProperties.h" />
@@ -255,7 +255,6 @@
     <ClCompile Include="src\Utilities\ComponentUtils.cpp" />
     <ClCompile Include="src\System\FrameSystem.cpp" />
     <ClCompile Include="src\System\CameraSystem.cpp" />
-    <ClCompile Include="src\MemoryLeakFinder\MemoryLeakFinder.cpp" />
     <ClCompile Include="src\Gamplay\GameLoop.cpp" />
     <ClCompile Include="src\System\CollisionSystem.cpp" />
     <ClCompile Include="src\System\RaycastSystem.cpp" />

@@ -84,7 +84,7 @@ namespace Engine
     void Engine::CollisionSystem::Render(CScene* pScene)
     {
 #ifdef _DEBUG
-        for (Entity entityId : SComponentIterator<sAABB>(*pScene))
+        /*for (Entity entityId : SComponentIterator<sAABB>(*pScene))
         {
 
 
@@ -94,7 +94,7 @@ namespace Engine
                 AABBDebug(pAABB->minXY, pAABB->maxXY, BLUE);
             }
 
-        }
+        }*/
 
 #endif
     }

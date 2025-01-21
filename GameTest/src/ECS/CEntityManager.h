@@ -9,6 +9,13 @@
 #include "ECSCore.h"
 
 
+//*******************************************************************************************
+// EntityManager
+//*******************************************************************************************
+/* This class manages entities in the Engine, since we are following the ECS structure 
+* it is necessary to manage the entites and this manager does that job
+
+ */
 
 namespace Engine
 {
@@ -20,23 +27,19 @@ namespace Engine
         ~CEntityManager() {};
 
 
-        Entity CreateEntity(EntityMask initialMask);
-        void RemoveEntity(Entity entityId);
-        void DestroyEntity(Entity entity);
+        Entity CreateEntity(EntityMask initialMask); //CreateEntity allows us to create new entites with a new entity mask
+        void RemoveEntity(Entity entityId); //RemoveEntity marks all the entites that needs to removed
+        void DestroyEntity(Entity entity); //DestroyEntity clears all the marked entites
 
-        void SetComponent(Entity entityId, ComponentId componentId);
+        void SetComponent(Entity entityId, ComponentId componentId); //SetComponent allows us to set the required components to the created entites
 
         const std::vector<Entity>& GetEntities() const;
         Entity GetEntity(int id);
 
-         EntityMask GetEntityMask(Entity entityId) const ;
+        EntityMask GetEntityMask(Entity entityId) const ;
 
-         //  TODO: Need some way to look up if the entity has the component I'm looking for. psuedo code bool HasComponent(componentid id){ if id = id return true eles fasle;
-        
-         //  TODO: Need to look up available entites and should find a way to destroy the entity using entity version number ;
-
-         bool HasComponents(Entity entityId, const EntityMask& mask) const;
-         bool HasComponent(Entity entityId, ComponentType componenet) const;
+        bool HasComponents(Entity entityId, const EntityMask& mask) const; //checks for components
+        bool HasComponent(Entity entityId, ComponentType componenet) const;
 
         
 

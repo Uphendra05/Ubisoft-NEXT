@@ -2,6 +2,14 @@
 #ifndef _ENUMS_H
 #define _ENUMS_H
 
+
+//*******************************************************************************************
+//  Enums
+//*******************************************************************************************
+/* this header holds all the necessary enums for the Game Flow
+
+ */
+
 namespace Engine
 {
 	enum eGameStates
@@ -39,6 +47,19 @@ namespace Engine
 		UNPREDTICTABLEMOVE = 2,
 		RIGIDMOVEMENT = 3,
 		FOGOFWAR = 4,
+	};
+
+	enum ePhysicsBody
+	{
+		NONE = 0,
+		AABB = 1,
+
+	};
+
+	enum ePhysicsType
+	{
+		ACTIVE = 0,
+		PASSIVE = 1,
 	};
 
 

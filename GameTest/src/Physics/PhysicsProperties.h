@@ -5,6 +5,15 @@
 #include "src/ECS/ECSCore.h"
 #include "src/ECS/CScene.h"
 
+//*******************************************************************************************
+//  PhysicsProperties
+//*******************************************************************************************
+/* This class holds the struct for collision data. it stores data of collision and triggers an event
+* to notify for triggerevent collision enter and exit
+
+ */
+
+
 namespace Engine
 {
 	struct sCollisionData

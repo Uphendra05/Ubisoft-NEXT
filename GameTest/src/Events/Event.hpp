@@ -3,9 +3,15 @@
 #define _EVENT_HPP
 #include <string>
 
+//*******************************************************************************************
+//  Event
+//*******************************************************************************************
+/* This class is the base class for the Events
+
+ */
+
 namespace Engine
 {
-	// Base class for all events
 	template <typename T>
 	class Event
 	{

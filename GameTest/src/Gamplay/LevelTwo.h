@@ -7,6 +7,13 @@
 
 #include "src/Events/CollisionEvent.h"
 
+//*******************************************************************************************
+//  LevelTwo
+//*******************************************************************************************
+/* This class handles the flow of level two from start to end
+
+ */
+
 namespace Engine
 {
 	class LevelTwo :public iSystems		

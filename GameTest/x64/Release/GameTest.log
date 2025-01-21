@@ -1,4 +1,46 @@
-﻿  GameTest.vcxproj -> D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Release\GameTest.exe
+﻿  stdafx.cpp
+  SimpleController.cpp
+  SimpleSound.cpp
+  SimpleSprite.cpp
+  app.cpp
+  main.cpp
+  GameTest.cpp
+  miniaudio.cpp
+  CComponentContainer.cpp
+  CEntityManager.cpp
+  CScene.cpp
+  GameLoop.cpp
+  LevelModifier.cpp
+  LevelOne.cpp
+  LevelTwo.cpp
+  ObjectPool.cpp
+  CameraSystem.cpp
+  CollisionSystem.cpp
+  FrameSystem.cpp
+  GameStateEventSystem.cpp
+  LevelSystem.cpp
+  Compiling...
+  MovementSystem.cpp
+  PlayerHealthSystem.cpp
+  PlayerMovement.cpp
+  RaycastSystem.cpp
+  RenderSystem.cpp
+  ShuffleHoleSystem.cpp
+  WorldUISystem.cpp
+  ECSTest.cpp
+  Vector2Tests.cpp
+  ComponentUtils.cpp
+  GamplayUtils.cpp
+  GraphicUtils.cpp
+  PlayerUtilities.cpp
+  Vector2.cpp
+  stb_image.cpp
+  Generating code
+  32 of 5573 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    60 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  GameTest.vcxproj -> D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Release\GameTest.exe
   Invalid number of parameters
 C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(166,5): error MSB3073: The command "xcopy D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\\GameTest\glut\bin\x64\*.dll D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Release\ /Y
 C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(166,5): error MSB3073: :VCEnd" exited with code 4.

@@ -5,6 +5,14 @@
 #include "src/System/iSystems.h"
 #include "src/Gamplay/Enums.h"
 
+//*******************************************************************************************
+//  LevelModifier
+//*******************************************************************************************
+/* This class is for creating random modifiers for the level when the player starts to play the game
+you can add n number of modifiers here and it will give you a random modifier when the level starts.
+
+ */
+
 namespace Engine
 {
 	class LevelModifier :public iSystems
