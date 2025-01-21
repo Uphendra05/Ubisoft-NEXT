@@ -12,7 +12,7 @@
 #include "src/System/PlayerHealthSystem.h"
 #include "src/System/ShuffleHoleSystem.h"
 #include "src/System/GameStateEventSystem.h"
-#include "src/System/LevelSystem.h"
+#include "src/System/LevelSystem.h"	
 #include "src/Gamplay/LevelOne.h"
 #include "src/Gamplay/LevelTwo.h"
 #include "src/Gamplay/LevelModifier.h"
@@ -29,7 +29,7 @@ namespace Engine
 
 	void Engine::GameLoop::Start(CScene* pScene)
 	{
-		//App::PlaySoundW(".\\Assets\\Sounds\\BackgroundMusic.wav", true);
+		App::PlaySoundW(".\\Assets\\Sounds\\BackgroundMusic.wav", true);
 
 		InitGameEvents();
 

@@ -1,42 +1,4 @@
-﻿  stdafx.cpp
-  app.cpp
-  main.cpp
-  SimpleController.cpp
-  SimpleSound.cpp
-  SimpleSprite.cpp
-  LevelModifier.cpp
-  LevelTwo.cpp
-  LevelOne.cpp
-  ObjectPool.cpp
-  GameStateEventSystem.cpp
-  LevelSystem.cpp
-  ShuffleHoleSystem.cpp
-  PlayerHealthSystem.cpp
-  ComponentUtils.cpp
-  FrameSystem.cpp
-  CameraSystem.cpp
-  GameLoop.cpp
-  CollisionSystem.cpp
-  RaycastSystem.cpp
-  WorldUISystem.cpp
-  Generating Code...
-  Compiling...
-  GraphicUtils.cpp
-  RenderSystem.cpp
-  MovementSystem.cpp
-  PlayerMovement.cpp
-  GamplayUtils.cpp
-  ECSTest.cpp
-  CComponentContainer.cpp
-  CEntityManager.cpp
-  GameTest.cpp
-  miniaudio.cpp
-  CScene.cpp
-  PlayerUtilities.cpp
-  stb_image.cpp
-  Vector2.cpp
-  Vector2Tests.cpp
-  Generating Code...
+﻿  GameLoop.cpp
   GameTest.vcxproj -> D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\x64\Debug\GameTest.exe
   D:\Git Repos\Ubisoft_Next\Ubisoft-NEXT\\GameTest\glut\bin\x64\freeglut.dll
   1 File(s) copied
