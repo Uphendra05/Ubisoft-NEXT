@@ -31,7 +31,7 @@ Main Menu for the game is pretty straightforward with all the details given.
 
 **Game Features**
 
-**•	Golf Shooting Mechanincs: **
+**•	Golf Shooting Mechanincs:**
 
 Instead of the regular press and drag shooting I’ve decided to give a charging mechanic for the player to shoot the ball in the desired force. Pretty cliché but works.
 
