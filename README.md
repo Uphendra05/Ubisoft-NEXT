@@ -11,6 +11,14 @@ All the sprites for the game are done in photoshop by me.
 Music : https://assetstore.unity.com/packages/audio/sound-fx/sci-fi-ui-sound-effects-hove-audio-263876#description
 -> HoveAudio
 
+![Screenshot 2025-01-24 195307](https://github.com/user-attachments/assets/0abd56c5-3476-46b9-a3ef-b7edf2dbdbbd)
+
+![Screenshot 2025-01-24 195335](https://github.com/user-attachments/assets/255c80b2-6a71-4c2f-a6b9-7bfd271ddd15)
+
+![Screenshot 2025-01-24 195320](https://github.com/user-attachments/assets/d945ed3b-11db-4d8f-a017-222334d81760)
+
+
+
 
 
 Controls and build details
