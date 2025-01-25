@@ -33,7 +33,7 @@ namespace Engine
 		
 
 		SpriteRenderer* pSprite = pScene->AddComponent<SpriteRenderer>(backgroundId);
-		pSprite->fileName = "D:/Git Repos/Ubisoft_Next/Ubisoft-NEXT/GameTest/Assets/LevelOneBG.png";  
+		pSprite->fileName = ".\\Assets\\LevelOneBG.png";  
 		pSprite->cols = 1;
 		pSprite->rows = 1;
 		pSprite->animSpeed = 1.0f;
